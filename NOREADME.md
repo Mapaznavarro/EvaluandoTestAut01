@@ -4,3 +4,7 @@ console.log(dom);
 
 VM97:1 Uncaught ReferenceError: page is not defined
     at <anonymous>:1:1
+
+console.log(document.documentElement.outerHTML);
+
+console.log(new XMLSerializer().serializeToString(document));
