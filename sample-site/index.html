@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda Demo - EvaluandoTestAut01</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f4f4f4; color: #333; }
+    header { background: #2c3e50; color: white; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    header h1 { font-size: 1.5rem; }
+    nav a { color: white; text-decoration: none; margin-left: 1rem; font-size: 0.95rem; }
+    nav a:hover { text-decoration: underline; }
+    main { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+    .search-bar { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
+    .search-bar input { flex: 1; padding: 0.6rem 1rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+    .search-bar button { padding: 0.6rem 1.2rem; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+    .search-bar button:hover { background: #c0392b; }
+    .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .product-card { background: white; border-radius: 8px; padding: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 4px; background: #ddd; }
+    .product-card h3 { margin-top: 0.8rem; font-size: 1rem; }
+    .product-card .price { color: #e74c3c; font-weight: bold; margin: 0.5rem 0; }
+    .product-card .rating { color: #f39c12; font-size: 0.85rem; margin-bottom: 0.8rem; }
+    .product-card button { width: 100%; padding: 0.5rem; background: #2c3e50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    .product-card button:hover { background: #34495e; }
+    footer { text-align: center; padding: 2rem; margin-top: 3rem; background: #2c3e50; color: #aaa; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tienda Demo</h1>
+    <nav>
+      <a href="index.html" id="nav-inicio">Inicio</a>
+      <a href="login.html" id="nav-login">Iniciar sesión</a>
+      <a href="carrito.html" id="nav-carrito">Carrito (0)</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="search-bar">
+      <input type="text" id="busqueda" placeholder="Buscar productos..." aria-label="Buscar productos" />
+      <button id="btn-buscar" type="button">Buscar</button>
+    </section>
+
+    <section id="lista-productos" class="products" aria-label="Lista de productos">
+      <article class="product-card" data-id="1">
+        <div style="width:100%;height:160px;background:#bdc3c7;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#555;">📦</div>
+        <h3>Producto A</h3>
+        <p class="price">$19.99</p>
+        <p class="rating">★★★★☆ (42 reseñas)</p>
+        <button class="btn-agregar" data-id="1">Agregar al carrito</button>
+      </article>
+
+      <article class="product-card" data-id="2">
+        <div style="width:100%;height:160px;background:#abebc6;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#555;">📦</div>
+        <h3>Producto B</h3>
+        <p class="price">$34.50</p>
+        <p class="rating">★★★★★ (87 reseñas)</p>
+        <button class="btn-agregar" data-id="2">Agregar al carrito</button>
+      </article>
+
+      <article class="product-card" data-id="3">
+        <div style="width:100%;height:160px;background:#fadbd8;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#555;">📦</div>
+        <h3>Producto C</h3>
+        <p class="price">$12.00</p>
+        <p class="rating">★★★☆☆ (15 reseñas)</p>
+        <button class="btn-agregar" data-id="3">Agregar al carrito</button>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p id="pie-pagina">© 2024 Tienda Demo — Sitio de práctica para automatización de pruebas</p>
+  </footer>
+</body>
+</html>

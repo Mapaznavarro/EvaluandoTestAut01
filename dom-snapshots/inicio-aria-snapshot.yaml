@@ -1,0 +1,34 @@
+- banner:
+  - heading "Tienda Demo" [level=1]
+  - navigation:
+    - link "Inicio":
+      - /url: index.html
+    - link "Iniciar sesión":
+      - /url: login.html
+    - link "Carrito (0)":
+      - /url: carrito.html
+- main:
+  - textbox "Buscar productos":
+    - /placeholder: Buscar productos...
+  - button "Buscar"
+  - region "Lista de productos":
+    - article:
+      - text: 📦
+      - heading "Producto A" [level=3]
+      - paragraph: $19.99
+      - paragraph: ★★★★☆ (42 reseñas)
+      - button "Agregar al carrito"
+    - article:
+      - text: 📦
+      - heading "Producto B" [level=3]
+      - paragraph: $34.50
+      - paragraph: ★★★★★ (87 reseñas)
+      - button "Agregar al carrito"
+    - article:
+      - text: 📦
+      - heading "Producto C" [level=3]
+      - paragraph: $12.00
+      - paragraph: ★★★☆☆ (15 reseñas)
+      - button "Agregar al carrito"
+- contentinfo:
+  - paragraph: © 2024 Tienda Demo — Sitio de práctica para automatización de pruebas

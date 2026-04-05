@@ -1,0 +1,80 @@
+[
+  {
+    "tag": "a",
+    "tipo": null,
+    "id": "nav-inicio",
+    "nombre": null,
+    "clases": null,
+    "ariaLabel": null,
+    "rol": null,
+    "texto": "Inicio",
+    "placeholder": null,
+    "href": "index.html",
+    "visible": true
+  },
+  {
+    "tag": "a",
+    "tipo": null,
+    "id": "nav-login",
+    "nombre": null,
+    "clases": null,
+    "ariaLabel": null,
+    "rol": null,
+    "texto": "Iniciar sesión",
+    "placeholder": null,
+    "href": "login.html",
+    "visible": true
+  },
+  {
+    "tag": "a",
+    "tipo": null,
+    "id": "nav-carrito",
+    "nombre": null,
+    "clases": null,
+    "ariaLabel": null,
+    "rol": null,
+    "texto": "Carrito (0)",
+    "placeholder": null,
+    "href": "carrito.html",
+    "visible": true
+  },
+  {
+    "tag": "button",
+    "tipo": "submit",
+    "id": "btn-ingresar",
+    "nombre": null,
+    "clases": "btn-login",
+    "ariaLabel": null,
+    "rol": null,
+    "texto": "Ingresar",
+    "placeholder": null,
+    "href": null,
+    "visible": true
+  },
+  {
+    "tag": "input",
+    "tipo": "text",
+    "id": "usuario",
+    "nombre": "usuario",
+    "clases": null,
+    "ariaLabel": null,
+    "rol": null,
+    "texto": null,
+    "placeholder": "Tu nombre de usuario",
+    "href": null,
+    "visible": true
+  },
+  {
+    "tag": "input",
+    "tipo": "password",
+    "id": "contrasena",
+    "nombre": "contrasena",
+    "clases": null,
+    "ariaLabel": null,
+    "rol": null,
+    "texto": null,
+    "placeholder": "Tu contraseña",
+    "href": null,
+    "visible": true
+  }
+]

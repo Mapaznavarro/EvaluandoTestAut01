@@ -1,0 +1,27 @@
+{
+  "name": "evaluandotestaut01",
+  "version": "1.0.0",
+  "description": "Vaciados de DOM de un sitio web para descubrir la mejor manera de automatizar ejecución de pruebas",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report",
+    "extract-dom": "node scripts/extract-dom.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mapaznavarro/EvaluandoTestAut01.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Mapaznavarro/EvaluandoTestAut01/issues"
+  },
+  "homepage": "https://github.com/Mapaznavarro/EvaluandoTestAut01#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1"
+  }
+}

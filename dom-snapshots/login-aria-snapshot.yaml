@@ -1,0 +1,19 @@
+- banner:
+  - heading "Tienda Demo" [level=1]
+  - navigation:
+    - link "Inicio":
+      - /url: index.html
+    - link "Iniciar sesión":
+      - /url: login.html
+    - link "Carrito (0)":
+      - /url: carrito.html
+- heading "Iniciar sesión" [level=2]
+- text: Usuario
+- textbox "Usuario":
+  - /placeholder: Tu nombre de usuario
+- text: Contraseña
+- textbox "Contraseña":
+  - /placeholder: Tu contraseña
+- button "Ingresar"
+- contentinfo:
+  - paragraph: © 2024 Tienda Demo — Sitio de práctica para automatización de pruebas

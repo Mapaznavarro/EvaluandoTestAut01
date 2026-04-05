@@ -1,0 +1,35 @@
+- banner:
+  - heading "Tienda Demo" [level=1]
+  - navigation:
+    - link "Inicio":
+      - /url: index.html
+    - link "Iniciar sesión":
+      - /url: login.html
+    - link "Carrito (0)":
+      - /url: carrito.html
+- main:
+  - heading "Tu carrito" [level=2]
+  - table "Productos en el carrito":
+    - rowgroup:
+      - row "Producto Precio Cantidad Acciones":
+        - columnheader "Producto"
+        - columnheader "Precio"
+        - columnheader "Cantidad"
+        - columnheader "Acciones"
+    - rowgroup:
+      - row "Producto A $19.99 1 Eliminar":
+        - cell "Producto A"
+        - cell "$19.99"
+        - cell "1"
+        - cell "Eliminar":
+          - button "Eliminar"
+      - row "Producto B $34.50 2 Eliminar":
+        - cell "Producto B"
+        - cell "$34.50"
+        - cell "2"
+        - cell "Eliminar":
+          - button "Eliminar"
+  - paragraph: "Total: $88.99"
+  - button "Finalizar compra"
+- contentinfo:
+  - paragraph: © 2024 Tienda Demo — Sitio de práctica para automatización de pruebas

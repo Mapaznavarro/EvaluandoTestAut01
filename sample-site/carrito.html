@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrito - Tienda Demo</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f4f4f4; color: #333; }
+    header { background: #2c3e50; color: white; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    header h1 { font-size: 1.5rem; }
+    nav a { color: white; text-decoration: none; margin-left: 1rem; font-size: 0.95rem; }
+    nav a:hover { text-decoration: underline; }
+    main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+    main h2 { margin-bottom: 1.5rem; color: #2c3e50; }
+    table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    thead { background: #2c3e50; color: white; }
+    th, td { padding: 0.9rem 1rem; text-align: left; }
+    tbody tr:nth-child(even) { background: #f9f9f9; }
+    td.precio { color: #e74c3c; font-weight: bold; }
+    td.acciones button { background: #e74c3c; color: white; border: none; padding: 0.3rem 0.7rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+    td.acciones button:hover { background: #c0392b; }
+    .resumen { display: flex; justify-content: flex-end; margin-top: 1.5rem; }
+    .resumen-box { background: white; border-radius: 8px; padding: 1.5rem; min-width: 260px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .resumen-box .total { font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem; display: flex; justify-content: space-between; }
+    .resumen-box .total span { color: #e74c3c; }
+    .btn-comprar { width: 100%; padding: 0.75rem; background: #27ae60; color: white; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; }
+    .btn-comprar:hover { background: #229954; }
+    .carrito-vacio { text-align: center; padding: 3rem; color: #999; font-size: 1rem; }
+    footer { text-align: center; padding: 2rem; margin-top: 3rem; background: #2c3e50; color: #aaa; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tienda Demo</h1>
+    <nav>
+      <a href="index.html" id="nav-inicio">Inicio</a>
+      <a href="login.html" id="nav-login">Iniciar sesión</a>
+      <a href="carrito.html" id="nav-carrito">Carrito (0)</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Tu carrito</h2>
+    <table id="tabla-carrito" aria-label="Productos en el carrito">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="filas-carrito">
+        <tr>
+          <td>Producto A</td>
+          <td class="precio">$19.99</td>
+          <td>1</td>
+          <td class="acciones"><button data-id="1">Eliminar</button></td>
+        </tr>
+        <tr>
+          <td>Producto B</td>
+          <td class="precio">$34.50</td>
+          <td>2</td>
+          <td class="acciones"><button data-id="2">Eliminar</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="resumen">
+      <div class="resumen-box">
+        <p class="total">Total: <span id="total-carrito">$88.99</span></p>
+        <button id="btn-comprar" class="btn-comprar">Finalizar compra</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2024 Tienda Demo — Sitio de práctica para automatización de pruebas</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "generadoEn": "2026-04-05T18:02:07.190Z",
+  "paginas": [
+    {
+      "nombre": "inicio",
+      "archivos": {
+        "ariaSnapshot": "inicio-aria-snapshot.yaml",
+        "domHtml": "inicio-dom.html",
+        "interactivos": "inicio-interactivos.json"
+      }
+    },
+    {
+      "nombre": "login",
+      "archivos": {
+        "ariaSnapshot": "login-aria-snapshot.yaml",
+        "domHtml": "login-dom.html",
+        "interactivos": "login-interactivos.json"
+      }
+    },
+    {
+      "nombre": "carrito",
+      "archivos": {
+        "ariaSnapshot": "carrito-aria-snapshot.yaml",
+        "domHtml": "carrito-dom.html",
+        "interactivos": "carrito-interactivos.json"
+      }
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "tag": "a",
+    "tipo": null,
+    "id": "nav-inicio",
+    "nombre": null,
+    "clases": null,
+    "ariaLabel": null,
+    "rol": null,
+    "texto": "Inicio",
+    "placeholder": null,
+    "href": "index.html",
+    "visible": true
+  },
+  {
+    "tag": "a",
+    "tipo": null,
+    "id": "nav-login",
+    "nombre": null,
+    "clases": null,
+    "ariaLabel": null,
+    "rol": null,
+    "texto": "Iniciar sesión",
+    "placeholder": null,
+    "href": "login.html",
+    "visible": true
+  },
+  {
+    "tag": "a",
+    "tipo": null,
+    "id": "nav-carrito",
+    "nombre": null,
+    "clases": null,
+    "ariaLabel": null,
+    "rol": null,
+    "texto": "Carrito (0)",
+    "placeholder": null,
+    "href": "carrito.html",
+    "visible": true
+  },
+  {
+    "tag": "button",
+    "tipo": null,
+    "id": null,
+    "nombre": null,
+    "clases": null,
+    "ariaLabel": null,
+    "rol": null,
+    "texto": "Eliminar",
+    "placeholder": null,
+    "href": null,
+    "visible": true
+  },
+  {
+    "tag": "button",
+    "tipo": null,
+    "id": null,
+    "nombre": null,
+    "clases": null,
+    "ariaLabel": null,
+    "rol": null,
+    "texto": "Eliminar",
+    "placeholder": null,
+    "href": null,
+    "visible": true
+  },
+  {
+    "tag": "button",
+    "tipo": null,
+    "id": "btn-comprar",
+    "nombre": null,
+    "clases": "btn-comprar",
+    "ariaLabel": null,
+    "rol": null,
+    "texto": "Finalizar compra",
+    "placeholder": null,
+    "href": null,
+    "visible": true
+  }
+]
