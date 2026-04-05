@@ -26,6 +26,7 @@ import sys
 import datetime
 from datetime import timezone
 from pathlib import Path
+import re  # <-- AGREGAR
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
@@ -68,7 +69,7 @@ MENU_ITEM_SELECTORS = [
 MAX_DEPTH = 5
 
 # Longitud máxima del nombre de archivo para capturas de pantalla
-MAX_SCREENSHOT_FILENAME_LENGTH = 80
+MAX__FILENAME_LENGTH = 80
 
 # Pausa (ms) antes de re-abrir el menú tras navegar un ítem
 MENU_REOPEN_DELAY_MS = 500
@@ -88,6 +89,19 @@ def screenshot(page: Page, name: str) -> None:
     page.screenshot(path=str(filepath))
     print(f"  📸  Captura guardada: {filepath.name}")
 
+def dump_dom(page: Page, name: str = "dom-after-login") -> Path:
+    """
+    Guarda el DOM actual (HTML) en un archivo .html.
+    """
+    ts = datetime.datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    safe = re.sub(r"[^a-zA-Z0-9_.-]+", "_", name).strip("_")
+    filepath = config.SCREENSHOTS_DIR / f"{ts}_{safe}.html"
+
+    html = page.content()
+    filepath.write_text(html, encoding="utf-8")
+
+    print(f"  🧾  DOM guardado: {filepath.name}")
+    return filepath
 
 def element_exists(page: Page, selector: str, timeout: int = 3000) -> bool:
     """Devuelve True si el selector está visible dentro del timeout."""
@@ -310,6 +324,7 @@ def traverse_menu(
         # Tomar captura del estado tras el clic
         safe_name = path_str.replace(" > ", "__").replace(" ", "_")[:MAX_SCREENSHOT_FILENAME_LENGTH]
         screenshot(page, f"menu__{safe_name}")
+        dump_dom(page, f"dom__{safe_name}")  # <-- OPCIONAL: agrega esto
         discovered.append(path_str)
 
         # Revisar si aparecieron nuevos sub-ítems (sub-menú expandido)
@@ -371,6 +386,7 @@ def run() -> None:
             # ── Paso 2: Login ─────────────────────────────────────────────
             print("▶ Paso 2: Verificando login…")
             handle_login(page)
+            dump_dom(page, "dom-after-login")  # <-- AGREGAR
             print()
 
             # ── Paso 3: Abrir menú y recorrer ────────────────────────────
