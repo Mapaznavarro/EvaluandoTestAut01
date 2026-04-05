@@ -393,6 +393,7 @@ def run() -> None:
             print("▶ Paso 3: Abriendo menú hamburguesa…")
             open_hamburger_menu(page)
             screenshot(page, "03_menu_abierto")
+            dump_dom(page, "dom-after-login")  # <-- AGREGAR
             print()
 
             print("▶ Paso 4: Recorriendo todas las opciones del menú…\n")
