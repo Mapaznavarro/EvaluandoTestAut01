@@ -153,6 +153,8 @@ document.querySelector('div.ui-menu-item.first')?.click();
 Array.from(document.querySelectorAll('div.ui-menu-item'))
   .find(el => el.querySelector('div.text.xl')?.textContent.trim() === 'Participes LATAM')
   ?.click();
+// Después de volver al menú, probar FrontOn Gestión
+document.querySelector('div.ui-menu-item.last')?.click();
 
 
   =========================================================
@@ -173,7 +175,6 @@ Array.from(document.querySelectorAll('div.ui-menu-item'))
 });
 
 
-// Después de volver al menú, probar FrontOn Gestión
-document.querySelector('div.ui-menu-item.last')?.click();
+
 
 
