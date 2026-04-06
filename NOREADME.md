@@ -19,7 +19,65 @@
   };
 })();
 Respuesta:
-
+{
+    "total_menu_options": 8,
+    "opciones": [
+        {
+            "texto": "Asientos diarios",
+            "tiene_next": false,
+            "visible": true
+        },
+        {
+            "texto": "Asientos manuales",
+            "tiene_next": false,
+            "visible": true
+        },
+        {
+            "texto": "Comparativa de cuentas",
+            "tiene_next": false,
+            "visible": true
+        },
+        {
+            "texto": "Comparativa de saldos a fecha",
+            "tiene_next": false,
+            "visible": true
+        },
+        {
+            "texto": "Consulta informe",
+            "tiene_next": false,
+            "visible": true
+        },
+        {
+            "texto": "Consulta signo girado",
+            "tiene_next": false,
+            "visible": true
+        },
+        {
+            "texto": "Cuadre contabilidad cartera",
+            "tiene_next": false,
+            "visible": true
+        },
+        {
+            "texto": "Saldos contables entidad",
+            "tiene_next": false,
+            "visible": true
+        }
+    ],
+    "botones_back_close": [
+        {
+            "clases": "back",
+            "padre_clases": "menu-title",
+            "abuelo_clases": "menu",
+            "visible": true
+        },
+        {
+            "clases": "close",
+            "padre_clases": "option",
+            "abuelo_clases": "options",
+            "visible": true
+        }
+    ]
+}
 
 
 // Con el sub-submenú de Consultas abierto
