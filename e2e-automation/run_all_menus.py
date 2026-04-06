@@ -53,6 +53,11 @@ MENU_CONTAINER_SELECTORS = [
 
 # Selectores de ítems clickeables dentro del menú
 MENU_ITEM_SELECTORS = [
+    "app-ui-menu-item",                        # componente Angular del ítem
+    "app-ui-menu-item span",                   # texto dentro del componente
+    "app-ui-menu-item .menu-item-label",       # label si existe
+    ".menu-list app-ui-menu-item",
+    ".nav-menu li",
     "[role='menuitem']",
     "[role='option']",
     "nav a",
@@ -214,11 +219,76 @@ def open_hamburger_menu(page: Page) -> None:
     wait_and_click(page, HAMBURGER_SELECTORS, "menú hamburguesa")
     page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
 
+# ── NUEVA FUNCIÓN: clic en los tres ítems específicos ──────────────────────
+
+# Textos exactos de las tres opciones del menú a clickear
+TARGET_MENU_ITEMS = ["Golf", "Participes LATAM", "FrontOn Gestión"]
+
+def click_target_menu_items(page: Page) -> None:
+    """
+    Hace clic en cada una de las opciones específicas del menú:
+    'Golf', 'Participes LATAM', 'FrontOn Gestión'.
+
+    Estrategia basada en el DOM Angular observado:
+    - Usa :text-is() para coincidencia exacta de texto.
+    - Usa has-text() como fallback (coincidencia parcial).
+    - Entre cada clic, vuelve atrás y reabre el menú hamburguesa.
+    """
+    for item_text in TARGET_MENU_ITEMS:
+        print(f"\n▶ Paso 4: Clickeando opción de menú → '{item_text}'")
+
+        # Abrir el menú hamburguesa antes de cada ítem
+        open_hamburger_menu(page)
+        screenshot(page, f"menu_antes__{item_text.replace(' ', '_')}")
+
+        # Selectores en orden de especificidad (DOM Angular)
+        selectors = [
+            # Coincidencia exacta de texto en cualquier elemento visible
+            f"text='{item_text}'",
+            f":text-is('{item_text}')",
+            # Componente Angular de ítems de menú
+            f"app-ui-menu-item:has-text('{item_text}')",
+            f"app-ui-menu-item span:has-text('{item_text}')",
+            # Elementos genéricos de navegación
+            f"a:has-text('{item_text}')",
+            f"li:has-text('{item_text}')",
+            f"button:has-text('{item_text}')",
+            f"span:has-text('{item_text}')",
+            f"[aria-label='{item_text}']",
+            f"[title='{item_text}']",
+        ]
+
+        clicked = False
+        for sel in selectors:
+            try:
+                loc = page.locator(sel).first
+                loc.wait_for(state="visible", timeout=5000)
+                loc.click()
+                page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
+                print(f"  ✅  Clic exitoso en '{item_text}' con selector: {sel}")
+                clicked = True
+                break
+            except Exception:
+                continue
+
+        if not clicked:
+            print(f"  ❌  No se pudo hacer clic en '{item_text}' – verificar selector en DOM.")
+            screenshot(page, f"ERROR__{item_text.replace(' ', '_')}")
+            continue
+
+        # Captura y DOM tras el clic
+        safe = item_text.replace(" ", "_")
+        screenshot(page, f"menu_clic__{safe}")
+        dump_dom(page, f"dom_clic__{safe}")
+
+        # Volver a la página anterior para el siguiente ítem
+        print(f"  ↩️   Volviendo atrás desde '{item_text}'…")
+        page.go_back(wait_until="networkidle", timeout=config.TIMEOUT_MS)
+        page.wait_for_timeout(MENU_REOPEN_DELAY_MS)
 
 # ---------------------------------------------------------------------------
 # Descubrimiento dinámico del menú
 # ---------------------------------------------------------------------------
-
 
 def get_visible_menu_items(page: Page) -> list[str]:
     """
@@ -322,7 +392,7 @@ def traverse_menu(
             continue
 
         # Tomar captura del estado tras el clic
-        safe_name = path_str.replace(" > ", "__").replace(" ", "_")[:MAX_SCREENSHOT_FILENAME_LENGTH]
+        safe_name = path_str.replace(" > ", "__").replace(" ", "_")[:MAX__FILENAME_LENGTH]
         screenshot(page, f"menu__{safe_name}")
         dump_dom(page, f"dom__{safe_name}")  # <-- OPCIONAL: agrega esto
         discovered.append(path_str)
@@ -396,8 +466,13 @@ def run() -> None:
             dump_dom(page, "dom-menu-abierto")  # <-- AGREGAR
             print()
 
-            print("▶ Paso 4: Recorriendo todas las opciones del menú…\n")
-            traverse_menu(page, [], discovered_paths, depth=0)
+            print("▶ Paso 4: Clickeando las tres opciones objetivo del menú…\n")
+            click_target_menu_items(page)
+
+            # Opcional: mantener el recorrido dinámico completo también
+            # print("▶ Paso 5: Recorrido dinámico completo del menú…\n")
+            # open_hamburger_menu(page)
+            # traverse_menu(page, [], discovered_paths, depth=0)
 
             # ── Reporte final ─────────────────────────────────────────────
             print("\n" + "=" * 60)
