@@ -8,7 +8,64 @@ Array.from(document.querySelectorAll('div.menu-options')).map(el => ({
   tiene_next: !!el.querySelector('div.next')
 }));
 Respuesta:
-
+[
+    {
+        "texto": "Consultas",
+        "cursor": "pointer",
+        "visible": true,
+        "draggable": "true",
+        "padre_clases": "",
+        "tiene_next": true
+    },
+    {
+        "texto": "Contabilidad",
+        "cursor": "pointer",
+        "visible": true,
+        "draggable": "true",
+        "padre_clases": "",
+        "tiene_next": true
+    },
+    {
+        "texto": "Entradas",
+        "cursor": "pointer",
+        "visible": true,
+        "draggable": "true",
+        "padre_clases": "",
+        "tiene_next": true
+    },
+    {
+        "texto": "Incorporaciones",
+        "cursor": "pointer",
+        "visible": true,
+        "draggable": "true",
+        "padre_clases": "",
+        "tiene_next": true
+    },
+    {
+        "texto": "Maestros",
+        "cursor": "pointer",
+        "visible": true,
+        "draggable": "true",
+        "padre_clases": "",
+        "tiene_next": true
+    },
+    {
+        "texto": "Procesos",
+        "cursor": "pointer",
+        "visible": true,
+        "draggable": "true",
+        "padre_clases": "",
+        "tiene_next": true
+    },
+    {
+        "texto": "Tareas",
+        "cursor": "pointer",
+        "visible": true,
+        "draggable": "true",
+        "padre_clases": "",
+        "tiene_next": true
+    }
+]
 
 
 
