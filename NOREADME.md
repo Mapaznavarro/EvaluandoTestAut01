@@ -1,3 +1,5 @@
+maria.navarro@gatherspa.onmicrosoft.com
+
 // Con el sub-sub-submenú de Consultas > Contabilidad abierto
 (() => {
   const opts = Array.from(document.querySelectorAll('div.menu-options'));
