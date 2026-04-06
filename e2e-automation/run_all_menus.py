@@ -240,38 +240,7 @@ def click_target_menu_items(page: Page) -> None:
         # Abrir el menú antes de cada ítem
         open_hamburger_menu(page)
       
-        # --- BLOQUE DIAGNÓSTICO: insertar temporalmente después de open_hamburger_menu(page) ---
-
-        page.wait_for_timeout(1000)  # esperar que el menú termine de renderizar
         
-        # Verificar cuántos div.text.xl hay
-        count = page.evaluate("document.querySelectorAll('div.text.xl').length")
-        print(f"  🔍  div.text.xl encontrados: {count}")
-        
-        # Obtener info de cada uno
-        items_info = page.evaluate("""
-            () => {
-                return Array.from(document.querySelectorAll('div.text.xl')).map(el => ({
-                    texto: el.textContent.trim(),
-                    padre_tag: el.parentElement ? el.parentElement.tagName : 'N/A',
-                    padre_class: el.parentElement ? el.parentElement.className : 'N/A',
-                    abuelo_tag: el.parentElement?.parentElement ? el.parentElement.parentElement.tagName : 'N/A',
-                    abuelo_class: el.parentElement?.parentElement ? el.parentElement.parentElement.className : 'N/A',
-                    pointer_events: getComputedStyle(el).pointerEvents,
-                    padre_pointer_events: el.parentElement ? getComputedStyle(el.parentElement).pointerEvents : 'N/A',
-                    padre_outerHTML: el.parentElement ? el.parentElement.outerHTML.substring(0, 400) : 'N/A'
-                }));
-            }
-        """)
-        
-        for info in items_info:
-            print(f"\n  📌  Texto       : '{info['texto']}'")
-            print(f"      Padre       : <{info['padre_tag']}> class='{info['padre_class']}'")
-            print(f"      Abuelo      : <{info['abuelo_tag']}> class='{info['abuelo_class']}'")
-            print(f"      ptr-events  : el={info['pointer_events']} | padre={info['padre_pointer_events']}")
-            print(f"      Padre HTML  : {info['padre_outerHTML']}")
-        
-        # --- FIN BLOQUE DIAGNÓSTICO ---
       
         page.wait_for_timeout(MENU_REOPEN_DELAY_MS)
         screenshot(page, f"menu_antes__{item_text.replace(' ', '_')}")
