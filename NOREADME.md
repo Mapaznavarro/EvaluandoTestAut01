@@ -12,6 +12,15 @@
   };
 })();
 Respuesta:
+{
+    "tag": "DIV",
+    "clases": "close",
+    "cursor": "pointer",
+    "pointer_events": "auto",
+    "padre_clases": "menu-title main",
+    "outerHTML": "<div _ngcontent-ng-c638813965=\"\" class=\"close\"><svg _ngcontent-ng-c638813965=\"\" class=\"svg-inline--fa fa-xmark fa-fw\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fal\" data-icon=\"xmark\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 512\" data-fa-i2svg=\"\"><path fill=\"currentColor"
+}
+
 
 // Cuántos div.close hay visibles
 Array.from(document.querySelectorAll('div.close')).map(el => ({
@@ -22,7 +31,22 @@ Array.from(document.querySelectorAll('div.close')).map(el => ({
   abuelo_clases: el.parentElement?.parentElement?.className
 }));
 Respuesta:
-
+[
+    {
+        "clases": "close",
+        "cursor": "pointer",
+        "visible": true,
+        "padre_clases": "menu-title main",
+        "abuelo_clases": "menu"
+    },
+    {
+        "clases": "close",
+        "cursor": "pointer",
+        "visible": true,
+        "padre_clases": "option",
+        "abuelo_clases": "options"
+    }
+]
 
 // Ver la estructura completa alrededor de "Consultas"
 (() => {
