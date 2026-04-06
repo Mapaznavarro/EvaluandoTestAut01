@@ -639,6 +639,160 @@ def traverse_menu(
         open_hamburger_menu(page)
         page.wait_for_timeout(MENU_REOPEN_DELAY_MS)  # pequeña pausa estética
 
+# ---------------------------------------------------------------------------
+# PASO 1 — Navegación recursiva del árbol de menú (sin tocar hojas finales)
+# ---------------------------------------------------------------------------
+
+# Arreglo global donde se registran las hojas finales descubiertas
+# Cada entrada: {"ruta": ["Golf", "Consultas", "Contabilidad", "Asientos diarios"]}
+HOJAS_FINALES: list[dict] = []
+
+
+def get_menu_options(page: Page) -> list[dict]:
+    """Devuelve div.menu-options visibles con texto y tiene_next."""
+    return page.evaluate("""
+        () => Array.from(document.querySelectorAll('div.menu-options'))
+            .filter(el => el.offsetParent !== null)
+            .map(el => ({
+                texto: el.querySelector('div.text')?.textContent.trim() ?? '',
+                tiene_next: !!el.querySelector('div.next')
+            }))
+    """)
+
+
+def click_menu_option(page: Page, texto: str) -> None:
+    """Clic en el div.menu-options cuyo div.text contiene el texto dado."""
+    loc = page.locator("div.menu-options", has_text=texto).first
+    loc.wait_for(state="visible", timeout=5000)
+    loc.click()
+    page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
+    page.wait_for_timeout(400)
+
+
+def volver_nivel(page: Page, es_nivel1: bool) -> None:
+    """
+    Vuelve al nivel anterior:
+      nivel 1 → div.menu-title.main div.close  (X)
+      nivel 2+ → div.menu-title:not(.main) div.back  (<)
+    """
+    if es_nivel1:
+        sel = "div.menu-title.main div.close"
+        descripcion = "X (cerrar nivel 1)"
+    else:
+        sel = "div.menu-title:not(.main) div.back"
+        descripcion = "< (volver nivel anterior)"
+
+    try:
+        btn = page.locator(sel).first
+        btn.wait_for(state="visible", timeout=3000)
+        btn.click()
+        page.wait_for_timeout(400)
+        print(f"  ↩️   {descripcion}")
+    except Exception as exc:
+        print(f"  ⚠️   No se pudo hacer clic en '{descripcion}': {exc}")
+
+
+def recorrer_submenu_paso1(
+    page: Page,
+    breadcrumb: list[str],
+    nivel: int = 1,
+) -> None:
+    """
+    PASO 1: Navega recursivamente los nodos con tiene_next=True.
+    Al encontrar una hoja (tiene_next=False) la registra en HOJAS_FINALES
+    SIN hacer clic en ella.
+    """
+    indent = "  " * nivel
+    opciones = get_menu_options(page)
+
+    if not opciones:
+        print(f"{indent}ℹ️   Sin opciones en: {' > '.join(breadcrumb)}")
+        return
+
+    print(f"{indent}📋  Nivel {nivel} — '{' > '.join(breadcrumb)}': "
+          f"{[o['texto'] for o in opciones]}")
+
+    for opcion in opciones:
+        texto = opcion["texto"]
+        tiene_next = opcion["tiene_next"]
+        ruta = breadcrumb + [texto]
+        ruta_str = " > ".join(ruta)
+        indent2 = "  " * (nivel + 1)
+
+        if not tiene_next:
+            # ── Hoja final → registrar y NO hacer clic ──────────────────
+            HOJAS_FINALES.append({"ruta": ruta})
+            print(f"{indent2}🍃  [HOJA] registrada: '{ruta_str}'")
+            continue
+
+        # ── Nodo rama → entrar, recorrer, volver ────────────────────────
+        print(f"{indent2}▶  [RAMA] entrando en: '{ruta_str}'")
+        safe = ruta_str.replace(" > ", "__").replace(" ", "_")[:MAX__FILENAME_LENGTH]
+
+        try:
+            click_menu_option(page, texto)
+        except Exception as exc:
+            print(f"{indent2}❌  No se pudo hacer clic en '{texto}': {exc}")
+            screenshot(page, f"ERROR__{safe}")
+            continue
+
+        screenshot(page, f"menu__{safe}")
+
+        # Recursión en el siguiente nivel
+        recorrer_submenu_paso1(page, ruta, nivel + 1)
+
+        # Volver al nivel actual
+        volver_nivel(page, es_nivel1=(nivel == 1))
+
+
+def recorrer_menu_completo_paso1(page: Page) -> None:
+    """
+    PASO 1 — Punto de entrada.
+    Recorre Golf, Participes LATAM y FrontOn Gestión registrando hojas finales.
+    """
+    global HOJAS_FINALES
+    HOJAS_FINALES = []  # reiniciar por si se llama más de una vez
+
+    for item_text in TARGET_MENU_ITEMS:
+        print(f"\n{'='*60}")
+        print(f"▶ MENÚ PRINCIPAL → '{item_text}'")
+        print(f"{'='*60}")
+
+        ensure_menu_open(page)
+        page.wait_for_timeout(MENU_REOPEN_DELAY_MS)
+
+        try:
+            loc = page.locator("div.ui-menu-item", has_text=item_text).first
+            loc.wait_for(state="visible", timeout=5000)
+            loc.click()
+            page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
+            page.wait_for_timeout(500)
+            print(f"  ✅  Submenú de '{item_text}' abierto.")
+        except Exception as exc:
+            print(f"  ❌  No se pudo abrir '{item_text}': {exc}")
+            continue
+
+        screenshot(page, f"submenu_nivel1__{item_text.replace(' ', '_')}")
+
+        # Recorrido recursivo
+        recorrer_submenu_paso1(page, breadcrumb=[item_text], nivel=1)
+
+        # Cerrar el submenú de nivel 1 con X al terminar el árbol completo
+        volver_nivel(page, es_nivel1=True)
+
+    # ── Reporte de hojas finales descubiertas ───────────────────────────
+    print(f"\n{'='*60}")
+    print(f"  🗺️   HOJAS FINALES DESCUBIERTAS: {len(HOJAS_FINALES)}")
+    print(f"{'='*60}")
+    for i, hoja in enumerate(HOJAS_FINALES, 1):
+        print(f"  {i:3}. {' > '.join(hoja['ruta'])}")
+
+    # Guardar en archivo JSON para usar en PASO 2
+    import json
+    report_path = config.SCREENSHOTS_DIR / "hojas_finales.json"
+    with open(report_path, "w", encoding="utf-8") as f:
+        json.dump(HOJAS_FINALES, f, ensure_ascii=False, indent=2)
+    print(f"\n  💾  Hojas guardadas en: {report_path}")
 
 # ---------------------------------------------------------------------------
 # Flujo principal
@@ -697,8 +851,11 @@ def run() -> None:
             #print("▶ Paso 4: Capturando submenús de primer nivel…\n")
             #capturar_submenus_nivel1(page)
 
-            print("▶ Paso 4: Recorrido completo del menú…\n")
-            recorrer_menu_completo(page)
+            #print("▶ Paso 4: Recorrido completo del menú…\n")
+            #recorrer_menu_completo(page)
+
+            print("▶ Paso 4: PASO 1 — Recorrido recursivo del árbol de menú…\n")
+            recorrer_menu_completo_paso1(page)
 
             # Opcional: mantener el recorrido dinámico completo también
             # print("▶ Paso 5: Recorrido dinámico completo del menú…\n")
