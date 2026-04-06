@@ -154,6 +154,25 @@ Array.from(document.querySelectorAll('div.ui-menu-item'))
   .find(el => el.querySelector('div.text.xl')?.textContent.trim() === 'Participes LATAM')
   ?.click();
 
+
+  =========================================================
+  Array.from(document.querySelectorAll('div.ui-menu-item')).map((el, i) => {
+  let node = el;
+  let path = [];
+  for (let j = 0; j < 6; j++) {
+    if (!node) break;
+    path.push(node.tagName + (node.className ? '.' + node.className.trim().replace(/\s+/g, '.') : '') + (node.id ? '#' + node.id : ''));
+    node = node.parentElement;
+  }
+  return {
+    indice: i,
+    texto: el.querySelector('div.text.xl')?.textContent.trim() ?? el.textContent.trim().substring(0, 50),
+    clase_item: el.className,
+    ruta_hacia_arriba: path
+  };
+});
+
+
 // Después de volver al menú, probar FrontOn Gestión
 document.querySelector('div.ui-menu-item.last')?.click();
 
