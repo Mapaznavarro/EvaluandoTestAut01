@@ -60,3 +60,49 @@ Array.from(document.querySelectorAll('div.text.xl')).map((el, i) => {
   return { indice: i, texto: el.textContent.trim(), ruta_hacia_arriba: path };
 });
 R =========================================
+[
+    {
+        "indice": 0,
+        "texto": "Golf",
+        "ruta_hacia_arriba": [
+            "DIV.text.xl",
+            "DIV.label",
+            "DIV.ui-menu-item.first",
+            "DIV",
+            "OVERLAY-SCROLLBARS.top"
+        ]
+    },
+    {
+        "indice": 1,
+        "texto": "Participes LATAM",
+        "ruta_hacia_arriba": [
+            "DIV.text.xl",
+            "DIV.label",
+            "DIV.ui-menu-item",
+            "DIV",
+            "OVERLAY-SCROLLBARS.top"
+        ]
+    },
+    {
+        "indice": 2,
+        "texto": "FrontOn Gestión",
+        "ruta_hacia_arriba": [
+            "DIV.text.xl",
+            "DIV.label",
+            "DIV.ui-menu-item.last",
+            "DIV",
+            "OVERLAY-SCROLLBARS.top"
+        ]
+    },
+    {
+        "indice": 3,
+        "texto": "Ajustes",
+        "ruta_hacia_arriba": [
+            "DIV.text.xl",
+            "DIV.label",
+            "DIV.ui-menu-item.first.last",
+            "DIV.bottom",
+            "DIV.menu.xl"
+        ]
+    }
+]
