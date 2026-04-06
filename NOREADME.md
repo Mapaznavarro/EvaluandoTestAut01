@@ -32,7 +32,75 @@
 })();
 
 Respuesta:
-
+{
+    "total_menu_options": 11,
+    "opciones": [
+        {
+            "texto": "Contabilidad",
+            "tiene_next": true,
+            "visible": true
+        },
+        {
+            "texto": "Estados de cartera",
+            "tiene_next": true,
+            "visible": true
+        },
+        {
+            "texto": "Ficha instrumentos",
+            "tiene_next": true,
+            "visible": true
+        },
+        {
+            "texto": "Históricos",
+            "tiene_next": true,
+            "visible": true
+        },
+        {
+            "texto": "Informe comisiones",
+            "tiene_next": true,
+            "visible": true
+        },
+        {
+            "texto": "Operaciones",
+            "tiene_next": true,
+            "visible": true
+        },
+        {
+            "texto": "Precios",
+            "tiene_next": true,
+            "visible": true
+        },
+        {
+            "texto": "Resumen patrimonial",
+            "tiene_next": true,
+            "visible": true
+        },
+        {
+            "texto": "Saldos",
+            "tiene_next": true,
+            "visible": true
+        },
+        {
+            "texto": "Tareas",
+            "tiene_next": true,
+            "visible": true
+        },
+        {
+            "texto": "Valor Liquidativo",
+            "tiene_next": true,
+            "visible": true
+        }
+    ],
+    "posibles_botones_back": [
+        {
+            "tag": "DIV",
+            "clases": "back",
+            "texto": "",
+            "padre_clases": "menu-title",
+            "abuelo_clases": "menu"
+        }
+    ]
+}
 
 
 // Ver todos los div.menu-options visibles y su texto
