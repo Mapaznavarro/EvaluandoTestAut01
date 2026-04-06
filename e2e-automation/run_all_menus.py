@@ -292,7 +292,81 @@ def click_target_menu_items(page: Page) -> None:
         page.go_back(wait_until="networkidle", timeout=config.TIMEOUT_MS)
         page.wait_for_timeout(MENU_REOPEN_DELAY_MS)
 
+# ---------------------------------------------------------------------------
+# Captura de submenús de primer nivel (con X para cerrar)
+# ---------------------------------------------------------------------------
 
+ITEMS_NIVEL1 = ["Golf", "Participes LATAM", "FrontOn Gestión"]
+
+
+def capturar_submenus_nivel1(page: Page) -> None:
+    """
+    Para cada opción del menú principal:
+      1. Abre el menú principal con ensure_menu_open()
+      2. Hace clic en el ítem (Golf / Participes LATAM / FrontOn Gestión)
+      3. Espera a que aparezca el submenú
+      4. Toma screenshot + dump DOM
+      5. Cierra el submenú con la X (vuelve al menú principal)
+    """
+    for item_text in ITEMS_NIVEL1:
+        print(f"\n{'='*50}")
+        print(f"▶ Abriendo submenú de: '{item_text}'")
+        print(f"{'='*50}")
+
+        # 1. Asegurar que el menú principal está abierto
+        ensure_menu_open(page)
+        page.wait_for_timeout(MENU_REOPEN_DELAY_MS)
+
+        # 2. Clic en el ítem del menú principal
+        loc = page.locator("div.ui-menu-item", has_text=item_text).first
+        try:
+            loc.wait_for(state="visible", timeout=5000)
+            loc.click()
+            print(f"  ✅  Clic en '{item_text}'")
+        except Exception as exc:
+            print(f"  ❌  No se pudo hacer clic en '{item_text}': {exc}")
+            screenshot(page, f"ERROR_nivel1_{item_text.replace(' ', '_')}")
+            continue
+
+        # 3. Esperar a que aparezca el submenú
+        #    (aún no sabemos el selector exacto — esperamos networkidle + pausa)
+        page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
+        page.wait_for_timeout(800)  # pausa para que Angular termine de renderizar
+
+        # 4. Capturar screenshot + DOM del submenú
+        safe = item_text.replace(" ", "_")
+        screenshot(page, f"submenu_nivel1__{safe}")
+        dump_dom(page, f"dom_submenu_nivel1__{safe}")
+        print(f"  📸  Submenú de '{item_text}' capturado.")
+
+        # 5. Cerrar con la X — aún no sabemos el selector exacto
+        #    Intentamos selectores comunes para un botón de cerrar
+        close_selectors = [
+            "button.close", "button[aria-label='close' i]",
+            "button[aria-label='cerrar' i]", ".close-button",
+            "span.close", "div.close", "i.fa-times", "i.fa-xmark",
+            "svg[data-icon='xmark']", "svg[data-icon='times']",
+            ".menu-back", "[class*='close']", "[class*='back']",
+        ]
+        closed = False
+        for sel in close_selectors:
+            try:
+                btn = page.locator(sel).first
+                btn.wait_for(state="visible", timeout=2000)
+                btn.click()
+                page.wait_for_timeout(500)
+                print(f"  ✖️   Submenú cerrado con selector: {sel}")
+                closed = True
+                break
+            except Exception:
+                continue
+
+        if not closed:
+            print(f"  ⚠️   No se encontró la X para cerrar — revisar DOM capturado.")
+            print(f"        Buscar en: dom_submenu_nivel1__{safe}.html")
+            # Forzar recarga para volver al estado inicial
+            page.goto(config.BASE_URL, wait_until="networkidle")
+            handle_login(page)
 
 # ---------------------------------------------------------------------------
 # Descubrimiento dinámico del menú
@@ -474,8 +548,11 @@ def run() -> None:
             dump_dom(page, "dom-menu-abierto")  # <-- AGREGAR
             print()
 
-            print("▶ Paso 4: Clickeando las tres opciones objetivo del menú…\n")
-            click_target_menu_items(page)
+            #print("▶ Paso 4: Clickeando las tres opciones objetivo del menú…\n")
+            #click_target_menu_items(page)
+
+            print("▶ Paso 4: Capturando submenús de primer nivel…\n")
+            capturar_submenus_nivel1(page)
 
             # Opcional: mantener el recorrido dinámico completo también
             # print("▶ Paso 5: Recorrido dinámico completo del menú…\n")
