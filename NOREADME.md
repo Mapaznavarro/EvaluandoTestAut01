@@ -47,3 +47,16 @@ let items = queryAllShadow('div.text.xl');
 console.log("Encontrados en Shadow DOM:", items.length);
 items.forEach((el, i) => console.log(i, JSON.stringify(el.textContent.trim()), el.parentElement?.tagName, el.parentElement?.className));
 R =======================================
+
+=========================================
+Array.from(document.querySelectorAll('div.text.xl')).map((el, i) => {
+  let node = el;
+  let path = [];
+  for (let j = 0; j < 5; j++) {
+    if (!node) break;
+    path.push(node.tagName + (node.className ? '.' + node.className.trim().replace(/\s+/g, '.') : '') + (node.id ? '#' + node.id : ''));
+    node = node.parentElement;
+  }
+  return { indice: i, texto: el.textContent.trim(), ruta_hacia_arriba: path };
+});
+R =========================================
