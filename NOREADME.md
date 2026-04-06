@@ -1,3 +1,29 @@
+// Ver la estructura completa alrededor de "Consultas"
+(() => {
+  const textos = Array.from(document.querySelectorAll('div.menu-options div.text'));
+  const consultas = textos.find(el => el.textContent.trim() === 'Consultas');
+  if (!consultas) return 'No encontrado';
+  
+  let node = consultas;
+  let niveles = [];
+  for (let i = 0; i < 5; i++) {
+    if (!node) break;
+    niveles.push({
+      nivel: i,
+      tag: node.tagName,
+      clases: node.className,
+      cursor: getComputedStyle(node).cursor,
+      pointer_events: getComputedStyle(node).pointerEvents,
+      outerHTML: node.outerHTML.substring(0, 200)
+    });
+    node = node.parentElement;
+  }
+  return niveles;
+})();
+Respuesta
+
+
+
 // Ver todas las subopciones del submenú Golf
 (() => {
   const options = Array.from(document.querySelectorAll('div.menu-options'));
