@@ -369,6 +369,149 @@ def capturar_submenus_nivel1(page: Page) -> None:
             handle_login(page)
 
 # ---------------------------------------------------------------------------
+# Recorrido recursivo de submenús (niveles 1, 2, 3...)
+# ---------------------------------------------------------------------------
+
+def get_menu_options(page: Page) -> list[dict]:
+    """
+    Devuelve la lista de div.menu-options visibles con su texto y si tiene_next.
+    """
+    return page.evaluate("""
+        () => Array.from(document.querySelectorAll('div.menu-options'))
+            .filter(el => el.offsetParent !== null)
+            .map(el => ({
+                texto: el.querySelector('div.text')?.textContent.trim() ?? '',
+                tiene_next: !!el.querySelector('div.next')
+            }))
+    """)
+
+
+def click_menu_option(page: Page, texto: str) -> None:
+    """
+    Hace clic en el div.menu-options cuyo div.text contiene el texto dado.
+    """
+    loc = page.locator("div.menu-options", has_text=texto).first
+    loc.wait_for(state="visible", timeout=5000)
+    loc.click()
+    page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
+    page.wait_for_timeout(400)
+
+
+def volver_nivel(page: Page, es_nivel1: bool) -> None:
+    """
+    Vuelve al nivel anterior:
+      - nivel 1 → clic en div.menu-title.main > div.close  (X)
+      - nivel 2+ → clic en div.menu-title > div.back       (<)
+    """
+    if es_nivel1:
+        sel = "div.menu-title.main div.close"
+        descripcion = "X (cerrar nivel 1)"
+    else:
+        sel = "div.menu-title:not(.main) div.back"
+        descripcion = "< (volver nivel anterior)"
+
+    try:
+        btn = page.locator(sel).first
+        btn.wait_for(state="visible", timeout=3000)
+        btn.click()
+        page.wait_for_timeout(400)
+        print(f"  ↩️   {descripcion}")
+    except Exception as exc:
+        print(f"  ⚠️   No se pudo hacer clic en '{descripcion}': {exc}")
+
+
+def recorrer_submenu(
+    page: Page,
+    breadcrumb: list[str],
+    nivel: int = 1,
+) -> None:
+    """
+    Recorre recursivamente todos los div.menu-options visibles.
+
+    Args:
+        page:       Instancia Playwright.
+        breadcrumb: Ruta acumulada (ej: ["Golf", "Consultas"]).
+        nivel:      Nivel actual (1 = primer submenú, 2 = sub-submenú, etc.).
+    """
+    indent = "  " * nivel
+    opciones = get_menu_options(page)
+
+    if not opciones:
+        print(f"{indent}ℹ️   Sin opciones visibles en: {' > '.join(breadcrumb)}")
+        return
+
+    print(f"{indent}📋  Nivel {nivel} — '{' > '.join(breadcrumb)}': "
+          f"{[o['texto'] for o in opciones]}")
+
+    for opcion in opciones:
+        texto = opcion["texto"]
+        tiene_next = opcion["tiene_next"]
+        ruta = breadcrumb + [texto]
+        ruta_str = " > ".join(ruta)
+        safe = ruta_str.replace(" > ", "__").replace(" ", "_")[:MAX__FILENAME_LENGTH]
+
+        print(f"\n{indent}▶  {'[hoja]' if not tiene_next else '[rama]'} {ruta_str}")
+
+        # Clic en la opción
+        try:
+            click_menu_option(page, texto)
+        except Exception as exc:
+            print(f"{indent}  ❌  No se pudo hacer clic en '{texto}': {exc}")
+            screenshot(page, f"ERROR__{safe}")
+            continue
+
+        # Captura + DOM siempre
+        screenshot(page, f"menu__{safe}")
+        dump_dom(page, f"dom__{safe}")
+
+        if tiene_next:
+            # Tiene sub-submenú → recursión
+            recorrer_submenu(page, ruta, nivel + 1)
+        else:
+            # Hoja final → ya estamos en la vista final, solo capturamos
+            print(f"{indent}  🍃  Hoja final capturada: '{ruta_str}'")
+
+        # Volver al nivel anterior
+        volver_nivel(page, es_nivel1=(nivel == 1))
+
+
+def recorrer_menu_completo(page: Page) -> None:
+    """
+    Punto de entrada: recorre Golf, Participes LATAM y FrontOn Gestión completos.
+    """
+    for item_text in TARGET_MENU_ITEMS:
+        print(f"\n{'='*60}")
+        print(f"▶ MENÚ PRINCIPAL → '{item_text}'")
+        print(f"{'='*60}")
+
+        # Abrir menú principal
+        ensure_menu_open(page)
+        page.wait_for_timeout(MENU_REOPEN_DELAY_MS)
+
+        # Clic en el ítem del menú principal
+        try:
+            loc = page.locator("div.ui-menu-item", has_text=item_text).first
+            loc.wait_for(state="visible", timeout=5000)
+            loc.click()
+            page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
+            page.wait_for_timeout(500)
+            print(f"  ✅  Submenú de '{item_text}' abierto.")
+        except Exception as exc:
+            print(f"  ❌  No se pudo abrir '{item_text}': {exc}")
+            screenshot(page, f"ERROR__nivel0_{item_text.replace(' ', '_')}")
+            continue
+
+        # Captura del submenú de nivel 1
+        safe0 = item_text.replace(" ", "_")
+        screenshot(page, f"submenu_nivel1__{safe0}")
+
+        # Recorrido recursivo desde nivel 1
+        recorrer_submenu(page, breadcrumb=[item_text], nivel=1)
+
+        # Al terminar todo el árbol de este ítem, cerrar con X
+        volver_nivel(page, es_nivel1=True)
+
+# ---------------------------------------------------------------------------
 # Descubrimiento dinámico del menú
 # ---------------------------------------------------------------------------
 
@@ -551,8 +694,11 @@ def run() -> None:
             #print("▶ Paso 4: Clickeando las tres opciones objetivo del menú…\n")
             #click_target_menu_items(page)
 
-            print("▶ Paso 4: Capturando submenús de primer nivel…\n")
-            capturar_submenus_nivel1(page)
+            #print("▶ Paso 4: Capturando submenús de primer nivel…\n")
+            #capturar_submenus_nivel1(page)
+
+            print("▶ Paso 4: Recorrido completo del menú…\n")
+            recorrer_menu_completo(page)
 
             # Opcional: mantener el recorrido dinámico completo también
             # print("▶ Paso 5: Recorrido dinámico completo del menú…\n")
