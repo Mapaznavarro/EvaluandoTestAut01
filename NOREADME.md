@@ -1,3 +1,21 @@
+// Ver todas las subopciones del submenú Golf
+(() => {
+  const options = Array.from(document.querySelectorAll('div.menu-options'));
+  return options.map((container, i) => ({
+    contenedor: i,
+    padre_clases: container.parentElement?.className ?? '',
+    subopciones: Array.from(container.querySelectorAll('div.text')).map(el => ({
+      texto: el.textContent.trim(),
+      clases: el.className,
+      tiene_next: !!el.parentElement?.querySelector('div.next'),
+      padre_clases: el.parentElement?.className ?? ''
+    }))
+  }));
+})();
+Responde
+
+
+
 // Buscar el contenedor del submenú activo (el que tiene Golf como cabecera)
 (() => {
   const items = Array.from(document.querySelectorAll('div.ui-menu-item'));
