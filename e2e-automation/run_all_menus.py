@@ -224,64 +224,67 @@ def open_hamburger_menu(page: Page) -> None:
 # Textos exactos de las tres opciones del menú a clickear
 TARGET_MENU_ITEMS = ["Golf", "Participes LATAM", "FrontOn Gestión"]
 
+
 def click_target_menu_items(page: Page) -> None:
     """
     Hace clic en cada una de las opciones específicas del menú:
     'Golf', 'Participes LATAM', 'FrontOn Gestión'.
 
-    Estrategia basada en el DOM Angular observado:
-    - Usa :text-is() para coincidencia exacta de texto.
-    - Usa has-text() como fallback (coincidencia parcial).
-    - Entre cada clic, vuelve atrás y reabre el menú hamburguesa.
+    El DOM Angular usa: <div class="text xl"> Texto </div>
+    Playwright filtra por has_text (tolerante a espacios en blanco).
+    Entre cada clic vuelve atrás y reabre el menú hamburguesa.
     """
     for item_text in TARGET_MENU_ITEMS:
-        print(f"\n▶ Paso 4: Clickeando opción de menú → '{item_text}'")
+        print(f"\n▶ Clickeando opción de menú → '{item_text}'")
 
-        # Abrir el menú hamburguesa antes de cada ítem
+        # Abrir el menú antes de cada ítem
         open_hamburger_menu(page)
+        page.wait_for_timeout(MENU_REOPEN_DELAY_MS)
         screenshot(page, f"menu_antes__{item_text.replace(' ', '_')}")
 
-        # Selectores en orden de especificidad (DOM Angular)
-        selectors = [
-            # Coincidencia exacta de texto en cualquier elemento visible
-            f"text='{item_text}'",
-            f":text-is('{item_text}')",
-            # Componente Angular de ítems de menú
-            f"app-ui-menu-item:has-text('{item_text}')",
-            f"app-ui-menu-item span:has-text('{item_text}')",
-            # Elementos genéricos de navegación
-            f"a:has-text('{item_text}')",
-            f"li:has-text('{item_text}')",
-            f"button:has-text('{item_text}')",
-            f"span:has-text('{item_text}')",
-            f"[aria-label='{item_text}']",
-            f"[title='{item_text}']",
+        # Selector principal: div.text.xl con ese texto (has_text es tolerante a espacios)
+        # Alternativas en orden de especificidad descendente
+        clicked = False
+        selectors_with_strategy = [
+            # Estrategia locator() con has_text — la más robusta para Angular
+            ("locator", "div.text.xl", item_text),
+            ("locator", "div.text",    item_text),
+            # Fallbacks con pseudo-selector de Playwright
+            ("css_text", f"div.text.xl:has-text('{item_text}')"),
+            ("css_text", f"div.text:has-text('{item_text}')"),
+            ("css_text", f":text-is('{item_text.strip()}')"),
+            ("css_text", f"text={item_text.strip()}"),
         ]
 
-        clicked = False
-        for sel in selectors:
+        for entry in selectors_with_strategy:
             try:
-                loc = page.locator(sel).first
+                if entry[0] == "locator":
+                    _, css, txt = entry
+                    loc = page.locator(css, has_text=txt).first
+                else:
+                    _, css = entry
+                    loc = page.locator(css).first
+
                 loc.wait_for(state="visible", timeout=5000)
                 loc.click()
                 page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
-                print(f"  ✅  Clic exitoso en '{item_text}' con selector: {sel}")
+                print(f"  ✅  Clic exitoso en '{item_text}' → selector: {entry[1]}")
                 clicked = True
                 break
             except Exception:
                 continue
 
         if not clicked:
-            print(f"  ❌  No se pudo hacer clic en '{item_text}' – verificar selector en DOM.")
+            print(f"  ❌  No se pudo hacer clic en '{item_text}' – revisar DOM.")
             screenshot(page, f"ERROR__{item_text.replace(' ', '_')}")
             continue
 
-        # Captura y DOM tras el clic
+        # Captura + DOM tras el clic
         safe = item_text.replace(" ", "_")
         screenshot(page, f"menu_clic__{safe}")
         dump_dom(page, f"dom_clic__{safe}")
 
-        # Volver a la página anterior para el siguiente ítem
+        # Volver atrás para poder clickear el siguiente ítem
         print(f"  ↩️   Volviendo atrás desde '{item_text}'…")
         page.go_back(wait_until="networkidle", timeout=config.TIMEOUT_MS)
         page.wait_for_timeout(MENU_REOPEN_DELAY_MS)
