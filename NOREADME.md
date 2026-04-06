@@ -144,3 +144,17 @@ Respuesta
     }
 ]
 
+===========================================================
+COnfirmar que funcionan en consola
+// Probar clic en Golf (debe navegar o cambiar la vista)
+document.querySelector('div.ui-menu-item.first')?.click();
+
+// Después de volver al menú, probar Participes LATAM
+Array.from(document.querySelectorAll('div.ui-menu-item'))
+  .find(el => el.querySelector('div.text.xl')?.textContent.trim() === 'Participes LATAM')
+  ?.click();
+
+// Después de volver al menú, probar FrontOn Gestión
+document.querySelector('div.ui-menu-item.last')?.click();
+
+
