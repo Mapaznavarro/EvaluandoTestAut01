@@ -30,3 +30,5 @@ document.querySelectorAll('div.text.xl').forEach((el, i) => {
 =========================================
 // Pega esto y presiona Enter
 console.log("Total div.text.xl encontrados:", document.querySelectorAll('div.text.xl').length)
+R =======================================
+Total div.text.xl encontrados: 0
