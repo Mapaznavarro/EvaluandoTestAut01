@@ -35,9 +35,216 @@
   }));
 })();
 
-==============================================================================
-Poner aqui los resultados de ambos snippets
-
+Respuesta snippet1
+[
+  {
+    "indice": 0,
+    "texto": "",
+    "clases": "ui-menu-item first active",
+    "padre_clases": "",
+    "abuelo_clases": "top",
+    "bisabuelo_tag": "DIV",
+    "bisabuelo_clases": "menu lg"
+  },
+  {
+    "indice": 1,
+    "texto": "",
+    "clases": "ui-menu-item",
+    "padre_clases": "",
+    "abuelo_clases": "top",
+    "bisabuelo_tag": "DIV",
+    "bisabuelo_clases": "menu lg"
+  },
+  {
+    "indice": 2,
+    "texto": "",
+    "clases": "ui-menu-item last",
+    "padre_clases": "",
+    "abuelo_clases": "top",
+    "bisabuelo_tag": "DIV",
+    "bisabuelo_clases": "menu lg"
+  },
+  {
+    "indice": 3,
+    "texto": "",
+    "clases": "ui-menu-item first last",
+    "padre_clases": "bottom",
+    "abuelo_clases": "menu lg",
+    "bisabuelo_tag": "DIV",
+    "bisabuelo_clases": "ui-menu"
+  }
+]
+[
+    {
+        "indice": 0,
+        "texto": "",
+        "clases": "ui-menu-item first active",
+        "padre_clases": "",
+        "abuelo_clases": "top",
+        "bisabuelo_tag": "DIV",
+        "bisabuelo_clases": "menu lg"
+    },
+    {
+        "indice": 1,
+        "texto": "",
+        "clases": "ui-menu-item",
+        "padre_clases": "",
+        "abuelo_clases": "top",
+        "bisabuelo_tag": "DIV",
+        "bisabuelo_clases": "menu lg"
+    },
+    {
+        "indice": 2,
+        "texto": "",
+        "clases": "ui-menu-item last",
+        "padre_clases": "",
+        "abuelo_clases": "top",
+        "bisabuelo_tag": "DIV",
+        "bisabuelo_clases": "menu lg"
+    },
+    {
+        "indice": 3,
+        "texto": "",
+        "clases": "ui-menu-item first last",
+        "padre_clases": "bottom",
+        "abuelo_clases": "menu lg",
+        "bisabuelo_tag": "DIV",
+        "bisabuelo_clases": "ui-menu"
+    }
+]
+Objeto
+[
+    {
+        "indice": 0,
+        "texto": "",
+        "clases": "ui-menu-item first active",
+        "padre_clases": "",
+        "abuelo_clases": "top",
+        "bisabuelo_tag": "DIV",
+        "bisabuelo_clases": "menu lg"
+    },
+    {
+        "indice": 1,
+        "texto": "",
+        "clases": "ui-menu-item",
+        "padre_clases": "",
+        "abuelo_clases": "top",
+        "bisabuelo_tag": "DIV",
+        "bisabuelo_clases": "menu lg"
+    },
+    {
+        "indice": 2,
+        "texto": "",
+        "clases": "ui-menu-item last",
+        "padre_clases": "",
+        "abuelo_clases": "top",
+        "bisabuelo_tag": "DIV",
+        "bisabuelo_clases": "menu lg"
+    },
+    {
+        "indice": 3,
+        "texto": "",
+        "clases": "ui-menu-item first last",
+        "padre_clases": "bottom",
+        "abuelo_clases": "menu lg",
+        "bisabuelo_tag": "DIV",
+        "bisabuelo_clases": "ui-menu"
+    }
+]
+Resultado del snippets 2
+Objeto
+[
+    {
+        "tag": "DIV",
+        "clases": "text lg",
+        "texto": "Golf",
+        "padre_clases": "label"
+    },
+    {
+        "tag": "DIV",
+        "clases": "next lg",
+        "texto": "",
+        "padre_clases": "ui-menu-item first active"
+    },
+    {
+        "tag": "DIV",
+        "clases": "text lg",
+        "texto": "Participes LATAM",
+        "padre_clases": "label"
+    },
+    {
+        "tag": "DIV",
+        "clases": "next lg",
+        "texto": "",
+        "padre_clases": "ui-menu-item"
+    },
+    {
+        "tag": "DIV",
+        "clases": "text lg",
+        "texto": "FrontOn Gestión",
+        "padre_clases": "label"
+    },
+    {
+        "tag": "DIV",
+        "clases": "next lg",
+        "texto": "",
+        "padre_clases": "ui-menu-item last"
+    },
+    {
+        "tag": "DIV",
+        "clases": "text lg",
+        "texto": "Ajustes",
+        "padre_clases": "label"
+    },
+    {
+        "tag": "DIV",
+        "clases": "next lg",
+        "texto": "",
+        "padre_clases": "ui-menu-item first last"
+    },
+    {
+        "tag": "DIV",
+        "clases": "close",
+        "texto": "",
+        "padre_clases": "menu-title main"
+    },
+    {
+        "tag": "DIV",
+        "clases": "text",
+        "texto": "Consultas",
+        "padre_clases": "label"
+    },
+    {
+        "tag": "DIV",
+        "clases": "next",
+        "texto": "",
+        "padre_clases": "menu-options"
+    },
+    {
+        "tag": "DIV",
+        "clases": "text",
+        "texto": "Contabilidad",
+        "padre_clases": "label"
+    },
+    {
+        "tag": "DIV",
+        "clases": "next",
+        "texto": "",
+        "padre_clases": "menu-options"
+    },
+    {
+        "tag": "DIV",
+        "clases": "text",
+        "texto": "Entradas",
+        "padre_clases": "label"
+    },
+    {
+        "tag": "DIV",
+        "clases": "next",
+        "texto": "",
+        "padre_clases": "menu-options"
+    }
+]
 
 
 
