@@ -1,3 +1,27 @@
+// Con el sub-sub-submenú de Consultas > Contabilidad abierto
+(() => {
+  const opts = Array.from(document.querySelectorAll('div.menu-options'));
+  const backs = Array.from(document.querySelectorAll('div.back, div.close')).map(el => ({
+    clases: el.className,
+    padre_clases: el.parentElement?.className,
+    abuelo_clases: el.parentElement?.parentElement?.className,
+    visible: el.offsetParent !== null
+  }));
+
+  return {
+    total_menu_options: opts.length,
+    opciones: opts.map(el => ({
+      texto: el.querySelector('div.text')?.textContent.trim(),
+      tiene_next: !!el.querySelector('div.next'),
+      visible: el.offsetParent !== null
+    })),
+    botones_back_close: backs
+  };
+})();
+Respuesta:
+
+
+
 // Con el sub-submenú de Consultas abierto
 (() => {
   // Opciones del nivel 2
