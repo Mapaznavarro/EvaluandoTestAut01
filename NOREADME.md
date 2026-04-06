@@ -106,3 +106,12 @@ R =========================================
         ]
     }
 ]
+
+===============================================================
+// Verificar que ui-menu-item es clickeable
+Array.from(document.querySelectorAll('div.ui-menu-item')).map(el => ({
+  texto: el.querySelector('div.text.xl')?.textContent.trim(),
+  clase: el.className,
+  cursor: getComputedStyle(el).cursor,
+  pointer_events: getComputedStyle(el).pointerEvents
+}));
