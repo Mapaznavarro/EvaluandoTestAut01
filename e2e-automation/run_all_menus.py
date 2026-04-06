@@ -219,6 +219,33 @@ def open_hamburger_menu(page: Page) -> None:
     wait_and_click(page, HAMBURGER_SELECTORS, "menú hamburguesa")
     page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
 
+def is_menu_open(page: Page) -> bool:
+    """Devuelve True si el menú ya está desplegado (div.ui-menu-item visible)."""
+    try:
+        page.locator("div.ui-menu-item").first.wait_for(state="visible", timeout=2000)
+        return True
+    except PlaywrightTimeoutError:
+        return False
+
+
+def ensure_menu_open(page: Page) -> None:
+    """
+    Abre el menú hamburguesa SOLO si no está ya abierto.
+    Evita el efecto toggle (doble clic = cierra el menú).
+    """
+    if is_menu_open(page):
+        print("  ℹ️   Menú ya está abierto – no se vuelve a clickear hamburguesa.")
+        return
+    print("  🍔  Abriendo menú hamburguesa…")
+    wait_and_click(page, HAMBURGER_SELECTORS, "menú hamburguesa")
+    page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
+    try:
+        page.locator("div.ui-menu-item").first.wait_for(state="visible", timeout=5000)
+    except PlaywrightTimeoutError:
+        print("  ⚠️   Menú abierto pero div.ui-menu-item no apareció.")
+
+
+
 
 TARGET_MENU_ITEMS = ["Golf", "Participes LATAM", "FrontOn Gestión"]
 
