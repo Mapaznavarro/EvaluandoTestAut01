@@ -13,7 +13,92 @@
   }));
 })();
 Responde
-
+[
+    {
+        "contenedor": 0,
+        "padre_clases": "",
+        "subopciones": [
+            {
+                "texto": "Consultas",
+                "clases": "text",
+                "tiene_next": false,
+                "padre_clases": "label"
+            }
+        ]
+    },
+    {
+        "contenedor": 1,
+        "padre_clases": "",
+        "subopciones": [
+            {
+                "texto": "Contabilidad",
+                "clases": "text",
+                "tiene_next": false,
+                "padre_clases": "label"
+            }
+        ]
+    },
+    {
+        "contenedor": 2,
+        "padre_clases": "",
+        "subopciones": [
+            {
+                "texto": "Entradas",
+                "clases": "text",
+                "tiene_next": false,
+                "padre_clases": "label"
+            }
+        ]
+    },
+    {
+        "contenedor": 3,
+        "padre_clases": "",
+        "subopciones": [
+            {
+                "texto": "Incorporaciones",
+                "clases": "text",
+                "tiene_next": false,
+                "padre_clases": "label"
+            }
+        ]
+    },
+    {
+        "contenedor": 4,
+        "padre_clases": "",
+        "subopciones": [
+            {
+                "texto": "Maestros",
+                "clases": "text",
+                "tiene_next": false,
+                "padre_clases": "label"
+            }
+        ]
+    },
+    {
+        "contenedor": 5,
+        "padre_clases": "",
+        "subopciones": [
+            {
+                "texto": "Procesos",
+                "clases": "text",
+                "tiene_next": false,
+                "padre_clases": "label"
+            }
+        ]
+    },
+    {
+        "contenedor": 6,
+        "padre_clases": "",
+        "subopciones": [
+            {
+                "texto": "Tareas",
+                "clases": "text",
+                "tiene_next": false,
+                "padre_clases": "label"
+            }
+        ]
+    }
+]
 
 
 // Buscar el contenedor del submenú activo (el que tiene Golf como cabecera)
