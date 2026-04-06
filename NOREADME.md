@@ -1,3 +1,5 @@
+https://www.microsoft.com/es-ES/power-platform/products/power-automate/
+
 maria.navarro@gatherspa.onmicrosoft.com
 
 // Con el sub-sub-submenú de Consultas > Contabilidad abierto
