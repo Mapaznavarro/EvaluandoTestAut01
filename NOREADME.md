@@ -1,3 +1,58 @@
+// Buscar el contenedor del submenú activo (el que tiene Golf como cabecera)
+(() => {
+  const items = Array.from(document.querySelectorAll('div.ui-menu-item'));
+  const result = items.map((el, i) => ({
+    indice: i,
+    texto: el.querySelector('div.text.xl')?.textContent.trim() ?? '',
+    clases: el.className,
+    padre_clases: el.parentElement?.className ?? '',
+    abuelo_clases: el.parentElement?.parentElement?.className ?? '',
+    bisabuelo_tag: el.parentElement?.parentElement?.parentElement?.tagName ?? '',
+    bisabuelo_clases: el.parentElement?.parentElement?.parentElement?.className ?? ''
+  }));
+  console.log(JSON.stringify(result, null, 2));
+  return result;
+})();
+
+// Buscar el botón X o elemento de cierre del submenú
+(() => {
+  const candidates = Array.from(document.querySelectorAll('*')).filter(el => {
+    const txt = el.textContent.trim();
+    const cls = el.className?.toString() ?? '';
+    return (
+      el.offsetParent !== null &&
+      getComputedStyle(el).cursor === 'pointer' &&
+      (cls.includes('close') || cls.includes('back') || cls.includes('header') || 
+       cls.includes('title') || cls.includes('return') || cls.includes('x') ||
+       el.tagName === 'BUTTON')
+    );
+  });
+  return candidates.slice(0, 15).map(el => ({
+    tag: el.tagName,
+    clases: el.className,
+    texto: el.textContent.trim().substring(0, 40),
+    padre_clases: el.parentElement?.className ?? ''
+  }));
+})();
+
+==============================================================================
+Poner aqui los resultados de ambos snippets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 await page.waitForLoadState('networkidle'); // o 'domcontentloaded' según tu app
 const dom = await page.content();           // HTML completo del documento actual
 console.log(dom);
