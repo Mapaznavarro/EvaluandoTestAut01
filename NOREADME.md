@@ -1,3 +1,29 @@
+// Verificar el div.close
+(() => {
+  const close = document.querySelector('div.close');
+  if (!close) return 'No encontrado';
+  return {
+    tag: close.tagName,
+    clases: close.className,
+    cursor: getComputedStyle(close).cursor,
+    pointer_events: getComputedStyle(close).pointerEvents,
+    padre_clases: close.parentElement?.className,
+    outerHTML: close.outerHTML.substring(0, 300)
+  };
+})();
+Respuesta:
+
+// Cuántos div.close hay visibles
+Array.from(document.querySelectorAll('div.close')).map(el => ({
+  clases: el.className,
+  cursor: getComputedStyle(el).cursor,
+  visible: el.offsetParent !== null,
+  padre_clases: el.parentElement?.className,
+  abuelo_clases: el.parentElement?.parentElement?.className
+}));
+Respuesta:
+
+
 // Ver la estructura completa alrededor de "Consultas"
 (() => {
   const textos = Array.from(document.querySelectorAll('div.menu-options div.text'));
