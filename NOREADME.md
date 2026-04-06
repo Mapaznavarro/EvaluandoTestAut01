@@ -115,3 +115,32 @@ Array.from(document.querySelectorAll('div.ui-menu-item')).map(el => ({
   cursor: getComputedStyle(el).cursor,
   pointer_events: getComputedStyle(el).pointerEvents
 }));
+
+Respuesta
+[
+    {
+        "texto": "Golf",
+        "clase": "ui-menu-item first",
+        "cursor": "pointer",
+        "pointer_events": "auto"
+    },
+    {
+        "texto": "Participes LATAM",
+        "clase": "ui-menu-item",
+        "cursor": "pointer",
+        "pointer_events": "auto"
+    },
+    {
+        "texto": "FrontOn Gestión",
+        "clase": "ui-menu-item last",
+        "cursor": "pointer",
+        "pointer_events": "auto"
+    },
+    {
+        "texto": "Ajustes",
+        "clase": "ui-menu-item first last",
+        "cursor": "pointer",
+        "pointer_events": "auto"
+    }
+]
+
