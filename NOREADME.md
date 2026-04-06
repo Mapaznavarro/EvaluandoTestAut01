@@ -21,7 +21,48 @@
   return niveles;
 })();
 Respuesta
-
+[
+    {
+        "nivel": 0,
+        "tag": "DIV",
+        "clases": "text",
+        "cursor": "pointer",
+        "pointer_events": "auto",
+        "outerHTML": "<div _ngcontent-ng-c638813965=\"\" class=\"text\"> Consultas </div>"
+    },
+    {
+        "nivel": 1,
+        "tag": "DIV",
+        "clases": "label",
+        "cursor": "pointer",
+        "pointer_events": "auto",
+        "outerHTML": "<div _ngcontent-ng-c638813965=\"\" class=\"label\"><div _ngcontent-ng-c638813965=\"\" class=\"icon\"><svg _ngcontent-ng-c638813965=\"\" class=\"svg-inline--fa fa-table-cells fa-fw fw-sm\" aria-hidden=\"true\" focus"
+    },
+    {
+        "nivel": 2,
+        "tag": "DIV",
+        "clases": "menu-options",
+        "cursor": "pointer",
+        "pointer_events": "auto",
+        "outerHTML": "<div _ngcontent-ng-c638813965=\"\" draggable-item=\"\" class=\"menu-options\" draggable=\"true\"><div _ngcontent-ng-c638813965=\"\" class=\"label\"><div _ngcontent-ng-c638813965=\"\" class=\"icon\"><svg _ngcontent-ng"
+    },
+    {
+        "nivel": 3,
+        "tag": "DIV",
+        "clases": "",
+        "cursor": "auto",
+        "pointer_events": "auto",
+        "outerHTML": "<div overlayscrollbars=\"\" data-overlayscrollbars-contents=\"\" data-overlayscrollbars-viewport=\"scrollbarHidden overflowXHidden overflowYHidden\" tabindex=\"-1\" style=\"margin-right: 0px; margin-bottom: 0p"
+    },
+    {
+        "nivel": 4,
+        "tag": "OVERLAY-SCROLLBARS",
+        "clases": "menu-content",
+        "cursor": "auto",
+        "pointer_events": "auto",
+        "outerHTML": "<overlay-scrollbars _ngcontent-ng-c638813965=\"\" data-overlayscrollbars-initialize=\"\" class=\"menu-content\" data-overlayscrollbars=\"host\"><div overlayscrollbars=\"\" data-overlayscrollbars-contents=\"\" dat"
+    }
+]
 
 
 // Ver todas las subopciones del submenú Golf
