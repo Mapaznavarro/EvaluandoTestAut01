@@ -1,3 +1,17 @@
+// Ver todos los div.menu-options visibles y su texto
+Array.from(document.querySelectorAll('div.menu-options')).map(el => ({
+  texto: el.querySelector('div.text')?.textContent.trim(),
+  cursor: getComputedStyle(el).cursor,
+  visible: el.offsetParent !== null,
+  draggable: el.getAttribute('draggable'),
+  padre_clases: el.parentElement?.className,
+  tiene_next: !!el.querySelector('div.next')
+}));
+Respuesta:
+
+
+
+
 // Verificar el div.close
 (() => {
   const close = document.querySelector('div.close');
