@@ -1,3 +1,40 @@
+// Con el sub-submenú de Consultas abierto
+(() => {
+  // Opciones del nivel 2
+  const opts = Array.from(document.querySelectorAll('div.menu-options'));
+  
+  // Botón de retroceso (el "<" que mencionaste)
+  const backs = Array.from(document.querySelectorAll('*')).filter(el =>
+    el.offsetParent !== null &&
+    getComputedStyle(el).cursor === 'pointer' &&
+    (el.className?.toString().includes('back') || 
+     el.className?.toString().includes('prev') ||
+     el.className?.toString().includes('return') ||
+     el.className?.toString().includes('header') ||
+     el.className?.toString().includes('title'))
+  ).map(el => ({
+    tag: el.tagName,
+    clases: el.className,
+    texto: el.textContent.trim().substring(0, 40),
+    padre_clases: el.parentElement?.className,
+    abuelo_clases: el.parentElement?.parentElement?.className
+  }));
+
+  return {
+    total_menu_options: opts.length,
+    opciones: opts.map(el => ({
+      texto: el.querySelector('div.text')?.textContent.trim(),
+      tiene_next: !!el.querySelector('div.next'),
+      visible: el.offsetParent !== null
+    })),
+    posibles_botones_back: backs.slice(0, 8)
+  };
+})();
+
+Respuesta:
+
+
+
 // Ver todos los div.menu-options visibles y su texto
 Array.from(document.querySelectorAll('div.menu-options')).map(el => ({
   texto: el.querySelector('div.text')?.textContent.trim(),
