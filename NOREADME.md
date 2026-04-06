@@ -26,3 +26,7 @@ document.querySelectorAll('div.text.xl').forEach((el, i) => {
   console.log('outerHTML del padre:', el.parentElement?.outerHTML?.substring(0, 300));
   console.log('');
 });
+
+=========================================
+// Pega esto y presiona Enter
+console.log("Total div.text.xl encontrados:", document.querySelectorAll('div.text.xl').length)
