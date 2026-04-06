@@ -32,3 +32,18 @@ document.querySelectorAll('div.text.xl').forEach((el, i) => {
 console.log("Total div.text.xl encontrados:", document.querySelectorAll('div.text.xl').length)
 R =======================================
 Total div.text.xl encontrados: 0
+
+==========================================
+// Buscar en todos los shadow roots
+function queryAllShadow(selector, root = document) {
+  let results = [...root.querySelectorAll(selector)];
+  root.querySelectorAll('*').forEach(el => {
+    if (el.shadowRoot) results = results.concat(queryAllShadow(selector, el.shadowRoot));
+  });
+  return results;
+}
+
+let items = queryAllShadow('div.text.xl');
+console.log("Encontrados en Shadow DOM:", items.length);
+items.forEach((el, i) => console.log(i, JSON.stringify(el.textContent.trim()), el.parentElement?.tagName, el.parentElement?.className));
+R =======================================
