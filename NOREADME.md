@@ -1,3 +1,5 @@
+https://learn.microsoft.com/es-es/power-automate/desktop-flows/install#install-power-automate-using-the-msi-installer
+
 https://www.microsoft.com/es-ES/power-platform/products/power-automate/
 
 Otro intento
