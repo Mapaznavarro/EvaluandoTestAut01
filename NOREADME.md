@@ -1,3 +1,9 @@
+https://www.microsoft.com/es-ES/power-platform/products/power-automate/
+
+Otro intento
+https://powerautomate.microsoft.com/desktop
+
+Con esto llego a una version web
 https://learn.microsoft.com/es-es/power-automate/desktop-flows/install
 
 https://www.microsoft.com/es-ES/power-platform/products/power-automate/
