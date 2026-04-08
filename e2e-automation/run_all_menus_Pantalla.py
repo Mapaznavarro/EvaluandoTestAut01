@@ -745,6 +745,208 @@ def recorrer_menu_completo_paso1(page: Page) -> None:
     print(f"\n  💾  Hojas guardadas en: {report_path}")
 
 # ---------------------------------------------------------------------------
+# PASO 2 — Clic en cada hoja final y captura de la vista
+# ---------------------------------------------------------------------------
+
+def cerrar_tab_activa(page: Page) -> None:
+    """
+    Cierra la pestaña activa haciendo clic en su div.close.
+    Estructura confirmada: div.tab.activable.active > div.label.not-selectable > div.close
+    """
+    sel = "div.tab.activable.active div.close"
+    try:
+        btn = page.locator(sel).first
+        btn.wait_for(state="visible", timeout=5000)
+        btn.click()
+        page.wait_for_timeout(400)
+        print("  ✖️   Pestaña cerrada.")
+    except Exception as exc:
+        print(f"  ⚠️   No se pudo cerrar la pestaña: {exc}")
+
+
+def esperar_tab_hoja(page: Page, texto: str, timeout: int = 8000) -> bool:
+    """
+    Espera a que aparezca la pestaña con el nombre de la hoja.
+    Devuelve True si apareció, False si no.
+    """
+    try:
+        page.locator("div.tab.activable.active", has_text=texto).first.wait_for(
+            state="visible", timeout=timeout
+        )
+        return True
+    except PlaywrightTimeoutError:
+        return False
+
+
+def navegar_hasta_panel(page: Page, ruta: list[str]) -> bool:
+    """
+    Navega por el menú hasta el panel que contiene la hoja.
+    ruta = ["Golf", "Consultas", "Contabilidad", "Asientos diarios"]
+    - El primer elemento es el ítem raíz (div.ui-menu-item).
+    - Los elementos intermedios son ramas (div.menu-options con tiene_next=True).
+    - El último elemento es la hoja (NO se hace clic aquí, solo se navega hasta su panel).
+
+    Devuelve True si llegó al panel correcto, False si hubo error.
+    """
+    if len(ruta) < 2:
+        print(f"  ⚠️   Ruta demasiado corta para navegar: {ruta}")
+        return False
+
+    raiz       = ruta[0]          # ej: "Golf"
+    intermedios = ruta[1:-1]      # ej: ["Consultas", "Contabilidad"]
+    # ruta[-1] es la hoja — no se toca aquí
+
+    # 1. Abrir menú principal y hacer clic en el ítem raíz
+    ensure_menu_open(page)
+    page.wait_for_timeout(MENU_REOPEN_DELAY_MS)
+
+    try:
+        loc = page.locator("div.ui-menu-item", has_text=raiz).first
+        loc.wait_for(state="visible", timeout=5000)
+        loc.click()
+        page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
+        page.wait_for_timeout(400)
+    except Exception as exc:
+        print(f"  ❌  No se pudo abrir raíz '{raiz}': {exc}")
+        return False
+
+    # 2. Navegar por los nodos intermedios (ramas)
+    for nodo in intermedios:
+        try:
+            click_menu_option(page, nodo)
+        except Exception as exc:
+            print(f"  ❌  No se pudo navegar a nodo '{nodo}': {exc}")
+            return False
+
+    return True
+
+
+def volver_desde_hoja(page: Page, ruta: list[str]) -> None:
+    """
+    Después de hacer clic en una hoja y capturar la vista:
+      1. Cierra la pestaña activa.
+      2. Vuelve al menú principal cerrando todos los niveles abiertos.
+
+    ruta = ["Golf", "Consultas", "Contabilidad", "Asientos diarios"]
+    Niveles a cerrar = len(ruta) - 1  (todos menos la hoja en sí)
+      - El nivel raíz se cierra con X (usar_close=True)
+      - Los niveles intermedios se cierran con < (usar_close=False)
+    """
+    cerrar_tab_activa(page)
+
+    # Reabrir el menú (el clic en la hoja lo cerró)
+    ensure_menu_open(page)
+    page.wait_for_timeout(MENU_REOPEN_DELAY_MS)
+
+    # Volver al panel que contiene la hoja (ruta[-2])
+    # luego subir nivel a nivel hasta cerrar el panel raíz
+    # Niveles abiertos = ruta[1:-1] (intermedios) + el raíz
+    # Se cierran de adentro hacia afuera:
+    #   intermedios[-1] → back, ..., intermedios[0] → back, raíz → close
+    niveles_a_cerrar = len(ruta) - 1  # no cuenta la hoja
+
+    for i in range(niveles_a_cerrar):
+        es_ultimo = (i == niveles_a_cerrar - 1)
+        volver_nivel(page, usar_close=es_ultimo)
+
+
+def ejecutar_paso2(page: Page) -> None:
+    """
+    PASO 2 — Punto de entrada.
+    Lee hojas_finales.json y hace clic en cada hoja capturando la vista.
+    """
+    import json
+
+    report_path = config.SCREENSHOTS_DIR / "hojas_finales.json"
+    if not report_path.exists():
+        print("  ❌  No se encontró hojas_finales.json — ejecuta primero el PASO 1.")
+        return
+
+    with open(report_path, encoding="utf-8") as f:
+        hojas = json.load(f)
+
+    total = len(hojas)
+    exitosas = 0
+    fallidas  = []
+
+    print(f"  📋  Total de hojas a recorrer: {total}\n")
+
+    for idx, hoja in enumerate(hojas, 1):
+        ruta     = hoja["ruta"]
+        ruta_str = " > ".join(ruta)
+        hoja_txt = ruta[-1]
+        safe     = ruta_str.replace(" > ", "__").replace(" ", "_")[:MAX__FILENAME_LENGTH]
+
+        print(f"\n[{idx:3}/{total}] {ruta_str}")
+
+        # 1. Navegar hasta el panel que contiene la hoja
+        ok = navegar_hasta_panel(page, ruta)
+        if not ok:
+            print(f"  ❌  No se pudo navegar hasta el panel de '{ruta_str}'")
+            screenshot(page, f"ERROR_paso2_nav__{safe}")
+            fallidas.append(ruta_str)
+            # Intentar recuperar estado inicial
+            page.goto(config.BASE_URL, wait_until="networkidle")
+            handle_login(page)
+            continue
+
+        # 2. Hacer clic en la hoja
+        try:
+            click_menu_option(page, hoja_txt)
+            print(f"  ✅  Clic en hoja '{hoja_txt}'")
+        except Exception as exc:
+            print(f"  ❌  No se pudo hacer clic en hoja '{hoja_txt}': {exc}")
+            screenshot(page, f"ERROR_paso2_clic__{safe}")
+            fallidas.append(ruta_str)
+            # Cerrar paneles abiertos y continuar
+            niveles = len(ruta) - 1
+            for i in range(niveles):
+                volver_nivel(page, usar_close=(i == niveles - 1))
+            continue
+
+        # 3. Esperar a que cargue la vista (pestaña activa con el nombre de la hoja)
+        cargada = esperar_tab_hoja(page, hoja_txt)
+        if not cargada:
+            print(f"  ⚠️   La pestaña '{hoja_txt}' no apareció en tiempo esperado.")
+            screenshot(page, f"WARN_paso2_tab__{safe}")
+        else:
+            print(f"  ✅  Vista cargada: '{hoja_txt}'")
+
+        # 4. Captura + DOM
+        screenshot(page, f"paso2__{safe}")
+        dump_dom(page, f"dom_paso2__{safe}")
+
+        exitosas += 1
+
+        # 4b. Pausa para observar la vista antes de continuar
+        page.wait_for_timeout(config.PASO2_VISTA_PAUSA_MS)
+
+        # 5. Cerrar pestaña y volver al estado inicial
+        volver_desde_hoja(page, ruta)
+
+    # ── Reporte final ────────────────────────────────────────────────────
+    print(f"\n{'='*60}")
+    print(f"  ✅  PASO 2 completado.")
+    print(f"      Exitosas : {exitosas}/{total}")
+    print(f"      Fallidas : {len(fallidas)}")
+    print(f"{'='*60}")
+    if fallidas:
+        print("\n  ❌  Hojas con error:")
+        for f in fallidas:
+            print(f"       • {f}")
+
+    # Guardar reporte
+    reporte = config.SCREENSHOTS_DIR / "paso2_report.txt"
+    with open(reporte, "w", encoding="utf-8") as f:
+        f.write(f"PASO 2 — {datetime.datetime.now(timezone.utc).isoformat()}\n")
+        f.write(f"Total: {total}  Exitosas: {exitosas}  Fallidas: {len(fallidas)}\n\n")
+        for h in hojas:
+            estado = "OK" if " > ".join(h["ruta"]) not in fallidas else "ERROR"
+            f.write(f"[{estado}] {' > '.join(h['ruta'])}\n")
+    print(f"\n  📄  Reporte guardado en: {reporte}")
+
+
+# ---------------------------------------------------------------------------
 # Flujo principal
 # ---------------------------------------------------------------------------
 
@@ -807,6 +1009,10 @@ def run() -> None:
             print("▶ Paso 4: PASO 1 — Recorrido recursivo del árbol de menú…\n")
             recorrer_menu_completo_paso1(page)
 
+            print("\n▶ Paso 5: PASO 2 — Clic en hojas finales y captura de vistas…\n")
+            ejecutar_paso2(page)
+
+          
             # Opcional: mantener el recorrido dinámico completo también
             # print("▶ Paso 5: Recorrido dinámico completo del menú…\n")
             # open_hamburger_menu(page)
