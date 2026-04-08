@@ -1,3 +1,20 @@
+// Snippet 10 — Capturar qué evento dispara el clic en una hoja
+// Ejecutar ANTES de hacer clic en "Asientos diarios"
+(() => {
+    const requests = [];
+    const observer = new PerformanceObserver((list) => {
+        list.getEntries().forEach(e => requests.push(e.name));
+    });
+    observer.observe({ entryTypes: ['resource'] });
+    window._snippet10_requests = requests;
+    window._snippet10_observer = observer;
+    console.log('✅ Observer instalado — ahora haz clic en "Asientos diarios"');
+})();
+Respuesta
+
+
+
+
 Snippet en python
 with open("run_all_menus_Pantalla.py", encoding="utf-8") as f:
     lines = f.readlines()
