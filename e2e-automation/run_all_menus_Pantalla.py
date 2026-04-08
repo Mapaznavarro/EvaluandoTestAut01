@@ -24,6 +24,7 @@ Requiere:
 
 import sys
 import datetime
+import json
 from datetime import timezone
 from pathlib import Path
 import re  # <-- AGREGAR
@@ -78,6 +79,9 @@ MAX__FILENAME_LENGTH = 80
 
 # Pausa (ms) antes de re-abrir el menú tras navegar un ítem
 MENU_REOPEN_DELAY_MS = 500
+
+# Pausa (ms) entre clics durante la navegación del menú en PASO 2
+MENU_NAVIGATION_DELAY_MS = 600
 
 # Velocidad de slow_mo del navegador (ms entre acciones)
 BROWSER_SLOW_MO_MS = 300
@@ -671,7 +675,7 @@ def recorrer_submenu_paso1(
 
         if not tiene_next:
             # ── Hoja final → registrar y NO hacer clic ──────────────────
-            HOJAS_FINALES.append({"ruta": ruta})
+            HOJAS_FINALES.append({"indice": len(HOJAS_FINALES) + 1, "ruta": ruta})
             print(f"{indent2}🍃  [HOJA] registrada: '{ruta_str}'")
             continue
 
@@ -738,11 +742,187 @@ def recorrer_menu_completo_paso1(page: Page) -> None:
         print(f"  {i:3}. {' > '.join(hoja['ruta'])}")
 
     # Guardar en archivo JSON para usar en PASO 2
-    import json
     report_path = config.SCREENSHOTS_DIR / "hojas_finales.json"
     with open(report_path, "w", encoding="utf-8") as f:
         json.dump(HOJAS_FINALES, f, ensure_ascii=False, indent=2)
     print(f"\n  💾  Hojas guardadas en: {report_path}")
+
+# ---------------------------------------------------------------------------
+# PASO 2 — Ejecución de hojas por índice (re-navega menú completo cada vez)
+# ---------------------------------------------------------------------------
+
+
+def abrir_menu_hamburguesa(page: Page) -> None:
+    """
+    Hace clic en el hamburguesa ≡ y espera a que div.ui-menu-item sea visible.
+    Selectores del hamburguesa (en orden de prioridad):
+      "css=div.toggle.menu"
+      "css=app-ui-header div.toggle.menu"
+    """
+    for sel in ["css=div.toggle.menu", "css=app-ui-header div.toggle.menu"]:
+        try:
+            loc = page.locator(sel).first
+            loc.wait_for(state="visible", timeout=3000)
+            loc.click()
+            print("  🍔  Hamburguesa ≡ clickeado.")
+            page.locator("div.ui-menu-item").first.wait_for(state="visible", timeout=5000)
+            return
+        except Exception:
+            continue
+    raise RuntimeError("No se pudo hacer clic en el hamburguesa ≡.")
+
+
+def navegar_ruta_completa(page: Page, ruta: list[str]) -> bool:
+    """
+    Navega toda la ruta desde cero (menú ya abierto):
+      - ruta[0]: clic en div.ui-menu-item (has_text=ruta[0])
+      - ruta[1:-1]: clic en div.menu-options (has_text) para cada rama
+      - ruta[-1]: clic en div.menu-options (has_text) para la hoja
+    Devuelve True si llegó a la hoja, False si falló.
+    Usa page.wait_for_timeout(600) entre clics (no networkidle).
+    """
+    try:
+        # ruta[0] → raíz: div.ui-menu-item
+        loc = page.locator("div.ui-menu-item", has_text=ruta[0]).first
+        loc.wait_for(state="visible", timeout=5000)
+        loc.click()
+        page.wait_for_timeout(MENU_NAVIGATION_DELAY_MS)
+
+        # ruta[1:-1] → ramas intermedias: div.menu-options
+        for rama in ruta[1:-1]:
+            loc = page.locator("div.menu-options", has_text=rama).first
+            loc.wait_for(state="visible", timeout=5000)
+            loc.click()
+            page.wait_for_timeout(MENU_NAVIGATION_DELAY_MS)
+
+        # ruta[-1] → hoja final: div.menu-options (puede coincidir con ruta[0] si len==1)
+        if len(ruta) > 1:
+            loc = page.locator("div.menu-options", has_text=ruta[-1]).first
+            loc.wait_for(state="visible", timeout=5000)
+            loc.click()
+            page.wait_for_timeout(MENU_NAVIGATION_DELAY_MS)
+
+        return True
+    except Exception as exc:
+        print(f"  ❌  Error navegando ruta {ruta}: {exc}")
+        return False
+
+
+def cerrar_pantalla_layout(page: Page) -> bool:
+    """
+    Cierra la pantalla activa haciendo clic en div.tab.activable.active div.close
+    Espera a que div.tab.activable.active desaparezca (state="hidden", timeout=5000).
+    Luego espera a que div.toggle.menu sea visible (hamburguesa ≡ disponible).
+    Devuelve True si se cerró correctamente.
+    """
+    try:
+        close_btn = page.locator("div.tab.activable.active div.close").first
+        close_btn.wait_for(state="visible", timeout=5000)
+        close_btn.click()
+        page.locator("div.tab.activable.active").first.wait_for(state="hidden", timeout=5000)
+        page.locator("div.toggle.menu").first.wait_for(state="visible", timeout=5000)
+        print("  ✖️   Pantalla cerrada.")
+        return True
+    except Exception as exc:
+        print(f"  ⚠️   No se pudo cerrar la pantalla: {exc}")
+        return False
+
+
+def ejecutar_paso2(page: Page) -> None:
+    """
+    Lee hojas_finales.json.
+    Para cada hoja por índice:
+      1. abrir_menu_hamburguesa()
+      2. navegar_ruta_completa()  → incluye clic en la hoja
+      3. esperar div.tab.activable.active + screenshot + dump_dom
+      4. cerrar_pantalla_layout()
+    Genera paso2_report.txt al finalizar.
+    """
+    json_path = config.SCREENSHOTS_DIR / "hojas_finales.json"
+    if not json_path.exists():
+        print("  ❌  No se encontró hojas_finales.json. Ejecutar PASO 1 primero.")
+        return
+
+    with open(json_path, "r", encoding="utf-8") as f:
+        hojas = json.load(f)
+
+    total = len(hojas)
+    print(f"\n  📋  Total de hojas a recorrer: {total}\n")
+
+    exitosas: list[str] = []
+    fallidas: list[dict] = []
+
+    for hoja in hojas:
+        indice = hoja.get("indice", "?")
+        ruta = hoja["ruta"]
+        ruta_str = " > ".join(ruta)
+        safe = ruta_str.replace(" > ", "__").replace(" ", "_")[:MAX__FILENAME_LENGTH]
+
+        print(f"\n[{indice:>3}/{total}] {ruta_str}")
+
+        try:
+            # PASO A — Abrir menú desde cero
+            abrir_menu_hamburguesa(page)
+
+            # PASO B — Navegar ruta completa (raíz → ramas → hoja)
+            ok = navegar_ruta_completa(page, ruta)
+            if not ok:
+                raise RuntimeError("navegar_ruta_completa retornó False")
+
+            print(f"  ✅  Clic en hoja '{ruta[-1]}'")
+
+            # PASO C — Captura
+            page.locator("div.tab.activable.active").first.wait_for(
+                state="visible", timeout=8000
+            )
+            print(f"  ✅  Vista cargada: '{ruta[-1]}'")
+            screenshot(page, f"paso2__{safe}")
+            dump_dom(page, f"dom_paso2__{safe}")
+
+            # PASO D — Cerrar pantalla
+            cerrado = cerrar_pantalla_layout(page)
+            if not cerrado:
+                print(f"  ⚠️   No se pudo cerrar pantalla para '{ruta_str}'")
+
+            exitosas.append(ruta_str)
+
+        except Exception as exc:
+            print(f"  ❌  Error en '{ruta_str}': {exc}")
+            screenshot(page, f"ERROR_paso2__{safe}")
+            fallidas.append({"ruta": ruta_str, "error": str(exc)})
+
+            # Intentar recuperación: cerrar pantalla si quedó abierta
+            try:
+                if page.locator("div.tab.activable.active").first.is_visible(timeout=2000):
+                    cerrar_pantalla_layout(page)
+            except Exception:
+                pass
+
+            # Esperar hamburguesa antes de continuar
+            try:
+                page.locator("div.toggle.menu").first.wait_for(state="visible", timeout=5000)
+            except Exception:
+                pass
+
+    # Reporte final
+    print(f"\n{'='*60}")
+    print(f"  ✅  PASO 2 completado.")
+    print(f"  ✅  Exitosas : {len(exitosas)}")
+    print(f"  ❌  Fallidas : {len(fallidas)}")
+    print(f"{'='*60}")
+
+    report_path = config.SCREENSHOTS_DIR / "paso2_report.txt"
+    with open(report_path, "w", encoding="utf-8") as f:
+        f.write(f"PASO 2 — Reporte – {datetime.datetime.now(timezone.utc).isoformat()}\n")
+        f.write(f"URL: {config.BASE_URL}\n\n")
+        f.write(f"Exitosas: {len(exitosas)}\n")
+        for r in exitosas:
+            f.write(f"  ✅  {r}\n")
+        f.write(f"\nFallidas: {len(fallidas)}\n")
+        for item in fallidas:
+            f.write(f"  ❌  {item['ruta']} → {item['error']}\n")
+    print(f"\n  📄  Reporte PASO 2 guardado en: {report_path}")
+
 
 # ---------------------------------------------------------------------------
 # Flujo principal
@@ -806,6 +986,9 @@ def run() -> None:
 
             print("▶ Paso 4: PASO 1 — Recorrido recursivo del árbol de menú…\n")
             recorrer_menu_completo_paso1(page)
+
+            print("\n▶ Paso 5: PASO 2 — Clic en hojas finales y captura de vistas…\n")
+            ejecutar_paso2(page)
 
             # Opcional: mantener el recorrido dinámico completo también
             # print("▶ Paso 5: Recorrido dinámico completo del menú…\n")
