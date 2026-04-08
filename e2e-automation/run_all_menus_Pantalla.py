@@ -641,8 +641,13 @@ def click_menu_option(page: Page, texto: str) -> None:
     loc.wait_for(state="visible", timeout=5000)
     loc.scroll_into_view_if_needed(timeout=3000)
     loc.click(force=True)
-    page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
-    page.wait_for_timeout(400)
+
+    # Reemplazadas por las lineas siguientes
+    #page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
+    #page.wait_for_timeout(400)
+  
+    # No usar networkidle — WebSocket activo impide que se resuelva
+    page.wait_for_timeout(600)
 
 
 def recorrer_submenu_paso1(
@@ -809,9 +814,20 @@ def navegar_hasta_panel(page: Page, ruta: list[str]) -> bool:
         loc = page.locator("div.ui-menu-item", has_text=raiz).first
         loc.wait_for(state="visible", timeout=5000)
         loc.scroll_into_view_if_needed(timeout=3000)
+
+        # Reemplazado por las lineas siguientes
+        #loc.click(force=True)
+        #page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
+        #page.wait_for_timeout(400)
+      
         loc.click(force=True)
-        page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
+        # Esperar a que aparezca el panel del submenú (no networkidle — WebSocket activo)
+        try:
+            page.locator("div.menu-options").first.wait_for(state="visible", timeout=8000)
+        except PlaywrightTimeoutError:
+            print(f"  ⚠️   Panel de '{raiz}' tardó en aparecer.")
         page.wait_for_timeout(400)
+  
     except Exception as exc:
         print(f"  ❌  No se pudo abrir raíz '{raiz}': {exc}")
         return False
@@ -855,6 +871,19 @@ def volver_desde_hoja(page: Page, ruta: list[str]) -> None:
         es_ultimo = (i == niveles_a_cerrar - 1)
         volver_nivel(page, usar_close=es_ultimo)
 
+def click_hoja(page: Page, texto: str) -> None:
+    """
+    Hace clic en una hoja final (div.menu-options sin div.next).
+    NO usa wait_for_load_state('networkidle') porque la app tiene WebSocket
+    con long-polling que impide que networkidle se resuelva.
+    En su lugar espera a que aparezca la pestaña activa con el nombre de la hoja.
+    """
+    loc = page.locator("div.menu-options", has_text=texto).first
+    loc.wait_for(state="visible", timeout=5000)
+    loc.scroll_into_view_if_needed(timeout=3000)
+    loc.click(force=True)
+    # Esperar a que Angular procese el clic (no networkidle)
+    page.wait_for_timeout(800)
 
 def ejecutar_paso2(page: Page) -> None:
     """
@@ -901,7 +930,7 @@ def ejecutar_paso2(page: Page) -> None:
 
         # 2. Hacer clic en la hoja
         try:
-            click_menu_option(page, hoja_txt)
+            click_hoja(page, hoja_txt)
             print(f"  ✅  Clic en hoja '{hoja_txt}'")
         except Exception as exc:
             print(f"  ❌  No se pudo hacer clic en hoja '{hoja_txt}': {exc}")
