@@ -1,3 +1,14 @@
+  ❌  Error durante la automatización: name 'safe' is not defined
+Traceback (most recent call last):
+  File "B:\Users\gather\python\e2e-automation\run_all_menus_Pantalla.py", line 1061, in <module>
+    run()
+    ~~~^^
+  File "B:\Users\gather\python\e2e-automation\run_all_menus_Pantalla.py", line 1010, in run
+    screenshot(page, f"paso2__{safe}")
+                               ^^^^
+NameError: name
+
+
 // pestaña Asientos diarios abierta
 // Snippet 9 — Cómo cerrar la pestaña activa
 Array.from(document.querySelectorAll('div.tab.activable'))
