@@ -3,7 +3,37 @@ with open("run_all_menus_Pantalla.py", encoding="utf-8") as f:
     lines = f.readlines()
 for i, line in enumerate(lines[990:1020], start=991):
     print(f"{i:4}: {line}", end="")
-  
+Respuesta
+ 991:             print()
+ 992:
+ 993:             # ── Paso 3: Abrir menú y recorrer ────────────────────────────
+ 994:             print("▶ Paso 3: Abriendo menú hamburguesa…")
+ 995:             open_hamburger_menu(page)
+ 996:             screenshot(page, "03_menu_abierto")
+ 997:             dump_dom(page, "dom-menu-abierto")  # <-- AGREGAR
+ 998:             print()
+ 999:
+1000:             #print("▶ Paso 4: Clickeando las tres opciones objetivo del menú…\n")
+1001:             #click_target_menu_items(page)
+1002:
+1003:             #print("▶ Paso 4: Capturando submenús de primer nivel…\n")
+1004:             #capturar_submenus_nivel1(page)
+1005:
+1006:             #print("▶ Paso 4: Recorrido completo del menú…\n")
+1007:             #recorrer_menu_completo(page)
+1008:
+1009:             # 4. Captura + DOM
+1010:             screenshot(page, f"paso2__{safe}")
+1011:             dump_dom(page, f"dom_paso2__{safe}")
+1012:
+1013:             exitosas += 1
+1014:
+1015:             # 4b. Pausa para observar la vista antes de continuar
+1016:             page.wait_for_timeout(config.PASO2_VISTA_PAUSA_MS)
+1017:
+1018:             # 5. Cerrar pestaña y volver al estado inicial
+1019:             volver_desde_hoja(page, ruta)
+1020:
   
   
   
