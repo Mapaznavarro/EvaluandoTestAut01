@@ -1,3 +1,34 @@
+// Snippet 8 — Contenido de la pestaña activa después de clic en hoja final
+(() => {
+  const tabContent = document.querySelector('div.tab-content');
+  return {
+    // Estructura interna del tab-content
+    tab_content_html: tabContent?.innerHTML.substring(0, 500) ?? 'NO ENCONTRADO',
+    // ¿Qué componente Angular cargó dentro?
+    componentes_angular: Array.from(document.querySelectorAll(
+      'div.tab-content *'
+    ))
+    .filter(el => el.tagName.includes('-') && el.offsetParent !== null)
+    .map(el => ({
+      tag:    el.tagName,
+      clases: el.className,
+      id:     el.id ?? '',
+    })),
+    // Pestañas abiertas (puede haber más de una)
+    todas_las_tabs: Array.from(document.querySelectorAll(
+      '.tab, app-ui-tab, [role="tab"]'
+    ))
+    .filter(el => el.offsetParent !== null)
+    .map(el => ({
+      texto:  el.textContent.trim().substring(0, 80),
+      clases: el.className,
+      tag:    el.tagName
+    }))
+  };
+})();
+Respuesta:
+
+
 // Snippet 7 — Estado del DOM y URL después de clic en una hoja final
 (() => {
   return {
