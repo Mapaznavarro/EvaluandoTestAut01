@@ -744,6 +744,7 @@ def recorrer_menu_completo_paso1(page: Page) -> None:
         json.dump(HOJAS_FINALES, f, ensure_ascii=False, indent=2)
     print(f"\n  💾  Hojas guardadas en: {report_path}")
 
+
 # ---------------------------------------------------------------------------
 # PASO 2 — Clic en cada hoja final y captura de la vista
 # ---------------------------------------------------------------------------
@@ -911,7 +912,6 @@ def ejecutar_paso2(page: Page) -> None:
             screenshot(page, f"WARN_paso2_tab__{safe}")
         else:
             print(f"  ✅  Vista cargada: '{hoja_txt}'")
-
         # 4. Captura + DOM
         screenshot(page, f"paso2__{safe}")
         dump_dom(page, f"dom_paso2__{safe}")
@@ -923,6 +923,7 @@ def ejecutar_paso2(page: Page) -> None:
 
         # 5. Cerrar pestaña y volver al estado inicial
         volver_desde_hoja(page, ruta)
+        page.wait_for_timeout(MENU_REOPEN_DELAY_MS)
 
     # ── Reporte final ────────────────────────────────────────────────────
     print(f"\n{'='*60}")
@@ -944,6 +945,7 @@ def ejecutar_paso2(page: Page) -> None:
             estado = "OK" if " > ".join(h["ruta"]) not in fallidas else "ERROR"
             f.write(f"[{estado}] {' > '.join(h['ruta'])}\n")
     print(f"\n  📄  Reporte guardado en: {reporte}")
+
 
 
 # ---------------------------------------------------------------------------
@@ -1006,19 +1008,13 @@ def run() -> None:
             #print("▶ Paso 4: Recorrido completo del menú…\n")
             #recorrer_menu_completo(page)
 
-            # 4. Captura + DOM
-            screenshot(page, f"paso2__{safe}")
-            dump_dom(page, f"dom_paso2__{safe}")
+            print("▶ Paso 4: PASO 1 — Recorrido recursivo del árbol de menú…\n")
+            recorrer_menu_completo_paso1(page)
 
-            exitosas += 1
 
-            # 4b. Pausa para observar la vista antes de continuar
-            page.wait_for_timeout(config.PASO2_VISTA_PAUSA_MS)
+            print("\n▶ Paso 5: PASO 2 — Clic en hojas finales y captura de vistas…\n")
+            ejecutar_paso2(page)
 
-            # 5. Cerrar pestaña y volver al estado inicial
-            volver_desde_hoja(page, ruta)
-
-          
             # Opcional: mantener el recorrido dinámico completo también
             # print("▶ Paso 5: Recorrido dinámico completo del menú…\n")
             # open_hamburger_menu(page)
