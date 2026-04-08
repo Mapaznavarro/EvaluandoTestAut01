@@ -1,3 +1,18 @@
+// Snippet 9 — Cómo cerrar la pestaña activa
+Array.from(document.querySelectorAll('div.tab.activable'))
+  .filter(el => el.offsetParent !== null)
+  .map(el => ({
+    texto:        el.textContent.trim().substring(0, 60),
+    clases:       el.className,
+    tiene_close:  !!el.querySelector('div.close, button.close, span.close, [class*="close"]'),
+    close_html:   el.querySelector('div.close, button.close, span.close, [class*="close"]')
+                    ?.outerHTML.substring(0, 200) ?? 'N/A',
+    html_tab:     el.outerHTML.substring(0, 300)
+  }));
+  Respuesta:
+
+
+
 // Snippet 8 — Contenido de la pestaña activa después de clic en hoja final
 (() => {
   const tabContent = document.querySelector('div.tab-content');
