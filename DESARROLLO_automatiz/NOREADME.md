@@ -1,3 +1,14 @@
+Snippet en python
+with open("run_all_menus_Pantalla.py", encoding="utf-8") as f:
+    lines = f.readlines()
+for i, line in enumerate(lines[990:1020], start=991):
+    print(f"{i:4}: {line}", end="")
+  
+  
+  
+  
+  
+  
   ❌  Error durante la automatización: name 'safe' is not defined
 Traceback (most recent call last):
   File "B:\Users\gather\python\e2e-automation\run_all_menus_Pantalla.py", line 1061, in <module>
