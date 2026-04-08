@@ -1,3 +1,22 @@
+// Snippet 10b — Ver qué requests se dispararon y el estado del DOM
+(() => {
+    window._snippet10_observer?.disconnect();
+    return {
+        // ¿Hubo requests de red? (indica si Angular hizo fetch)
+        requests_disparados: window._snippet10_requests?.length ?? 0,
+        requests_urls: (window._snippet10_requests ?? []).slice(0, 10),
+        // Estado del tab activo
+        tab_activo: document.querySelector('div.tab.activable.active')?.textContent.trim().substring(0, 60) ?? 'NINGUNO',
+        // ¿Cuánto tardó en aparecer? (ver si es síncrono o asíncrono)
+        menu_cerrado: !document.querySelector('div.menu-content')?.offsetParent,
+        // Componente cargado
+        componente_principal: document.querySelector('div.tab-content app-generic-form, div.tab-content app-dynamic-loader')?.tagName ?? 'NO ENCONTRADO'
+    };
+})();
+Respuesta
+
+
+
 // Snippet 10 — Capturar qué evento dispara el clic en una hoja
 // Ejecutar ANTES de hacer clic en "Asientos diarios"
 (() => {
