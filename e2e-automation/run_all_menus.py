@@ -445,7 +445,7 @@ def recorrer_submenu(
             print(f"{indent}  🍃  Hoja final capturada: '{ruta_str}'")
 
         # Volver al nivel anterior
-        volver_nivel(page, es_nivel1=(nivel == 1))
+        volver_nivel(page, usar_close=(nivel == 1))
 
 
 def recorrer_menu_completo(page: Page) -> None:
@@ -482,7 +482,7 @@ def recorrer_menu_completo(page: Page) -> None:
         recorrer_submenu(page, breadcrumb=[item_text], nivel=1)
 
         # Al terminar todo el árbol de este ítem, cerrar con X
-        volver_nivel(page, es_nivel1=True)
+        volver_nivel(page, usar_close=True)
 
 # ---------------------------------------------------------------------------
 # Descubrimiento dinámico del menú
@@ -621,49 +621,6 @@ def traverse_menu(
 HOJAS_FINALES: list[dict] = []
 
 
-def get_menu_options(page: Page) -> list[dict]:
-    """Devuelve div.menu-options visibles con texto y tiene_next."""
-    return page.evaluate("""
-        () => Array.from(document.querySelectorAll('div.menu-options'))
-            .filter(el => el.offsetParent !== null)
-            .map(el => ({
-                texto: el.querySelector('div.text')?.textContent.trim() ?? '',
-                tiene_next: !!el.querySelector('div.next')
-            }))
-    """)
-
-
-def click_menu_option(page: Page, texto: str) -> None:
-    """Clic en el div.menu-options cuyo div.text contiene el texto dado."""
-    loc = page.locator("div.menu-options", has_text=texto).first
-    loc.wait_for(state="visible", timeout=5000)
-    loc.click()
-    page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
-    page.wait_for_timeout(400)
-
-
-def volver_nivel(page: Page, es_nivel1: bool) -> None:
-    """
-    Vuelve al nivel anterior:
-      nivel 1 → div.menu-title.main div.close  (X)
-      nivel 2+ → div.menu-title:not(.main) div.back  (<)
-    """
-    if es_nivel1:
-        sel = "div.menu-title.main div.close"
-        descripcion = "X (cerrar nivel 1)"
-    else:
-        sel = "div.menu-title:not(.main) div.back"
-        descripcion = "< (volver nivel anterior)"
-
-    try:
-        btn = page.locator(sel).first
-        btn.wait_for(state="visible", timeout=3000)
-        btn.click()
-        page.wait_for_timeout(400)
-        print(f"  ↩️   {descripcion}")
-    except Exception as exc:
-        print(f"  ⚠️   No se pudo hacer clic en '{descripcion}': {exc}")
-
 
 def recorrer_submenu_paso1(
     page: Page,
@@ -715,7 +672,7 @@ def recorrer_submenu_paso1(
         recorrer_submenu_paso1(page, ruta, nivel + 1)
 
         # Volver al nivel actual — siempre con < (back), nunca con X
-        volver_nivel(page, usar_close=False)
+        volver_nivel(page, usar_close=False) 
 
 
 def recorrer_menu_completo_paso1(page: Page) -> None:
@@ -751,7 +708,7 @@ def recorrer_menu_completo_paso1(page: Page) -> None:
         recorrer_submenu_paso1(page, breadcrumb=[item_text], nivel=1)
 
         # Cerrar el panel raíz con X al terminar TODO el árbol de este ítem
-        volver_nivel(page, usar_close=True)
+        volver_nivel(page, usar_close=True) 
 
     # ── Reporte de hojas finales descubiertas ───────────────────────────
     print(f"\n{'='*60}")
