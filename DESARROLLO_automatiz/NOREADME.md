@@ -14,7 +14,24 @@
     };
 })();
 Respuesta
-
+{
+    "requests_disparados": 32,
+    "requests_urls": [
+        "http://172.21.170.81/socket/?session-id=2ab213b2-5711-4591-bb1d-39a52cee55e9&agent-type=THUNDER&agent-id=THUNDER-e41cde44-2079-4a39-a925-5bea26407e7f&EIO=4&transport=polling&t=h8419t74&sid=2LlqOmfz50Y",
+        "http://172.21.170.81/socket/?session-id=2ab213b2-5711-4591-bb1d-39a52cee55e9&agent-type=THUNDER&agent-id=THUNDER-e41cde44-2079-4a39-a925-5bea26407e7f&EIO=4&transport=polling&t=h8nbudia&sid=2LlqOmfz50Y",
+        "http://172.21.170.81/socket/?session-id=2ab213b2-5711-4591-bb1d-39a52cee55e9&agent-type=THUNDER&agent-id=THUNDER-e41cde44-2079-4a39-a925-5bea26407e7f&EIO=4&transport=polling&t=h8nbxwqs&sid=2LlqOmfz50Y",
+        "http://172.21.170.81/socket/?session-id=2ab213b2-5711-4591-bb1d-39a52cee55e9&agent-type=THUNDER&agent-id=THUNDER-e41cde44-2079-4a39-a925-5bea26407e7f&EIO=4&transport=polling&t=h96mi7zl&sid=2LlqOmfz50Y",
+        "http://172.21.170.81/socket/?session-id=2ab213b2-5711-4591-bb1d-39a52cee55e9&agent-type=THUNDER&agent-id=THUNDER-e41cde44-2079-4a39-a925-5bea26407e7f&EIO=4&transport=polling&t=h96mknzc&sid=2LlqOmfz50Y",
+        "http://172.21.170.81/socket/?session-id=2ab213b2-5711-4591-bb1d-39a52cee55e9&agent-type=THUNDER&agent-id=THUNDER-e41cde44-2079-4a39-a925-5bea26407e7f&EIO=4&transport=polling&t=h9px5xld&sid=2LlqOmfz50Y",
+        "http://172.21.170.81/api/thunder/form-loader/get/golf/consultas/asientosdiariosCtb/asientosdiariosCtb",
+        "http://172.21.170.81/api/thunder/client_conf/save-tabs",
+        "http://172.21.170.81/socket/?session-id=2ab213b2-5711-4591-bb1d-39a52cee55e9&agent-type=THUNDER&agent-id=THUNDER-e41cde44-2079-4a39-a925-5bea26407e7f&EIO=4&transport=polling&t=h9px8thi&sid=2LlqOmfz50Y",
+        "http://172.21.170.81/socket/?session-id=2ab213b2-5711-4591-bb1d-39a52cee55e9&agent-type=THUNDER&agent-id=THUNDER-e41cde44-2079-4a39-a925-5bea26407e7f&EIO=4&transport=polling&t=ha97tjlo&sid=2LlqOmfz50Y"
+    ],
+    "tab_activo": "Asientos diarios",
+    "menu_cerrado": false,
+    "componente_principal": "APP-DYNAMIC-LOADER"
+}
 
 
 // Snippet 10 — Capturar qué evento dispara el clic en una hoja
