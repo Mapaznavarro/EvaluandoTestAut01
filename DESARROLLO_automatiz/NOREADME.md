@@ -28,6 +28,31 @@
   };
 })();
 Respuesta:
+{
+    "url_actual": "http://172.21.170.81/home",
+    "menu_visible": false,
+    "main_content": [
+        {
+            "tag": "CORE-HOME",
+            "clases": "",
+            "id": "",
+            "hijos": 1
+        },
+        {
+            "tag": "DIV",
+            "clases": "tab-content",
+            "id": "",
+            "hijos": 1
+        }
+    ],
+    "tabs": [
+        {
+            "texto": "Layout",
+            "clases": "tab active",
+            "activo": true
+        }
+    ]
+}
 
 
 
