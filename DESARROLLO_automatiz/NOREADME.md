@@ -11,7 +11,15 @@ Array.from(document.querySelectorAll('div.tab.activable'))
     html_tab:     el.outerHTML.substring(0, 300)
   }));
   Respuesta:
-
+[
+    {
+        "texto": "Asientos diarios",
+        "clases": "tab activable active",
+        "tiene_close": true,
+        "close_html": "<div _ngcontent-ng-c2920271696=\"\" class=\"close\"><svg _ngcontent-ng-c2920271696=\"\" class=\"svg-inline--fa fa-xmark fa-fw fa-sm\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fal\" data-icon=\"xmark\" r",
+        "html_tab": "<div _ngcontent-ng-c2920271696=\"\" draggable-item=\"\" class=\"tab activable active\" draggable=\"true\"><div _ngcontent-ng-c2920271696=\"\" draggable=\"false\" class=\"label not-selectable\"><div _ngcontent-ng-c2920271696=\"\" class=\"icon\"><svg _ngcontent-ng-c2920271696=\"\" class=\"svg-inline--fa fa-money-check fa-"
+    }
+]
 
 
 // Snippet 8 — Contenido de la pestaña activa después de clic en hoja final
