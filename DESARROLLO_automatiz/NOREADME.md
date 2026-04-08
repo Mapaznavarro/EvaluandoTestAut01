@@ -1,3 +1,39 @@
+// Snippet 7 — Estado del DOM y URL después de clic en una hoja final
+(() => {
+  return {
+    url_actual: window.location.href,
+    // ¿Se cerró el menú o sigue visible?
+    menu_visible: !!document.querySelector('div.menu-content')?.offsetParent,
+    // ¿Qué componente/vista cargó? Buscar el contenedor principal de contenido
+    main_content: Array.from(document.querySelectorAll(
+      'app-ui-tab, app-tab, .tab-content, .main-content, .workspace, router-outlet + *, main > *'
+    ))
+    .filter(el => el.offsetParent !== null)
+    .map(el => ({
+      tag:    el.tagName,
+      clases: el.className,
+      id:     el.id ?? '',
+      hijos:  el.children.length
+    })),
+    // ¿Apareció alguna pestaña nueva?
+    tabs: Array.from(document.querySelectorAll(
+      '.tab, .tab-item, [role="tab"], app-ui-tab-item, .activable'
+    ))
+    .filter(el => el.offsetParent !== null)
+    .map(el => ({
+      texto:  el.textContent.trim().substring(0, 60),
+      clases: el.className,
+      activo: el.classList.contains('active')
+    }))
+  };
+})();
+Respuesta:
+
+
+
+
+
+
 Ejecuta el programa hasta que esté parado en el panel que muestra las hojas de Golf > Consultas > Contabilidad (donde están Asientos diarios, Asientos manuales, etc.) y ejecuta este snippet:
 
 // Snippet 6 — Estructura de una hoja final (div.menu-options sin div.next)
