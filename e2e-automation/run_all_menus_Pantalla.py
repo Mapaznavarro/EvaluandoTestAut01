@@ -386,7 +386,8 @@ def volver_nivel(page: Page, usar_close: bool = False) -> None:
     try:
         btn = page.locator(sel).first
         btn.wait_for(state="visible", timeout=3000)
-        btn.click()
+        btn.scroll_into_view_if_needed(timeout=3000)
+        btn.click(force=True)
         page.wait_for_timeout(400)
         print(f"  ↩️   {descripcion}")
     except Exception as exc:
@@ -465,7 +466,8 @@ def recorrer_menu_completo(page: Page) -> None:
         try:
             loc = page.locator("div.ui-menu-item", has_text=item_text).first
             loc.wait_for(state="visible", timeout=5000)
-            loc.click()
+            loc.scroll_into_view_if_needed(timeout=3000)
+            loc.click(force=True)
             page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
             page.wait_for_timeout(500)
             print(f"  ✅  Submenú de '{item_text}' abierto.")
@@ -637,7 +639,8 @@ def click_menu_option(page: Page, texto: str) -> None:
     """Clic en el div.menu-options cuyo div.text contiene el texto dado."""
     loc = page.locator("div.menu-options", has_text=texto).first
     loc.wait_for(state="visible", timeout=5000)
-    loc.click()
+    loc.scroll_into_view_if_needed(timeout=3000)
+    loc.click(force=True)
     page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
     page.wait_for_timeout(400)
 
@@ -714,7 +717,8 @@ def recorrer_menu_completo_paso1(page: Page) -> None:
         try:
             loc = page.locator("div.ui-menu-item", has_text=item_text).first
             loc.wait_for(state="visible", timeout=5000)
-            loc.click()
+            loc.scroll_into_view_if_needed(timeout=3000)
+            loc.click(force=True)
             page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
             page.wait_for_timeout(500)
             print(f"  ✅  Submenú de '{item_text}' abierto.")
@@ -804,7 +808,8 @@ def navegar_hasta_panel(page: Page, ruta: list[str]) -> bool:
     try:
         loc = page.locator("div.ui-menu-item", has_text=raiz).first
         loc.wait_for(state="visible", timeout=5000)
-        loc.click()
+        loc.scroll_into_view_if_needed(timeout=3000)
+        loc.click(force=True)
         page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
         page.wait_for_timeout(400)
     except Exception as exc:
@@ -887,8 +892,11 @@ def ejecutar_paso2(page: Page) -> None:
             screenshot(page, f"ERROR_paso2_nav__{safe}")
             fallidas.append(ruta_str)
             # Intentar recuperar estado inicial
-            page.goto(config.BASE_URL, wait_until="networkidle")
-            handle_login(page)
+            try:
+                page.goto(config.BASE_URL, wait_until="domcontentloaded", timeout=30000)
+                handle_login(page)
+            except Exception as goto_exc:
+                print(f"  ⚠️   No se pudo recuperar el estado inicial: {goto_exc}")
             continue
 
         # 2. Hacer clic en la hoja
@@ -899,10 +907,12 @@ def ejecutar_paso2(page: Page) -> None:
             print(f"  ❌  No se pudo hacer clic en hoja '{hoja_txt}': {exc}")
             screenshot(page, f"ERROR_paso2_clic__{safe}")
             fallidas.append(ruta_str)
-            # Cerrar paneles abiertos y continuar
-            niveles = len(ruta) - 1
-            for i in range(niveles):
-                volver_nivel(page, usar_close=(i == niveles - 1))
+            # Intentar recuperar estado inicial
+            try:
+                page.goto(config.BASE_URL, wait_until="domcontentloaded", timeout=30000)
+                handle_login(page)
+            except Exception as goto_exc:
+                print(f"  ⚠️   No se pudo recuperar el estado inicial: {goto_exc}")
             continue
 
         # 3. Esperar a que cargue la vista (pestaña activa con el nombre de la hoja)
