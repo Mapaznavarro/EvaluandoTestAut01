@@ -1,3 +1,13 @@
+Buscar 
+<app-ui-menu class="...">          ← usar "app-ui-menu"
+  <div class="menu-list ...">      ← o usar "div.menu-list"
+    <div class="ui-menu-item">Golf</div>
+    ...
+  </div>
+</app-ui-menu>
+
+
+
 Abre el archivo dom-menu-abierto.html que ya genera tu script y busca el elemento contenedor del panel lateral. Probablemente sea algo como:
 
 
