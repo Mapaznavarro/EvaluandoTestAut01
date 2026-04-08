@@ -1,0 +1,1206 @@
+PS B:\Users\gather\python\e2e-automation> python .\run_all_menus.py
+
+============================================================
+  Automatización E2E – Recorrido completo del menú
+============================================================
+  URL base  : http://172.21.170.81/home
+  Headless  : False
+  Timeout   : 15000 ms
+  Capturas  : B:\Users\gather\python\e2e-automation\screenshots
+============================================================
+
+▶ Paso 1: Abriendo la URL…
+  📸  Captura guardada: 20260408_141652_00_home.png
+  ✅  Página cargada: http://172.21.170.81/login
+
+▶ Paso 2: Verificando login…
+  🔐  Pantalla de login detectada. Ingresando credenciales…
+  📸  Captura guardada: 20260408_141653_01_before_login.png
+  ✅  Clic en 'botón de login' usando: button[type='submit']
+  ✅  Login completado.
+  📸  Captura guardada: 20260408_141654_02_after_login.png
+  🧾  DOM guardado: 20260408_141654_dom-after-login.html
+
+▶ Paso 3: Abriendo menú hamburguesa…
+  ✅  Clic en 'menú hamburguesa' usando: css=div.toggle.menu
+  📸  Captura guardada: 20260408_141657_03_menu_abierto.png
+  🧾  DOM guardado: 20260408_141657_dom-menu-abierto.html
+
+▶ Paso 4: PASO 1 — Recorrido recursivo del árbol de menú…
+
+
+============================================================
+▶ MENÚ PRINCIPAL → 'Golf'
+============================================================
+  ℹ️   Menú ya está abierto – no se vuelve a clickear hamburguesa.
+  ✅  Submenú de 'Golf' abierto.
+  📸  Captura guardada: 20260408_141659_submenu_nivel1__Golf.png
+  📸  Nivel 1 — 'Golf': ['Consultas', 'Contabilidad', 'Entradas', 'Incorporaciones', 'Maestros', 'Procesos', 'Tareas']
+    ▶  [RAMA] entrando en: 'Golf > Consultas'
+  📸  Captura guardada: 20260408_141700_menu__Golf__Consultas.png
+    📋  Nivel 2 — 'Golf > Consultas': ['Contabilidad', 'Estados de cartera', 'Ficha instrumentos', 'Históricos', 'Informe comisiones', 'Operaciones', 'Precios', 'Resumen patrimonial', 'Saldos', 'Tareas', 'Valor Liquidativo']
+      ▶  [RAMA] entrando en: 'Golf > Consultas > Contabilidad'
+  📸  Captura guardada: 20260408_141701_menu__Golf__Consultas__Contabilidad.png
+      📋  Nivel 3 — 'Golf > Consultas > Contabilidad': ['Asientos diarios', 'Asientos manuales', 'Comparativa de cuentas', 'Comparativa de saldos a fecha', 'Consulta informe', 'Consulta signo girado', 'Cuadre contabilidad cartera', 'Saldos contables entidad']
+        🍃  [HOJA] registrada: 'Golf > Consultas > Contabilidad > Asientos diarios'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Contabilidad > Asientos manuales'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Contabilidad > Comparativa de cuentas'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Contabilidad > Comparativa de saldos a fecha'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Contabilidad > Consulta informe'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Contabilidad > Consulta signo girado'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Contabilidad > Cuadre contabilidad cartera'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Contabilidad > Saldos contables entidad'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Consultas > Estados de cartera'
+  📸  Captura guardada: 20260408_141702_menu__Golf__Consultas__Estados_de_cartera.png
+      📋  Nivel 3 — 'Golf > Consultas > Estados de cartera': ['Cartera comparada', 'Cartera de gestión', 'Histórico de fondos', 'Histórico de valoración', 'Tipos de saldos']
+        🍃  [HOJA] registrada: 'Golf > Consultas > Estados de cartera > Cartera comparada'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Estados de cartera > Cartera de gestión'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Estados de cartera > Histórico de fondos'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Estados de cartera > Histórico de valoración'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Estados de cartera > Tipos de saldos'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Consultas > Ficha instrumentos'
+  📸  Captura guardada: 20260408_141704_menu__Golf__Consultas__Ficha_instrumentos.png
+      📋  Nivel 3 — 'Golf > Consultas > Ficha instrumentos': ['Ficha de instrumentos al contado', 'Flujos instrumentos']
+        🍃  [HOJA] registrada: 'Golf > Consultas > Ficha instrumentos > Ficha de instrumentos al contado'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Ficha instrumentos > Flujos instrumentos'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Consultas > Históricos'
+  📸  Captura guardada: 20260408_141705_menu__Golf__Consultas__Históricos.png
+      📋  Nivel 3 — 'Golf > Consultas > Históricos': ['Periodificaciones']
+        🍃  [HOJA] registrada: 'Golf > Consultas > Históricos > Periodificaciones'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Consultas > Informe comisiones'
+  📸  Captura guardada: 20260408_141707_menu__Golf__Consultas__Informe_comisiones.png
+      📋  Nivel 3 — 'Golf > Consultas > Informe comisiones': ['Informe comisiones']
+        🍃  [HOJA] registrada: 'Golf > Consultas > Informe comisiones > Informe comisiones'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Consultas > Operaciones'
+  📸  Captura guardada: 20260408_141709_menu__Golf__Consultas__Operaciones.png
+      📋  Nivel 3 — 'Golf > Consultas > Operaciones': ['Diario de operaciones por operación', 'Ficha de depósitos', 'Histórico operaciones', 'Operaciones Totales Ope/VT', 'Previsión de tesorería']
+        🍃  [HOJA] registrada: 'Golf > Consultas > Operaciones > Diario de operaciones por operación'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Operaciones > Ficha de depósitos'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Operaciones > Histórico operaciones'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Operaciones > Operaciones Totales Ope/VT'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Operaciones > Previsión de tesorería'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Consultas > Precios'
+  📸  Captura guardada: 20260408_141710_menu__Golf__Consultas__Precios.png
+      📋  Nivel 3 — 'Golf > Consultas > Precios': ['Control precio valoración', 'Cotizaciones de instrumentos', 'Curvas tir', 'Histórico Divisas', 'Histórico Instrumentos', 'Histórico valoración vs cotizaciones', 'Tires']
+        🍃  [HOJA] registrada: 'Golf > Consultas > Precios > Control precio valoración'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Precios > Cotizaciones de instrumentos'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Precios > Curvas tir'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Precios > Histórico Divisas'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Precios > Histórico Instrumentos'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Precios > Histórico valoración vs cotizaciones'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Precios > Tires'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Consultas > Resumen patrimonial'
+  📸  Captura guardada: 20260408_141712_menu__Golf__Consultas__Resumen_patrimonial.png
+      📋  Nivel 3 — 'Golf > Consultas > Resumen patrimonial': ['Resumen patrimonial a fecha', 'Resumen Patrimonial a Fecha (2008)', 'Resumen patrimonial comparativa (2008)']
+        🍃  [HOJA] registrada: 'Golf > Consultas > Resumen patrimonial > Resumen patrimonial a fecha'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Resumen patrimonial > Resumen Patrimonial a Fecha (2008)'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Resumen patrimonial > Resumen patrimonial comparativa (2008)'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Consultas > Saldos'
+  📸  Captura guardada: 20260408_141714_menu__Golf__Consultas__Saldos.png
+      📋  Nivel 3 — 'Golf > Consultas > Saldos': ['Saldos de conceptos', 'Saldos de conceptos con fecha', 'Saldos De Identificación de Partida', 'Saldos medios', 'Saldos por depositario']
+        🍃  [HOJA] registrada: 'Golf > Consultas > Saldos > Saldos de conceptos'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Saldos > Saldos de conceptos con fecha'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Saldos > Saldos De Identificación de Partida'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Saldos > Saldos medios'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Saldos > Saldos por depositario'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Consultas > Tareas'
+  📸  Captura guardada: 20260408_141715_menu__Golf__Consultas__Tareas.png
+      📋  Nivel 3 — 'Golf > Consultas > Tareas': ['Tareas']
+        🍃  [HOJA] registrada: 'Golf > Consultas > Tareas > Tareas'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Consultas > Valor Liquidativo'
+  📸  Captura guardada: 20260408_141717_menu__Golf__Consultas__Valor_Liquidativo.png
+      📋  Nivel 3 — 'Golf > Consultas > Valor Liquidativo': ['Valor liquidativo clases', 'Valor liquidativo fondos']
+        🍃  [HOJA] registrada: 'Golf > Consultas > Valor Liquidativo > Valor liquidativo clases'
+        🍃  [HOJA] registrada: 'Golf > Consultas > Valor Liquidativo > Valor liquidativo fondos'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+    ▶  [RAMA] entrando en: 'Golf > Contabilidad'
+  📸  Captura guardada: 20260408_141719_menu__Golf__Contabilidad.png
+    📋  Nivel 2 — 'Golf > Contabilidad': ['Cuadre contable cuentas']
+      🍃  [HOJA] registrada: 'Golf > Contabilidad > Cuadre contable cuentas'
+  ↩️   < (volver nivel anterior)
+    ▶  [RAMA] entrando en: 'Golf > Entradas'
+  📸  Captura guardada: 20260408_141721_menu__Golf__Entradas.png
+    📋  Nivel 2 — 'Golf > Entradas': ['Entrada de operaciones']
+      🍃  [HOJA] registrada: 'Golf > Entradas > Entrada de operaciones'
+  ↩️   < (volver nivel anterior)
+    ▶  [RAMA] entrando en: 'Golf > Incorporaciones'
+  📸  Captura guardada: 20260408_141722_menu__Golf__Incorporaciones.png
+    📋  Nivel 2 — 'Golf > Incorporaciones': ['Incorporación cotizaciones']
+      🍃  [HOJA] registrada: 'Golf > Incorporaciones > Incorporación cotizaciones'
+  ↩️   < (volver nivel anterior)
+    ▶  [RAMA] entrando en: 'Golf > Maestros'
+  📸  Captura guardada: 20260408_141724_menu__Golf__Maestros.png
+    📋  Nivel 2 — 'Golf > Maestros': ['Básicos', 'Cartera', 'Conceptos', 'Configuración', 'Cotizaciones', 'Entidades', 'Fondos', 'Instrumentos', 'Varios', 'Varios II']
+      ▶  [RAMA] entrando en: 'Golf > Maestros > Básicos'
+  📸  Captura guardada: 20260408_141725_menu__Golf__Maestros__Básicos.png
+      📋  Nivel 3 — 'Golf > Maestros > Básicos': ['Clases de valor', 'Criterios', 'Descripción operaciones', 'Escalas', 'Escalas éxito', 'Nombres tarifas', 'Plantilla curva diferencial', 'Plantilla de valoración', 'Plantillas contables', 'Plantillas operaciones', 'Política inversión', 'Sectores', 'Subsectores', 'Tarifas', 'Tarifas cartera', 'Tipos de activo', 'Tipos de operación', 'Tipos de saldos', 'Tipos de valor']
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Clases de valor'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Criterios'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Descripción operaciones'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Escalas'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Escalas éxito'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Nombres tarifas'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Plantilla curva diferencial'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Plantilla de valoración'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Plantillas contables'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Plantillas operaciones'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Política inversión'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Sectores'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Subsectores'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Tarifas'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Tarifas cartera'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Tipos de activo'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Tipos de operación'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Tipos de saldos'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Básicos > Tipos de valor'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Maestros > Cartera'
+  📸  Captura guardada: 20260408_141726_menu__Golf__Maestros__Cartera.png
+      📋  Nivel 3 — 'Golf > Maestros > Cartera': ['Bloqueo títulos', 'Carteras tipo cambios', 'Carteras tipo precio', 'Cuentas Liq', 'Depósitos', 'Depósitos DT', 'Divisa liquidación', 'Restricciones car', 'Restricciones ins']
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cartera > Bloqueo títulos'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cartera > Carteras tipo cambios'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cartera > Carteras tipo precio'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cartera > Cuentas Liq'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cartera > Depósitos'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cartera > Depósitos DT'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cartera > Divisa liquidación'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cartera > Restricciones car'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cartera > Restricciones ins'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Maestros > Conceptos'
+  📸  Captura guardada: 20260408_141728_menu__Golf__Maestros__Conceptos.png
+      📋  Nivel 3 — 'Golf > Maestros > Conceptos': ['Conceptos', 'Conceptos cuentas']
+        🍃  [HOJA] registrada: 'Golf > Maestros > Conceptos > Conceptos'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Conceptos > Conceptos cuentas'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Maestros > Configuración'
+  📸  Captura guardada: 20260408_141730_menu__Golf__Maestros__Configuración.png
+      📋  Nivel 3 — 'Golf > Maestros > Configuración': ['Control aplicación', 'Enlaces conexiones', 'Enlaces remotos']
+        🍃  [HOJA] registrada: 'Golf > Maestros > Configuración > Control aplicación'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Configuración > Enlaces conexiones'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Configuración > Enlaces remotos'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Maestros > Cotizaciones'
+  📸  Captura guardada: 20260408_141731_menu__Golf__Maestros__Cotizaciones.png
+      📋  Nivel 3 — 'Golf > Maestros > Cotizaciones': ['Cotizaciones', 'Cotizaciones CVD', 'Cotizaciones divisas', 'Cotizaciones divisas entidades', 'Curvas de tir', 'Deltas', 'Forwards', 'Grupo cotizaciones', 'IPC', 'Tires']
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cotizaciones > Cotizaciones'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cotizaciones > Cotizaciones CVD'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cotizaciones > Cotizaciones divisas'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cotizaciones > Cotizaciones divisas entidades'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cotizaciones > Curvas de tir'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cotizaciones > Deltas'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cotizaciones > Forwards'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cotizaciones > Grupo cotizaciones'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cotizaciones > IPC'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Cotizaciones > Tires'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Maestros > Entidades'
+  📸  Captura guardada: 20260408_141733_menu__Golf__Maestros__Entidades.png
+      📋  Nivel 3 — 'Golf > Maestros > Entidades': ['Entidades', 'Básicos']
+        🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Entidades'
+        ▶  [RAMA] entrando en: 'Golf > Maestros > Entidades > Básicos'
+  📸  Captura guardada: 20260408_141734_menu__Golf__Maestros__Entidades__Básicos.png
+        📋  Nivel 4 — 'Golf > Maestros > Entidades > Básicos': ['Agentes', 'Aportantes', 'Beneficiarios', 'Beneficiarios tipos', 'Brókers', 'Bancos', 'Carteras', 'Clientes', 'Comerciales', 'Contables', 'Contrapartidas', 'Correspondencia', 'Cuentas', 'Distribuidores', 'Emisoras', 'Datos administrativos', 'Entidades CRS', 'Entidades', 'Entidades FATCA', 'Fondo/Compa./Clase', 'Notarios', 'Fondos', 'Gestoras', 'Gestores', 'Grupos fiscales', 'Mediadoras', 'Mercados', 'Partícipes', 'Planes', 'Promotores', 'Proveedores', 'Propietarios', 'Registrales', 'Representantes', 'Sucursales', 'Subplan', 'Titulares', 'Varios', 'Vinculados']
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Agentes'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Aportantes'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Beneficiarios'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Beneficiarios tipos'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Brókers'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Bancos'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Carteras'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Clientes'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Comerciales'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Contables'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Contrapartidas'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Correspondencia'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Cuentas'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Distribuidores'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Emisoras'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Datos administrativos'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Entidades CRS'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Entidades'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Entidades FATCA'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Fondo/Compa./Clase'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Notarios'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Fondos'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Gestoras'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Gestores'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Grupos fiscales'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Mediadoras'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Mercados'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Partícipes'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Planes'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Promotores'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Proveedores'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Propietarios'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Registrales'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Representantes'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Sucursales'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Subplan'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Titulares'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Varios'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Entidades > Básicos > Vinculados'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Maestros > Fondos'
+  📸  Captura guardada: 20260408_141736_menu__Golf__Maestros__Fondos.png
+      📋  Nivel 3 — 'Golf > Maestros > Fondos': ['Cálculos cierre', 'Conceptos fondo', 'Nombre Comisión Éxito', 'Política de inversión de fondos', 'Valores liquidativo fondos', 'Valores liquidativo planes']
+        🍃  [HOJA] registrada: 'Golf > Maestros > Fondos > Cálculos cierre'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Fondos > Conceptos fondo'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Fondos > Nombre Comisión Éxito'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Fondos > Política de inversión de fondos'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Fondos > Valores liquidativo fondos'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Fondos > Valores liquidativo planes'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Maestros > Instrumentos'
+  📸  Captura guardada: 20260408_141738_menu__Golf__Maestros__Instrumentos.png
+      📋  Nivel 3 — 'Golf > Maestros > Instrumentos': ['Instrumentos', 'Básicos']
+        🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Instrumentos'
+        ▶  [RAMA] entrando en: 'Golf > Maestros > Instrumentos > Básicos'
+  📸  Captura guardada: 20260408_141739_menu__Golf__Maestros__Instrumentos__Básicos.png
+        📋  Nivel 4 — 'Golf > Maestros > Instrumentos > Básicos': ['Instrumentos', 'Valores CVI', 'Colaterales', 'Colaterales garantía', 'Valores RF', 'Valores común', 'Futuros', 'Valores RV', 'Opciones', 'Contrato derivado', 'Divisas', 'Pagos y cobros', 'Entregables', 'Instrumentos Frontón', 'Instrumentos UME', 'Variaciones tipos', 'Periodos', 'Flujos']
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Instrumentos'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Valores CVI'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Colaterales'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Colaterales garantía'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Valores RF'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Valores común'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Futuros'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Valores RV'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Opciones'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Contrato derivado'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Divisas'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Pagos y cobros'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Entregables'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Instrumentos Frontón'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Instrumentos UME'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Variaciones tipos'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Periodos'
+          🍃  [HOJA] registrada: 'Golf > Maestros > Instrumentos > Básicos > Flujos'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Maestros > Varios'
+  📸  Captura guardada: 20260408_141741_menu__Golf__Maestros__Varios.png
+      📋  Nivel 3 — 'Golf > Maestros > Varios': ['Agrupaciones entidades', 'Agrupaciones instrumentos', "Apalancamientos IIC's", 'Asociadas', 'Asociadas gestora', 'Asociadas usuario', 'Bloques títulos', 'Broker cartera', 'Broker mercado', 'Calendario', 'Comisiones car ins', 'Comunidades', 'Depositario Mercado', 'Depósitos conjuntos', 'Factor ajuste intereses', 'Fechas liquidación operaciones', 'Festivos', 'Grupos de emisoras', 'Nombres agrupaciones entidades', 'Nombres agrupaciones instrumentos', 'Sistemas liquidación operación']
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Agrupaciones entidades'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Agrupaciones instrumentos'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Apalancamientos IIC's'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Asociadas'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Asociadas gestora'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Asociadas usuario'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Bloques títulos'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Broker cartera'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Broker mercado'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Calendario'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Comisiones car ins'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Comunidades'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Depositario Mercado'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Depósitos conjuntos'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Factor ajuste intereses'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Fechas liquidación operaciones'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Festivos'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Grupos de emisoras'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Nombres agrupaciones entidades'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Nombres agrupaciones instrumentos'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios > Sistemas liquidación operación'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Golf > Maestros > Varios II'
+  📸  Captura guardada: 20260408_141743_menu__Golf__Maestros__Varios_II.png
+      📋  Nivel 3 — 'Golf > Maestros > Varios II': ['Histórico de periodificaciones', 'Municipios', 'Países', 'Parámetros Car/Inst', 'Per. intereses cta. cte.', 'Profesiones', 'Provincias', 'Ratings', 'Ratings históricos cálculos', 'Ratings históricos cotizaciones', 'Textos de informes', 'Volúmenes entidades', 'Volúmenes instrumentos', 'Zona geográfica']
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Histórico de periodificaciones'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Municipios'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Países'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Parámetros Car/Inst'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Per. intereses cta. cte.'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Profesiones'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Provincias'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Ratings'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Ratings históricos cálculos'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Ratings históricos cotizaciones'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Textos de informes'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Volúmenes entidades'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Volúmenes instrumentos'
+        🍃  [HOJA] registrada: 'Golf > Maestros > Varios II > Zona geográfica'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+    ▶  [RAMA] entrando en: 'Golf > Procesos'
+  📸  Captura guardada: 20260408_141745_menu__Golf__Procesos.png
+    📋  Nivel 2 — 'Golf > Procesos': ['Asignaciones día', 'Valorar fondos']
+      🍃  [HOJA] registrada: 'Golf > Procesos > Asignaciones día'
+      🍃  [HOJA] registrada: 'Golf > Procesos > Valorar fondos'
+  ↩️   < (volver nivel anterior)
+    ▶  [RAMA] entrando en: 'Golf > Tareas'
+  📸  Captura guardada: 20260408_141747_menu__Golf__Tareas.png
+    📋  Nivel 2 — 'Golf > Tareas': ['Planificador de tareas']
+      ▶  [RAMA] entrando en: 'Golf > Tareas > Planificador de tareas'
+  📸  Captura guardada: 20260408_141747_menu__Golf__Tareas__Planificador_de_tareas.png
+      📋  Nivel 3 — 'Golf > Tareas > Planificador de tareas': ['Tareas', 'Dividendos', 'Dividendos extranjeros', 'Ampliaciones', 'Suscripciones', 'Canjes', 'Spin off', 'Dividendos pasivos', 'Primas junta', 'Equiparaciones', 'Split/Compresión', 'Aviso dividendo', 'Aviso dividendo extranjero', 'Cotizaciones medias', 'Primas emisión', 'Capital call', 'Distribuciones capital']
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Tareas'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Dividendos'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Dividendos extranjeros'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Ampliaciones'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Suscripciones'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Canjes'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Spin off'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Dividendos pasivos'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Primas junta'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Equiparaciones'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Split/Compresión'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Aviso dividendo'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Aviso dividendo extranjero'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Cotizaciones medias'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Primas emisión'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Capital call'
+        🍃  [HOJA] registrada: 'Golf > Tareas > Planificador de tareas > Distribuciones capital'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+  ↩️   X (cerrar panel raíz)
+
+============================================================
+▶ MENÚ PRINCIPAL → 'Participes LATAM'
+============================================================
+  ℹ️   Menú ya está abierto – no se vuelve a clickear hamburguesa.
+  ✅  Submenú de 'Participes LATAM' abierto.
+  📸  Captura guardada: 20260408_141751_submenu_nivel1__Participes_LATAM.png
+  📋  Nivel 1 — 'Participes LATAM': ['Consultas', 'Documentos', 'Maestros', 'Procesos']
+    ▶  [RAMA] entrando en: 'Participes LATAM > Consultas'
+  📸  Captura guardada: 20260408_141752_menu__Participes_LATAM__Consultas.png
+    📋  Nivel 2 — 'Participes LATAM > Consultas': ['Documentos', 'Entidades', 'Operaciones', 'Saldos', 'Varias']
+      ▶  [RAMA] entrando en: 'Participes LATAM > Consultas > Documentos'
+  📸  Captura guardada: 20260408_141753_menu__Participes_LATAM__Consultas__Documentos.png
+      📋  Nivel 3 — 'Participes LATAM > Consultas > Documentos': ['Clientes sin Documentos Firmados', 'Contrato General de Fondos', 'Documentos Por Cliente', 'Ficha Cliente', 'Inversionista Calificado']
+        🍃  [HOJA] registrada: 'Participes LATAM > Consultas > Documentos > Clientes sin Documentos Firmados'
+        🍃  [HOJA] registrada: 'Participes LATAM > Consultas > Documentos > Contrato General de Fondos'
+        🍃  [HOJA] registrada: 'Participes LATAM > Consultas > Documentos > Documentos Por Cliente'
+        🍃  [HOJA] registrada: 'Participes LATAM > Consultas > Documentos > Ficha Cliente'
+        🍃  [HOJA] registrada: 'Participes LATAM > Consultas > Documentos > Inversionista Calificado'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Consultas > Entidades'
+  📸  Captura guardada: 20260408_141755_menu__Participes_LATAM__Consultas__Entidades.png
+      📋  Nivel 3 — 'Participes LATAM > Consultas > Entidades': ['Cuentas', 'Cuentas por Titular', 'Entidades Genérica']
+        🍃  [HOJA] registrada: 'Participes LATAM > Consultas > Entidades > Cuentas'
+        🍃  [HOJA] registrada: 'Participes LATAM > Consultas > Entidades > Cuentas por Titular'
+        🍃  [HOJA] registrada: 'Participes LATAM > Consultas > Entidades > Entidades Genérica'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Consultas > Operaciones'
+  📸  Captura guardada: 20260408_141756_menu__Participes_LATAM__Consultas__Operaciones.png
+      📋  Nivel 3 — 'Participes LATAM > Consultas > Operaciones': ['Operaciones Genérica', 'Operaciones Periódicas']
+        🍃  [HOJA] registrada: 'Participes LATAM > Consultas > Operaciones > Operaciones Genérica'
+        🍃  [HOJA] registrada: 'Participes LATAM > Consultas > Operaciones > Operaciones Periódicas'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Consultas > Saldos'
+  📸  Captura guardada: 20260408_141758_menu__Participes_LATAM__Consultas__Saldos.png
+      📋  Nivel 3 — 'Participes LATAM > Consultas > Saldos': ['Saldos Actuales']
+        🍃  [HOJA] registrada: 'Participes LATAM > Consultas > Saldos > Saldos Actuales'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Consultas > Varias'
+  📸  Captura guardada: 20260408_141759_menu__Participes_LATAM__Consultas__Varias.png
+      📋  Nivel 3 — 'Participes LATAM > Consultas > Varias': ['Informe de Valores Cuotas', 'Rentabilidad Nominal de Fondos']
+        🍃  [HOJA] registrada: 'Participes LATAM > Consultas > Varias > Informe de Valores Cuotas'
+        🍃  [HOJA] registrada: 'Participes LATAM > Consultas > Varias > Rentabilidad Nominal de Fondos'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+    ▶  [RAMA] entrando en: 'Participes LATAM > Documentos'
+  📸  Captura guardada: 20260408_141802_menu__Participes_LATAM__Documentos.png
+    📋  Nivel 2 — 'Participes LATAM > Documentos': ['Configuración', 'Consulta Documento', 'Consultas Documentos', 'Consultas Masivas', 'Estados de Posición', 'Fiscal', 'Mantenimientos', 'Mantenimientos Documentos', 'Procesos']
+      ▶  [RAMA] entrando en: 'Participes LATAM > Documentos > Configuración'
+  📸  Captura guardada: 20260408_141803_menu__Participes_LATAM__Documentos__Configuración.png
+      📋  Nivel 3 — 'Participes LATAM > Documentos > Configuración': ['Benchmark']
+        🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Configuración > Benchmark'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Documentos > Consulta Documento'
+  📸  Captura guardada: 20260408_141804_menu__Participes_LATAM__Documentos__Consulta_Documento.png
+      📋  Nivel 3 — 'Participes LATAM > Documentos > Consulta Documento': ['Benchmark']
+        🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Consulta Documento > Benchmark'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Documentos > Consultas Documentos'
+  📸  Captura guardada: 20260408_141806_menu__Participes_LATAM__Documentos__Consultas_Documentos.png
+      📋  Nivel 3 — 'Participes LATAM > Documentos > Consultas Documentos': ['Benchmark']
+        🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Consultas Documentos > Benchmark'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Documentos > Consultas Masivas'
+  📸  Captura guardada: 20260408_141807_menu__Participes_LATAM__Documentos__Consultas_Masivas.png
+      📋  Nivel 3 — 'Participes LATAM > Documentos > Consultas Masivas': ['Benchmark']
+        🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Consultas Masivas > Benchmark'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Documentos > Estados de Posición'
+  📸  Captura guardada: 20260408_141809_menu__Participes_LATAM__Documentos__Estados_de_Posición.png
+      📋  Nivel 3 — 'Participes LATAM > Documentos > Estados de Posición': ['Benchmark']
+        🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Estados de Posición > Benchmark'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Documentos > Fiscal'
+  📸  Captura guardada: 20260408_141810_menu__Participes_LATAM__Documentos__Fiscal.png
+      📋  Nivel 3 — 'Participes LATAM > Documentos > Fiscal': ['Benchmark']
+        🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Fiscal > Benchmark'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Documentos > Mantenimientos'
+  📸  Captura guardada: 20260408_141812_menu__Participes_LATAM__Documentos__Mantenimientos.png
+      📋  Nivel 3 — 'Participes LATAM > Documentos > Mantenimientos': ['Benchmark']
+        🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Mantenimientos > Benchmark'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Documentos > Mantenimientos Documentos'
+  📸  Captura guardada: 20260408_141814_menu__Participes_LATAM__Documentos__Mantenimientos_Documentos.png
+      📋  Nivel 3 — 'Participes LATAM > Documentos > Mantenimientos Documentos': ['Histórico Estados', 'Otros', 'Por Cliente']
+        🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Mantenimientos Documentos > Histórico Estados'
+        ▶  [RAMA] entrando en: 'Participes LATAM > Documentos > Mantenimientos Documentos > Otros'
+  📸  Captura guardada: 20260408_141815_menu__Participes_LATAM__Documentos__Mantenimientos_Documentos__Otros.png
+        📋  Nivel 4 — 'Participes LATAM > Documentos > Mantenimientos Documentos > Otros': ['Certificado Cuotas']
+          🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Mantenimientos Documentos > Otros > Certificado Cuotas'
+  ↩️   < (volver nivel anterior)
+        ▶  [RAMA] entrando en: 'Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente'
+  📸  Captura guardada: 20260408_141816_menu__Participes_LATAM__Documentos__Mantenimientos_Documentos__Por_Cliente.png
+        📋  Nivel 4 — 'Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente': ['Configuracion Ficha Cliente', 'Contrato General Fondos', 'Detalle CGF', 'Detalle FIC', 'Ficha Cliente', 'Fichas Pendientes', 'Inversionista Calificado']
+          🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Configuracion Ficha Cliente'
+          🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Contrato General Fondos'
+          🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Detalle CGF'
+          🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Detalle FIC'
+          🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Ficha Cliente'
+          🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Fichas Pendientes'
+          🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Inversionista Calificado'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Documentos > Procesos'
+  📸  Captura guardada: 20260408_141818_menu__Participes_LATAM__Documentos__Procesos.png
+      📋  Nivel 3 — 'Participes LATAM > Documentos > Procesos': ['Ficha Clientes Pendientes/Vencidas', 'Por Cliente']
+        🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Procesos > Ficha Clientes Pendientes/Vencidas'
+        ▶  [RAMA] entrando en: 'Participes LATAM > Documentos > Procesos > Por Cliente'
+  📸  Captura guardada: 20260408_141819_menu__Participes_LATAM__Documentos__Procesos__Por_Cliente.png
+        📋  Nivel 4 — 'Participes LATAM > Documentos > Procesos > Por Cliente': ['Generación']
+          🍃  [HOJA] registrada: 'Participes LATAM > Documentos > Procesos > Por Cliente > Generación'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+    ▶  [RAMA] entrando en: 'Participes LATAM > Maestros'
+  📸  Captura guardada: 20260408_141822_menu__Participes_LATAM__Maestros.png
+    📋  Nivel 2 — 'Participes LATAM > Maestros': ['Configuración', 'Estructura Comercial', 'Mandatos', 'Participes', 'Saldos']
+      ▶  [RAMA] entrando en: 'Participes LATAM > Maestros > Configuración'
+  📸  Captura guardada: 20260408_141823_menu__Participes_LATAM__Maestros__Configuración.png
+      📋  Nivel 3 — 'Participes LATAM > Maestros > Configuración': ['Comisiones', 'Operaciones', 'Partícipes', 'Tesorería', 'Varias']
+        ▶  [RAMA] entrando en: 'Participes LATAM > Maestros > Configuración > Comisiones'
+  📸  Captura guardada: 20260408_141824_menu__Participes_LATAM__Maestros__Configuración__Comisiones.png
+        📋  Nivel 4 — 'Participes LATAM > Maestros > Configuración > Comisiones': ['Tarifa Permanencia Fondos', 'Tarifas por Intervalos', 'Tarifas Traspasos Internos CL', 'Tarifas Ventana de Liquidez']
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Comisiones > Tarifa Permanencia Fondos'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Comisiones > Tarifas por Intervalos'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Comisiones > Tarifas Traspasos Internos CL'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Comisiones > Tarifas Ventana de Liquidez'
+  ↩️   < (volver nivel anterior)
+        ▶  [RAMA] entrando en: 'Participes LATAM > Maestros > Configuración > Operaciones'
+  📸  Captura guardada: 20260408_141826_menu__Participes_LATAM__Maestros__Configuración__Operaciones.png
+        📋  Nivel 4 — 'Participes LATAM > Maestros > Configuración > Operaciones': ['Motivos operaciones CL']
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Operaciones > Motivos operaciones CL'
+  ↩️   < (volver nivel anterior)
+        ▶  [RAMA] entrando en: 'Participes LATAM > Maestros > Configuración > Partícipes'
+  📸  Captura guardada: 20260408_141827_menu__Participes_LATAM__Maestros__Configuración__Partícipes.png
+        📋  Nivel 4 — 'Participes LATAM > Maestros > Configuración > Partícipes': ['Clientes No Deseados', 'Grupos de Partícipes', 'Tipos de Entidad', 'Tipos Particípes']
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Partícipes > Clientes No Deseados'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Partícipes > Grupos de Partícipes'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Partícipes > Tipos de Entidad'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Partícipes > Tipos Particípes'
+  ↩️   < (volver nivel anterior)
+        ▶  [RAMA] entrando en: 'Participes LATAM > Maestros > Configuración > Tesorería'
+  📸  Captura guardada: 20260408_141829_menu__Participes_LATAM__Maestros__Configuración__Tesorería.png
+        📋  Nivel 4 — 'Participes LATAM > Maestros > Configuración > Tesorería': ['Documentos Pago', 'Formas de Pago']
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Tesorería > Documentos Pago'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Tesorería > Formas de Pago'
+  ↩️   < (volver nivel anterior)
+        ▶  [RAMA] entrando en: 'Participes LATAM > Maestros > Configuración > Varias'
+  📸  Captura guardada: 20260408_141830_menu__Participes_LATAM__Maestros__Configuración__Varias.png
+        📋  Nivel 4 — 'Participes LATAM > Maestros > Configuración > Varias': ['Actividades Económicas', 'Asignación Fondos Agentes', 'Benchmark', 'Capital Call Nominal', 'Fechas Operaciones', 'Grupos Actividades Economicas', 'Grupos de Retención', 'Histórico retenciones CL', 'IPC CL', 'Periodicidad Documento CL', 'Periodos Comercialización', 'Periodos Fi Rescatables', 'Periodos Opción Preferente', 'Rangos Números de Cuentas', 'UTA CL', 'UTM CL']
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > Actividades Económicas'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > Asignación Fondos Agentes'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > Benchmark'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > Capital Call Nominal'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > Fechas Operaciones'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > Grupos Actividades Economicas'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > Grupos de Retención'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > Histórico retenciones CL'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > IPC CL'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > Periodicidad Documento CL'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > Periodos Comercialización'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > Periodos Fi Rescatables'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > Periodos Opción Preferente'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > Rangos Números de Cuentas'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > UTA CL'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Configuración > Varias > UTM CL'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Maestros > Estructura Comercial'
+  📸  Captura guardada: 20260408_141833_menu__Participes_LATAM__Maestros__Estructura_Comercial.png
+      📋  Nivel 3 — 'Participes LATAM > Maestros > Estructura Comercial': ['Alta Rápida de Ejecutivos', 'Definición', 'Elementos', 'Entidades Estructura', 'Estructura', 'Perfiles', 'Perfiles-Fondos']
+        🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Estructura Comercial > Alta Rápida de Ejecutivos'
+        🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Estructura Comercial > Definición'
+        🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Estructura Comercial > Elementos'
+        🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Estructura Comercial > Entidades Estructura'
+        🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Estructura Comercial > Estructura'
+        🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Estructura Comercial > Perfiles'
+        🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Estructura Comercial > Perfiles-Fondos'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Maestros > Mandatos'
+  📸  Captura guardada: 20260408_141834_menu__Participes_LATAM__Maestros__Mandatos.png
+      📋  Nivel 3 — 'Participes LATAM > Maestros > Mandatos': ['Configuración', 'Histórico Estados', 'Mandatos']
+        ▶  [RAMA] entrando en: 'Participes LATAM > Maestros > Mandatos > Configuración'
+  📸  Captura guardada: 20260408_141835_menu__Participes_LATAM__Maestros__Mandatos__Configuración.png
+        📋  Nivel 4 — 'Participes LATAM > Maestros > Mandatos > Configuración': ['Apoderados Mandato', 'Configuración Mandatos', 'Facultades Mandatos']
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Mandatos > Configuración > Apoderados Mandato'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Mandatos > Configuración > Configuración Mandatos'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Mandatos > Configuración > Facultades Mandatos'
+  ↩️   < (volver nivel anterior)
+        🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Mandatos > Histórico Estados'
+        🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Mandatos > Mandatos'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Maestros > Participes'
+  📸  Captura guardada: 20260408_141838_menu__Participes_LATAM__Maestros__Participes.png
+      📋  Nivel 3 — 'Participes LATAM > Maestros > Participes': ['Entidades CL', 'Mantenimientos']
+        🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Entidades CL'
+        ▶  [RAMA] entrando en: 'Participes LATAM > Maestros > Participes > Mantenimientos'
+  📸  Captura guardada: 20260408_141838_menu__Participes_LATAM__Maestros__Participes__Mantenimientos.png
+        📋  Nivel 4 — 'Participes LATAM > Maestros > Participes > Mantenimientos': ['Actividades Económicas', 'Correspondencia', 'Cuentas', 'Cuentas Fondos', 'Datos Admin', 'Datos Admin Aux', 'Datos Admin Ctas. Ctes.', 'Datos Admin Socios', 'Datos Admin. Aux. Entidades PEP', 'Datos Admin. Beneficiarios', 'Datos Históricos', 'Entidades', 'Entidades FATCA', 'Entidades Multiples', 'Notas', 'Partícipes', 'Representantes', 'Titulares']
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Actividades Económicas'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Correspondencia'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Cuentas'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Cuentas Fondos'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Aux'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Ctas. Ctes.'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Socios'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin. Aux. Entidades PEP'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin. Beneficiarios'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Datos Históricos'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Entidades'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Entidades FATCA'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Entidades Multiples'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Notas'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Partícipes'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Representantes'
+          🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Participes > Mantenimientos > Titulares'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Maestros > Saldos'
+  📸  Captura guardada: 20260408_141841_menu__Participes_LATAM__Maestros__Saldos.png
+      📋  Nivel 3 — 'Participes LATAM > Maestros > Saldos': ['Saldos a Fecha', 'Saldos Actuales']
+        🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Saldos > Saldos a Fecha'
+        🍃  [HOJA] registrada: 'Participes LATAM > Maestros > Saldos > Saldos Actuales'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+    ▶  [RAMA] entrando en: 'Participes LATAM > Procesos'
+  📸  Captura guardada: 20260408_141843_menu__Participes_LATAM__Procesos.png
+    📋  Nivel 2 — 'Participes LATAM > Procesos': ['Comerciales', 'Entidades', 'Específicos', 'Liquidaciones', 'Migración', 'Operaciones', 'Utilidades/Subprocesos']
+      ▶  [RAMA] entrando en: 'Participes LATAM > Procesos > Comerciales'
+  📸  Captura guardada: 20260408_141844_menu__Participes_LATAM__Procesos__Comerciales.png
+      📋  Nivel 3 — 'Participes LATAM > Procesos > Comerciales': ['Cálculo Comisiones Agentes', 'Reasignacion de Agentes y Sucursales', 'Reasignacion de Ejecutivos', 'Sustitución de Elementos Estructura Comercial']
+        ▶  [RAMA] entrando en: 'Participes LATAM > Procesos > Comerciales > Cálculo Comisiones Agentes'
+  📸  Captura guardada: 20260408_141845_menu__Participes_LATAM__Procesos__Comerciales__Cálculo_Comisiones_Agentes.png
+        📋  Nivel 4 — 'Participes LATAM > Procesos > Comerciales > Cálculo Comisiones Agentes': ['Consulta Listado', 'Detalle Comisión Agentes']
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Comerciales > Cálculo Comisiones Agentes > Consulta Listado'
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Comerciales > Cálculo Comisiones Agentes > Detalle Comisión Agentes'
+  ↩️   < (volver nivel anterior)
+        ▶  [RAMA] entrando en: 'Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales'
+  📸  Captura guardada: 20260408_141846_menu__Participes_LATAM__Procesos__Comerciales__Reasignacion_de_Agentes_y_Sucursales.png
+        📋  Nivel 4 — 'Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales': ['Alta', 'Consulta de Reasignación Agente por Entidad', 'Consulta de Reasignación por Agente', 'Generación', 'Pro Incorporación Fichero']
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Alta'
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Consulta de Reasignación Agente por Entidad'
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Consulta de Reasignación por Agente'
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Generación'
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Pro Incorporación Fichero'
+  ↩️   < (volver nivel anterior)
+        ▶  [RAMA] entrando en: 'Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos'
+  📸  Captura guardada: 20260408_141848_menu__Participes_LATAM__Procesos__Comerciales__Reasignacion_de_Ejecutivos.png
+        📋  Nivel 4 — 'Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos': ['Consulta de Reasignación Sucursal por Entidad', 'Generación', 'Reasignación Ejecutivos Alta']
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Consulta de Reasignación Sucursal por Entidad'
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Generación'
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Reasignación Ejecutivos Alta'
+  ↩️   < (volver nivel anterior)
+        🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Comerciales > Sustitución de Elementos Estructura Comercial'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Procesos > Entidades'
+  📸  Captura guardada: 20260408_141850_menu__Participes_LATAM__Procesos__Entidades.png
+      📋  Nivel 3 — 'Participes LATAM > Procesos > Entidades': ['Bloqueos de Clientes y Cuentas', 'Calcular Clientes Inactivos']
+        ▶  [RAMA] entrando en: 'Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas'
+  📸  Captura guardada: 20260408_141851_menu__Participes_LATAM__Procesos__Entidades__Bloqueos_de_Clientes_y_Cuentas.png
+        📋  Nivel 4 — 'Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas': ['Alta', 'Bloqueo Masivo de Clientes', 'Consulta', 'Desbloqueo Clientes Cuentas']
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Alta'
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Bloqueo Masivo de Clientes'
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Consulta'
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Desbloqueo Clientes Cuentas'
+  ↩️   < (volver nivel anterior)
+        🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Entidades > Calcular Clientes Inactivos'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Procesos > Específicos'
+  📸  Captura guardada: 20260408_141854_menu__Participes_LATAM__Procesos__Específicos.png
+      📋  Nivel 3 — 'Participes LATAM > Procesos > Específicos': ['Grupos de Retención', 'Incorporar Benchmark', 'Vencimiento de Mandatos']
+        🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Específicos > Grupos de Retención'
+        🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Específicos > Incorporar Benchmark'
+        🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Específicos > Vencimiento de Mandatos'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Procesos > Liquidaciones'
+  📸  Captura guardada: 20260408_141855_menu__Participes_LATAM__Procesos__Liquidaciones.png
+      📋  Nivel 3 — 'Participes LATAM > Procesos > Liquidaciones': ['Grupos de Retención']
+        🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Liquidaciones > Grupos de Retención'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Procesos > Migración'
+  📸  Captura guardada: 20260408_141857_menu__Participes_LATAM__Procesos__Migración.png
+      📋  Nivel 3 — 'Participes LATAM > Procesos > Migración': ['Grupos de Retención']
+        🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Migración > Grupos de Retención'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Procesos > Operaciones'
+  📸  Captura guardada: 20260408_141859_menu__Participes_LATAM__Procesos__Operaciones.png
+      📋  Nivel 3 — 'Participes LATAM > Procesos > Operaciones': ['Actividades Económicas', 'Cesiones de Cuotas']
+        🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Operaciones > Actividades Económicas'
+        ▶  [RAMA] entrando en: 'Participes LATAM > Procesos > Operaciones > Cesiones de Cuotas'
+  📸  Captura guardada: 20260408_141859_menu__Participes_LATAM__Procesos__Operaciones__Cesiones_de_Cuotas.png
+        📋  Nivel 4 — 'Participes LATAM > Procesos > Operaciones > Cesiones de Cuotas': ['Actividades Económicas']
+          🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Operaciones > Cesiones de Cuotas > Actividades Económicas'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'Participes LATAM > Procesos > Utilidades/Subprocesos'
+  📸  Captura guardada: Subprocesos.png
+      📋  Nivel 3 — 'Participes LATAM > Procesos > Utilidades/Subprocesos': ['Actividades Económicas', 'Grupos de Retención']
+        🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Utilidades/Subprocesos > Actividades Económicas'
+        🍃  [HOJA] registrada: 'Participes LATAM > Procesos > Utilidades/Subprocesos > Grupos de Retención'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+  ↩️   X (cerrar panel raíz)
+
+============================================================
+▶ MENÚ PRINCIPAL → 'FrontOn Gestión'
+============================================================
+  ℹ️   Menú ya está abierto – no se vuelve a clickear hamburguesa.
+  ✅  Submenú de 'FrontOn Gestión' abierto.
+  📸  Captura guardada: 20260408_141905_submenu_nivel1__FrontOn_Gestión.png
+  📋  Nivel 1 — 'FrontOn Gestión': ['Configuración', 'Consultas', 'Entradas', 'Tareas']
+    ▶  [RAMA] entrando en: 'FrontOn Gestión > Configuración'
+  📸  Captura guardada: 20260408_141906_menu__FrontOn_Gestión__Configuración.png
+    📋  Nivel 2 — 'FrontOn Gestión > Configuración': ['Alta instrumentos', 'Apertura sesión gest', 'Cartera modelo', 'Controles gestor', 'Escenarios', 'Sectores']
+      ▶  [RAMA] entrando en: 'FrontOn Gestión > Configuración > Alta instrumentos'
+  📸  Captura guardada: 20260408_141907_menu__FrontOn_Gestión__Configuración__Alta_instrumentos.png
+      📋  Nivel 3 — 'FrontOn Gestión > Configuración > Alta instrumentos': ['Alta rápida instrumentos']
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Configuración > Alta instrumentos > Alta rápida instrumentos'
+  ↩️   < (volver nivel anterior)
+      🍃  [HOJA] registrada: 'FrontOn Gestión > Configuración > Apertura sesión gest'
+      ▶  [RAMA] entrando en: 'FrontOn Gestión > Configuración > Cartera modelo'
+  📸  Captura guardada: 20260408_141909_menu__FrontOn_Gestión__Configuración__Cartera_modelo.png
+      📋  Nivel 3 — 'FrontOn Gestión > Configuración > Cartera modelo': ['Asignación modelo', 'Detalle cartera modelo', 'Nombre carteras modelo']
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Configuración > Cartera modelo > Asignación modelo'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Configuración > Cartera modelo > Detalle cartera modelo'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Configuración > Cartera modelo > Nombre carteras modelo'
+  ↩️   < (volver nivel anterior)
+      🍃  [HOJA] registrada: 'FrontOn Gestión > Configuración > Controles gestor'
+      🍃  [HOJA] registrada: 'FrontOn Gestión > Configuración > Escenarios'
+      🍃  [HOJA] registrada: 'FrontOn Gestión > Configuración > Sectores'
+  ↩️   < (volver nivel anterior)
+    ▶  [RAMA] entrando en: 'FrontOn Gestión > Consultas'
+  📸  Captura guardada: 20260408_141911_menu__FrontOn_Gestión__Consultas.png
+    📋  Nivel 2 — 'FrontOn Gestión > Consultas': ['Estados de cartera', 'Límites', 'Operaciones', 'Precios']
+      ▶  [RAMA] entrando en: 'FrontOn Gestión > Consultas > Estados de cartera'
+  📸  Captura guardada: 20260408_141912_menu__FrontOn_Gestión__Consultas__Estados_de_cartera.png
+      📋  Nivel 3 — 'FrontOn Gestión > Consultas > Estados de cartera': ['Cartera comparada', 'Cartera resultados valias', 'Cartera RF genérica', 'Cartera RF tasa compra', 'Cartera valorada', 'Cartera valorada genérica', 'Cartera valorada informe', 'Cartera valorada RF', 'Resumenes cartera', 'Saldos instrumentos']
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Estados de cartera > Cartera comparada'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Estados de cartera > Cartera resultados valias'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Estados de cartera > Cartera RF genérica'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Estados de cartera > Cartera RF tasa compra'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Estados de cartera > Cartera valorada'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Estados de cartera > Cartera valorada genérica'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Estados de cartera > Cartera valorada informe'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Estados de cartera > Cartera valorada RF'
+        ▶  [RAMA] entrando en: 'FrontOn Gestión > Consultas > Estados de cartera > Resumenes cartera'
+  📸  Captura guardada: 20260408_141913_menu__FrontOn_Gestión__Consultas__Estados_de_cartera__Resumenes_cartera.png
+        📋  Nivel 4 — 'FrontOn Gestión > Consultas > Estados de cartera > Resumenes cartera': ['Cuadro resumen cartera', 'Resumen de cartera']
+          🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Estados de cartera > Resumenes cartera > Cuadro resumen cartera'
+          🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Estados de cartera > Resumenes cartera > Resumen de cartera'
+  ↩️   < (volver nivel anterior)
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Estados de cartera > Saldos instrumentos'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'FrontOn Gestión > Consultas > Límites'
+  📸  Captura guardada: 20260408_141915_menu__FrontOn_Gestión__Consultas__Límites.png
+      📋  Nivel 3 — 'FrontOn Gestión > Consultas > Límites': ['Límites oficiales', 'Límites particulares']
+        ▶  [RAMA] entrando en: 'FrontOn Gestión > Consultas > Límites > Límites oficiales'
+  📸  Captura guardada: 20260408_141916_menu__FrontOn_Gestión__Consultas__Límites__Límites_oficiales.png
+        📋  Nivel 4 — 'FrontOn Gestión > Consultas > Límites > Límites oficiales': ['Control derivados', 'Diversificación GOLF', 'Por emisor y riesgo der']
+          🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Límites > Límites oficiales > Control derivados'
+          🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Límites > Límites oficiales > Diversificación GOLF'
+          🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Límites > Límites oficiales > Por emisor y riesgo der'
+  ↩️   < (volver nivel anterior)
+        ▶  [RAMA] entrando en: 'FrontOn Gestión > Consultas > Límites > Límites particulares'
+  📸  Captura guardada: 20260408_141918_menu__FrontOn_Gestión__Consultas__Límites__Límites_particulares.png
+        📋  Nivel 4 — 'FrontOn Gestión > Consultas > Límites > Límites particulares': ['Cálculo de Límites Particulares', 'Límites aplicables por cartera', 'Resumen límites particulares']
+          🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Límites > Límites particulares > Cálculo de Límites Particulares'
+          🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Límites > Límites particulares > Límites aplicables por cartera'
+          🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Límites > Límites particulares > Resumen límites particulares'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'FrontOn Gestión > Consultas > Operaciones'
+  📸  Captura guardada: 20260408_141920_menu__FrontOn_Gestión__Consultas__Operaciones.png
+      📋  Nivel 3 — 'FrontOn Gestión > Consultas > Operaciones': ['Aportaciones/Retiros de moneda', 'Aportaciones/Retiros de titulos', 'Comparativa OPC', 'Diario de desgloses', 'Diario de ejecuciones', 'Diario de operaciones', 'Diario de órdenes', 'Flujos caja', 'Flujos caja 2', 'Flujos caja ext CL', 'Historia y proyección de tesorería', 'Informe saldo por fechas', 'Operaciones forward', 'Preguntas', 'Proyección de tesorería', 'Vencimientos forward']
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Aportaciones/Retiros de moneda'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Aportaciones/Retiros de titulos'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Comparativa OPC'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Diario de desgloses'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Diario de ejecuciones'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Diario de operaciones'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Diario de órdenes'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Flujos caja'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Flujos caja 2'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Flujos caja ext CL'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Historia y proyección de tesorería'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Informe saldo por fechas'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Operaciones forward'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Preguntas'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Proyección de tesorería'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Operaciones > Vencimientos forward'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'FrontOn Gestión > Consultas > Precios'
+  📸  Captura guardada: 20260408_141922_menu__FrontOn_Gestión__Consultas__Precios.png
+      📋  Nivel 3 — 'FrontOn Gestión > Consultas > Precios': ['Divisas intradía', 'Histórico Divisas', 'Histórico Instrumentos', 'Precio instrumentos intradía']
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Precios > Divisas intradía'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Precios > Histórico Divisas'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Precios > Histórico Instrumentos'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Consultas > Precios > Precio instrumentos intradía'
+  ↩️   < (volver nivel anterior)
+  ↩️   < (volver nivel anterior)
+    ▶  [RAMA] entrando en: 'FrontOn Gestión > Entradas'
+  📸  Captura guardada: 20260408_141924_menu__FrontOn_Gestión__Entradas.png
+    📋  Nivel 2 — 'FrontOn Gestión > Entradas': ['Ajuste modelo', 'Ejecuciones bancarias', 'Ejecuciones directas', 'Ejecuciones excel', 'Envio masivo boletas', 'Ordenes', 'Posicionar-Incrementar', 'Roll over', 'Simulación de operaciones', 'Traspasos masivos', 'Ventas masivas']
+      ▶  [RAMA] entrando en: 'FrontOn Gestión > Entradas > Ajuste modelo'
+  📸  Captura guardada: 20260408_141925_menu__FrontOn_Gestión__Entradas__Ajuste_modelo.png
+      📋  Nivel 3 — 'FrontOn Gestión > Entradas > Ajuste modelo': ['Ajuste cartera modelo', 'Ajuste cartera modelo SEDA', 'Ajuste traspasos SEDA']
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Ajuste modelo > Ajuste cartera modelo'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Ajuste modelo > Ajuste cartera modelo SEDA'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Ajuste modelo > Ajuste traspasos SEDA'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'FrontOn Gestión > Entradas > Ejecuciones bancarias'
+  📸  Captura guardada: 20260408_141926_menu__FrontOn_Gestión__Entradas__Ejecuciones_bancarias.png
+      📋  Nivel 3 — 'FrontOn Gestión > Entradas > Ejecuciones bancarias': ['Ejecuciones bancarias', 'Importación CSV BCS']
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Ejecuciones bancarias > Ejecuciones bancarias'
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Ejecuciones bancarias > Importación CSV BCS'
+  ↩️   < (volver nivel anterior)
+      ▶  [RAMA] entrando en: 'FrontOn Gestión > Entradas > Ejecuciones directas'
+  📸  Captura guardada: 20260408_141928_menu__FrontOn_Gestión__Entradas__Ejecuciones_directas.png
+      📋  Nivel 3 — 'FrontOn Gestión > Entradas > Ejecuciones directas': ['Ejecuciones múltiples repos']
+        🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Ejecuciones directas > Ejecuciones múltiples repos'
+  ↩️   < (volver nivel anterior)
+      🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Ejecuciones excel'
+      🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Envio masivo boletas'
+      🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Ordenes'
+      🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Posicionar-Incrementar'
+      🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Roll over'
+      🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Simulación de operaciones'
+      🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Traspasos masivos'
+      🍃  [HOJA] registrada: 'FrontOn Gestión > Entradas > Ventas masivas'
+  ↩️   < (volver nivel anterior)
+    ▶  [RAMA] entrando en: 'FrontOn Gestión > Tareas'
+  📸  Captura guardada: 20260408_141930_menu__FrontOn_Gestión__Tareas.png
+    📋  Nivel 2 — 'FrontOn Gestión > Tareas': ['Monitor de Procesos']
+      🍃  [HOJA] registrada: 'FrontOn Gestión > Tareas > Monitor de Procesos'
+  ↩️   < (volver nivel anterior)
+  ↩️   X (cerrar panel raíz)
+
+============================================================
+  🗺️   HOJAS FINALES DESCUBIERTAS: 381
+============================================================
+    1. Golf > Consultas > Contabilidad > Asientos diarios
+    2. Golf > Consultas > Contabilidad > Asientos manuales
+    3. Golf > Consultas > Contabilidad > Comparativa de cuentas
+    4. Golf > Consultas > Contabilidad > Comparativa de saldos a fecha
+    5. Golf > Consultas > Contabilidad > Consulta informe
+    6. Golf > Consultas > Contabilidad > Consulta signo girado
+    7. Golf > Consultas > Contabilidad > Cuadre contabilidad cartera
+    8. Golf > Consultas > Contabilidad > Saldos contables entidad
+    9. Golf > Consultas > Estados de cartera > Cartera comparada
+   10. Golf > Consultas > Estados de cartera > Cartera de gestión
+   11. Golf > Consultas > Estados de cartera > Histórico de fondos
+   12. Golf > Consultas > Estados de cartera > Histórico de valoración
+   13. Golf > Consultas > Estados de cartera > Tipos de saldos
+   14. Golf > Consultas > Ficha instrumentos > Ficha de instrumentos al contado
+   15. Golf > Consultas > Ficha instrumentos > Flujos instrumentos
+   16. Golf > Consultas > Históricos > Periodificaciones
+   17. Golf > Consultas > Informe comisiones > Informe comisiones
+   18. Golf > Consultas > Operaciones > Diario de operaciones por operación
+   19. Golf > Consultas > Operaciones > Ficha de depósitos
+   20. Golf > Consultas > Operaciones > Histórico operaciones
+   21. Golf > Consultas > Operaciones > Operaciones Totales Ope/VT
+   22. Golf > Consultas > Operaciones > Previsión de tesorería
+   23. Golf > Consultas > Precios > Control precio valoración
+   24. Golf > Consultas > Precios > Cotizaciones de instrumentos
+   25. Golf > Consultas > Precios > Curvas tir
+   26. Golf > Consultas > Precios > Histórico Divisas
+   27. Golf > Consultas > Precios > Histórico Instrumentos
+   28. Golf > Consultas > Precios > Histórico valoración vs cotizaciones
+   29. Golf > Consultas > Precios > Tires
+   30. Golf > Consultas > Resumen patrimonial > Resumen patrimonial a fecha
+   31. Golf > Consultas > Resumen patrimonial > Resumen Patrimonial a Fecha (2008)
+   32. Golf > Consultas > Resumen patrimonial > Resumen patrimonial comparativa (2008)
+   33. Golf > Consultas > Saldos > Saldos de conceptos
+   34. Golf > Consultas > Saldos > Saldos de conceptos con fecha
+   35. Golf > Consultas > Saldos > Saldos De Identificación de Partida
+   36. Golf > Consultas > Saldos > Saldos medios
+   37. Golf > Consultas > Saldos > Saldos por depositario
+   38. Golf > Consultas > Tareas > Tareas
+   39. Golf > Consultas > Valor Liquidativo > Valor liquidativo clases
+   40. Golf > Consultas > Valor Liquidativo > Valor liquidativo fondos
+   41. Golf > Contabilidad > Cuadre contable cuentas
+   42. Golf > Entradas > Entrada de operaciones
+   43. Golf > Incorporaciones > Incorporación cotizaciones
+   44. Golf > Maestros > Básicos > Clases de valor
+   45. Golf > Maestros > Básicos > Criterios
+   46. Golf > Maestros > Básicos > Descripción operaciones
+   47. Golf > Maestros > Básicos > Escalas
+   48. Golf > Maestros > Básicos > Escalas éxito
+   49. Golf > Maestros > Básicos > Nombres tarifas
+   50. Golf > Maestros > Básicos > Plantilla curva diferencial
+   51. Golf > Maestros > Básicos > Plantilla de valoración
+   52. Golf > Maestros > Básicos > Plantillas contables
+   53. Golf > Maestros > Básicos > Plantillas operaciones
+   54. Golf > Maestros > Básicos > Política inversión
+   55. Golf > Maestros > Básicos > Sectores
+   56. Golf > Maestros > Básicos > Subsectores
+   57. Golf > Maestros > Básicos > Tarifas
+   58. Golf > Maestros > Básicos > Tarifas cartera
+   59. Golf > Maestros > Básicos > Tipos de activo
+   60. Golf > Maestros > Básicos > Tipos de operación
+   61. Golf > Maestros > Básicos > Tipos de saldos
+   62. Golf > Maestros > Básicos > Tipos de valor
+   63. Golf > Maestros > Cartera > Bloqueo títulos
+   64. Golf > Maestros > Cartera > Carteras tipo cambios
+   65. Golf > Maestros > Cartera > Carteras tipo precio
+   66. Golf > Maestros > Cartera > Cuentas Liq
+   67. Golf > Maestros > Cartera > Depósitos
+   68. Golf > Maestros > Cartera > Depósitos DT
+   69. Golf > Maestros > Cartera > Divisa liquidación
+   70. Golf > Maestros > Cartera > Restricciones car
+   71. Golf > Maestros > Cartera > Restricciones ins
+   72. Golf > Maestros > Conceptos > Conceptos
+   73. Golf > Maestros > Conceptos > Conceptos cuentas
+   74. Golf > Maestros > Configuración > Control aplicación
+   75. Golf > Maestros > Configuración > Enlaces conexiones
+   76. Golf > Maestros > Configuración > Enlaces remotos
+   77. Golf > Maestros > Cotizaciones > Cotizaciones
+   78. Golf > Maestros > Cotizaciones > Cotizaciones CVD
+   79. Golf > Maestros > Cotizaciones > Cotizaciones divisas
+   80. Golf > Maestros > Cotizaciones > Cotizaciones divisas entidades
+   81. Golf > Maestros > Cotizaciones > Curvas de tir
+   82. Golf > Maestros > Cotizaciones > Deltas
+   83. Golf > Maestros > Cotizaciones > Forwards
+   84. Golf > Maestros > Cotizaciones > Grupo cotizaciones
+   85. Golf > Maestros > Cotizaciones > IPC
+   86. Golf > Maestros > Cotizaciones > Tires
+   87. Golf > Maestros > Entidades > Entidades
+   88. Golf > Maestros > Entidades > Básicos > Agentes
+   89. Golf > Maestros > Entidades > Básicos > Aportantes
+   90. Golf > Maestros > Entidades > Básicos > Beneficiarios
+   91. Golf > Maestros > Entidades > Básicos > Beneficiarios tipos
+   92. Golf > Maestros > Entidades > Básicos > Brókers
+   93. Golf > Maestros > Entidades > Básicos > Bancos
+   94. Golf > Maestros > Entidades > Básicos > Carteras
+   95. Golf > Maestros > Entidades > Básicos > Clientes
+   96. Golf > Maestros > Entidades > Básicos > Comerciales
+   97. Golf > Maestros > Entidades > Básicos > Contables
+   98. Golf > Maestros > Entidades > Básicos > Contrapartidas
+   99. Golf > Maestros > Entidades > Básicos > Correspondencia
+  100. Golf > Maestros > Entidades > Básicos > Cuentas
+  101. Golf > Maestros > Entidades > Básicos > Distribuidores
+  102. Golf > Maestros > Entidades > Básicos > Emisoras
+  103. Golf > Maestros > Entidades > Básicos > Datos administrativos
+  104. Golf > Maestros > Entidades > Básicos > Entidades CRS
+  105. Golf > Maestros > Entidades > Básicos > Entidades
+  106. Golf > Maestros > Entidades > Básicos > Entidades FATCA
+  107. Golf > Maestros > Entidades > Básicos > Fondo/Compa./Clase
+  108. Golf > Maestros > Entidades > Básicos > Notarios
+  109. Golf > Maestros > Entidades > Básicos > Fondos
+  110. Golf > Maestros > Entidades > Básicos > Gestoras
+  111. Golf > Maestros > Entidades > Básicos > Gestores
+  112. Golf > Maestros > Entidades > Básicos > Grupos fiscales
+  113. Golf > Maestros > Entidades > Básicos > Mediadoras
+  114. Golf > Maestros > Entidades > Básicos > Mercados
+  115. Golf > Maestros > Entidades > Básicos > Partícipes
+  116. Golf > Maestros > Entidades > Básicos > Planes
+  117. Golf > Maestros > Entidades > Básicos > Promotores
+  118. Golf > Maestros > Entidades > Básicos > Proveedores
+  119. Golf > Maestros > Entidades > Básicos > Propietarios
+  120. Golf > Maestros > Entidades > Básicos > Registrales
+  121. Golf > Maestros > Entidades > Básicos > Representantes
+  122. Golf > Maestros > Entidades > Básicos > Sucursales
+  123. Golf > Maestros > Entidades > Básicos > Subplan
+  124. Golf > Maestros > Entidades > Básicos > Titulares
+  125. Golf > Maestros > Entidades > Básicos > Varios
+  126. Golf > Maestros > Entidades > Básicos > Vinculados
+  127. Golf > Maestros > Fondos > Cálculos cierre
+  128. Golf > Maestros > Fondos > Conceptos fondo
+  129. Golf > Maestros > Fondos > Nombre Comisión Éxito
+  130. Golf > Maestros > Fondos > Política de inversión de fondos
+  131. Golf > Maestros > Fondos > Valores liquidativo fondos
+  132. Golf > Maestros > Fondos > Valores liquidativo planes
+  133. Golf > Maestros > Instrumentos > Instrumentos
+  134. Golf > Maestros > Instrumentos > Básicos > Instrumentos
+  135. Golf > Maestros > Instrumentos > Básicos > Valores CVI
+  136. Golf > Maestros > Instrumentos > Básicos > Colaterales
+  137. Golf > Maestros > Instrumentos > Básicos > Colaterales garantía
+  138. Golf > Maestros > Instrumentos > Básicos > Valores RF
+  139. Golf > Maestros > Instrumentos > Básicos > Valores común
+  140. Golf > Maestros > Instrumentos > Básicos > Futuros
+  141. Golf > Maestros > Instrumentos > Básicos > Valores RV
+  142. Golf > Maestros > Instrumentos > Básicos > Opciones
+  143. Golf > Maestros > Instrumentos > Básicos > Contrato derivado
+  144. Golf > Maestros > Instrumentos > Básicos > Divisas
+  145. Golf > Maestros > Instrumentos > Básicos > Pagos y cobros
+  146. Golf > Maestros > Instrumentos > Básicos > Entregables
+  147. Golf > Maestros > Instrumentos > Básicos > Instrumentos Frontón
+  148. Golf > Maestros > Instrumentos > Básicos > Instrumentos UME
+  149. Golf > Maestros > Instrumentos > Básicos > Variaciones tipos
+  150. Golf > Maestros > Instrumentos > Básicos > Periodos
+  151. Golf > Maestros > Instrumentos > Básicos > Flujos
+  152. Golf > Maestros > Varios > Agrupaciones entidades
+  153. Golf > Maestros > Varios > Agrupaciones instrumentos
+  154. Golf > Maestros > Varios > Apalancamientos IIC's
+  155. Golf > Maestros > Varios > Asociadas
+  156. Golf > Maestros > Varios > Asociadas gestora
+  157. Golf > Maestros > Varios > Asociadas usuario
+  158. Golf > Maestros > Varios > Bloques títulos
+  159. Golf > Maestros > Varios > Broker cartera
+  160. Golf > Maestros > Varios > Broker mercado
+  161. Golf > Maestros > Varios > Calendario
+  162. Golf > Maestros > Varios > Comisiones car ins
+  163. Golf > Maestros > Varios > Comunidades
+  164. Golf > Maestros > Varios > Depositario Mercado
+  165. Golf > Maestros > Varios > Depósitos conjuntos
+  166. Golf > Maestros > Varios > Factor ajuste intereses
+  167. Golf > Maestros > Varios > Fechas liquidación operaciones
+  168. Golf > Maestros > Varios > Festivos
+  169. Golf > Maestros > Varios > Grupos de emisoras
+  170. Golf > Maestros > Varios > Nombres agrupaciones entidades
+  171. Golf > Maestros > Varios > Nombres agrupaciones instrumentos
+  172. Golf > Maestros > Varios > Sistemas liquidación operación
+  173. Golf > Maestros > Varios II > Histórico de periodificaciones
+  174. Golf > Maestros > Varios II > Municipios
+  175. Golf > Maestros > Varios II > Países
+  176. Golf > Maestros > Varios II > Parámetros Car/Inst
+  177. Golf > Maestros > Varios II > Per. intereses cta. cte.
+  178. Golf > Maestros > Varios II > Profesiones
+  179. Golf > Maestros > Varios II > Provincias
+  180. Golf > Maestros > Varios II > Ratings
+  181. Golf > Maestros > Varios II > Ratings históricos cálculos
+  182. Golf > Maestros > Varios II > Ratings históricos cotizaciones
+  183. Golf > Maestros > Varios II > Textos de informes
+  184. Golf > Maestros > Varios II > Volúmenes entidades
+  185. Golf > Maestros > Varios II > Volúmenes instrumentos
+  186. Golf > Maestros > Varios II > Zona geográfica
+  187. Golf > Procesos > Asignaciones día
+  188. Golf > Procesos > Valorar fondos
+  189. Golf > Tareas > Planificador de tareas > Tareas
+  190. Golf > Tareas > Planificador de tareas > Dividendos
+  191. Golf > Tareas > Planificador de tareas > Dividendos extranjeros
+  192. Golf > Tareas > Planificador de tareas > Ampliaciones
+  193. Golf > Tareas > Planificador de tareas > Suscripciones
+  194. Golf > Tareas > Planificador de tareas > Canjes
+  195. Golf > Tareas > Planificador de tareas > Spin off
+  196. Golf > Tareas > Planificador de tareas > Dividendos pasivos
+  197. Golf > Tareas > Planificador de tareas > Primas junta
+  198. Golf > Tareas > Planificador de tareas > Equiparaciones
+  199. Golf > Tareas > Planificador de tareas > Split/Compresión
+  200. Golf > Tareas > Planificador de tareas > Aviso dividendo
+  201. Golf > Tareas > Planificador de tareas > Aviso dividendo extranjero
+  202. Golf > Tareas > Planificador de tareas > Cotizaciones medias
+  203. Golf > Tareas > Planificador de tareas > Primas emisión
+  204. Golf > Tareas > Planificador de tareas > Capital call
+  205. Golf > Tareas > Planificador de tareas > Distribuciones capital
+  206. Participes LATAM > Consultas > Documentos > Clientes sin Documentos Firmados
+  207. Participes LATAM > Consultas > Documentos > Contrato General de Fondos
+  208. Participes LATAM > Consultas > Documentos > Documentos Por Cliente
+  209. Participes LATAM > Consultas > Documentos > Ficha Cliente
+  210. Participes LATAM > Consultas > Documentos > Inversionista Calificado
+  211. Participes LATAM > Consultas > Entidades > Cuentas
+  212. Participes LATAM > Consultas > Entidades > Cuentas por Titular
+  213. Participes LATAM > Consultas > Entidades > Entidades Genérica
+  214. Participes LATAM > Consultas > Operaciones > Operaciones Genérica
+  215. Participes LATAM > Consultas > Operaciones > Operaciones Periódicas
+  216. Participes LATAM > Consultas > Saldos > Saldos Actuales
+  217. Participes LATAM > Consultas > Varias > Informe de Valores Cuotas
+  218. Participes LATAM > Consultas > Varias > Rentabilidad Nominal de Fondos
+  219. Participes LATAM > Documentos > Configuración > Benchmark
+  220. Participes LATAM > Documentos > Consulta Documento > Benchmark
+  221. Participes LATAM > Documentos > Consultas Documentos > Benchmark
+  222. Participes LATAM > Documentos > Consultas Masivas > Benchmark
+  223. Participes LATAM > Documentos > Estados de Posición > Benchmark
+  224. Participes LATAM > Documentos > Fiscal > Benchmark
+  225. Participes LATAM > Documentos > Mantenimientos > Benchmark
+  226. Participes LATAM > Documentos > Mantenimientos Documentos > Histórico Estados
+  227. Participes LATAM > Documentos > Mantenimientos Documentos > Otros > Certificado Cuotas
+  228. Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Configuracion Ficha Cliente
+  229. Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Contrato General Fondos
+  230. Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Detalle CGF
+  231. Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Detalle FIC
+  232. Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Ficha Cliente
+  233. Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Fichas Pendientes
+  234. Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Inversionista Calificado
+  235. Participes LATAM > Documentos > Procesos > Ficha Clientes Pendientes/Vencidas
+  236. Participes LATAM > Documentos > Procesos > Por Cliente > Generación
+  237. Participes LATAM > Maestros > Configuración > Comisiones > Tarifa Permanencia Fondos
+  238. Participes LATAM > Maestros > Configuración > Comisiones > Tarifas por Intervalos
+  239. Participes LATAM > Maestros > Configuración > Comisiones > Tarifas Traspasos Internos CL
+  240. Participes LATAM > Maestros > Configuración > Comisiones > Tarifas Ventana de Liquidez
+  241. Participes LATAM > Maestros > Configuración > Operaciones > Motivos operaciones CL
+  242. Participes LATAM > Maestros > Configuración > Partícipes > Clientes No Deseados
+  243. Participes LATAM > Maestros > Configuración > Partícipes > Grupos de Partícipes
+  244. Participes LATAM > Maestros > Configuración > Partícipes > Tipos de Entidad
+  245. Participes LATAM > Maestros > Configuración > Partícipes > Tipos Particípes
+  246. Participes LATAM > Maestros > Configuración > Tesorería > Documentos Pago
+  247. Participes LATAM > Maestros > Configuración > Tesorería > Formas de Pago
+  248. Participes LATAM > Maestros > Configuración > Varias > Actividades Económicas
+  249. Participes LATAM > Maestros > Configuración > Varias > Asignación Fondos Agentes
+  250. Participes LATAM > Maestros > Configuración > Varias > Benchmark
+  251. Participes LATAM > Maestros > Configuración > Varias > Capital Call Nominal
+  252. Participes LATAM > Maestros > Configuración > Varias > Fechas Operaciones
+  253. Participes LATAM > Maestros > Configuración > Varias > Grupos Actividades Economicas
+  254. Participes LATAM > Maestros > Configuración > Varias > Grupos de Retención
+  255. Participes LATAM > Maestros > Configuración > Varias > Histórico retenciones CL
+  256. Participes LATAM > Maestros > Configuración > Varias > IPC CL
+  257. Participes LATAM > Maestros > Configuración > Varias > Periodicidad Documento CL
+  258. Participes LATAM > Maestros > Configuración > Varias > Periodos Comercialización
+  259. Participes LATAM > Maestros > Configuración > Varias > Periodos Fi Rescatables
+  260. Participes LATAM > Maestros > Configuración > Varias > Periodos Opción Preferente
+  261. Participes LATAM > Maestros > Configuración > Varias > Rangos Números de Cuentas
+  262. Participes LATAM > Maestros > Configuración > Varias > UTA CL
+  263. Participes LATAM > Maestros > Configuración > Varias > UTM CL
+  264. Participes LATAM > Maestros > Estructura Comercial > Alta Rápida de Ejecutivos
+  265. Participes LATAM > Maestros > Estructura Comercial > Definición
+  266. Participes LATAM > Maestros > Estructura Comercial > Elementos
+  267. Participes LATAM > Maestros > Estructura Comercial > Entidades Estructura
+  268. Participes LATAM > Maestros > Estructura Comercial > Estructura
+  269. Participes LATAM > Maestros > Estructura Comercial > Perfiles
+  270. Participes LATAM > Maestros > Estructura Comercial > Perfiles-Fondos
+  271. Participes LATAM > Maestros > Mandatos > Configuración > Apoderados Mandato
+  272. Participes LATAM > Maestros > Mandatos > Configuración > Configuración Mandatos
+  273. Participes LATAM > Maestros > Mandatos > Configuración > Facultades Mandatos
+  274. Participes LATAM > Maestros > Mandatos > Histórico Estados
+  275. Participes LATAM > Maestros > Mandatos > Mandatos
+  276. Participes LATAM > Maestros > Participes > Entidades CL
+  277. Participes LATAM > Maestros > Participes > Mantenimientos > Actividades Económicas
+  278. Participes LATAM > Maestros > Participes > Mantenimientos > Correspondencia
+  279. Participes LATAM > Maestros > Participes > Mantenimientos > Cuentas
+  280. Participes LATAM > Maestros > Participes > Mantenimientos > Cuentas Fondos
+  281. Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin
+  282. Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Aux
+  283. Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Ctas. Ctes.
+  284. Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Socios
+  285. Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin. Aux. Entidades PEP
+  286. Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin. Beneficiarios
+  287. Participes LATAM > Maestros > Participes > Mantenimientos > Datos Históricos
+  288. Participes LATAM > Maestros > Participes > Mantenimientos > Entidades
+  289. Participes LATAM > Maestros > Participes > Mantenimientos > Entidades FATCA
+  290. Participes LATAM > Maestros > Participes > Mantenimientos > Entidades Multiples
+  291. Participes LATAM > Maestros > Participes > Mantenimientos > Notas
+  292. Participes LATAM > Maestros > Participes > Mantenimientos > Partícipes
+  293. Participes LATAM > Maestros > Participes > Mantenimientos > Representantes
+  294. Participes LATAM > Maestros > Participes > Mantenimientos > Titulares
+  295. Participes LATAM > Maestros > Saldos > Saldos a Fecha
+  296. Participes LATAM > Maestros > Saldos > Saldos Actuales
+  297. Participes LATAM > Procesos > Comerciales > Cálculo Comisiones Agentes > Consulta Listado
+  298. Participes LATAM > Procesos > Comerciales > Cálculo Comisiones Agentes > Detalle Comisión Agentes
+  299. Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Alta
+  300. Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Consulta de Reasignación Agente por Entidad
+  301. Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Consulta de Reasignación por Agente
+  302. Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Generación
+  303. Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Pro Incorporación Fichero
+  304. Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Consulta de Reasignación Sucursal por Entidad
+  305. Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Generación
+  306. Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Reasignación Ejecutivos Alta
+  307. Participes LATAM > Procesos > Comerciales > Sustitución de Elementos Estructura Comercial
+  308. Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Alta
+  309. Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Bloqueo Masivo de Clientes
+  310. Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Consulta
+  311. Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Desbloqueo Clientes Cuentas
+  312. Participes LATAM > Procesos > Entidades > Calcular Clientes Inactivos
+  313. Participes LATAM > Procesos > Específicos > Grupos de Retención
+  314. Participes LATAM > Procesos > Específicos > Incorporar Benchmark
+  315. Participes LATAM > Procesos > Específicos > Vencimiento de Mandatos
+  316. Participes LATAM > Procesos > Liquidaciones > Grupos de Retención
+  317. Participes LATAM > Procesos > Migración > Grupos de Retención
+  318. Participes LATAM > Procesos > Operaciones > Actividades Económicas
+  319. Participes LATAM > Procesos > Operaciones > Cesiones de Cuotas > Actividades Económicas
+  320. Participes LATAM > Procesos > Utilidades/Subprocesos > Actividades Económicas
+  321. Participes LATAM > Procesos > Utilidades/Subprocesos > Grupos de Retención
+  322. FrontOn Gestión > Configuración > Alta instrumentos > Alta rápida instrumentos
+  323. FrontOn Gestión > Configuración > Apertura sesión gest
+  324. FrontOn Gestión > Configuración > Cartera modelo > Asignación modelo
+  325. FrontOn Gestión > Configuración > Cartera modelo > Detalle cartera modelo
+  326. FrontOn Gestión > Configuración > Cartera modelo > Nombre carteras modelo
+  327. FrontOn Gestión > Configuración > Controles gestor
+  328. FrontOn Gestión > Configuración > Escenarios
+  329. FrontOn Gestión > Configuración > Sectores
+  330. FrontOn Gestión > Consultas > Estados de cartera > Cartera comparada
+  331. FrontOn Gestión > Consultas > Estados de cartera > Cartera resultados valias
+  332. FrontOn Gestión > Consultas > Estados de cartera > Cartera RF genérica
+  333. FrontOn Gestión > Consultas > Estados de cartera > Cartera RF tasa compra
+  334. FrontOn Gestión > Consultas > Estados de cartera > Cartera valorada
+  335. FrontOn Gestión > Consultas > Estados de cartera > Cartera valorada genérica
+  336. FrontOn Gestión > Consultas > Estados de cartera > Cartera valorada informe
+  337. FrontOn Gestión > Consultas > Estados de cartera > Cartera valorada RF
+  338. FrontOn Gestión > Consultas > Estados de cartera > Resumenes cartera > Cuadro resumen cartera
+  339. FrontOn Gestión > Consultas > Estados de cartera > Resumenes cartera > Resumen de cartera
+  340. FrontOn Gestión > Consultas > Estados de cartera > Saldos instrumentos
+  341. FrontOn Gestión > Consultas > Límites > Límites oficiales > Control derivados
+  342. FrontOn Gestión > Consultas > Límites > Límites oficiales > Diversificación GOLF
+  343. FrontOn Gestión > Consultas > Límites > Límites oficiales > Por emisor y riesgo der
+  344. FrontOn Gestión > Consultas > Límites > Límites particulares > Cálculo de Límites Particulares
+  345. FrontOn Gestión > Consultas > Límites > Límites particulares > Límites aplicables por cartera
+  346. FrontOn Gestión > Consultas > Límites > Límites particulares > Resumen límites particulares
+  347. FrontOn Gestión > Consultas > Operaciones > Aportaciones/Retiros de moneda
+  348. FrontOn Gestión > Consultas > Operaciones > Aportaciones/Retiros de titulos
+  349. FrontOn Gestión > Consultas > Operaciones > Comparativa OPC
+  350. FrontOn Gestión > Consultas > Operaciones > Diario de desgloses
+  351. FrontOn Gestión > Consultas > Operaciones > Diario de ejecuciones
+  352. FrontOn Gestión > Consultas > Operaciones > Diario de operaciones
+  353. FrontOn Gestión > Consultas > Operaciones > Diario de órdenes
+  354. FrontOn Gestión > Consultas > Operaciones > Flujos caja
+  355. FrontOn Gestión > Consultas > Operaciones > Flujos caja 2
+  356. FrontOn Gestión > Consultas > Operaciones > Flujos caja ext CL
+  357. FrontOn Gestión > Consultas > Operaciones > Historia y proyección de tesorería
+  358. FrontOn Gestión > Consultas > Operaciones > Informe saldo por fechas
+  359. FrontOn Gestión > Consultas > Operaciones > Operaciones forward
+  360. FrontOn Gestión > Consultas > Operaciones > Preguntas
+  361. FrontOn Gestión > Consultas > Operaciones > Proyección de tesorería
+  362. FrontOn Gestión > Consultas > Operaciones > Vencimientos forward
+  363. FrontOn Gestión > Consultas > Precios > Divisas intradía
+  364. FrontOn Gestión > Consultas > Precios > Histórico Divisas
+  365. FrontOn Gestión > Consultas > Precios > Histórico Instrumentos
+  366. FrontOn Gestión > Consultas > Precios > Precio instrumentos intradía
+  367. FrontOn Gestión > Entradas > Ajuste modelo > Ajuste cartera modelo
+  368. FrontOn Gestión > Entradas > Ajuste modelo > Ajuste cartera modelo SEDA
+  369. FrontOn Gestión > Entradas > Ajuste modelo > Ajuste traspasos SEDA
+  370. FrontOn Gestión > Entradas > Ejecuciones bancarias > Ejecuciones bancarias
+  371. FrontOn Gestión > Entradas > Ejecuciones bancarias > Importación CSV BCS
+  372. FrontOn Gestión > Entradas > Ejecuciones directas > Ejecuciones múltiples repos
+  373. FrontOn Gestión > Entradas > Ejecuciones excel
+  374. FrontOn Gestión > Entradas > Envio masivo boletas
+  375. FrontOn Gestión > Entradas > Ordenes
+  376. FrontOn Gestión > Entradas > Posicionar-Incrementar
+  377. FrontOn Gestión > Entradas > Roll over
+  378. FrontOn Gestión > Entradas > Simulación de operaciones
+  379. FrontOn Gestión > Entradas > Traspasos masivos
+  380. FrontOn Gestión > Entradas > Ventas masivas
+  381. FrontOn Gestión > Tareas > Monitor de Procesos
+
+  💾  Hojas guardadas en: B:\Users\gather\python\e2e-automation\screenshots\hojas_finales.json
+
+============================================================
+  ✅  Recorrido completado. 0 ruta(s) visitadas.
+============================================================
+
+  🗺️   Árbol de menú descubierto:
+
+  📄  Reporte guardado en: B:\Users\gather\python\e2e-automation\screenshots\menu_report.txt
+  📁  Capturas guardadas en: B:\Users\gather\python\e2e-automation\screenshots
+
+  Presiona ENTER para cerrar el navegador…
+
+PS B:\Users\gather\python\e2e-automation>
