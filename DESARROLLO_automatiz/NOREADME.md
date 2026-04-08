@@ -27,7 +27,303 @@
   };
 })();
 Respuesta:
-
+{
+    "tab_content_html": "<div _ngcontent-ng-c135740549=\"\" class=\"content-block\"><app-dynamic-loader _ngcontent-ng-c135740549=\"\"><app-layout-tab _nghost-ng-c3180408634=\"\"><div _ngcontent-ng-c3180408634=\"\" class=\"container\"><app-layout-container _ngcontent-ng-c3180408634=\"\" _nghost-ng-c198808079=\"\"><div _ngcontent-ng-c198808079=\"\" class=\"container\"><app-rdlayout _ngcontent-ng-c198808079=\"\" _nghost-ng-c3588374777=\"\"><div _ngcontent-ng-c3588374777=\"\" class=\"container\"><div _ngcontent-ng-c3588374777=\"\" class=\"hover-block hid",
+    "componentes_angular": [
+        {
+            "tag": "APP-DYNAMIC-LOADER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-LAYOUT-TAB",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-LAYOUT-CONTAINER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-RDLAYOUT",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-BOX",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-MODAL-CONTAINER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "OVERLAY-SCROLLBARS",
+            "clases": "tabs",
+            "id": ""
+        },
+        {
+            "tag": "DND-DROP",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "DND-DROP-HOVER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "DND-DROP",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "DND-DROP-HOVER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-DYNAMIC-INIT-CONTAINER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-DYNAMIC-LOADER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-GENERIC-FORM",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-BLOCK-TEMPLATE",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-MODAL-CONTAINER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-RESIZER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-RESIZER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-RESIZER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-DYNAMIC-LIST-LOADER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-DYNAMIC-LIST",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "OVERLAY-SCROLLBARS",
+            "clases": "menu-content",
+            "id": ""
+        },
+        {
+            "tag": "APP-LOADER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FABRIC",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "OVERLAY-SCROLLBARS",
+            "clases": "form-content",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-TYPE",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-ACCORDION",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-GROUP",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FIELD",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-MULTIPLE",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FIELD",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-DATE",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FIELD",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-DATE",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FIELD",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-SELECT",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FIELD",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-CHECKBOX",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FIELD",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-RADIO",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FIELD",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-RADIO",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FIELD",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-CHECKBOX",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FIELD",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-SELECT",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FIELD",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-NUMBER",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FIELD",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-CHECKBOX",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FIELD",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-RADIO",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-FIELD",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-RADIO",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-FORM-BUTTON",
+            "clases": "",
+            "id": ""
+        },
+        {
+            "tag": "APP-SEPARATOR",
+            "clases": "",
+            "id": ""
+        }
+    ],
+    "todas_las_tabs": [
+        {
+            "texto": "Asientos diarios",
+            "clases": "tab activable active",
+            "tag": "DIV"
+        },
+        {
+            "texto": "Layout",
+            "clases": "tab active",
+            "tag": "DIV"
+        }
+    ]
+}
 
 // Snippet 7 — Estado del DOM y URL después de clic en una hoja final
 (() => {
