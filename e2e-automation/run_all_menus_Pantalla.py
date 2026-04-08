@@ -220,13 +220,22 @@ def open_hamburger_menu(page: Page) -> None:
     page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
 
 def is_menu_open(page: Page) -> bool:
-    """Devuelve True si el menú ya está desplegado (div.ui-menu-item visible)."""
-    try:
-        page.locator("div.ui-menu-item").first.wait_for(state="visible", timeout=2000)
-        return True
-    except PlaywrightTimeoutError:
-        return False
-
+    """
+    Devuelve True si el panel del menú lateral está desplegado.
+    Detecta si el contenedor principal del menú (app-ui-menu o div.menu-list)
+    está visible — NO los ui-menu-item que siempre existen en el DOM.
+    """
+    for sel in ["app-ui-menu", "div.menu-list", "div.ui-menu"]:
+        try:
+            loc = page.locator(sel).first
+            if loc.is_visible(timeout=1000):
+                return True
+        except Exception:
+            pass
+    return False
+    ###########################
+    # Si no conoces el selector exacto del contenedor del menú, ajusta "app-ui-menu" / "div.menu-list" 
+    # al selector real. Puedes encontrarlo en el DOM capturado dom-menu-abierto.html.
 
 def ensure_menu_open(page: Page) -> None:
     """
@@ -847,29 +856,35 @@ def volver_desde_hoja(page: Page, ruta: list[str]) -> None:
     """
     Después de hacer clic en una hoja y capturar la vista:
       1. Cierra la pestaña activa.
-      2. Vuelve al menú principal cerrando todos los niveles abiertos.
+      2. Hard-reset: cierra cualquier panel residual del menú
+         y deja el estado listo para la siguiente iteración.
 
-    ruta = ["Golf", "Consultas", "Contabilidad", "Asientos diarios"]
-    Niveles a cerrar = len(ruta) - 1  (todos menos la hoja en sí)
-      - El nivel raíz se cierra con X (usar_close=True)
-      - Los niveles intermedios se cierran con < (usar_close=False)
+    NOTA: Angular cierra el panel del menú al navegar a una hoja.
+    No hay niveles abiertos que cerrar con < o X — el menú
+    ya está en estado colapsado. Solo hay que cerrar la pestaña.
     """
     cerrar_tab_activa(page)
+    # Pequeña pausa para que Angular termine de procesar el cierre
+    page.wait_for_timeout(400)
+    # Asegurarse de que el menú está cerrado (sin panel abierto)
+    # para que la siguiente llamada a ensure_menu_open lo abra desde cero.
+    _forzar_cierre_menu_si_abierto(page)
 
-    # Reabrir el menú (el clic en la hoja lo cerró)
-    ensure_menu_open(page)
-    page.wait_for_timeout(MENU_REOPEN_DELAY_MS)
-
-    # Volver al panel que contiene la hoja (ruta[-2])
-    # luego subir nivel a nivel hasta cerrar el panel raíz
-    # Niveles abiertos = ruta[1:-1] (intermedios) + el raíz
-    # Se cierran de adentro hacia afuera:
-    #   intermedios[-1] → back, ..., intermedios[0] → back, raíz → close
-    niveles_a_cerrar = len(ruta) - 1  # no cuenta la hoja
-
-    for i in range(niveles_a_cerrar):
-        es_ultimo = (i == niveles_a_cerrar - 1)
-        volver_nivel(page, usar_close=es_ultimo)
+def _forzar_cierre_menu_si_abierto(page: Page) -> None:
+    """
+    Si por alguna razón el panel raíz quedó abierto (raro, pero posible),
+    lo cierra con la X. Si ya está cerrado, no hace nada.
+    """
+    sel = "div.menu-title.main div.close"
+    try:
+        btn = page.locator(sel).first
+        # Verificar si existe Y está visible en viewport
+        if btn.is_visible(timeout=1500):
+            btn.click(force=True)
+            page.wait_for_timeout(300)
+            print("  ✖️   Panel raíz cerrado (cleanup).")
+    except Exception:
+        pass  # Menú ya estaba cerrado — correcto
 
 def click_hoja(page: Page, texto: str) -> None:
     """
