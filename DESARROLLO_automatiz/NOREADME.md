@@ -1,3 +1,4 @@
+// pestaña Asientos diarios abierta
 // Snippet 9 — Cómo cerrar la pestaña activa
 Array.from(document.querySelectorAll('div.tab.activable'))
   .filter(el => el.offsetParent !== null)
