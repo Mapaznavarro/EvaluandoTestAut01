@@ -1,3 +1,7 @@
+Abre el archivo dom-menu-abierto.html que ya genera tu script y busca el elemento contenedor del panel lateral. Probablemente sea algo como:
+
+
+
 // Snippet 10b — Ver qué requests se dispararon y el estado del DOM
 (() => {
     window._snippet10_observer?.disconnect();
