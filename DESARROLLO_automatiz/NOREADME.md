@@ -11,6 +11,8 @@
     console.log('✅ Observer instalado — ahora haz clic en "Asientos diarios"');
 })();
 Respuesta
+fragmentoComand1:11 ✅ Observer instalado — ahora haz clic en "Asientos diarios"
+VM106 fragmentoComand1:1 undefined
 
 
 
