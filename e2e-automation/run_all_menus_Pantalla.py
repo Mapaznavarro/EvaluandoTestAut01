@@ -912,6 +912,8 @@ def ejecutar_paso2(page: Page) -> None:
             screenshot(page, f"WARN_paso2_tab__{safe}")
         else:
             print(f"  ✅  Vista cargada: '{hoja_txt}'")
+
+      
         # 4. Captura + DOM
         screenshot(page, f"paso2__{safe}")
         dump_dom(page, f"dom_paso2__{safe}")
