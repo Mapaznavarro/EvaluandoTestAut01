@@ -368,44 +368,17 @@ def capturar_submenus_nivel1(page: Page) -> None:
             page.goto(config.BASE_URL, wait_until="networkidle")
             handle_login(page)
 
-# ---------------------------------------------------------------------------
-# Recorrido recursivo de submenús (niveles 1, 2, 3...)
-# ---------------------------------------------------------------------------
-
-def get_menu_options(page: Page) -> list[dict]:
-    """
-    Devuelve la lista de div.menu-options visibles con su texto y si tiene_next.
-    """
-    return page.evaluate("""
-        () => Array.from(document.querySelectorAll('div.menu-options'))
-            .filter(el => el.offsetParent !== null)
-            .map(el => ({
-                texto: el.querySelector('div.text')?.textContent.trim() ?? '',
-                tiene_next: !!el.querySelector('div.next')
-            }))
-    """)
 
 
-def click_menu_option(page: Page, texto: str) -> None:
-    """
-    Hace clic en el div.menu-options cuyo div.text contiene el texto dado.
-    """
-    loc = page.locator("div.menu-options", has_text=texto).first
-    loc.wait_for(state="visible", timeout=5000)
-    loc.click()
-    page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
-    page.wait_for_timeout(400)
-
-
-def volver_nivel(page: Page, es_nivel1: bool) -> None:
+def volver_nivel(page: Page, usar_close: bool = False) -> None:
     """
     Vuelve al nivel anterior:
-      - nivel 1 → clic en div.menu-title.main > div.close  (X)
-      - nivel 2+ → clic en div.menu-title > div.back       (<)
+      usar_close=True  → div.menu-title.main div.close  (X) — cierra el panel raíz
+      usar_close=False → div.menu-title:not(.main) div.back  (<) — sube un nivel
     """
-    if es_nivel1:
+    if usar_close:
         sel = "div.menu-title.main div.close"
-        descripcion = "X (cerrar nivel 1)"
+        descripcion = "X (cerrar panel raíz)"
     else:
         sel = "div.menu-title:not(.main) div.back"
         descripcion = "< (volver nivel anterior)"
@@ -741,8 +714,8 @@ def recorrer_submenu_paso1(
         # Recursión en el siguiente nivel
         recorrer_submenu_paso1(page, ruta, nivel + 1)
 
-        # Volver al nivel actual
-        volver_nivel(page, es_nivel1=(nivel == 1))
+        # Volver al nivel actual — siempre con < (back), nunca con X
+        volver_nivel(page, usar_close=False)
 
 
 def recorrer_menu_completo_paso1(page: Page) -> None:
@@ -777,8 +750,8 @@ def recorrer_menu_completo_paso1(page: Page) -> None:
         # Recorrido recursivo
         recorrer_submenu_paso1(page, breadcrumb=[item_text], nivel=1)
 
-        # Cerrar el submenú de nivel 1 con X al terminar el árbol completo
-        volver_nivel(page, es_nivel1=True)
+        # Cerrar el panel raíz con X al terminar TODO el árbol de este ítem
+        volver_nivel(page, usar_close=True)
 
     # ── Reporte de hojas finales descubiertas ───────────────────────────
     print(f"\n{'='*60}")
