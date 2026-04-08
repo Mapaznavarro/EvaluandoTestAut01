@@ -35,3 +35,6 @@ TIMEOUT_MS: int = int(os.getenv("TIMEOUT_MS", "15000"))
 # Directorio donde se guardan capturas de pantalla
 SCREENSHOTS_DIR: Path = Path(__file__).parent / os.getenv("SCREENSHOTS_DIR", "screenshots")
 SCREENSHOTS_DIR.mkdir(parents=True, exist_ok=True)
+
+# Pausa (ms) para observar cada vista del PASO 2 antes de continuar
+PASO2_VISTA_PAUSA_MS = int(os.getenv("PASO2_VISTA_PAUSA_MS", "2000"))
