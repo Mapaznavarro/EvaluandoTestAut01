@@ -621,6 +621,26 @@ def traverse_menu(
 HOJAS_FINALES: list[dict] = []
 
 
+def get_menu_options(page: Page) -> list[dict]:
+    """Devuelve div.menu-options visibles con texto y tiene_next."""
+    return page.evaluate("""
+        () => Array.from(document.querySelectorAll('div.menu-options'))
+            .filter(el => el.offsetParent !== null)
+            .map(el => ({
+                texto: el.querySelector('div.text')?.textContent.trim() ?? '',
+                tiene_next: !!el.querySelector('div.next')
+            }))
+    """)
+
+
+def click_menu_option(page: Page, texto: str) -> None:
+    """Clic en el div.menu-options cuyo div.text contiene el texto dado."""
+    loc = page.locator("div.menu-options", has_text=texto).first
+    loc.wait_for(state="visible", timeout=5000)
+    loc.click()
+    page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
+    page.wait_for_timeout(400)
+
 
 def recorrer_submenu_paso1(
     page: Page,
