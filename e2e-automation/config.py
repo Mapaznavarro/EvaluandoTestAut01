@@ -38,3 +38,5 @@ SCREENSHOTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Pausa (ms) para observar cada vista del PASO 2 antes de continuar
 PASO2_VISTA_PAUSA_MS = int(os.getenv("PASO2_VISTA_PAUSA_MS", "2000"))
+
+PAUSE_PANTALLA_MS = int(os.getenv("PAUSE_PANTALLA_MS", "3000"))
