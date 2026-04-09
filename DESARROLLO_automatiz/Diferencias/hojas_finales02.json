@@ -1,0 +1,1899 @@
+[
+  {
+    "indice": 1,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Contabilidad",
+      "Asientos diarios"
+    ]
+  },
+  {
+    "indice": 2,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Contabilidad",
+      "Asientos manuales"
+    ]
+  },
+  {
+    "indice": 3,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Contabilidad",
+      "Comparativa de cuentas"
+    ]
+  },
+  {
+    "indice": 4,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Contabilidad",
+      "Comparativa de saldos a fecha"
+    ]
+  },
+  {
+    "indice": 5,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Contabilidad",
+      "Consulta informe"
+    ]
+  },
+  {
+    "indice": 6,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Contabilidad",
+      "Consulta signo girado"
+    ]
+  },
+  {
+    "indice": 7,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Contabilidad",
+      "Cuadre contabilidad cartera"
+    ]
+  },
+  {
+    "indice": 8,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Contabilidad",
+      "Saldos contables entidad"
+    ]
+  },
+  {
+    "indice": 9,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Estados de cartera",
+      "Cartera comparada"
+    ]
+  },
+  {
+    "indice": 10,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Estados de cartera",
+      "Cartera de gestión"
+    ]
+  },
+  {
+    "indice": 11,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Estados de cartera",
+      "Histórico de fondos"
+    ]
+  },
+  {
+    "indice": 12,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Estados de cartera",
+      "Histórico de valoración"
+    ]
+  },
+  {
+    "indice": 13,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Estados de cartera",
+      "Tipos de saldos"
+    ]
+  },
+  {
+    "indice": 14,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Ficha instrumentos",
+      "Ficha de instrumentos al contado"
+    ]
+  },
+  {
+    "indice": 15,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Ficha instrumentos",
+      "Flujos instrumentos"
+    ]
+  },
+  {
+    "indice": 16,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Históricos",
+      "Periodificaciones"
+    ]
+  },
+  {
+    "indice": 17,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Informe comisiones",
+      "Informe comisiones"
+    ]
+  },
+  {
+    "indice": 18,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Operaciones",
+      "Diario de operaciones por operación"
+    ]
+  },
+  {
+    "indice": 19,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Operaciones",
+      "Ficha de depósitos"
+    ]
+  },
+  {
+    "indice": 20,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Operaciones",
+      "Histórico operaciones"
+    ]
+  },
+  {
+    "indice": 21,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Operaciones",
+      "Operaciones Totales Ope/VT"
+    ]
+  },
+  {
+    "indice": 22,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Operaciones",
+      "Previsión de tesorería"
+    ]
+  },
+  {
+    "indice": 23,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Precios",
+      "Control precio valoración"
+    ]
+  },
+  {
+    "indice": 24,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Precios",
+      "Cotizaciones de instrumentos"
+    ]
+  },
+  {
+    "indice": 25,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Precios",
+      "Curvas tir"
+    ]
+  },
+  {
+    "indice": 26,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Precios",
+      "Histórico Divisas"
+    ]
+  },
+  {
+    "indice": 27,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Precios",
+      "Histórico Instrumentos"
+    ]
+  },
+  {
+    "indice": 28,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Precios",
+      "Histórico valoración vs cotizaciones"
+    ]
+  },
+  {
+    "indice": 29,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Precios",
+      "Tires"
+    ]
+  },
+  {
+    "indice": 30,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Resumen patrimonial",
+      "Resumen patrimonial a fecha"
+    ]
+  },
+  {
+    "indice": 31,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Resumen patrimonial",
+      "Resumen Patrimonial a Fecha (2008)"
+    ]
+  },
+  {
+    "indice": 32,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Resumen patrimonial",
+      "Resumen patrimonial comparativa (2008)"
+    ]
+  },
+  {
+    "indice": 33,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Saldos",
+      "Saldos de conceptos"
+    ]
+  },
+  {
+    "indice": 34,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Saldos",
+      "Saldos de conceptos con fecha"
+    ]
+  },
+  {
+    "indice": 35,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Saldos",
+      "Saldos De Identificación de Partida"
+    ]
+  },
+  {
+    "indice": 36,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Saldos",
+      "Saldos medios"
+    ]
+  },
+  {
+    "indice": 37,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Saldos",
+      "Saldos por depositario"
+    ]
+  },
+  {
+    "indice": 38,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Tareas",
+      "Tareas"
+    ]
+  },
+  {
+    "indice": 39,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Valor Liquidativo",
+      "Valor liquidativo clases"
+    ]
+  },
+  {
+    "indice": 40,
+    "ruta": [
+      "Golf",
+      "Consultas",
+      "Valor Liquidativo",
+      "Valor liquidativo fondos"
+    ]
+  },
+  {
+    "indice": 41,
+    "ruta": [
+      "Golf",
+      "Contabilidad",
+      "Cuadre contable cuentas"
+    ]
+  },
+  {
+    "indice": 42,
+    "ruta": [
+      "Golf",
+      "Entradas",
+      "Entrada de operaciones"
+    ]
+  },
+  {
+    "indice": 43,
+    "ruta": [
+      "Golf",
+      "Incorporaciones",
+      "Incorporación cotizaciones"
+    ]
+  },
+  {
+    "indice": 44,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Clases de valor"
+    ]
+  },
+  {
+    "indice": 45,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Criterios"
+    ]
+  },
+  {
+    "indice": 46,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Descripción operaciones"
+    ]
+  },
+  {
+    "indice": 47,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Escalas"
+    ]
+  },
+  {
+    "indice": 48,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Escalas éxito"
+    ]
+  },
+  {
+    "indice": 49,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Nombres tarifas"
+    ]
+  },
+  {
+    "indice": 50,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Plantilla curva diferencial"
+    ]
+  },
+  {
+    "indice": 51,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Plantilla de valoración"
+    ]
+  },
+  {
+    "indice": 52,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Plantillas contables"
+    ]
+  },
+  {
+    "indice": 53,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Plantillas operaciones"
+    ]
+  },
+  {
+    "indice": 54,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Política inversión"
+    ]
+  },
+  {
+    "indice": 55,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Sectores"
+    ]
+  },
+  {
+    "indice": 56,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Subsectores"
+    ]
+  },
+  {
+    "indice": 57,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Tarifas"
+    ]
+  },
+  {
+    "indice": 58,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Tarifas cartera"
+    ]
+  },
+  {
+    "indice": 59,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Tipos de activo"
+    ]
+  },
+  {
+    "indice": 60,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Tipos de operación"
+    ]
+  },
+  {
+    "indice": 61,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Tipos de saldos"
+    ]
+  },
+  {
+    "indice": 62,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Básicos",
+      "Tipos de valor"
+    ]
+  },
+  {
+    "indice": 63,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cartera",
+      "Bloqueo títulos"
+    ]
+  },
+  {
+    "indice": 64,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cartera",
+      "Carteras tipo cambios"
+    ]
+  },
+  {
+    "indice": 65,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cartera",
+      "Carteras tipo precio"
+    ]
+  },
+  {
+    "indice": 66,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cartera",
+      "Cuentas Liq"
+    ]
+  },
+  {
+    "indice": 67,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cartera",
+      "Depósitos"
+    ]
+  },
+  {
+    "indice": 68,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cartera",
+      "Depósitos DT"
+    ]
+  },
+  {
+    "indice": 69,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cartera",
+      "Divisa liquidación"
+    ]
+  },
+  {
+    "indice": 70,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cartera",
+      "Restricciones car"
+    ]
+  },
+  {
+    "indice": 71,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cartera",
+      "Restricciones ins"
+    ]
+  },
+  {
+    "indice": 72,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Conceptos",
+      "Conceptos"
+    ]
+  },
+  {
+    "indice": 73,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Conceptos",
+      "Conceptos cuentas"
+    ]
+  },
+  {
+    "indice": 74,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Configuración",
+      "Control aplicación"
+    ]
+  },
+  {
+    "indice": 75,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Configuración",
+      "Enlaces conexiones"
+    ]
+  },
+  {
+    "indice": 76,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Configuración",
+      "Enlaces remotos"
+    ]
+  },
+  {
+    "indice": 77,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cotizaciones",
+      "Cotizaciones"
+    ]
+  },
+  {
+    "indice": 78,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cotizaciones",
+      "Cotizaciones CVD"
+    ]
+  },
+  {
+    "indice": 79,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cotizaciones",
+      "Cotizaciones divisas"
+    ]
+  },
+  {
+    "indice": 80,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cotizaciones",
+      "Cotizaciones divisas entidades"
+    ]
+  },
+  {
+    "indice": 81,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cotizaciones",
+      "Curvas de tir"
+    ]
+  },
+  {
+    "indice": 82,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cotizaciones",
+      "Deltas"
+    ]
+  },
+  {
+    "indice": 83,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cotizaciones",
+      "Forwards"
+    ]
+  },
+  {
+    "indice": 84,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cotizaciones",
+      "Grupo cotizaciones"
+    ]
+  },
+  {
+    "indice": 85,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cotizaciones",
+      "IPC"
+    ]
+  },
+  {
+    "indice": 86,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Cotizaciones",
+      "Tires"
+    ]
+  },
+  {
+    "indice": 87,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Entidades"
+    ]
+  },
+  {
+    "indice": 88,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Agentes"
+    ]
+  },
+  {
+    "indice": 89,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Aportantes"
+    ]
+  },
+  {
+    "indice": 90,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Beneficiarios"
+    ]
+  },
+  {
+    "indice": 91,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Beneficiarios tipos"
+    ]
+  },
+  {
+    "indice": 92,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Brókers"
+    ]
+  },
+  {
+    "indice": 93,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Bancos"
+    ]
+  },
+  {
+    "indice": 94,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Carteras"
+    ]
+  },
+  {
+    "indice": 95,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Clientes"
+    ]
+  },
+  {
+    "indice": 96,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Comerciales"
+    ]
+  },
+  {
+    "indice": 97,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Contables"
+    ]
+  },
+  {
+    "indice": 98,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Contrapartidas"
+    ]
+  },
+  {
+    "indice": 99,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Correspondencia"
+    ]
+  },
+  {
+    "indice": 100,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Cuentas"
+    ]
+  },
+  {
+    "indice": 101,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Distribuidores"
+    ]
+  },
+  {
+    "indice": 102,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Emisoras"
+    ]
+  },
+  {
+    "indice": 103,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Datos administrativos"
+    ]
+  },
+  {
+    "indice": 104,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Entidades CRS"
+    ]
+  },
+  {
+    "indice": 105,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Entidades"
+    ]
+  },
+  {
+    "indice": 106,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Entidades FATCA"
+    ]
+  },
+  {
+    "indice": 107,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Fondo/Compa./Clase"
+    ]
+  },
+  {
+    "indice": 108,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Notarios"
+    ]
+  },
+  {
+    "indice": 109,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Fondos"
+    ]
+  },
+  {
+    "indice": 110,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Gestoras"
+    ]
+  },
+  {
+    "indice": 111,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Gestores"
+    ]
+  },
+  {
+    "indice": 112,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Grupos fiscales"
+    ]
+  },
+  {
+    "indice": 113,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Mediadoras"
+    ]
+  },
+  {
+    "indice": 114,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Mercados"
+    ]
+  },
+  {
+    "indice": 115,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Partícipes"
+    ]
+  },
+  {
+    "indice": 116,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Planes"
+    ]
+  },
+  {
+    "indice": 117,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Promotores"
+    ]
+  },
+  {
+    "indice": 118,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Proveedores"
+    ]
+  },
+  {
+    "indice": 119,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Propietarios"
+    ]
+  },
+  {
+    "indice": 120,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Registrales"
+    ]
+  },
+  {
+    "indice": 121,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Representantes"
+    ]
+  },
+  {
+    "indice": 122,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Sucursales"
+    ]
+  },
+  {
+    "indice": 123,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Subplan"
+    ]
+  },
+  {
+    "indice": 124,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Titulares"
+    ]
+  },
+  {
+    "indice": 125,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Varios"
+    ]
+  },
+  {
+    "indice": 126,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Entidades",
+      "Básicos",
+      "Vinculados"
+    ]
+  },
+  {
+    "indice": 127,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Fondos",
+      "Cálculos cierre"
+    ]
+  },
+  {
+    "indice": 128,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Fondos",
+      "Conceptos fondo"
+    ]
+  },
+  {
+    "indice": 129,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Fondos",
+      "Nombre Comisión Éxito"
+    ]
+  },
+  {
+    "indice": 130,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Fondos",
+      "Política de inversión de fondos"
+    ]
+  },
+  {
+    "indice": 131,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Fondos",
+      "Valores liquidativo fondos"
+    ]
+  },
+  {
+    "indice": 132,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Fondos",
+      "Valores liquidativo planes"
+    ]
+  },
+  {
+    "indice": 133,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Instrumentos"
+    ]
+  },
+  {
+    "indice": 134,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Instrumentos"
+    ]
+  },
+  {
+    "indice": 135,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Valores CVI"
+    ]
+  },
+  {
+    "indice": 136,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Colaterales"
+    ]
+  },
+  {
+    "indice": 137,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Colaterales garantía"
+    ]
+  },
+  {
+    "indice": 138,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Valores RF"
+    ]
+  },
+  {
+    "indice": 139,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Valores común"
+    ]
+  },
+  {
+    "indice": 140,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Futuros"
+    ]
+  },
+  {
+    "indice": 141,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Valores RV"
+    ]
+  },
+  {
+    "indice": 142,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Opciones"
+    ]
+  },
+  {
+    "indice": 143,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Contrato derivado"
+    ]
+  },
+  {
+    "indice": 144,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Divisas"
+    ]
+  },
+  {
+    "indice": 145,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Pagos y cobros"
+    ]
+  },
+  {
+    "indice": 146,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Entregables"
+    ]
+  },
+  {
+    "indice": 147,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Instrumentos Frontón"
+    ]
+  },
+  {
+    "indice": 148,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Instrumentos UME"
+    ]
+  },
+  {
+    "indice": 149,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Variaciones tipos"
+    ]
+  },
+  {
+    "indice": 150,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Periodos"
+    ]
+  },
+  {
+    "indice": 151,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Instrumentos",
+      "Básicos",
+      "Flujos"
+    ]
+  },
+  {
+    "indice": 152,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Agrupaciones entidades"
+    ]
+  },
+  {
+    "indice": 153,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Agrupaciones instrumentos"
+    ]
+  },
+  {
+    "indice": 154,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Apalancamientos IIC's"
+    ]
+  },
+  {
+    "indice": 155,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Asociadas"
+    ]
+  },
+  {
+    "indice": 156,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Asociadas gestora"
+    ]
+  },
+  {
+    "indice": 157,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Asociadas usuario"
+    ]
+  },
+  {
+    "indice": 158,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Bloques títulos"
+    ]
+  },
+  {
+    "indice": 159,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Broker cartera"
+    ]
+  },
+  {
+    "indice": 160,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Broker mercado"
+    ]
+  },
+  {
+    "indice": 161,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Calendario"
+    ]
+  },
+  {
+    "indice": 162,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Comisiones car ins"
+    ]
+  },
+  {
+    "indice": 163,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Comunidades"
+    ]
+  },
+  {
+    "indice": 164,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Depositario Mercado"
+    ]
+  },
+  {
+    "indice": 165,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Depósitos conjuntos"
+    ]
+  },
+  {
+    "indice": 166,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Factor ajuste intereses"
+    ]
+  },
+  {
+    "indice": 167,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Fechas liquidación operaciones"
+    ]
+  },
+  {
+    "indice": 168,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Festivos"
+    ]
+  },
+  {
+    "indice": 169,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Grupos de emisoras"
+    ]
+  },
+  {
+    "indice": 170,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Nombres agrupaciones entidades"
+    ]
+  },
+  {
+    "indice": 171,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Nombres agrupaciones instrumentos"
+    ]
+  },
+  {
+    "indice": 172,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios",
+      "Sistemas liquidación operación"
+    ]
+  },
+  {
+    "indice": 173,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Histórico de periodificaciones"
+    ]
+  },
+  {
+    "indice": 174,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Municipios"
+    ]
+  },
+  {
+    "indice": 175,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Países"
+    ]
+  },
+  {
+    "indice": 176,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Parámetros Car/Inst"
+    ]
+  },
+  {
+    "indice": 177,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Per. intereses cta. cte."
+    ]
+  },
+  {
+    "indice": 178,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Profesiones"
+    ]
+  },
+  {
+    "indice": 179,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Provincias"
+    ]
+  },
+  {
+    "indice": 180,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Ratings"
+    ]
+  },
+  {
+    "indice": 181,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Ratings históricos cálculos"
+    ]
+  },
+  {
+    "indice": 182,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Ratings históricos cotizaciones"
+    ]
+  },
+  {
+    "indice": 183,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Textos de informes"
+    ]
+  },
+  {
+    "indice": 184,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Volúmenes entidades"
+    ]
+  },
+  {
+    "indice": 185,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Volúmenes instrumentos"
+    ]
+  },
+  {
+    "indice": 186,
+    "ruta": [
+      "Golf",
+      "Maestros",
+      "Varios II",
+      "Zona geográfica"
+    ]
+  },
+  {
+    "indice": 187,
+    "ruta": [
+      "Golf",
+      "Procesos",
+      "Asignaciones día"
+    ]
+  },
+  {
+    "indice": 188,
+    "ruta": [
+      "Golf",
+      "Procesos",
+      "Valorar fondos"
+    ]
+  },
+  {
+    "indice": 189,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Tareas"
+    ]
+  },
+  {
+    "indice": 190,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Dividendos"
+    ]
+  },
+  {
+    "indice": 191,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Dividendos extranjeros"
+    ]
+  },
+  {
+    "indice": 192,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Ampliaciones"
+    ]
+  },
+  {
+    "indice": 193,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Suscripciones"
+    ]
+  },
+  {
+    "indice": 194,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Canjes"
+    ]
+  },
+  {
+    "indice": 195,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Spin off"
+    ]
+  },
+  {
+    "indice": 196,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Dividendos pasivos"
+    ]
+  },
+  {
+    "indice": 197,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Primas junta"
+    ]
+  },
+  {
+    "indice": 198,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Equiparaciones"
+    ]
+  },
+  {
+    "indice": 199,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Split/Compresión"
+    ]
+  },
+  {
+    "indice": 200,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Aviso dividendo"
+    ]
+  },
+  {
+    "indice": 201,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Aviso dividendo extranjero"
+    ]
+  },
+  {
+    "indice": 202,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Cotizaciones medias"
+    ]
+  },
+  {
+    "indice": 203,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Primas emisión"
+    ]
+  },
+  {
+    "indice": 204,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Capital call"
+    ]
+  },
+  {
+    "indice": 205,
+    "ruta": [
+      "Golf",
+      "Tareas",
+      "Planificador de tareas",
+      "Distribuciones capital"
+    ]
+  }
+]
