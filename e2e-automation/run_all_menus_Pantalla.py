@@ -249,6 +249,56 @@ def ensure_menu_open(page: Page) -> None:
         print("  ⚠️   Menú abierto pero div.ui-menu-item no apareció.")
 
 
+def cerrar_menu_si_abierto(page: Page) -> None:
+    """
+    Cierra el panel de menú lateral si está abierto haciendo clic fuera del área.
+    Esto simula el comportamiento del usuario: clic fuera del menú para cerrarlo.
+    """
+    # Verificar si el menú está abierto
+    menu_abierto = False
+    for sel in ["div.ui-menu-item", "div.menu-options"]:
+        try:
+            page.locator(sel).first.wait_for(state="visible", timeout=1000)
+            menu_abierto = True
+            break
+        except PlaywrightTimeoutError:
+            continue
+
+    if not menu_abierto:
+        return
+
+    print("  🔒  Menú abierto detectado — haciendo clic fuera para cerrarlo…")
+
+    # Intento 1: clic fuera del área del menú (centro de la pantalla)
+    try:
+        page.mouse.click(800, 400)
+        page.wait_for_timeout(500)
+    except Exception as exc:
+        print(f"  ⚠️   Error al hacer clic fuera: {exc}")
+
+    # Verificar si se cerró
+    try:
+        page.locator("div.ui-menu-item").first.wait_for(state="hidden", timeout=2000)
+        print("  ✅  Menú cerrado con clic fuera.")
+    except PlaywrightTimeoutError:
+        # Intento 2: botón X del panel raíz
+        print("  ⚠️   Clic fuera no cerró el menú — intentando botón X…")
+        try:
+            close_btn = page.locator("div.menu-title.main div.close").first
+            close_btn.wait_for(state="visible", timeout=2000)
+            close_btn.click()
+            page.wait_for_timeout(400)
+            print("  ✅  Menú cerrado con botón X.")
+        except Exception as exc2:
+            print(f"  ⚠️   No se pudo cerrar el menú con botón X: {exc2}")
+
+    # Esperar a que el hamburguesa sea visible
+    try:
+        page.locator("div.toggle.menu").first.wait_for(state="visible", timeout=3000)
+    except PlaywrightTimeoutError:
+        print("  ⚠️   div.toggle.menu no apareció después de cerrar el menú.")
+
+
 
 
 TARGET_MENU_ITEMS = ["Golf", "Participes LATAM", "FrontOn Gestión"]
@@ -732,7 +782,8 @@ def recorrer_menu_completo_paso1(page: Page) -> None:
         recorrer_submenu_paso1(page, breadcrumb=[item_text], nivel=1)
 
         # Cerrar el panel raíz con X al terminar TODO el árbol de este ítem
-        volver_nivel(page, usar_close=True) 
+        volver_nivel(page, usar_close=True)
+        cerrar_menu_si_abierto(page)
 
     # ── Reporte de hojas finales descubiertas ───────────────────────────
     print(f"\n{'='*60}")
@@ -861,7 +912,9 @@ def ejecutar_paso2(page: Page) -> None:
         print(f"\n[{indice:>3}/{total}] {ruta_str}")
 
         try:
-            # PASO A — Abrir menú desde cero
+            # PASO A — Asegurar estado limpio: cerrar cualquier menú o panel abierto
+            cerrar_menu_si_abierto(page)
+            # PASO A2 — Abrir menú desde cero
             abrir_menu_hamburguesa(page)
 
             # PASO B — Navegar ruta completa (raíz → ramas → hoja)
@@ -898,11 +951,8 @@ def ejecutar_paso2(page: Page) -> None:
             except Exception:
                 pass
 
-            # Esperar hamburguesa antes de continuar
-            try:
-                page.locator("div.toggle.menu").first.wait_for(state="visible", timeout=5000)
-            except Exception:
-                pass
+            # Cerrar cualquier menú que haya quedado abierto (clic fuera del área)
+            cerrar_menu_si_abierto(page)
 
     # Reporte final
     print(f"\n{'='*60}")
