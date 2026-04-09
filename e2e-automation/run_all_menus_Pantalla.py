@@ -933,7 +933,7 @@ def ejecutar_paso2(page: Page) -> None:
             dump_dom(page, f"dom_paso2__{safe}")
           
             # Pausa para que el usuario reconozca la pantalla abierta
-            page.wait_for_timeout(PAUSE_PANTALLA_MS)
+            page.wait_for_timeout(config.PAUSE_PANTALLA_MS)
           
             # PASO D — Cerrar pantalla
             cerrado = cerrar_pantalla_layout(page)
