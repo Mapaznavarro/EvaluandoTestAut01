@@ -1,3 +1,10 @@
+Al ejecutar aparecen notificaciones que podrían tener un efecto en la automatizacion
+Notificaciones
+Errores
+Para realizar este proceso es necesario la configuración del BUCKET.
+9 de abr. de 2026 15:11:08
+
+
 Buscar 
 <app-ui-menu class="...">          ← usar "app-ui-menu"
   <div class="menu-list ...">      ← o usar "div.menu-list"
