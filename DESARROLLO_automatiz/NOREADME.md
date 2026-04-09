@@ -1,3 +1,17 @@
+Ejecutar snippet cuando esté la noticación
+
+// ¿Es un dialog nativo?
+document.querySelector('dialog')
+
+// ¿Hay iframes?
+document.querySelectorAll('iframe')
+
+// ¿Hay shadow roots?
+document.querySelectorAll('*')
+
+
+
+
 Al ejecutar aparecen notificaciones que podrían tener un efecto en la automatizacion
 Notificaciones
 Errores
