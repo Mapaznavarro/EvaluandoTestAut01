@@ -783,7 +783,7 @@ def recorrer_menu_completo_paso1(page: Page) -> None:
 
         # Cerrar el panel raíz con X al terminar TODO el árbol de este ítem
         volver_nivel(page, usar_close=True)
-        cerrar_menu_si_abierto(page)
+        #cerrar_menu_si_abierto(page)
 
     # ── Reporte de hojas finales descubiertas ───────────────────────────
     print(f"\n{'='*60}")
