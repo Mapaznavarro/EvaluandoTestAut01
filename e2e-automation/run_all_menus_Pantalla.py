@@ -1193,18 +1193,6 @@ def run() -> None:
             dump_dom(page, "dom-after-login")  # <-- AGREGAR
             print()
 
-
-            # ── Paso 2.1: Descartar notificación post-login (condición de borde) ──
-            print("▶ Paso 2.1: Verificando notificación post-login…")
-            notif = handle_notification_modal(page, "post-login")
-            if notif:
-                print(f"  🔔  Notificación post-login atendida: {notif}")
-                screenshot(page, "02b_notificacion_post_login")
-            else:
-                print("  ℹ️   Sin notificación post-login.")
-            print()
-
-          
             # ── Paso 3: Abrir menú y recorrer ────────────────────────────
             print("▶ Paso 3: Abriendo menú hamburguesa…")
             open_hamburger_menu(page)
