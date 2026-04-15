@@ -23,6 +23,7 @@ Requiere:
 """
 
 import sys
+import csv
 import datetime
 from datetime import timezone
 from pathlib import Path
@@ -81,6 +82,62 @@ MENU_REOPEN_DELAY_MS = 500
 
 # Velocidad de slow_mo del navegador (ms entre acciones)
 BROWSER_SLOW_MO_MS = 300
+
+# ---------------------------------------------------------------------------
+# Selectores para detección y cierre del modal de notificación
+# ---------------------------------------------------------------------------
+
+# Contenedores del modal de notificación (en orden de prioridad)
+NOTIFICATION_MODAL_SELECTORS = [
+    "app-notification-container",
+    "div.notification-container",
+    "app-notification-slider",
+    "div.notification-slider",
+    "app-ui-notifications",
+    "div.notifications-container",
+    "div.notification-panel",
+    "div.notifications",
+    "div[class*='notification']",
+    "[role='alertdialog']",
+    "[role='dialog'][class*='notification']",
+    "[role='dialog']",
+]
+
+# Selectores para leer el tipo de notificación (ej. "Errores", "TypeError")
+NOTIFICATION_TYPE_SELECTORS = [
+    "div.notification-type", "div.type", "div.title",
+    "div.notification-title", ".notification-header",
+]
+
+# Selectores para leer el mensaje de la notificación
+NOTIFICATION_MESSAGE_SELECTORS = [
+    "div.notification-message", "div.message", "div.body",
+    "div.notification-body", "div.text", "p.message",
+]
+
+# Selectores para cerrar/aceptar la notificación
+NOTIFICATION_CLOSE_SELECTORS = [
+    "app-notification-container div.close",
+    "app-notification-container button",
+    "div.notification-slider div.close",
+    "div.notification-slider button",
+    "app-notification-slider div.close",
+    "app-notification-slider button",
+    "app-ui-notifications div.close",
+    "app-ui-notifications button",
+    "app-ui-notifications div.accept",
+    "app-ui-notifications div.ok",
+    "div.notifications div.close",
+    "div.notifications button",
+    "div.notification-panel div.close",
+    "button:has-text('Aceptar')",
+    "button:has-text('OK')",
+    "button:has-text('Cerrar')",
+    "div.modal div.close",
+    "[role='dialog'] div.close",
+    "[role='dialog'] button",
+    "[role='alertdialog'] button",
+]
 
 # ---------------------------------------------------------------------------
 # Helpers compartidos con run_golf_entidades.py
@@ -743,6 +800,115 @@ def recorrer_menu_completo_paso1(page: Page) -> None:
     with open(report_path, "w", encoding="utf-8") as f:
         json.dump(HOJAS_FINALES, f, ensure_ascii=False, indent=2)
     print(f"\n  💾  Hojas guardadas en: {report_path}")
+
+# ---------------------------------------------------------------------------
+# Manejo del modal de notificación
+# ---------------------------------------------------------------------------
+
+
+def handle_notification_modal(page: Page, ruta_str: str) -> str | None:
+    """
+    Detecta, registra y cierra el modal de notificación si está visible.
+
+    Uso futuro: llamar después de cada navegación de hoja final para
+    interceptar notificaciones de error de la aplicación.
+
+    1. Detecta si hay un modal de notificación visible (timeout corto 2000ms).
+    2. Extrae tipo y mensaje de la notificación.
+    3. Registra en notificaciones_log.csv (timestamp, ruta_menu, tipo, mensaje).
+    4. Cierra el modal haciendo clic en el botón de aceptar/cerrar.
+    5. Retorna el texto "{tipo}: {mensaje}" o None si no había modal.
+    """
+    # ── 1. Detectar si hay notificación visible ─────────────────────────
+    modal_loc = None
+    for sel in NOTIFICATION_MODAL_SELECTORS:
+        try:
+            loc = page.locator(sel).first
+            loc.wait_for(state="visible", timeout=2000)
+            # Verificar que la notificación tiene contenido (no es un contenedor vacío)
+            inner = loc.inner_text().strip()
+            if inner:
+                modal_loc = loc
+                break
+        except Exception:
+            continue
+
+    if modal_loc is None:
+        return None
+
+    # ── 2. Extraer tipo y mensaje ────────────────────────────────────────
+    tipo = ""
+    for sel in NOTIFICATION_TYPE_SELECTORS:
+        try:
+            t = modal_loc.locator(sel).first.inner_text().strip()
+            if t:
+                tipo = t
+                break
+        except Exception:
+            continue
+
+    mensaje = ""
+    for sel in NOTIFICATION_MESSAGE_SELECTORS:
+        try:
+            m = modal_loc.locator(sel).first.inner_text().strip()
+            if m:
+                mensaje = m
+                break
+        except Exception:
+            continue
+
+    # Si no se pudo distinguir tipo/mensaje, usar el texto completo
+    if not tipo and not mensaje:
+        try:
+            texto_completo = modal_loc.inner_text().strip()
+            mensaje = texto_completo
+        except Exception:
+            mensaje = "(texto no disponible)"
+
+    texto_notif = f"{tipo}: {mensaje}" if tipo else mensaje
+
+    # ── 3. Registrar en CSV ──────────────────────────────────────────────
+    log_path = config.SCREENSHOTS_DIR / "notificaciones_log.csv"
+    ts_iso = datetime.datetime.now(timezone.utc).isoformat()
+    escribir_cabecera = not log_path.exists()
+    try:
+        with open(log_path, "a", newline="", encoding="utf-8") as csvfile:
+            writer = csv.writer(csvfile)
+            if escribir_cabecera:
+                writer.writerow(["timestamp", "ruta_menu", "tipo", "mensaje"])
+            writer.writerow([ts_iso, ruta_str, tipo, mensaje])
+        print(f"  📝  Notificación registrada en log: {log_path.name}")
+    except Exception as exc:
+        print(f"  ⚠️   No se pudo escribir en el log de notificaciones: {exc}")
+
+    # ── 4. Cerrar el modal ───────────────────────────────────────────────
+    cerrado = False
+    for sel in NOTIFICATION_CLOSE_SELECTORS:
+        try:
+            btn = page.locator(sel).first
+            btn.wait_for(state="visible", timeout=2000)
+            btn.click()
+            page.wait_for_timeout(400)
+            print(f"  ✅  Modal de notificación cerrado con selector: {sel}")
+            cerrado = True
+            break
+        except Exception:
+            continue
+
+    if not cerrado:
+        safe = ruta_str.replace(" > ", "__").replace(" ", "_")[:MAX__FILENAME_LENGTH]
+        screenshot(page, f"NOTIF_NO_CERRADA__{safe}")
+        # Registrar el intento fallido en el CSV
+        ts_iso2 = datetime.datetime.now(timezone.utc).isoformat()
+        try:
+            with open(log_path, "a", newline="", encoding="utf-8") as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow([ts_iso2, ruta_str, tipo, f"[NO SE PUDO CERRAR] {mensaje}"])
+        except Exception:
+            pass
+        print(f"  ⚠️   No se pudo cerrar el modal de notificación. Screenshot guardado.")
+
+    return texto_notif
 
 # ---------------------------------------------------------------------------
 # Flujo principal
