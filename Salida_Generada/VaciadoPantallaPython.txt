@@ -43,3 +43,28 @@ Call log:
   ❌  Error en 'Golf > Maestros > Básicos > Clases de valor': No se pudo hacer clic en el hamburguesa ≡.
   🍔  Captura guardada: 20260416_131742_ERROR_paso2__Golf__Maestros__Básicos__Clases_de_valor.png
   ⚠️   No se pudo cerrar la pantalla: Locator.click: Timeout 15000ms exceeded.
+
+--- ANÁLISIS DEL PROBLEMA (2026-04-16) ---
+DOM capturado: 20260416_131648_dom_paso2__Golf__Incorporaciones__Incorporaci_n_cotizaciones.html
+
+CAUSA RAÍZ IDENTIFICADA:
+  Un modal/ventana emergente (<app-modal> con clase .backdrop) intercepta los eventos del puntero,
+  bloqueando el clic en el botón de cierre de la pestaña activa.
+
+  El elemento <div class="backdrop"> actúa como overlay y tiene mayor z-index,
+  impidiendo que Playwright alcance el elemento "div.tab.activable.active div.close".
+
+SOLUCIÓN SUGERIDA EN EL SCRIPT PYTHON:
+  1. Detectar si existe un modal abierto antes de intentar cerrar la pestaña:
+       modal = page.locator("app-modal").first
+       if modal.is_visible():
+           # Cerrar el modal primero (botón confirmar/cancelar o tecla Escape)
+           page.keyboard.press("Escape")
+           # o hacer clic en el botón de cierre del modal
+           page.locator("app-modal .close-button").click()
+
+  2. Luego intentar cerrar la pestaña normalmente:
+       page.locator("div.tab.activable.active div.close").first.click()
+
+  3. Alternativa: usar dispatch_event para forzar el clic ignorando el overlay:
+       page.locator("div.tab.activable.active div.close").first.dispatch_event("click")
