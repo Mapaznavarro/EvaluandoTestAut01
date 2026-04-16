@@ -918,11 +918,13 @@ def navegar_ruta_completa(page: Page, ruta: list[str]) -> bool:
 
 def cerrar_pantalla_layout(page: Page) -> bool:
     """
-    Cierra la pantalla activa haciendo clic en div.tab.activable.active div.close
-    Espera a que div.tab.activable.active desaparezca (state="hidden", timeout=5000).
-    Luego espera a que div.toggle.menu sea visible (hamburguesa ≡ disponible).
+    Cierra la pantalla activa haciendo clic en div.tab.activable.active div.close.
+    Antes de intentarlo, detecta y cierra cualquier app-modal que bloquee el overlay.
     Devuelve True si se cerró correctamente.
     """
+    # Paso previo: cerrar app-modal si está bloqueando los eventos del puntero
+    _cerrar_app_modal_si_existe(page)
+
     try:
         close_btn = page.locator("div.tab.activable.active div.close").first
         close_btn.wait_for(state="visible", timeout=5000)
@@ -933,8 +935,73 @@ def cerrar_pantalla_layout(page: Page) -> bool:
         return True
     except Exception as exc:
         print(f"  ⚠️   No se pudo cerrar la pantalla: {exc}")
+        # Fallback: dispatch_event fuerza el clic ignorando el overlay
+        try:
+            page.locator("div.tab.activable.active div.close").first.dispatch_event("click")
+            page.locator("div.tab.activable.active").first.wait_for(state="hidden", timeout=5000)
+            page.locator("div.toggle.menu").first.wait_for(state="visible", timeout=5000)
+            print("  ✖️   Pantalla cerrada con dispatch_event.")
+            return True
+        except Exception as exc2:
+            print(f"  ⚠️   dispatch_event también falló: {exc2}")
+            return False
+
+def _cerrar_app_modal_si_existe(page: Page) -> bool:
+    """
+    Detecta si hay un <app-modal> con backdrop visible y lo cierra.
+    Intenta: Escape → botones del modal → clic en backdrop.
+    Devuelve True si cerró un modal, False si no había ninguno.
+    """
+    try:
+        if not page.locator("app-modal").first.is_visible(timeout=2000):
+            return False
+    except Exception:
         return False
 
+    print("  🪟   app-modal detectado — intentando cerrarlo…")
+
+    # Intento 1: tecla Escape
+    try:
+        page.keyboard.press("Escape")
+        page.wait_for_timeout(500)
+        if not page.locator("app-modal").first.is_visible(timeout=1000):
+            print("  ✅  Modal cerrado con Escape.")
+            return True
+    except Exception:
+        pass
+
+    # Intento 2: botones de cierre dentro del modal
+    for sel in [
+        "app-modal button:has-text('Aceptar')",
+        "app-modal button:has-text('OK')",
+        "app-modal button:has-text('Cerrar')",
+        "app-modal button:has-text('Cancelar')",
+        "app-modal div.close",
+        "app-modal button.close",
+        "app-modal .close-button",
+    ]:
+        try:
+            btn = page.locator(sel).first
+            btn.wait_for(state="visible", timeout=1500)
+            btn.click()
+            page.wait_for_timeout(500)
+            if not page.locator("app-modal").first.is_visible(timeout=1000):
+                print(f"  ✅  Modal cerrado con: {sel}")
+                return True
+        except Exception:
+            continue
+
+    # Intento 3: dispatch_event en el backdrop (ignora el overlay)
+    try:
+        page.locator("app-modal div.backdrop").first.dispatch_event("click")
+        page.wait_for_timeout(500)
+        print("  ✅  Modal cerrado con clic en backdrop.")
+        return True
+    except Exception:
+        pass
+
+    print("  ⚠️   No se pudo cerrar el app-modal.")
+    return False
 
 def is_notification_modal_visible(page: Page):
     """
