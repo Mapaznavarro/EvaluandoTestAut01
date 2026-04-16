@@ -936,6 +936,30 @@ def cerrar_pantalla_layout(page: Page) -> bool:
         return False
 
 
+def is_notification_modal_visible(page: Page):
+    """
+    Detecta la ventana unimodal de error buscando:
+        <div class="title"> Notificaciones </div>
+    El innerText es exactamente ' Notificaciones ' (espacio + texto + espacio).
+    Devuelve el locator del div.title si es visible, None en caso contrario.
+    """
+    try:
+        found = page.evaluate("""
+            () => {
+                const divs = document.querySelectorAll('div.title');
+                for (const el of divs) {
+                    if (el.innerText === ' Notificaciones ') return true;
+                }
+                return false;
+            }
+        """)
+        if found:
+            return page.locator("div.title").filter(has_text=" Notificaciones ").first
+    except Exception:
+        pass
+    return None
+
+
 def handle_notification_modal(page: Page, ruta_str: str) -> str | None:
     """
     Detecta, registra y cierra el modal de notificación si está visible.
@@ -947,21 +971,12 @@ def handle_notification_modal(page: Page, ruta_str: str) -> str | None:
     5. Retorna el texto "{tipo}: {mensaje}" o None si no había modal.
     """
     # ── 1. Detectar si hay notificación visible ─────────────────────────
-    modal_loc = None
-    for sel in NOTIFICATION_MODAL_SELECTORS:
-        try:
-            loc = page.locator(sel).first
-            loc.wait_for(state="visible", timeout=2000)
-            # Verificar que la notificación tiene contenido (no es un contenedor vacío)
-            inner = loc.inner_text().strip()
-            if inner:
-                modal_loc = loc
-                break
-        except Exception:
-            continue
-
+    modal_loc = is_notification_modal_visible(page)
     if modal_loc is None:
         return None
+    safe = ruta_str.replace(" > ", "__").replace(" ", "_")[:MAX__FILENAME_LENGTH]
+    screenshot(page, f"NOTIF__{safe}")
+    dump_dom(page, f"NOTIF_DOM__{safe}")
 
     # ── 2. Extraer tipo y mensaje ────────────────────────────────────────
     tipo = ""
@@ -1023,7 +1038,6 @@ def handle_notification_modal(page: Page, ruta_str: str) -> str | None:
             continue
 
     if not cerrado:
-        safe = ruta_str.replace(" > ", "__").replace(" ", "_")[:MAX__FILENAME_LENGTH]
         screenshot(page, f"NOTIF_NO_CERRADA__{safe}")
         # Registrar el intento fallido en el CSV
         ts_iso2 = datetime.datetime.now(timezone.utc).isoformat()
