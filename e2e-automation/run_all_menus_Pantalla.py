@@ -938,23 +938,23 @@ def cerrar_pantalla_layout(page: Page) -> bool:
 
 def is_notification_modal_visible(page: Page):
     """
-    Detecta la ventana unimodal de error buscando:
+    Detecta la ventana unimodal de notificación buscando:
         <div class="title"> Notificaciones </div>
     El innerText es exactamente ' Notificaciones ' (espacio + texto + espacio).
     Devuelve el locator del div.title si es visible, None en caso contrario.
     """
     try:
-        found = page.evaluate("""
+        index = page.evaluate("""
             () => {
                 const divs = document.querySelectorAll('div.title');
-                for (const el of divs) {
-                    if (el.innerText === ' Notificaciones ') return true;
+                for (let i = 0; i < divs.length; i++) {
+                    if (divs[i].innerText === ' Notificaciones ') return i;
                 }
-                return false;
+                return -1;
             }
         """)
-        if found:
-            return page.locator("div.title").filter(has_text=" Notificaciones ").first
+        if index >= 0:
+            return page.locator("div.title").nth(index)
     except Exception:
         pass
     return None
