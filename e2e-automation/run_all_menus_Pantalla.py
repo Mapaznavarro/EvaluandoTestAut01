@@ -948,59 +948,62 @@ def cerrar_pantalla_layout(page: Page) -> bool:
 
 def _cerrar_app_modal_si_existe(page: Page) -> bool:
     """
-    Detecta si hay un <app-modal> con backdrop visible y lo cierra.
-    Intenta: Escape → botones del modal → clic en backdrop.
-    Devuelve True si cerró un modal, False si no había ninguno.
+    Detecta si hay un <app-modal> visible (via div.modal-background) y lo cierra.
+    El botón de cierre real es: app-modal div.option.close  (un <div>, no <button>)
     """
+    # ── Detección correcta: usar div.modal-background (tiene dimensiones reales)
     try:
-        if not page.locator("app-modal").first.is_visible(timeout=2000):
-            return False
+        page.locator("app-modal div.modal-background").first.wait_for(
+            state="visible", timeout=2000
+        )
     except Exception:
-        return False
+        return False  # No hay modal visible
 
-    print("  🪟   app-modal detectado — intentando cerrarlo…")
+    print("  🪟  app-modal detectado (div.modal-background visible).")
 
-    # Intento 1: tecla Escape
+    # Intento 1: clic en div.option.close (botón X con SVG fa-xmark)
+    try:
+        btn = page.locator("app-modal div.option.close").first
+        btn.wait_for(state="visible", timeout=2000)
+        btn.click()
+        page.wait_for_timeout(500)
+        # Verificar que se cerró
+        try:
+            page.locator("app-modal div.modal-background").first.wait_for(
+                state="hidden", timeout=2000
+            )
+            print("  ✅  Modal cerrado con div.option.close.")
+            return True
+        except Exception:
+            pass
+    except Exception as e:
+        print(f"  ⚠️  Fallo clic en div.option.close: {e}")
+
+    # Intento 2: Escape
     try:
         page.keyboard.press("Escape")
         page.wait_for_timeout(500)
-        if not page.locator("app-modal").first.is_visible(timeout=1000):
-            print("  ✅  Modal cerrado con Escape.")
-            return True
+        page.locator("app-modal div.modal-background").first.wait_for(
+            state="hidden", timeout=1500
+        )
+        print("  ✅  Modal cerrado con Escape.")
+        return True
     except Exception:
         pass
 
-    # Intento 2: botones de cierre dentro del modal
-    for sel in [
-        "app-modal button:has-text('Aceptar')",
-        "app-modal button:has-text('OK')",
-        "app-modal button:has-text('Cerrar')",
-        "app-modal button:has-text('Cancelar')",
-        "app-modal div.close",
-        "app-modal button.close",
-        "app-modal .close-button",
-    ]:
-        try:
-            btn = page.locator(sel).first
-            btn.wait_for(state="visible", timeout=1500)
-            btn.click()
-            page.wait_for_timeout(500)
-            if not page.locator("app-modal").first.is_visible(timeout=1000):
-                print(f"  ✅  Modal cerrado con: {sel}")
-                return True
-        except Exception:
-            continue
-
-    # Intento 3: dispatch_event en el backdrop (ignora el overlay)
+    # Intento 3: dispatch_event en el backdrop
     try:
         page.locator("app-modal div.backdrop").first.dispatch_event("click")
         page.wait_for_timeout(500)
+        page.locator("app-modal div.modal-background").first.wait_for(
+            state="hidden", timeout=1500
+        )
         print("  ✅  Modal cerrado con clic en backdrop.")
         return True
     except Exception:
         pass
 
-    print("  ⚠️   No se pudo cerrar el app-modal.")
+    print("  ⚠️  No se pudo cerrar el app-modal.")
     return False
 
 def is_notification_modal_visible(page: Page):
