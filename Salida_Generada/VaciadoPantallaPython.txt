@@ -1,0 +1,45 @@
+🔒  Hamburguesa ≡ clickeado.
+  ✅  Clic en hoja 'Incorporación cotizaciones'
+  ✅  Vista cargada: 'Incorporación cotizaciones'
+  🧾  Captura guardada: 20260416_131648_paso2__Golf__Incorporaciones__Incorporación_cotizaciones.png
+  🍔  DOM guardado: 20260416_131648_dom_paso2__Golf__Incorporaciones__Incorporaci_ n_cotizaciones.html
+  ⚠️   No se pudo cerrar la pantalla: Locator.click: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("div.tab.activable.active div.close").first
+    - locator resolved to <div class="close" _ngcontent-ng-c2920271696="">…</div>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="backdrop" _ngcontent-ng-c2773784004=""></div> from <app-modal _nghost-ng-c2773784004="" _ngcontent-ng-c3295250274="">…</app-modal> subtree intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <div class="backdrop" _ngcontent-ng-c2773784004=""></div> from <app-modal _nghost-ng-c2773784004="" _ngcontent-ng-c3295250274="">…</app-modal> subtree intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    28 × waiting for element to be visible, enabled and stable
+       - element is visible, enabled and stable
+       - scrolling into view if needed
+       - done scrolling
+       - <div class="backdrop" _ngcontent-ng-c2773784004=""></div> from <app-modal _nghost-ng-c2773784004="" _ngcontent-ng-c3295250274="">…</app-modal> subtree intercepts pointer events
+     - retrying click action
+       - waiting 500ms
+
+  ⚠️   No se pudo cerrar pantalla para 'Golf > Incorporaciones > Incorporación cotizaciones'
+
+[ 44/381] Golf > Maestros > Básicos > Clases de valor
+  🔒  Menú abierto detectado — haciendo clic fuera para cerrarlo…
+  ⚠️   Clic fuera no cerró el menú — intentando botón X…
+  ⚠️   No se pudo cerrar el menú con botón X: Locator.wait_for: Timeout 2000ms exceeded.
+Call log:
+  - waiting for locator("div.menu-title.main div.close").first to be visible
+    9 × locator resolved to hidden <div class="close" _ngcontent-ng-c638813965="">…</div>
+
+  ❌  Error en 'Golf > Maestros > Básicos > Clases de valor': No se pudo hacer clic en el hamburguesa ≡.
+  🍔  Captura guardada: 20260416_131742_ERROR_paso2__Golf__Maestros__Básicos__Clases_de_valor.png
+  ⚠️   No se pudo cerrar la pantalla: Locator.click: Timeout 15000ms exceeded.
