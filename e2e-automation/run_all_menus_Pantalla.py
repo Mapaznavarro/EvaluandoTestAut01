@@ -358,7 +358,7 @@ def cerrar_menu_si_abierto(page: Page) -> None:
 
 
 
-TARGET_MENU_ITEMS = ["Golf", "Participes LATAM", "FrontOn Gestión"]
+TARGET_MENU_ITEMS = ["Golf", "Participes LATAM", "FrontOn Gestión", "FrontOn Admin", "Maestros" ]
 
 
 def click_target_menu_items(page: Page) -> None:
