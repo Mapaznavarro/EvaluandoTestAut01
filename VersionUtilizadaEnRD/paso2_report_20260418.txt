@@ -1,0 +1,387 @@
+PASO 2 — Reporte – 2026-04-18T20:37:54.905323+00:00
+URL: http://172.21.170.81/home
+
+Exitosas: 381
+  ✅  Golf > Consultas > Contabilidad > Asientos diarios
+  ✅  Golf > Consultas > Contabilidad > Asientos manuales
+  ✅  Golf > Consultas > Contabilidad > Comparativa de cuentas
+  ✅  Golf > Consultas > Contabilidad > Comparativa de saldos a fecha
+  ✅  Golf > Consultas > Contabilidad > Consulta informe
+  ✅  Golf > Consultas > Contabilidad > Consulta signo girado
+  ✅  Golf > Consultas > Contabilidad > Cuadre contabilidad cartera
+  ✅  Golf > Consultas > Contabilidad > Saldos contables entidad
+  ✅  Golf > Consultas > Estados de cartera > Cartera comparada
+  ✅  Golf > Consultas > Estados de cartera > Cartera de gestión
+  ✅  Golf > Consultas > Estados de cartera > Histórico de fondos
+  ✅  Golf > Consultas > Estados de cartera > Histórico de valoración
+  ✅  Golf > Consultas > Estados de cartera > Tipos de saldos
+  ✅  Golf > Consultas > Ficha instrumentos > Ficha de instrumentos al contado
+  ✅  Golf > Consultas > Ficha instrumentos > Flujos instrumentos
+  ✅  Golf > Consultas > Históricos > Periodificaciones
+  ✅  Golf > Consultas > Informe comisiones > Informe comisiones
+  ✅  Golf > Consultas > Operaciones > Diario de operaciones por operación
+  ✅  Golf > Consultas > Operaciones > Ficha de depósitos
+  ✅  Golf > Consultas > Operaciones > Histórico operaciones
+  ✅  Golf > Consultas > Operaciones > Operaciones Totales Ope/VT
+  ✅  Golf > Consultas > Operaciones > Previsión de tesorería
+  ✅  Golf > Consultas > Precios > Control precio valoración
+  ✅  Golf > Consultas > Precios > Cotizaciones de instrumentos
+  ✅  Golf > Consultas > Precios > Curvas tir
+  ✅  Golf > Consultas > Precios > Histórico Divisas
+  ✅  Golf > Consultas > Precios > Histórico Instrumentos
+  ✅  Golf > Consultas > Precios > Histórico valoración vs cotizaciones
+  ✅  Golf > Consultas > Precios > Tires
+  ✅  Golf > Consultas > Resumen patrimonial > Resumen patrimonial a fecha
+  ✅  Golf > Consultas > Resumen patrimonial > Resumen Patrimonial a Fecha (2008)
+  ✅  Golf > Consultas > Resumen patrimonial > Resumen patrimonial comparativa (2008)
+  ✅  Golf > Consultas > Saldos > Saldos de conceptos
+  ✅  Golf > Consultas > Saldos > Saldos de conceptos con fecha
+  ✅  Golf > Consultas > Saldos > Saldos De Identificación de Partida
+  ✅  Golf > Consultas > Saldos > Saldos medios
+  ✅  Golf > Consultas > Saldos > Saldos por depositario
+  ✅  Golf > Consultas > Tareas > Tareas
+  ✅  Golf > Consultas > Valor Liquidativo > Valor liquidativo clases
+  ✅  Golf > Consultas > Valor Liquidativo > Valor liquidativo fondos
+  ✅  Golf > Contabilidad > Cuadre contable cuentas
+  ✅  Golf > Entradas > Entrada de operaciones
+  ✅  Golf > Incorporaciones > Incorporación cotizaciones
+  ✅  Golf > Maestros > Básicos > Clases de valor
+  ✅  Golf > Maestros > Básicos > Criterios
+  ✅  Golf > Maestros > Básicos > Descripción operaciones
+  ✅  Golf > Maestros > Básicos > Escalas
+  ✅  Golf > Maestros > Básicos > Escalas éxito
+  ✅  Golf > Maestros > Básicos > Nombres tarifas
+  ✅  Golf > Maestros > Básicos > Plantilla curva diferencial
+  ✅  Golf > Maestros > Básicos > Plantilla de valoración
+  ✅  Golf > Maestros > Básicos > Plantillas contables
+  ✅  Golf > Maestros > Básicos > Plantillas operaciones
+  ✅  Golf > Maestros > Básicos > Política inversión
+  ✅  Golf > Maestros > Básicos > Sectores
+  ✅  Golf > Maestros > Básicos > Subsectores
+  ✅  Golf > Maestros > Básicos > Tarifas
+  ✅  Golf > Maestros > Básicos > Tarifas cartera
+  ✅  Golf > Maestros > Básicos > Tipos de activo
+  ✅  Golf > Maestros > Básicos > Tipos de operación
+  ✅  Golf > Maestros > Básicos > Tipos de saldos
+  ✅  Golf > Maestros > Básicos > Tipos de valor
+  ✅  Golf > Maestros > Cartera > Bloqueo títulos
+  ✅  Golf > Maestros > Cartera > Carteras tipo cambios
+  ✅  Golf > Maestros > Cartera > Carteras tipo precio
+  ✅  Golf > Maestros > Cartera > Cuentas Liq
+  ✅  Golf > Maestros > Cartera > Depósitos
+  ✅  Golf > Maestros > Cartera > Depósitos DT
+  ✅  Golf > Maestros > Cartera > Divisa liquidación
+  ✅  Golf > Maestros > Cartera > Restricciones car
+  ✅  Golf > Maestros > Cartera > Restricciones ins
+  ✅  Golf > Maestros > Conceptos > Conceptos
+  ✅  Golf > Maestros > Conceptos > Conceptos cuentas
+  ✅  Golf > Maestros > Configuración > Control aplicación
+  ✅  Golf > Maestros > Configuración > Enlaces conexiones
+  ✅  Golf > Maestros > Configuración > Enlaces remotos
+  ✅  Golf > Maestros > Cotizaciones > Cotizaciones
+  ✅  Golf > Maestros > Cotizaciones > Cotizaciones CVD
+  ✅  Golf > Maestros > Cotizaciones > Cotizaciones divisas
+  ✅  Golf > Maestros > Cotizaciones > Cotizaciones divisas entidades
+  ✅  Golf > Maestros > Cotizaciones > Curvas de tir
+  ✅  Golf > Maestros > Cotizaciones > Deltas
+  ✅  Golf > Maestros > Cotizaciones > Forwards
+  ✅  Golf > Maestros > Cotizaciones > Grupo cotizaciones
+  ✅  Golf > Maestros > Cotizaciones > IPC
+  ✅  Golf > Maestros > Cotizaciones > Tires
+  ✅  Golf > Maestros > Entidades > Entidades
+  ✅  Golf > Maestros > Entidades > Básicos > Agentes
+  ✅  Golf > Maestros > Entidades > Básicos > Aportantes
+  ✅  Golf > Maestros > Entidades > Básicos > Beneficiarios
+  ✅  Golf > Maestros > Entidades > Básicos > Beneficiarios tipos
+  ✅  Golf > Maestros > Entidades > Básicos > Brókers
+  ✅  Golf > Maestros > Entidades > Básicos > Bancos
+  ✅  Golf > Maestros > Entidades > Básicos > Carteras
+  ✅  Golf > Maestros > Entidades > Básicos > Clientes
+  ✅  Golf > Maestros > Entidades > Básicos > Comerciales
+  ✅  Golf > Maestros > Entidades > Básicos > Contables
+  ✅  Golf > Maestros > Entidades > Básicos > Contrapartidas
+  ✅  Golf > Maestros > Entidades > Básicos > Correspondencia
+  ✅  Golf > Maestros > Entidades > Básicos > Cuentas
+  ✅  Golf > Maestros > Entidades > Básicos > Distribuidores
+  ✅  Golf > Maestros > Entidades > Básicos > Emisoras
+  ✅  Golf > Maestros > Entidades > Básicos > Datos administrativos
+  ✅  Golf > Maestros > Entidades > Básicos > Entidades CRS
+  ✅  Golf > Maestros > Entidades > Básicos > Entidades
+  ✅  Golf > Maestros > Entidades > Básicos > Entidades FATCA
+  ✅  Golf > Maestros > Entidades > Básicos > Fondo/Compa./Clase
+  ✅  Golf > Maestros > Entidades > Básicos > Notarios
+  ✅  Golf > Maestros > Entidades > Básicos > Fondos
+  ✅  Golf > Maestros > Entidades > Básicos > Gestoras
+  ✅  Golf > Maestros > Entidades > Básicos > Gestores
+  ✅  Golf > Maestros > Entidades > Básicos > Grupos fiscales
+  ✅  Golf > Maestros > Entidades > Básicos > Mediadoras
+  ✅  Golf > Maestros > Entidades > Básicos > Mercados
+  ✅  Golf > Maestros > Entidades > Básicos > Partícipes
+  ✅  Golf > Maestros > Entidades > Básicos > Planes
+  ✅  Golf > Maestros > Entidades > Básicos > Promotores
+  ✅  Golf > Maestros > Entidades > Básicos > Proveedores
+  ✅  Golf > Maestros > Entidades > Básicos > Propietarios
+  ✅  Golf > Maestros > Entidades > Básicos > Registrales
+  ✅  Golf > Maestros > Entidades > Básicos > Representantes
+  ✅  Golf > Maestros > Entidades > Básicos > Sucursales
+  ✅  Golf > Maestros > Entidades > Básicos > Subplan
+  ✅  Golf > Maestros > Entidades > Básicos > Titulares
+  ✅  Golf > Maestros > Entidades > Básicos > Varios
+  ✅  Golf > Maestros > Entidades > Básicos > Vinculados
+  ✅  Golf > Maestros > Fondos > Cálculos cierre
+  ✅  Golf > Maestros > Fondos > Conceptos fondo
+  ✅  Golf > Maestros > Fondos > Nombre Comisión Éxito
+  ✅  Golf > Maestros > Fondos > Política de inversión de fondos
+  ✅  Golf > Maestros > Fondos > Valores liquidativo fondos
+  ✅  Golf > Maestros > Fondos > Valores liquidativo planes
+  ✅  Golf > Maestros > Instrumentos > Instrumentos
+  ✅  Golf > Maestros > Instrumentos > Básicos > Instrumentos
+  ✅  Golf > Maestros > Instrumentos > Básicos > Valores CVI
+  ✅  Golf > Maestros > Instrumentos > Básicos > Colaterales
+  ✅  Golf > Maestros > Instrumentos > Básicos > Colaterales garantía
+  ✅  Golf > Maestros > Instrumentos > Básicos > Valores RF
+  ✅  Golf > Maestros > Instrumentos > Básicos > Valores común
+  ✅  Golf > Maestros > Instrumentos > Básicos > Futuros
+  ✅  Golf > Maestros > Instrumentos > Básicos > Valores RV
+  ✅  Golf > Maestros > Instrumentos > Básicos > Opciones
+  ✅  Golf > Maestros > Instrumentos > Básicos > Contrato derivado
+  ✅  Golf > Maestros > Instrumentos > Básicos > Divisas
+  ✅  Golf > Maestros > Instrumentos > Básicos > Pagos y cobros
+  ✅  Golf > Maestros > Instrumentos > Básicos > Entregables
+  ✅  Golf > Maestros > Instrumentos > Básicos > Instrumentos Frontón
+  ✅  Golf > Maestros > Instrumentos > Básicos > Instrumentos UME
+  ✅  Golf > Maestros > Instrumentos > Básicos > Variaciones tipos
+  ✅  Golf > Maestros > Instrumentos > Básicos > Periodos
+  ✅  Golf > Maestros > Instrumentos > Básicos > Flujos
+  ✅  Golf > Maestros > Varios > Agrupaciones entidades
+  ✅  Golf > Maestros > Varios > Agrupaciones instrumentos
+  ✅  Golf > Maestros > Varios > Apalancamientos IIC's
+  ✅  Golf > Maestros > Varios > Asociadas
+  ✅  Golf > Maestros > Varios > Asociadas gestora
+  ✅  Golf > Maestros > Varios > Asociadas usuario
+  ✅  Golf > Maestros > Varios > Bloques títulos
+  ✅  Golf > Maestros > Varios > Broker cartera
+  ✅  Golf > Maestros > Varios > Broker mercado
+  ✅  Golf > Maestros > Varios > Calendario
+  ✅  Golf > Maestros > Varios > Comisiones car ins
+  ✅  Golf > Maestros > Varios > Comunidades
+  ✅  Golf > Maestros > Varios > Depositario Mercado
+  ✅  Golf > Maestros > Varios > Depósitos conjuntos
+  ✅  Golf > Maestros > Varios > Factor ajuste intereses
+  ✅  Golf > Maestros > Varios > Fechas liquidación operaciones
+  ✅  Golf > Maestros > Varios > Festivos
+  ✅  Golf > Maestros > Varios > Grupos de emisoras
+  ✅  Golf > Maestros > Varios > Nombres agrupaciones entidades
+  ✅  Golf > Maestros > Varios > Nombres agrupaciones instrumentos
+  ✅  Golf > Maestros > Varios > Sistemas liquidación operación
+  ✅  Golf > Maestros > Varios II > Histórico de periodificaciones
+  ✅  Golf > Maestros > Varios II > Municipios
+  ✅  Golf > Maestros > Varios II > Países
+  ✅  Golf > Maestros > Varios II > Parámetros Car/Inst
+  ✅  Golf > Maestros > Varios II > Per. intereses cta. cte.
+  ✅  Golf > Maestros > Varios II > Profesiones
+  ✅  Golf > Maestros > Varios II > Provincias
+  ✅  Golf > Maestros > Varios II > Ratings
+  ✅  Golf > Maestros > Varios II > Ratings históricos cálculos
+  ✅  Golf > Maestros > Varios II > Ratings históricos cotizaciones
+  ✅  Golf > Maestros > Varios II > Textos de informes
+  ✅  Golf > Maestros > Varios II > Volúmenes entidades
+  ✅  Golf > Maestros > Varios II > Volúmenes instrumentos
+  ✅  Golf > Maestros > Varios II > Zona geográfica
+  ✅  Golf > Procesos > Asignaciones día
+  ✅  Golf > Procesos > Valorar fondos
+  ✅  Golf > Tareas > Planificador de tareas > Tareas
+  ✅  Golf > Tareas > Planificador de tareas > Dividendos
+  ✅  Golf > Tareas > Planificador de tareas > Dividendos extranjeros
+  ✅  Golf > Tareas > Planificador de tareas > Ampliaciones
+  ✅  Golf > Tareas > Planificador de tareas > Suscripciones
+  ✅  Golf > Tareas > Planificador de tareas > Canjes
+  ✅  Golf > Tareas > Planificador de tareas > Spin off
+  ✅  Golf > Tareas > Planificador de tareas > Dividendos pasivos
+  ✅  Golf > Tareas > Planificador de tareas > Primas junta
+  ✅  Golf > Tareas > Planificador de tareas > Equiparaciones
+  ✅  Golf > Tareas > Planificador de tareas > Split/Compresión
+  ✅  Golf > Tareas > Planificador de tareas > Aviso dividendo
+  ✅  Golf > Tareas > Planificador de tareas > Aviso dividendo extranjero
+  ✅  Golf > Tareas > Planificador de tareas > Cotizaciones medias
+  ✅  Golf > Tareas > Planificador de tareas > Primas emisión
+  ✅  Golf > Tareas > Planificador de tareas > Capital call
+  ✅  Golf > Tareas > Planificador de tareas > Distribuciones capital
+  ✅  Participes LATAM > Consultas > Documentos > Clientes sin Documentos Firmados
+  ✅  Participes LATAM > Consultas > Documentos > Contrato General de Fondos
+  ✅  Participes LATAM > Consultas > Documentos > Documentos Por Cliente
+  ✅  Participes LATAM > Consultas > Documentos > Ficha Cliente
+  ✅  Participes LATAM > Consultas > Documentos > Inversionista Calificado
+  ✅  Participes LATAM > Consultas > Entidades > Cuentas
+  ✅  Participes LATAM > Consultas > Entidades > Cuentas por Titular
+  ✅  Participes LATAM > Consultas > Entidades > Entidades Genérica
+  ✅  Participes LATAM > Consultas > Operaciones > Operaciones Genérica
+  ✅  Participes LATAM > Consultas > Operaciones > Operaciones Periódicas
+  ✅  Participes LATAM > Consultas > Saldos > Saldos Actuales
+  ✅  Participes LATAM > Consultas > Varias > Informe de Valores Cuotas
+  ✅  Participes LATAM > Consultas > Varias > Rentabilidad Nominal de Fondos
+  ✅  Participes LATAM > Documentos > Configuración > Benchmark
+  ✅  Participes LATAM > Documentos > Consulta Documento > Benchmark
+  ✅  Participes LATAM > Documentos > Consultas Documentos > Benchmark
+  ✅  Participes LATAM > Documentos > Consultas Masivas > Benchmark
+  ✅  Participes LATAM > Documentos > Estados de Posición > Benchmark
+  ✅  Participes LATAM > Documentos > Fiscal > Benchmark
+  ✅  Participes LATAM > Documentos > Mantenimientos > Benchmark
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Histórico Estados
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Otros > Certificado Cuotas
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Configuracion Ficha Cliente
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Contrato General Fondos
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Detalle CGF
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Detalle FIC
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Ficha Cliente
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Fichas Pendientes
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Inversionista Calificado
+  ✅  Participes LATAM > Documentos > Procesos > Ficha Clientes Pendientes/Vencidas
+  ✅  Participes LATAM > Documentos > Procesos > Por Cliente > Generación
+  ✅  Participes LATAM > Maestros > Configuración > Comisiones > Tarifa Permanencia Fondos
+  ✅  Participes LATAM > Maestros > Configuración > Comisiones > Tarifas por Intervalos
+  ✅  Participes LATAM > Maestros > Configuración > Comisiones > Tarifas Traspasos Internos CL
+  ✅  Participes LATAM > Maestros > Configuración > Comisiones > Tarifas Ventana de Liquidez
+  ✅  Participes LATAM > Maestros > Configuración > Operaciones > Motivos operaciones CL
+  ✅  Participes LATAM > Maestros > Configuración > Partícipes > Clientes No Deseados
+  ✅  Participes LATAM > Maestros > Configuración > Partícipes > Grupos de Partícipes
+  ✅  Participes LATAM > Maestros > Configuración > Partícipes > Tipos de Entidad
+  ✅  Participes LATAM > Maestros > Configuración > Partícipes > Tipos Particípes
+  ✅  Participes LATAM > Maestros > Configuración > Tesorería > Documentos Pago
+  ✅  Participes LATAM > Maestros > Configuración > Tesorería > Formas de Pago
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Actividades Económicas
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Asignación Fondos Agentes
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Benchmark
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Capital Call Nominal
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Fechas Operaciones
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Grupos Actividades Economicas
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Grupos de Retención
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Histórico retenciones CL
+  ✅  Participes LATAM > Maestros > Configuración > Varias > IPC CL
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Periodicidad Documento CL
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Periodos Comercialización
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Periodos Fi Rescatables
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Periodos Opción Preferente
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Rangos Números de Cuentas
+  ✅  Participes LATAM > Maestros > Configuración > Varias > UTA CL
+  ✅  Participes LATAM > Maestros > Configuración > Varias > UTM CL
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Alta Rápida de Ejecutivos
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Definición
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Elementos
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Entidades Estructura
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Estructura
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Perfiles
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Perfiles-Fondos
+  ✅  Participes LATAM > Maestros > Mandatos > Configuración > Apoderados Mandato
+  ✅  Participes LATAM > Maestros > Mandatos > Configuración > Configuración Mandatos
+  ✅  Participes LATAM > Maestros > Mandatos > Configuración > Facultades Mandatos
+  ✅  Participes LATAM > Maestros > Mandatos > Histórico Estados
+  ✅  Participes LATAM > Maestros > Mandatos > Mandatos
+  ✅  Participes LATAM > Maestros > Participes > Entidades CL
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Actividades Económicas
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Correspondencia
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Cuentas
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Cuentas Fondos
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Aux
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Ctas. Ctes.
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Socios
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin. Aux. Entidades PEP
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin. Beneficiarios
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Históricos
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Entidades
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Entidades FATCA
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Entidades Multiples
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Notas
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Partícipes
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Representantes
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Titulares
+  ✅  Participes LATAM > Maestros > Saldos > Saldos a Fecha
+  ✅  Participes LATAM > Maestros > Saldos > Saldos Actuales
+  ✅  Participes LATAM > Procesos > Comerciales > Cálculo Comisiones Agentes > Consulta Listado
+  ✅  Participes LATAM > Procesos > Comerciales > Cálculo Comisiones Agentes > Detalle Comisión Agentes
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Alta
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Consulta de Reasignación Agente por Entidad
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Consulta de Reasignación por Agente
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Generación
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Pro Incorporación Fichero
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Consulta de Reasignación Sucursal por Entidad
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Generación
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Reasignación Ejecutivos Alta
+  ✅  Participes LATAM > Procesos > Comerciales > Sustitución de Elementos Estructura Comercial
+  ✅  Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Alta
+  ✅  Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Bloqueo Masivo de Clientes
+  ✅  Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Consulta
+  ✅  Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Desbloqueo Clientes Cuentas
+  ✅  Participes LATAM > Procesos > Entidades > Calcular Clientes Inactivos
+  ✅  Participes LATAM > Procesos > Específicos > Grupos de Retención
+  ✅  Participes LATAM > Procesos > Específicos > Incorporar Benchmark
+  ✅  Participes LATAM > Procesos > Específicos > Vencimiento de Mandatos
+  ✅  Participes LATAM > Procesos > Liquidaciones > Grupos de Retención
+  ✅  Participes LATAM > Procesos > Migración > Grupos de Retención
+  ✅  Participes LATAM > Procesos > Operaciones > Actividades Económicas
+  ✅  Participes LATAM > Procesos > Operaciones > Cesiones de Cuotas > Actividades Económicas
+  ✅  Participes LATAM > Procesos > Utilidades/Subprocesos > Actividades Económicas
+  ✅  Participes LATAM > Procesos > Utilidades/Subprocesos > Grupos de Retención
+  ✅  FrontOn Gestión > Configuración > Alta instrumentos > Alta rápida instrumentos
+  ✅  FrontOn Gestión > Configuración > Apertura sesión gest
+  ✅  FrontOn Gestión > Configuración > Cartera modelo > Asignación modelo
+  ✅  FrontOn Gestión > Configuración > Cartera modelo > Detalle cartera modelo
+  ✅  FrontOn Gestión > Configuración > Cartera modelo > Nombre carteras modelo
+  ✅  FrontOn Gestión > Configuración > Controles gestor
+  ✅  FrontOn Gestión > Configuración > Escenarios
+  ✅  FrontOn Gestión > Configuración > Sectores
+  ✅  FrontOn Gestión > Consultas > Estados de cartera > Cartera comparada
+  ✅  FrontOn Gestión > Consultas > Estados de cartera > Cartera resultados valias
+  ✅  FrontOn Gestión > Consultas > Estados de cartera > Cartera RF genérica
+  ✅  FrontOn Gestión > Consultas > Estados de cartera > Cartera RF tasa compra
+  ✅  FrontOn Gestión > Consultas > Estados de cartera > Cartera valorada
+  ✅  FrontOn Gestión > Consultas > Estados de cartera > Cartera valorada genérica
+  ✅  FrontOn Gestión > Consultas > Estados de cartera > Cartera valorada informe
+  ✅  FrontOn Gestión > Consultas > Estados de cartera > Cartera valorada RF
+  ✅  FrontOn Gestión > Consultas > Estados de cartera > Resumenes cartera > Cuadro resumen cartera
+  ✅  FrontOn Gestión > Consultas > Estados de cartera > Resumenes cartera > Resumen de cartera
+  ✅  FrontOn Gestión > Consultas > Estados de cartera > Saldos instrumentos
+  ✅  FrontOn Gestión > Consultas > Límites > Límites oficiales > Control derivados
+  ✅  FrontOn Gestión > Consultas > Límites > Límites oficiales > Diversificación GOLF
+  ✅  FrontOn Gestión > Consultas > Límites > Límites oficiales > Por emisor y riesgo der
+  ✅  FrontOn Gestión > Consultas > Límites > Límites particulares > Cálculo de Límites Particulares
+  ✅  FrontOn Gestión > Consultas > Límites > Límites particulares > Límites aplicables por cartera
+  ✅  FrontOn Gestión > Consultas > Límites > Límites particulares > Resumen límites particulares
+  ✅  FrontOn Gestión > Consultas > Operaciones > Aportaciones/Retiros de moneda
+  ✅  FrontOn Gestión > Consultas > Operaciones > Aportaciones/Retiros de titulos
+  ✅  FrontOn Gestión > Consultas > Operaciones > Comparativa OPC
+  ✅  FrontOn Gestión > Consultas > Operaciones > Diario de desgloses
+  ✅  FrontOn Gestión > Consultas > Operaciones > Diario de ejecuciones
+  ✅  FrontOn Gestión > Consultas > Operaciones > Diario de operaciones
+  ✅  FrontOn Gestión > Consultas > Operaciones > Diario de órdenes
+  ✅  FrontOn Gestión > Consultas > Operaciones > Flujos caja
+  ✅  FrontOn Gestión > Consultas > Operaciones > Flujos caja 2
+  ✅  FrontOn Gestión > Consultas > Operaciones > Flujos caja ext CL
+  ✅  FrontOn Gestión > Consultas > Operaciones > Historia y proyección de tesorería
+  ✅  FrontOn Gestión > Consultas > Operaciones > Informe saldo por fechas
+  ✅  FrontOn Gestión > Consultas > Operaciones > Operaciones forward
+  ✅  FrontOn Gestión > Consultas > Operaciones > Preguntas
+  ✅  FrontOn Gestión > Consultas > Operaciones > Proyección de tesorería
+  ✅  FrontOn Gestión > Consultas > Operaciones > Vencimientos forward
+  ✅  FrontOn Gestión > Consultas > Precios > Divisas intradía
+  ✅  FrontOn Gestión > Consultas > Precios > Histórico Divisas
+  ✅  FrontOn Gestión > Consultas > Precios > Histórico Instrumentos
+  ✅  FrontOn Gestión > Consultas > Precios > Precio instrumentos intradía
+  ✅  FrontOn Gestión > Entradas > Ajuste modelo > Ajuste cartera modelo
+  ✅  FrontOn Gestión > Entradas > Ajuste modelo > Ajuste cartera modelo SEDA
+  ✅  FrontOn Gestión > Entradas > Ajuste modelo > Ajuste traspasos SEDA
+  ✅  FrontOn Gestión > Entradas > Ejecuciones bancarias > Ejecuciones bancarias
+  ✅  FrontOn Gestión > Entradas > Ejecuciones bancarias > Importación CSV BCS
+  ✅  FrontOn Gestión > Entradas > Ejecuciones directas > Ejecuciones múltiples repos
+  ✅  FrontOn Gestión > Entradas > Ejecuciones excel
+  ✅  FrontOn Gestión > Entradas > Envio masivo boletas
+  ✅  FrontOn Gestión > Entradas > Ordenes
+  ✅  FrontOn Gestión > Entradas > Posicionar-Incrementar
+  ✅  FrontOn Gestión > Entradas > Roll over
+  ✅  FrontOn Gestión > Entradas > Simulación de operaciones
+  ✅  FrontOn Gestión > Entradas > Traspasos masivos
+  ✅  FrontOn Gestión > Entradas > Ventas masivas
+  ✅  FrontOn Gestión > Tareas > Monitor de Procesos
+
+Fallidas: 0

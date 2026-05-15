@@ -1,0 +1,165 @@
+PASO 2 — Reporte – 2026-05-15T05:23:56.478538+00:00
+URL: http://172.21.170.81/home
+
+Exitosas: 159
+  ✅  Golf > Consultas > Contabilidad > Asientos manuales
+  ✅  Golf > Consultas > Contabilidad > Comparativa de cuentas
+  ✅  Golf > Consultas > Contabilidad > Consulta signo girado
+  ✅  Golf > Consultas > Estados de cartera > Cartera comparada
+  ✅  Golf > Consultas > Estados de cartera > Histórico de fondos
+  ✅  Golf > Consultas > Estados de cartera > Histórico de valoración
+  ✅  Golf > Consultas > Históricos > Periodificaciones
+  ✅  Golf > Consultas > Operaciones > Histórico operaciones
+  ✅  Golf > Consultas > Precios > Cotizaciones de instrumentos
+  ✅  Golf > Consultas > Precios > Curvas tir
+  ✅  Golf > Consultas > Precios > Histórico Divisas
+  ✅  Golf > Consultas > Precios > Tires
+  ✅  Golf > Consultas > Saldos > Saldos de conceptos
+  ✅  Golf > Consultas > Saldos > Saldos de conceptos con fecha
+  ✅  Golf > Consultas > Saldos > Saldos de identificaci�n de partida
+  ✅  Golf > Consultas > Saldos > Saldos medios
+  ✅  Golf > Consultas > Saldos > Saldos por depositario
+  ✅  Golf > Consultas > Valor Liquidativo > Valor liquidativo clases
+  ✅  Golf > Consultas > Valor Liquidativo > Valor liquidativo fondos
+  ✅  Golf > Consultas > Valor Liquidativo > Valor liquidativo de planes de fondos de pensiones
+  ✅  Golf > Contabilidad > Cuadre contable cuentas
+  ✅  Golf > Entradas > Entrada de operaciones
+  ✅  Golf > Incorporaciones > Incorporación cotizaciones
+  ✅  Golf > Procesos > Asignaciones día
+  ✅  Golf > Procesos > Valorar fondos
+  ✅  Golf > Tareas > Planificador de tareas > Tareas
+  ✅  Golf > Tareas > Planificador de tareas > Dividendos
+  ✅  Golf > Tareas > Planificador de tareas > Dividendos extranjeros
+  ✅  Golf > Tareas > Planificador de tareas > Ampliaciones
+  ✅  Golf > Tareas > Planificador de tareas > Suscripciones
+  ✅  Golf > Tareas > Planificador de tareas > Canjes
+  ✅  Golf > Tareas > Planificador de tareas > Spin off
+  ✅  Golf > Tareas > Planificador de tareas > Dividendos pasivos
+  ✅  Golf > Tareas > Planificador de tareas > Primas junta
+  ✅  Golf > Tareas > Planificador de tareas > Equiparaciones
+  ✅  Golf > Tareas > Planificador de tareas > Split/Compresión
+  ✅  Golf > Tareas > Planificador de tareas > Aviso dividendo
+  ✅  Golf > Tareas > Planificador de tareas > Aviso dividendo extranjero
+  ✅  Golf > Tareas > Planificador de tareas > Cotizaciones medias
+  ✅  Golf > Tareas > Planificador de tareas > Primas emisión
+  ✅  Golf > Tareas > Planificador de tareas > Capital call
+  ✅  Golf > Tareas > Planificador de tareas > Distribuciones capital
+  ✅  Participes LATAM > Consultas > Cuadraturas > Conexión PAR-Fondos
+  ✅  Participes LATAM > Consultas > Cuadraturas > Cuadraturas
+  ✅  Participes LATAM > Consultas > Documentos > Clientes sin Documentos Firmados
+  ✅  Participes LATAM > Consultas > Documentos > Contrato General de Fondos
+  ✅  Participes LATAM > Consultas > Documentos > Documentos Por Cliente
+  ✅  Participes LATAM > Consultas > Documentos > Ficha Cliente
+  ✅  Participes LATAM > Consultas > Documentos > Inversionista Calificado
+  ✅  Participes LATAM > Consultas > Entidades > Batch: Cuentas
+  ✅  Participes LATAM > Consultas > Entidades > Cuentas
+  ✅  Participes LATAM > Consultas > Entidades > Cuentas por Titular
+  ✅  Participes LATAM > Consultas > Entidades > Entidades
+  ✅  Participes LATAM > Consultas > Operaciones > Batch: Operaciones Genérica
+  ✅  Participes LATAM > Consultas > Operaciones > Operaciones Periódicas
+  ✅  Participes LATAM > Consultas > Saldos > Saldos Actuales
+  ✅  Participes LATAM > Consultas > Varias > Batch: Informe Valor Cuota
+  ✅  Participes LATAM > Consultas > Varias > Batch: Rentabilidad Nominal de Fondos
+  ✅  Participes LATAM > Consultas > Varias > Informe de Valores Cuotas
+  ✅  Participes LATAM > Consultas > Varias > Rentabilidad Nominal de Fondos
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Histórico Estados
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Otros > Certificado de Cuotas
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Contrato General de Fondos > Contrato General de Fondos
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Contrato General de Fondos > Detalle CGF
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Ficha Cliente > Configuracion Ficha Cliente
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Ficha Cliente > Detalle FIC
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Ficha Cliente > Ficha Cliente
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Ficha Cliente > Fichas Pendientes
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Inversionista Calificado
+  ✅  Participes LATAM > Documentos > Procesos > Ficha Clientes Pendientes/Vencidas
+  ✅  Participes LATAM > Documentos > Procesos > Por Cliente > Generación
+  ✅  Participes LATAM > Maestros > Configuración > Comisiones > Tarifa Permanencia Fondos
+  ✅  Participes LATAM > Maestros > Configuración > Comisiones > Tarifas por Intervalos
+  ✅  Participes LATAM > Maestros > Configuración > Comisiones > Tarifas Traspasos Internos CL
+  ✅  Participes LATAM > Maestros > Configuración > Comisiones > Tarifas Ventana de Liquidez
+  ✅  Participes LATAM > Maestros > Configuración > Operaciones > Motivos operaciones CL
+  ✅  Participes LATAM > Maestros > Configuración > Partícipes > Clientes No Deseados
+  ✅  Participes LATAM > Maestros > Configuración > Partícipes > Grupos de Partícipes
+  ✅  Participes LATAM > Maestros > Configuración > Partícipes > Tipos de Entidad
+  ✅  Participes LATAM > Maestros > Configuración > Partícipes > Tipos Particípes
+  ✅  Participes LATAM > Maestros > Configuración > Tesorería > Documentos Pago
+  ✅  Participes LATAM > Maestros > Configuración > Tesorería > Formas de Pago
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Actividades Económicas
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Asignación Fondos Agentes
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Benchmark
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Canales
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Capital Call Nominal
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Fechas Operaciones
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Grupos Actividades Economicas
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Grupos de Retención
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Histórico retenciones CL
+  ✅  Participes LATAM > Maestros > Configuración > Varias > IPC CL
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Periodicidad Documento CL
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Periodos Comercialización
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Periodos Fi Rescatables
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Periodos Opción Preferente
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Rangos Números de Cuentas
+  ✅  Participes LATAM > Maestros > Configuración > Varias > UTA CL
+  ✅  Participes LATAM > Maestros > Configuración > Varias > UTM CL
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Alta Rápida de Ejecutivos
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Definición
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Elementos
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Entidades Estructura
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Estructura
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Perfiles
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Perfiles-Fondos
+  ✅  Participes LATAM > Maestros > Mandatos > Apoderados Mandato
+  ✅  Participes LATAM > Maestros > Mandatos > Configuración > Configuración Mandatos
+  ✅  Participes LATAM > Maestros > Mandatos > Configuración > Facultades Mandatos
+  ✅  Participes LATAM > Maestros > Mandatos > Histórico Estados
+  ✅  Participes LATAM > Maestros > Mandatos > Mandatos
+  ✅  Participes LATAM > Maestros > Participes > Entidades CL
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Actividades Económicas
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Cuentas
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Cuentas Fondos
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Aux
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Ctas. Ctes.
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Socios
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin. Aux. Entidades PEP
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin. Beneficiarios
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Históricos
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Entidades
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Entidades FATCA
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Entidades Multiples
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Notas
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Partícipes
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Representantes
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Titulares
+  ✅  Participes LATAM > Maestros > Saldos > Saldos a Fecha
+  ✅  Participes LATAM > Maestros > Saldos > Saldos Actuales
+  ✅  Participes LATAM > Procesos > Comerciales > Cálculo Comisiones Agentes > Consulta Listado
+  ✅  Participes LATAM > Procesos > Comerciales > Cálculo Comisiones Agentes > Detalle Comisión Agentes
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Alta
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Consulta de Reasignación Agente por Entidad
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Consulta de Reasignación por Agente
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Generación
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Pro Incorporación Fichero
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Consulta de Reasignación Sucursal por Entidad
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Generación
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Reasignación Ejecutivos Alta
+  ✅  Participes LATAM > Procesos > Comerciales > Sustitución de Elementos Estructura Comercial
+  ✅  Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Alta
+  ✅  Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Bloqueo Masivo de Clientes
+  ✅  Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Consulta
+  ✅  Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Desbloqueo Clientes Cuentas
+  ✅  Participes LATAM > Procesos > Entidades > Calcular Clientes Inactivos
+  ✅  Participes LATAM > Procesos > Específicos > Grupos de Retención
+  ✅  Participes LATAM > Procesos > Específicos > Incorporar Benchmark
+  ✅  Participes LATAM > Procesos > Específicos > Vencimiento de Mandatos
+  ✅  Participes LATAM > Procesos > Liquidaciones > Grupos de Retención
+  ✅  Participes LATAM > Procesos > Migración > Grupos de Retención
+  ✅  Participes LATAM > Procesos > Operaciones > Actividades Económicas
+  ✅  Participes LATAM > Procesos > Operaciones > Cesiones de Cuotas > Actividades Económicas
+  ✅  Participes LATAM > Procesos > Utilidades/Subprocesos > Actividades Económicas
+  ✅  Participes LATAM > Procesos > Utilidades/Subprocesos > Grupos de Retención
+  ✅  FrontOn Gestión > Entradas > Ejecuciones bancarias > Importación CSV BCS
+  ✅  FrontOn Gestión > Entradas > Ejecuciones directas > Ejecuciones múltiples repos
+  ✅  FrontOn Gestión > Entradas > Ordenes
+
+Fallidas: 0
