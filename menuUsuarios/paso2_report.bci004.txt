@@ -1,0 +1,312 @@
+PASO 2 — Reporte – 2026-05-16T22:27:07.354109+00:00
+URL: http://172.21.170.81/home
+
+Exitosas: 306
+  ✅  Participes LATAM > Consultas > Cuadraturas > Conexión PAR-Fondos
+  ✅  Participes LATAM > Consultas > Cuadraturas > Cuadraturas
+  ✅  Participes LATAM > Consultas > Documentos > Clientes sin Documentos Firmados
+  ✅  Participes LATAM > Consultas > Documentos > Contrato General de Fondos
+  ✅  Participes LATAM > Consultas > Documentos > Documentos Por Cliente
+  ✅  Participes LATAM > Consultas > Documentos > Ficha Cliente
+  ✅  Participes LATAM > Consultas > Documentos > Inversionista Calificado
+  ✅  Participes LATAM > Consultas > Entidades > Batch: Cuentas
+  ✅  Participes LATAM > Consultas > Entidades > Cuentas
+  ✅  Participes LATAM > Consultas > Entidades > Cuentas por Titular
+  ✅  Participes LATAM > Consultas > Entidades > Entidades
+  ✅  Participes LATAM > Consultas > Operaciones > Batch: Operaciones Genérica
+  ✅  Participes LATAM > Consultas > Operaciones > Operaciones Periódicas
+  ✅  Participes LATAM > Consultas > Saldos > Saldos Actuales
+  ✅  Participes LATAM > Consultas > Varias > Batch: Informe Valor Cuota
+  ✅  Participes LATAM > Consultas > Varias > Batch: Rentabilidad Nominal de Fondos
+  ✅  Participes LATAM > Consultas > Varias > Informe de Valores Cuotas
+  ✅  Participes LATAM > Consultas > Varias > Rentabilidad Nominal de Fondos
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Histórico Estados
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Otros > Certificado de Cuotas
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Contrato General de Fondos > Contrato General de Fondos
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Contrato General de Fondos > Detalle CGF
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Ficha Cliente > Configuracion Ficha Cliente
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Ficha Cliente > Detalle FIC
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Ficha Cliente > Ficha Cliente
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Ficha Cliente > Fichas Pendientes
+  ✅  Participes LATAM > Documentos > Mantenimientos Documentos > Por Cliente > Inversionista Calificado
+  ✅  Participes LATAM > Documentos > Procesos > Ficha Clientes Pendientes/Vencidas
+  ✅  Participes LATAM > Documentos > Procesos > Por Cliente > Generación
+  ✅  Participes LATAM > Maestros > Configuración > Comisiones > Tarifa Permanencia Fondos
+  ✅  Participes LATAM > Maestros > Configuración > Comisiones > Tarifas por Intervalos
+  ✅  Participes LATAM > Maestros > Configuración > Comisiones > Tarifas Traspasos Internos CL
+  ✅  Participes LATAM > Maestros > Configuración > Comisiones > Tarifas Ventana de Liquidez
+  ✅  Participes LATAM > Maestros > Configuración > Operaciones > Motivos operaciones CL
+  ✅  Participes LATAM > Maestros > Configuración > Partícipes > Clientes No Deseados
+  ✅  Participes LATAM > Maestros > Configuración > Partícipes > Grupos de Partícipes
+  ✅  Participes LATAM > Maestros > Configuración > Partícipes > Tipos de Entidad
+  ✅  Participes LATAM > Maestros > Configuración > Partícipes > Tipos Particípes
+  ✅  Participes LATAM > Maestros > Configuración > Tesorería > Documentos Pago
+  ✅  Participes LATAM > Maestros > Configuración > Tesorería > Formas de Pago
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Actividades Económicas
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Asignación Fondos Agentes
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Benchmark
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Canales
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Capital Call Nominal
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Fechas Operaciones
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Grupos Actividades Economicas
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Grupos de Retención
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Histórico retenciones CL
+  ✅  Participes LATAM > Maestros > Configuración > Varias > IPC CL
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Periodicidad Documento CL
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Periodos Comercialización
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Periodos Fi Rescatables
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Periodos Opción Preferente
+  ✅  Participes LATAM > Maestros > Configuración > Varias > Rangos Números de Cuentas
+  ✅  Participes LATAM > Maestros > Configuración > Varias > UTA CL
+  ✅  Participes LATAM > Maestros > Configuración > Varias > UTM CL
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Alta Rápida de Ejecutivos
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Definición
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Elementos
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Entidades Estructura
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Estructura
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Perfiles
+  ✅  Participes LATAM > Maestros > Estructura Comercial > Perfiles-Fondos
+  ✅  Participes LATAM > Maestros > Mandatos > Apoderados Mandato
+  ✅  Participes LATAM > Maestros > Mandatos > Configuración > Configuración Mandatos
+  ✅  Participes LATAM > Maestros > Mandatos > Configuración > Facultades Mandatos
+  ✅  Participes LATAM > Maestros > Mandatos > Histórico Estados
+  ✅  Participes LATAM > Maestros > Mandatos > Mandatos
+  ✅  Participes LATAM > Maestros > Participes > Entidades CL
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Actividades Económicas
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Cuentas
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Cuentas Fondos
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Aux
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Ctas. Ctes.
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin Socios
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin. Aux. Entidades PEP
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Admin. Beneficiarios
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Datos Históricos
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Entidades
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Entidades FATCA
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Entidades Multiples
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Notas
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Partícipes
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Representantes
+  ✅  Participes LATAM > Maestros > Participes > Mantenimientos > Titulares
+  ✅  Participes LATAM > Maestros > Saldos > Saldos a Fecha
+  ✅  Participes LATAM > Maestros > Saldos > Saldos Actuales
+  ✅  Participes LATAM > Procesos > Comerciales > Cálculo Comisiones Agentes > Consulta Listado
+  ✅  Participes LATAM > Procesos > Comerciales > Cálculo Comisiones Agentes > Detalle Comisión Agentes
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Alta
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Consulta de Reasignación Agente por Entidad
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Consulta de Reasignación por Agente
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Generación
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Agentes y Sucursales > Pro Incorporación Fichero
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Consulta de Reasignación Sucursal por Entidad
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Generación
+  ✅  Participes LATAM > Procesos > Comerciales > Reasignacion de Ejecutivos > Reasignación Ejecutivos Alta
+  ✅  Participes LATAM > Procesos > Comerciales > Sustitución de Elementos Estructura Comercial
+  ✅  Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Alta
+  ✅  Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Bloqueo Masivo de Clientes
+  ✅  Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Consulta
+  ✅  Participes LATAM > Procesos > Entidades > Bloqueos de Clientes y Cuentas > Desbloqueo Clientes Cuentas
+  ✅  Participes LATAM > Procesos > Entidades > Calcular Clientes Inactivos
+  ✅  Participes LATAM > Procesos > Específicos > Grupos de Retención
+  ✅  Participes LATAM > Procesos > Específicos > Incorporar Benchmark
+  ✅  Participes LATAM > Procesos > Específicos > Vencimiento de Mandatos
+  ✅  Participes LATAM > Procesos > Liquidaciones > Grupos de Retención
+  ✅  Participes LATAM > Procesos > Migración > Grupos de Retención
+  ✅  Participes LATAM > Procesos > Operaciones > Actividades Económicas
+  ✅  Participes LATAM > Procesos > Operaciones > Cesiones de Cuotas > Actividades Económicas
+  ✅  Participes LATAM > Procesos > Utilidades/Subprocesos > Actividades Económicas
+  ✅  Participes LATAM > Procesos > Utilidades/Subprocesos > Grupos de Retención
+  ✅  FrontOn Gestión > Entradas > Ejecuciones bancarias > Importación CSV BCS
+  ✅  FrontOn Gestión > Entradas > Ejecuciones directas > Ejecuciones múltiples repos
+  ✅  FrontOn Gestión > Entradas > Ordenes
+  ✅  Maestros > Básicos > Clases de valor
+  ✅  Maestros > Básicos > Criterios
+  ✅  Maestros > Básicos > Descripción operaciones
+  ✅  Maestros > Básicos > Escalas
+  ✅  Maestros > Básicos > Escalas éxito
+  ✅  Maestros > Básicos > Nombres tarifas
+  ✅  Maestros > Básicos > Plantilla curva diferencial
+  ✅  Maestros > Básicos > Plantilla de valoración
+  ✅  Maestros > Básicos > Plantillas contables
+  ✅  Maestros > Básicos > Plantillas operaciones
+  ✅  Maestros > Básicos > Política inversión
+  ✅  Maestros > Básicos > Sectores
+  ✅  Maestros > Básicos > Subsectores
+  ✅  Maestros > Básicos > Tarifas
+  ✅  Maestros > Básicos > Tarifas cartera
+  ✅  Maestros > Básicos > Tipos de activo
+  ✅  Maestros > Básicos > Tipos de operación
+  ✅  Maestros > Básicos > Tipos de saldos
+  ✅  Maestros > Básicos > Tipos de valor
+  ✅  Maestros > Cartera > Bloqueo títulos
+  ✅  Maestros > Cartera > Carteras tipo cambios
+  ✅  Maestros > Cartera > Carteras tipo precio
+  ✅  Maestros > Cartera > Cuentas liquidación
+  ✅  Maestros > Cartera > Depósitos
+  ✅  Maestros > Cartera > Depósitos DT
+  ✅  Maestros > Cartera > Divisa liquidación
+  ✅  Maestros > Cartera > Ratings mínimos cartera
+  ✅  Maestros > Cartera > Restricciones cartera
+  ✅  Maestros > Cartera > Restricciones instrumento
+  ✅  Maestros > Conceptos > Conceptos
+  ✅  Maestros > Conceptos > Conceptos cuentas
+  ✅  Maestros > Configuración > Control aplicación
+  ✅  Maestros > Configuración > Enlaces conexiones
+  ✅  Maestros > Configuración > Enlaces remotos
+  ✅  Maestros > Cotizaciones > Cotizaciones
+  ✅  Maestros > Cotizaciones > Cotizaciones CDS
+  ✅  Maestros > Cotizaciones > Cotizaciones CVD
+  ✅  Maestros > Cotizaciones > Cotizaciones divisas
+  ✅  Maestros > Cotizaciones > Cotizaciones divisas entidades
+  ✅  Maestros > Cotizaciones > Curvas de tir
+  ✅  Maestros > Cotizaciones > Curvas forward
+  ✅  Maestros > Cotizaciones > Definición curvas forward
+  ✅  Maestros > Cotizaciones > Definición Curvas Tir
+  ✅  Maestros > Cotizaciones > Deltas
+  ✅  Maestros > Cotizaciones > Diferenciales
+  ✅  Maestros > Cotizaciones > Diferenciales divisa
+  ✅  Maestros > Cotizaciones > Divisas Cambio
+  ✅  Maestros > Cotizaciones > Forwards
+  ✅  Maestros > Cotizaciones > Forwards coti.
+  ✅  Maestros > Cotizaciones > Grupo cotizaciones
+  ✅  Maestros > Cotizaciones > Grupos diferencial
+  ✅  Maestros > Cotizaciones > Histórico Días Tir
+  ✅  Maestros > Cotizaciones > IPC
+  ✅  Maestros > Cotizaciones > Tires
+  ✅  Maestros > Entidades > Entidades
+  ✅  Maestros > Entidades > Básicos > Agentes
+  ✅  Maestros > Entidades > Básicos > Informes periódicos
+  ✅  Maestros > Entidades > Básicos > Aportantes
+  ✅  Maestros > Entidades > Básicos > Beneficiarios
+  ✅  Maestros > Entidades > Básicos > Beneficiarios tipos
+  ✅  Maestros > Entidades > Básicos > Brókers
+  ✅  Maestros > Entidades > Básicos > Bancos
+  ✅  Maestros > Entidades > Básicos > Carteras
+  ✅  Maestros > Entidades > Básicos > Clientes
+  ✅  Maestros > Entidades > Básicos > Comerciales
+  ✅  Maestros > Entidades > Básicos > Contables
+  ✅  Maestros > Entidades > Básicos > Contrapartidas
+  ✅  Maestros > Entidades > Básicos > Correspondencia
+  ✅  Maestros > Entidades > Básicos > Cuentas
+  ✅  Maestros > Entidades > Básicos > Distribuidores
+  ✅  Maestros > Entidades > Básicos > Emisoras
+  ✅  Maestros > Entidades > Básicos > Datos administrativos
+  ✅  Maestros > Entidades > Básicos > Entidades CRS
+  ✅  Maestros > Entidades > Básicos > Entidades
+  ✅  Maestros > Entidades > Básicos > Atienden
+  ✅  Maestros > Entidades > Básicos > Contribuidores
+  ✅  Maestros > Entidades > Básicos > Intercambio
+  ✅  Maestros > Entidades > Básicos > Entidades FATCA
+  ✅  Maestros > Entidades > Básicos > Fondo/Compa./Clase
+  ✅  Maestros > Entidades > Básicos > Notarios
+  ✅  Maestros > Entidades > Básicos > Fondos
+  ✅  Maestros > Entidades > Básicos > Gestoras
+  ✅  Maestros > Entidades > Básicos > Gestores
+  ✅  Maestros > Entidades > Básicos > Grupos fiscales
+  ✅  Maestros > Entidades > Básicos > Mediadoras
+  ✅  Maestros > Entidades > Básicos > Mercados
+  ✅  Maestros > Entidades > Básicos > Reaseguradoras
+  ✅  Maestros > Entidades > Básicos > Vendedor/Arrenda
+  ✅  Maestros > Entidades > Básicos > Entidades GFIA
+  ✅  Maestros > Entidades > Básicos > Partícipes
+  ✅  Maestros > Entidades > Básicos > Planes
+  ✅  Maestros > Entidades > Básicos > Promotores
+  ✅  Maestros > Entidades > Básicos > Proveedores
+  ✅  Maestros > Entidades > Básicos > Propietarios
+  ✅  Maestros > Entidades > Básicos > Registrales
+  ✅  Maestros > Entidades > Básicos > Representantes
+  ✅  Maestros > Entidades > Básicos > Sucursales
+  ✅  Maestros > Entidades > Básicos > Subplan
+  ✅  Maestros > Entidades > Básicos > Titulares
+  ✅  Maestros > Entidades > Básicos > Varios
+  ✅  Maestros > Entidades > Básicos > Vinculados
+  ✅  Maestros > Entidades > Básicos > Datos Históricos
+  ✅  Maestros > Entidades > Básicos > Notas
+  ✅  Maestros > Entidades > Básicos > Entidades
+  ✅  Maestros > Entidades > Básicos > Titulares
+  ✅  Maestros > Entidades > Básicos > Cuentas Fondos
+  ✅  Maestros > Entidades > Básicos > Cuentas
+  ✅  Maestros > Entidades > Básicos > Representantes
+  ✅  Maestros > Entidades > Básicos > Datos Admin
+  ✅  Maestros > Entidades > Básicos > Partícipes
+  ✅  Maestros > Entidades > Básicos > Datos Admin Socios
+  ✅  Maestros > Entidades > Básicos > Datos Admin Ctas. Ctes.
+  ✅  Maestros > Entidades > Básicos > Datos Admin. Beneficiarios
+  ✅  Maestros > Entidades > Básicos > Entidades FATCA
+  ✅  Maestros > Entidades > Básicos > Datos Admin Aux
+  ✅  Maestros > Entidades > Básicos > Datos Admin. Aux. Entidades PEP
+  ✅  Maestros > Entidades > Básicos > Entidades Multiples
+  ✅  Maestros > Entidades > Básicos > Actividades Económicas
+  ✅  Maestros > Fondos > Cálculos cierre
+  ✅  Maestros > Fondos > Conceptos fondo
+  ✅  Maestros > Fondos > Nombre comisión éxito
+  ✅  Maestros > Fondos > Política inversión de fondos
+  ✅  Maestros > Fondos > Valores liquidativo fondos
+  ✅  Maestros > Fondos > Valores liquidativo planes
+  ✅  Maestros > Instrumentos > Instrumentos
+  ✅  Maestros > Instrumentos > Básicos > Instrumentos
+  ✅  Maestros > Instrumentos > Básicos > Valores CVI
+  ✅  Maestros > Instrumentos > Básicos > Colaterales
+  ✅  Maestros > Instrumentos > Básicos > Colaterales garantia
+  ✅  Maestros > Instrumentos > Básicos > Valores RF
+  ✅  Maestros > Instrumentos > Básicos > Valores común
+  ✅  Maestros > Instrumentos > Básicos > Instrumentos Frontón
+  ✅  Maestros > Instrumentos > Básicos > Futuros
+  ✅  Maestros > Instrumentos > Básicos > Valores RV
+  ✅  Maestros > Instrumentos > Básicos > Opciones
+  ✅  Maestros > Instrumentos > Básicos > Unit linked
+  ✅  Maestros > Instrumentos > Básicos > Pólizas
+  ✅  Maestros > Instrumentos > Básicos > Contrato derivado
+  ✅  Maestros > Instrumentos > Básicos > Divisas
+  ✅  Maestros > Instrumentos > Básicos > Pagos y cobros
+  ✅  Maestros > Instrumentos > Básicos > Entregables
+  ✅  Maestros > Instrumentos > Básicos > Instrumentos Frontón
+  ✅  Maestros > Instrumentos > Básicos > Instrumentos UME
+  ✅  Maestros > Instrumentos > Básicos > Variaciones tipos
+  ✅  Maestros > Instrumentos > Básicos > Períodos
+  ✅  Maestros > Instrumentos > Básicos > Flujos
+  ✅  Maestros > Instrumentos > Básicos > Valores GFIA
+  ✅  Maestros > Varios > Agrupaciones agentes
+  ✅  Maestros > Varios > Agrupaciones entidades
+  ✅  Maestros > Varios > Agrupaciones instrumentos
+  ✅  Maestros > Varios > Apalancamientos IIC's
+  ✅  Maestros > Varios > Asociadas
+  ✅  Maestros > Varios > Asociadas gestora
+  ✅  Maestros > Varios > Asociadas usuario
+  ✅  Maestros > Varios > Bloques títulos
+  ✅  Maestros > Varios > Broker cartera
+  ✅  Maestros > Varios > Broker mercado
+  ✅  Maestros > Varios > Calendario
+  ✅  Maestros > Varios > Comisiones car ins
+  ✅  Maestros > Varios > Comunidades
+  ✅  Maestros > Varios > Depositario mercado
+  ✅  Maestros > Varios > Depósitos conjuntos
+  ✅  Maestros > Varios > Factor ajuste intereses
+  ✅  Maestros > Varios > Fechas liquidación operaciones
+  ✅  Maestros > Varios > Festivos
+  ✅  Maestros > Varios > Grupos de emisoras
+  ✅  Maestros > Varios > Indicador asientos
+  ✅  Maestros > Varios > Nombres agrupaciones entidades
+  ✅  Maestros > Varios > Nombres agrupaciones instrumentos
+  ✅  Maestros > Varios > Sistemas liquidación operación
+  ✅  Maestros > Varios > Socios gestora
+  ✅  Maestros > Varios II > Histórico de periodificaciones
+  ✅  Maestros > Varios II > Menú tareas
+  ✅  Maestros > Varios II > Municipios
+  ✅  Maestros > Varios II > Países
+  ✅  Maestros > Varios II > Parámetros Car/Inst
+  ✅  Maestros > Varios II > Per. intereses cta. cte.
+  ✅  Maestros > Varios II > Profesiones
+  ✅  Maestros > Varios II > Provincias
+  ✅  Maestros > Varios II > Ratings
+  ✅  Maestros > Varios II > Ratings Factores
+  ✅  Maestros > Varios II > Ratings históricos cálculos
+  ✅  Maestros > Varios II > Ratings históricos cotizaciones
+  ✅  Maestros > Varios II > Retención opc
+  ✅  Maestros > Varios II > Retención pais
+  ✅  Maestros > Varios II > Textos de informes
+  ✅  Maestros > Varios II > Volúmenes entidades
+  ✅  Maestros > Varios II > Volúmenes instrumentos
+  ✅  Maestros > Varios II > Zona geográfica
+
+Fallidas: 0
