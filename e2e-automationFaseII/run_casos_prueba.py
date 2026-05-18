@@ -15,7 +15,8 @@ PRIMERA SOLICITUD (este programa):
          d) Si la pantalla muestra una notificación de error, escribe
             ese mensaje en la columna "Resultado".
             Si todo OK, escribe "OK".
-         e) Cierra la pantalla y pasa al siguiente caso.
+         e) Cierra la pantalla y pasa al siguiente caso (siempre partiendo
+            de nuevo desde el menú hamburguesa).
     4. Al terminar guarda y cierra el Excel.
 
 PASOS FUTUROS (NO implementados aquí, pero sí considerados en el diseño):
@@ -65,10 +66,9 @@ import config  # noqa: E402
 
 
 # ===========================================================================
-# CONSTANTES (copiadas/derivadas del programa run_all_menus_Pantalla.py)
+# CONSTANTES
 # ===========================================================================
 
-# Selectores de notificación
 NOTIFICATION_TYPE_SELECTORS = [
     "div.notification-type", "div.type", "div.title",
     "div.notification-title", ".notification-header",
@@ -100,7 +100,6 @@ NOTIFICATION_CLOSE_SELECTORS = [
     "[role='alertdialog'] button",
 ]
 
-# Selectores del hamburguesa
 HAMBURGER_SELECTORS = [
     "css=div.toggle.menu",
     "css=div.toggle.menu svg",
@@ -111,7 +110,6 @@ HAMBURGER_SELECTORS = [
     "header button", "nav button", ".navbar button",
 ]
 
-# Login
 LOGIN_SELECTORS = [
     "input[name='username']", "input[name='user']", "input[name='login']",
     "input[id='username']", "input[id='user']",
@@ -131,11 +129,11 @@ SUBMIT_SELECTORS = [
     "a:has-text('Ingresar')",
 ]
 
-# Pausas y máximos
 MAX_FILENAME_LENGTH = 80
 MENU_NAVIGATION_DELAY_MS = 600
 MENU_REOPEN_DELAY_MS = 500
 BROWSER_SLOW_MO_MS = 300
+ENTRE_CASOS_PAUSA_MS = 400  # pausa breve entre el cierre de un caso y el siguiente
 
 
 # ===========================================================================
@@ -189,7 +187,7 @@ def wait_and_click(page: Page, selectors: list[str], description: str,
 
 
 # ===========================================================================
-# LOGIN  (copiado de run_all_menus_Pantalla.py)
+# LOGIN
 # ===========================================================================
 
 
@@ -222,23 +220,18 @@ def handle_login(page: Page) -> None:
 
 
 # ===========================================================================
-# APERTURA / CIERRE DEL MENÚ  (copiado de run_all_menus_Pantalla.py)
+# MENÚ — apertura / cierre
 # ===========================================================================
 
 
-def is_menu_open(page: Page) -> bool:
-    try:
-        page.locator("div.ui-menu-item").first.wait_for(state="visible", timeout=2000)
-        return True
-    except PlaywrightTimeoutError:
-        return False
-
-
 def abrir_menu_hamburguesa(page: Page) -> None:
-    """Hace clic en el hamburguesa ≡ y espera a que div.ui-menu-item sea visible."""
-    if is_menu_open(page):
-        print("  ℹ️   Menú ya está abierto.")
-        return
+    """
+    SIEMPRE hace clic en el hamburguesa ≡ y espera a que div.ui-menu-item
+    sea visible. Esta función NO chequea si el menú "ya está abierto" —
+    entre casos consecutivos esa detección puede dar falso positivo y
+    romper la navegación. Cada caso parte desde el hamburguesa.
+    """
+    ultimo_error: Optional[Exception] = None
     for sel in ["css=div.toggle.menu", "css=app-ui-header div.toggle.menu"]:
         try:
             loc = page.locator(sel).first
@@ -247,11 +240,18 @@ def abrir_menu_hamburguesa(page: Page) -> None:
             print("  🍔  Hamburguesa ≡ clickeado.")
             page.locator("div.ui-menu-item").first.wait_for(state="visible", timeout=5000)
             return
-        except Exception:
+        except Exception as exc:
+            ultimo_error = exc
             continue
     # Último recurso: probar todos los selectores genéricos
-    wait_and_click(page, HAMBURGER_SELECTORS, "menú hamburguesa")
-    page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
+    try:
+        wait_and_click(page, HAMBURGER_SELECTORS, "menú hamburguesa")
+        page.locator("div.ui-menu-item").first.wait_for(state="visible", timeout=5000)
+    except Exception:
+        raise RuntimeError(
+            f"No se pudo hacer clic en el hamburguesa ≡. "
+            f"Último error: {ultimo_error}"
+        )
 
 
 def cerrar_menu_si_abierto(page: Page) -> None:
@@ -276,7 +276,7 @@ def cerrar_menu_si_abierto(page: Page) -> None:
     try:
         page.locator("div.ui-menu-item").first.wait_for(state="hidden", timeout=2000)
     except PlaywrightTimeoutError:
-        # Fallback: botón X
+        # Fallback: botón X del panel raíz
         try:
             page.locator("div.menu-title.main div.close").first.click(timeout=2000)
             page.wait_for_timeout(400)
@@ -285,7 +285,7 @@ def cerrar_menu_si_abierto(page: Page) -> None:
 
 
 # ===========================================================================
-# NAVEGACIÓN POR RUTA  (copiado/adaptado de run_all_menus_Pantalla.py)
+# NAVEGACIÓN POR RUTA
 # ===========================================================================
 
 
@@ -293,7 +293,6 @@ def parse_camino(camino: str) -> list[str]:
     """
     'Golf > Consultas > Contabilidad > Asientos manuales'
       → ['Golf', 'Consultas', 'Contabilidad', 'Asientos manuales']
-    Tolera separadores con espacios variables.
     """
     if not camino:
         return []
@@ -333,7 +332,7 @@ def navegar_ruta_completa(page: Page, ruta: list[str]) -> bool:
 
 
 # ===========================================================================
-# NOTIFICACIONES Y CIERRE DE PANTALLA  (copiado de run_all_menus_Pantalla.py)
+# NOTIFICACIONES Y CIERRE DE PANTALLA
 # ===========================================================================
 
 
@@ -471,16 +470,16 @@ def cerrar_pantalla_layout(page: Page) -> bool:
 
 
 # ===========================================================================
-# VENTANA "AVANZAR"  (Tkinter — auto-cierre por timeout)
+# VENTANA "AVANZAR"  (Tkinter con fallback a consola)
 # ===========================================================================
 
 
 def _ventana_avanzar_tkinter(timeout_seg: int, titulo_caso: str) -> str:
     """
     Implementación con Tkinter (ventana gráfica).
-    Lanza ImportError si tkinter no está disponible en esta instalación de Python.
+    Lanza ImportError si tkinter no está disponible.
     """
-    import tkinter as tk  # import diferido — puede fallar y caer al fallback
+    import tkinter as tk  # diferido
 
     motivo = {"valor": "timeout"}
 
@@ -547,17 +546,15 @@ def _ventana_avanzar_tkinter(timeout_seg: int, titulo_caso: str) -> str:
 def _ventana_avanzar_consola(timeout_seg: int, titulo_caso: str) -> str:
     """
     Fallback en consola cuando tkinter no está disponible.
-    Imprime el caso, una cuenta regresiva y permite avanzar con ENTER.
-    Funciona en Windows (msvcrt) y Linux/macOS (select).
     """
     print("\n" + "─" * 60)
     print(f"  ⏸   Pausa — {titulo_caso[:80]}")
     print(f"        Presiona ENTER para avanzar  (auto-avanza en {timeout_seg}s)")
     print("─" * 60)
 
-    # ── Variante Windows: msvcrt ─────────────────────────────────────────
+    # Variante Windows
     try:
-        import msvcrt  # solo existe en Windows
+        import msvcrt
         inicio = time.time()
         ultimo_print = -1
         while True:
@@ -574,12 +571,11 @@ def _ventana_avanzar_consola(timeout_seg: int, titulo_caso: str) -> str:
                 if ch in (b"\r", b"\n", b" "):
                     print("\r  ▶   ENTER recibido — avanzando…              ")
                     return "avanzar"
-                # Cualquier otra tecla la ignoramos
             time.sleep(0.1)
     except ImportError:
         pass
 
-    # ── Variante Linux/Mac: select sobre stdin ───────────────────────────
+    # Variante Linux/Mac
     try:
         import select
         inicio = time.time()
@@ -601,29 +597,21 @@ def _ventana_avanzar_consola(timeout_seg: int, titulo_caso: str) -> str:
     except Exception:
         pass
 
-    # ── Último recurso: time.sleep puro ──────────────────────────────────
+    # Último recurso
     print(f"  (Sin detección de teclado disponible — espera {timeout_seg}s)")
     time.sleep(timeout_seg)
     return "timeout"
 
 
-# Flag para no avisar una y otra vez sobre la falta de tkinter
 _TKINTER_AVISADO = {"flag": False}
 
 
 def ventana_avanzar(timeout_seg: int = 20, titulo_caso: str = "") -> str:
     """
-    Pausa con botón "Avanzar". Intenta usar Tkinter (ventana gráfica) y,
-    si no está disponible, cae a un fallback en consola con cuenta regresiva.
-
-    Retorna:
-        "avanzar"  → el usuario confirmó (clic o ENTER)
-        "timeout"  → expiró el tiempo
-        "cerrada"  → cerró la ventana con la X (solo Tkinter)
+    Pausa con botón "Avanzar". Intenta Tkinter; si no está, fallback a consola.
     """
     if timeout_seg <= 0:
         timeout_seg = 20
-
     try:
         return _ventana_avanzar_tkinter(timeout_seg, titulo_caso)
     except ImportError:
@@ -637,29 +625,23 @@ def ventana_avanzar(timeout_seg: int = 20, titulo_caso: str = "") -> str:
             _TKINTER_AVISADO["flag"] = True
         return _ventana_avanzar_consola(timeout_seg, titulo_caso)
     except Exception as exc:
-        # Tkinter está pero falló por otra razón (display no disponible, etc.)
         print(f"  ⚠️   Tkinter falló ({exc}). Usando fallback de consola.")
         return _ventana_avanzar_consola(timeout_seg, titulo_caso)
 
 
 # ===========================================================================
-# EXCEL — lectura/escritura con openpyxl
+# EXCEL
 # ===========================================================================
 
 COL_CAMINO_HEADER = "Camino a la Pantalla"
 COL_RESULTADO_HEADER = "Resultado"
 COL_DATO_PREFIX = "Dato"
 
-# Colores para la celda Resultado
 FILL_OK = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")
 FILL_ERROR = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")
 
 
 def localizar_columnas(ws) -> dict[str, int]:
-    """
-    Recorre la fila 1 y devuelve un dict {header: nro_columna}.
-    Lanza ValueError si faltan columnas obligatorias.
-    """
     cols: dict[str, int] = {}
     for cell in ws[1]:
         if cell.value is None:
@@ -680,10 +662,6 @@ def localizar_columnas(ws) -> dict[str, int]:
 
 
 def leer_datos_fila(ws, fila: int, columnas: dict[str, int]) -> list[str]:
-    """
-    Devuelve la lista de Dato1..Dato20 no vacíos (en orden).
-    Sirve para el PASO FUTURO de llenar la pantalla.
-    """
     datos = []
     for n in range(1, 21):
         header = f"{COL_DATO_PREFIX}{n}"
@@ -703,42 +681,89 @@ def escribir_resultado(ws, fila: int, col_resultado: int, texto: str, ok: bool) 
 
 
 # ===========================================================================
-# FLUJO POR CASO
+# FLUJO POR CASO — SIEMPRE PARTE DESDE EL HAMBURGUESA
 # ===========================================================================
+
+
+def preparar_estado_limpio(page: Page) -> None:
+    """
+    Asegura que NO haya pantallas, menús o modales abiertos antes de
+    intentar abrir el menú hamburguesa para el próximo caso.
+
+    Esto es crítico para que cada caso pueda partir desde cero, incluso
+    si el caso anterior terminó en un estado inesperado.
+    """
+    # a) Modal app-modal
+    _cerrar_app_modal_si_existe(page)
+
+    # b) Notificación residual
+    try:
+        if is_notification_modal_visible(page) is not None:
+            print("  🧹  Notificación residual — cerrándola…")
+            handle_notification_modal(page, "_residual_")
+    except Exception:
+        pass
+
+    # c) Pantalla activa abierta
+    try:
+        page.locator("div.tab.activable.active").first.wait_for(
+            state="visible", timeout=1000
+        )
+        print("  🧹  Pantalla previa aún abierta — cerrándola…")
+        cerrar_pantalla_layout(page)
+    except PlaywrightTimeoutError:
+        pass
+    except Exception:
+        pass
+
+    # d) Menú abierto
+    cerrar_menu_si_abierto(page)
+
+    # e) Pausa breve para que Angular termine de renderizar
+    page.wait_for_timeout(ENTRE_CASOS_PAUSA_MS)
 
 
 def procesar_caso(page: Page, ruta: list[str], datos: list[str]) -> tuple[bool, str]:
     """
-    Procesa un caso individual.
-    Retorna (ok, texto_resultado).
+    Procesa un caso individual. Retorna (ok, texto_resultado).
 
-    PASOS FUTUROS (no implementados aún):
-        - usar `datos` para llenar la pantalla [Frame].Field.Valor
-        - grabar y capturar mensaje de validación
-    Por ahora solo navega, detecta notificación de error y cierra.
+    Flujo:
+        1. Estado limpio (cierra cualquier pantalla/menú/modal previo).
+        2. Verifica que el botón hamburguesa esté visible.
+        3. Hace clic en el hamburguesa.
+        4. Navega la ruta completa.
+        5. Espera la vista.
+        6. Captura notificación de error (si la hay) y reporta.
+        7. (Futuro) Llena los datos.
+        8. Cierra la pantalla.
     """
     ruta_str = " > ".join(ruta)
 
-    # 1. Estado limpio
-    cerrar_menu_si_abierto(page)
+    # 1. Estado limpio entre casos
+    preparar_estado_limpio(page)
 
-    # 2. Abrir hamburguesa
+    # 2. Verificar que el hamburguesa esté visible
+    try:
+        page.locator("div.toggle.menu").first.wait_for(state="visible", timeout=5000)
+    except PlaywrightTimeoutError:
+        return False, "FALLO_NAVEGACION: hamburguesa ≡ no visible (¿quedó algo abierto?)"
+
+    # 3. Abrir hamburguesa (SIEMPRE, sin cortocircuito)
     try:
         abrir_menu_hamburguesa(page)
     except Exception as exc:
         return False, f"FALLO_NAVEGACION: no se pudo abrir el menú ({exc})"
 
-    # 3. Navegar la ruta
+    # 4. Navegar la ruta
     if not navegar_ruta_completa(page, ruta):
         return False, "FALLO_NAVEGACION: no se pudo recorrer la ruta completa"
 
-    # 4. Esperar la vista
+    # 5. Esperar la vista
     try:
         page.locator("div.tab.activable.active").first.wait_for(
             state="visible", timeout=8000
         )
     except PlaywrightTimeoutError:
-        # Aún así puede haber aparecido una notificación; la chequeamos
         notif = handle_notification_modal(page, ruta_str)
         if notif:
             return False, f"ERROR: {notif}"
@@ -747,21 +772,20 @@ def procesar_caso(page: Page, ruta: list[str], datos: list[str]) -> tuple[bool, 
     safe = re.sub(r"[^a-zA-Z0-9_.-]+", "_", ruta_str)[:MAX_FILENAME_LENGTH]
     screenshot(page, f"caso__{safe}")
 
-    # 5. ¿Hay notificación de error?
+    # 6. ¿Hay notificación de error?
     notif = handle_notification_modal(page, ruta_str)
     if notif:
-        # Cerrar lo que quede abierto e informar
         try:
             cerrar_pantalla_layout(page)
         except Exception:
             pass
         return False, f"ERROR: {notif}"
 
-    # 6. TODO FUTURO: si datos no está vacío → llenar_datos(page, datos)
+    # 7. TODO FUTURO: si datos no está vacío → llenar_datos(page, datos)
     if datos:
-        print(f"  ℹ️   {len(datos)} dato(s) encontrados — pendiente de implementar el llenado.")
+        print(f"  ℹ️   {len(datos)} dato(s) en la fila — pendiente de implementar el llenado.")
 
-    # 7. Cerrar pantalla
+    # 8. Cerrar pantalla
     cerrar_pantalla_layout(page)
     return True, "OK"
 
@@ -788,7 +812,6 @@ def run() -> None:
         print(f"❌  No se encontró el Excel: {config.EXCEL_CASOS}")
         sys.exit(1)
 
-    # 1. Abrir Excel
     print(f"▶ Abriendo Excel: {config.EXCEL_CASOS.name}")
     wb = load_workbook(config.EXCEL_CASOS)
     ws = wb.active
@@ -798,7 +821,6 @@ def run() -> None:
     total_filas = ws.max_row - 1
     print(f"  ✅  Hoja: '{ws.title}' — {total_filas} caso(s) detectado(s).\n")
 
-    # 2. Lanzar Playwright
     with sync_playwright() as p:
         browser = p.chromium.launch(
             headless=config.HEADLESS,
@@ -813,14 +835,12 @@ def run() -> None:
         fallidos: list[str] = []
 
         try:
-            # 3. Login
             print("▶ Cargando URL y login…")
             page.goto(config.BASE_URL, wait_until="domcontentloaded")
             page.wait_for_load_state("networkidle", timeout=config.TIMEOUT_MS)
             handle_login(page)
             print()
 
-            # 4. Iterar casos (fila 2 en adelante)
             for fila in range(2, ws.max_row + 1):
                 camino = ws.cell(row=fila, column=col_camino).value
                 if camino is None or str(camino).strip() == "":
@@ -843,20 +863,16 @@ def run() -> None:
                         screenshot(page, f"EXC_fila{fila}")
                     except Exception:
                         pass
-                    # Recuperación: cerrar todo lo que quede abierto
+                    # Recuperación agresiva: cerrar todo lo que quede
                     try:
-                        cerrar_pantalla_layout(page)
-                    except Exception:
-                        pass
-                    try:
-                        cerrar_menu_si_abierto(page)
+                        preparar_estado_limpio(page)
                     except Exception:
                         pass
 
                 print(f"  → {resultado}")
                 escribir_resultado(ws, fila, col_resultado, resultado, ok)
 
-                # Guardar Excel después de cada caso (por si se interrumpe)
+                # Guardar Excel después de cada caso
                 try:
                     wb.save(config.EXCEL_CASOS)
                 except PermissionError:
@@ -869,14 +885,12 @@ def run() -> None:
 
                 # Ventana "Avanzar"
                 if config.ACTIVA_VENTANA:
-                    print(f"  ⏸   Ventana 'Avanzar' (autocierre en {config.VENTANA_TIMEOUT_SEG}s)…")
                     motivo = ventana_avanzar(
                         timeout_seg=config.VENTANA_TIMEOUT_SEG,
                         titulo_caso=ruta_str,
                     )
                     print(f"  ▶   Continuando ({motivo}).")
 
-            # 5. Reporte final
             print(f"\n{'='*60}")
             print(f"  ✅  Casos exitosos : {len(exitosos)}")
             print(f"  ❌  Casos fallidos : {len(fallidos)}")
@@ -890,7 +904,6 @@ def run() -> None:
                 pass
             raise
         finally:
-            # 6. Guardar y cerrar Excel
             try:
                 wb.save(config.EXCEL_CASOS)
                 print(f"\n💾  Excel guardado: {config.EXCEL_CASOS}")
