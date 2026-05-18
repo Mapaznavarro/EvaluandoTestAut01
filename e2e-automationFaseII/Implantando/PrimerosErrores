@@ -1,0 +1,6 @@
+PS B:\Users\gather\python\e2e-automationFaseII> python .\run_casos_prueba.py
+Traceback (most recent call last):
+  File "B:\Users\gather\python\e2e-automationFaseII\run_casos_prueba.py", line 45, in <module>
+    import tkinter as tk
+ModuleNotFoundError: No module named 'tkinter'
+PS B:\Users\gather\python\e2e-automationFaseII>
