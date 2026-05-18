@@ -694,39 +694,152 @@ def normalizar_tipo(valor) -> str:
     return s  # valor inválido — lo retorna tal cual para reportar el error
 
 
-def leer_celda(ws, ws_valores, fila: int, col: int):
+def _resolver_referencia_celda(ref: str, wb, ws_actual):
     """
-    Lee el valor de una celda. Si la celda contiene una fórmula (=...),
-    devuelve el valor calculado leído desde ws_valores (workbook abierto
-    con data_only=True). Si la fórmula no tiene caché de valor (porque
-    el .xlsx fue creado por openpyxl o nunca se abrió en Excel), retorna
-    None y se imprime un warning.
+    Resuelve una referencia tipo A4, $B$2 o 'Hoja'!C5 al valor literal de esa celda.
+    """
+    # Literal entre comillas: "texto"  o  'texto'
+    if (ref.startswith('"') and ref.endswith('"')) or \
+       (ref.startswith("'") and ref.endswith("'") and "!" not in ref):
+        return ref[1:-1]
+
+    # Referencia con hoja: 'Hoja'!A4   o   Hoja!A4
+    m = re.match(r"^(?:('[^']+'|[A-Za-z_][A-Za-z0-9_.]*)!)?\$?([A-Z]+)\$?(\d+)$", ref)
+    if not m:
+        return None
+    sheet_name = m.group(1)
+    if sheet_name and sheet_name.startswith("'") and sheet_name.endswith("'"):
+        sheet_name = sheet_name[1:-1]
+    target_ws = wb[sheet_name] if sheet_name else ws_actual
+
+    from openpyxl.utils import column_index_from_string
+    col = column_index_from_string(m.group(2))
+    row = int(m.group(3))
+    return target_ws.cell(row=row, column=col).value
+
+
+_VLOOKUP_RE = re.compile(
+    r"^=VLOOKUP\(\s*"
+    r"(.+?)"                                   # lookup_value
+    r"\s*,\s*"
+    r"(.+?)"                                   # table_array
+    r"\s*,\s*"
+    r"(\d+)"                                   # col_index
+    r"(?:\s*,\s*(?:TRUE|FALSE|0|1|VERDADERO|FALSO))?"  # opcional 4to param
+    r"\s*\)\s*$",
+    re.IGNORECASE,
+)
+
+_RANGO_RE = re.compile(
+    r"^(?:('[^']+'|[A-Za-z_][A-Za-z0-9_.]*)!)?"  # hoja opcional
+    r"\$?([A-Z]+)\$?(\d+)?"                       # col-fila inicio
+    r"\s*:\s*"
+    r"\$?([A-Z]+)\$?(\d+)?$"                      # col-fila fin
+)
+
+
+def _evaluar_vlookup(formula: str, wb, ws_actual):
+    """
+    Evalúa una fórmula VLOOKUP simple en Python sin necesidad del caché de Excel.
+
+    Soporta:
+        =VLOOKUP(A4, 'Hoja con espacios'!$B$2:$C$362, 2, FALSE)
+        =VLOOKUP(A4, Mapeo!A:B, 2, 0)
+        =VLOOKUP("literal", Hoja!A:B, 2, FALSE)
+
+    Solo coincidencia exacta (asume el 4to parámetro = FALSE).
+    Retorna el valor encontrado o None si no se pudo evaluar / no encontró.
+    """
+    m = _VLOOKUP_RE.match(formula.strip())
+    if not m:
+        return None
+
+    lookup_ref, range_ref, col_idx_str = (
+        m.group(1).strip(), m.group(2).strip(), m.group(3)
+    )
+    col_idx = int(col_idx_str)
+
+    # 1. Resolver el valor a buscar
+    lookup_value = _resolver_referencia_celda(lookup_ref, wb, ws_actual)
+    if lookup_value is None:
+        return None
+
+    # 2. Parsear el rango
+    range_m = _RANGO_RE.match(range_ref)
+    if not range_m:
+        return None
+
+    sheet_name = range_m.group(1)
+    if sheet_name and sheet_name.startswith("'") and sheet_name.endswith("'"):
+        sheet_name = sheet_name[1:-1]
+
+    from openpyxl.utils import column_index_from_string
+    start_col = column_index_from_string(range_m.group(2))
+    start_row = int(range_m.group(3)) if range_m.group(3) else 1
+    end_col = column_index_from_string(range_m.group(4))
+    end_row_str = range_m.group(5)
+
+    target_ws = wb[sheet_name] if sheet_name else ws_actual
+    end_row = int(end_row_str) if end_row_str else target_ws.max_row
+
+    # 3. Buscar lookup_value en la primera columna del rango
+    lookup_str = str(lookup_value).strip()
+    for row in range(start_row, end_row + 1):
+        cell_val = target_ws.cell(row=row, column=start_col).value
+        if cell_val is None:
+            continue
+        if str(cell_val).strip() == lookup_str:
+            # Encontrado — retornar valor de la columna col_idx
+            return_col = start_col + col_idx - 1
+            if return_col > end_col:
+                return None
+            return target_ws.cell(row=row, column=return_col).value
+    return None  # No encontrado
+
+
+def leer_celda(ws, ws_valores, fila: int, col: int, wb=None):
+    """
+    Lee el valor de una celda. Si es fórmula:
+      1. Intenta leer el valor cacheado por Excel (ws_valores, data_only=True).
+      2. Si no hay caché y la fórmula es VLOOKUP → la evalúa en Python.
+      3. Si todo falla → warning + None.
     """
     valor = ws.cell(row=fila, column=col).value
-    # Si es una fórmula, leemos el valor calculado del workbook "valores"
-    if isinstance(valor, str) and valor.startswith("="):
-        if ws_valores is None:
-            print(f"  ⚠️   Celda {ws.cell(row=fila, column=col).coordinate} "
-                  f"contiene fórmula y no hay workbook de valores.")
-            return None
+    if not (isinstance(valor, str) and valor.startswith("=")):
+        return valor  # No es fórmula, lectura directa
+
+    coord = ws.cell(row=fila, column=col).coordinate
+
+    # 1. Cache de Excel
+    if ws_valores is not None:
         valor_calc = ws_valores.cell(row=fila, column=col).value
-        if valor_calc is None:
-            print(f"  ⚠️   Celda {ws.cell(row=fila, column=col).coordinate} "
-                  f"tiene fórmula pero Excel aún no la calculó. "
-                  f"Abre el Excel, guárdalo en Excel (no LibreOffice) y reintenta.")
-            return None
-        return valor_calc
-    return valor
+        if valor_calc is not None:
+            return valor_calc
+
+    # 2. Fallback: evaluar VLOOKUP en Python
+    if wb is not None and "VLOOKUP" in valor.upper():
+        valor_eval = _evaluar_vlookup(valor, wb, ws)
+        if valor_eval is not None:
+            print(f"  🧮  Celda {coord}: fórmula evaluada en Python → {valor_eval!r}")
+            return valor_eval
+
+    # 3. No se pudo resolver
+    print(f"  ⚠️   Celda {coord} tiene fórmula sin valor calculable:")
+    print(f"         {valor}")
+    print(f"         Soluciones: (a) abrir Excel, F9, Ctrl+S")
+    print(f"                     (b) verificar que la fórmula sea VLOOKUP exacto")
+    return None
 
 
-def leer_datos_fila(ws, fila: int, columnas: dict[str, int], ws_valores=None) -> list[str]:
+def leer_datos_fila(ws, fila: int, columnas: dict[str, int],
+                    ws_valores=None, wb=None) -> list[str]:
     datos = []
     for n in range(1, 21):
         header = f"{COL_DATO_PREFIX}{n}"
         col = columnas.get(header)
         if col is None:
             continue
-        valor = leer_celda(ws, ws_valores, fila, col)
+        valor = leer_celda(ws, ws_valores, fila, col, wb=wb)
         if valor is None or str(valor).strip() == "":
             continue
         datos.append(str(valor).strip())
@@ -1015,7 +1128,7 @@ def run() -> None:
             print()
 
             for fila in range(2, ws.max_row + 1):
-                camino = leer_celda(ws, ws_valores, fila, col_camino)
+                camino = leer_celda(ws, ws_valores, fila, col_camino, wb=wb)
                 if camino is None or str(camino).strip() == "":
                     print(f"[Fila {fila}] (vacía) — se omite")
                     continue
@@ -1023,9 +1136,8 @@ def run() -> None:
                 ruta = parse_camino(str(camino))
                 ruta_str = " > ".join(ruta)
 
-                # Leer Tipo Pantalla (si existe la columna). Soporta fórmulas.
                 if col_tipo is not None:
-                    tipo_raw = leer_celda(ws, ws_valores, fila, col_tipo)
+                    tipo_raw = leer_celda(ws, ws_valores, fila, col_tipo, wb=wb)
                     tipo = normalizar_tipo(tipo_raw)
                 else:
                     tipo = TIPO_DEFAULT
@@ -1034,7 +1146,8 @@ def run() -> None:
                 print(f"[Fila {fila}] [{tipo}] {ruta_str}")
                 print(f"{'─'*60}")
 
-                datos = leer_datos_fila(ws, fila, columnas, ws_valores=ws_valores)
+                datos = leer_datos_fila(ws, fila, columnas,
+                                        ws_valores=ws_valores, wb=wb)
 
                 try:
                     ok, resultado = procesar_caso(page, ruta, datos, tipo=tipo)
@@ -1052,7 +1165,6 @@ def run() -> None:
                 print(f"  → {resultado}")
                 escribir_resultado(ws, fila, col_resultado, resultado, ok)
 
-                # Guardar Excel después de cada caso
                 try:
                     wb.save(config.EXCEL_CASOS)
                 except PermissionError:
@@ -1063,7 +1175,6 @@ def run() -> None:
 
                 (exitosos if ok else fallidos).append(ruta_str)
 
-                # Ventana "Avanzar" entre casos
                 if config.ACTIVA_VENTANA:
                     motivo = ventana_avanzar(
                         timeout_seg=config.VENTANA_TIMEOUT_SEG,
