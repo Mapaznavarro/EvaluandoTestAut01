@@ -10,3 +10,5 @@ Solucion: corregir programa
 ModuleNotFoundError: No module named 'openpyxl'
 Solucion:
 py -m pip install openpyxl
+Al hacer esto me recomendó ejecutar:
+python.exe -m pip install --upgrade pip
