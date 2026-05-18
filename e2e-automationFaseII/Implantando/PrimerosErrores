@@ -4,7 +4,9 @@ Traceback (most recent call last):
     import tkinter as tk
 ModuleNotFoundError: No module named 'tkinter'
 PS B:\Users\gather\python\e2e-automationFaseII>
-
+Solucion: corregir programa
 
     from openpyxl import load_workbook
 ModuleNotFoundError: No module named 'openpyxl'
+Solucion:
+py -m pip install openpyxl
