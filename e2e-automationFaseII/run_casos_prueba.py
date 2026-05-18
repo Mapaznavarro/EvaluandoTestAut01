@@ -42,10 +42,15 @@ import datetime
 import re
 import sys
 import threading
-import tkinter as tk
+import time
 from datetime import timezone
 from pathlib import Path
 from typing import Optional
+
+# tkinter es opcional: si la instalación de Python no lo incluye
+# (suele pasar con Python del Microsoft Store o instalaciones minimal),
+# usamos un fallback en consola.  Por eso NO se importa a nivel de módulo.
+# El import se hace dentro de ventana_avanzar() de forma diferida.
 
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
@@ -470,19 +475,14 @@ def cerrar_pantalla_layout(page: Page) -> bool:
 # ===========================================================================
 
 
-def ventana_avanzar(timeout_seg: int = 20, titulo_caso: str = "") -> str:
+def _ventana_avanzar_tkinter(timeout_seg: int, titulo_caso: str) -> str:
     """
-    Muestra una ventana modal simple con un botón "Avanzar".
-    Cierra automáticamente después de `timeout_seg` segundos.
-    Retorna:
-        "avanzar"  → el usuario hizo clic en Avanzar
-        "timeout"  → expiró el tiempo
-        "cerrada"  → el usuario cerró la ventana con la X
+    Implementación con Tkinter (ventana gráfica).
+    Lanza ImportError si tkinter no está disponible en esta instalación de Python.
     """
-    if timeout_seg <= 0:
-        timeout_seg = 20
+    import tkinter as tk  # import diferido — puede fallar y caer al fallback
 
-    motivo = {"valor": "timeout"}  # default si se autocierra
+    motivo = {"valor": "timeout"}
 
     root = tk.Tk()
     root.title("Automatización QA — Avanzar")
@@ -490,24 +490,16 @@ def ventana_avanzar(timeout_seg: int = 20, titulo_caso: str = "") -> str:
     root.geometry("420x180+200+200")
     root.resizable(False, False)
 
-    # Etiqueta con el caso actual
     titulo = titulo_caso[:80] if titulo_caso else "Caso de prueba"
-    lbl_caso = tk.Label(
-        root,
-        text=titulo,
-        font=("Segoe UI", 10, "bold"),
-        wraplength=380,
-        justify="center",
-    )
-    lbl_caso.pack(pady=(15, 5))
+    tk.Label(
+        root, text=titulo, font=("Segoe UI", 10, "bold"),
+        wraplength=380, justify="center",
+    ).pack(pady=(15, 5))
 
-    # Contador regresivo
     restante = {"seg": timeout_seg}
     lbl_timer = tk.Label(
-        root,
-        text=f"Auto-avanza en {restante['seg']} s",
-        font=("Segoe UI", 9),
-        fg="#555",
+        root, text=f"Auto-avanza en {restante['seg']} s",
+        font=("Segoe UI", 9), fg="#555",
     )
     lbl_timer.pack(pady=(0, 10))
 
@@ -520,12 +512,8 @@ def ventana_avanzar(timeout_seg: int = 20, titulo_caso: str = "") -> str:
         root.destroy()
 
     btn = tk.Button(
-        root,
-        text="Avanzar",
-        width=14,
-        height=2,
-        font=("Segoe UI", 10, "bold"),
-        command=on_avanzar,
+        root, text="Avanzar", width=14, height=2,
+        font=("Segoe UI", 10, "bold"), command=on_avanzar,
     )
     btn.pack(pady=10)
 
@@ -544,7 +532,8 @@ def ventana_avanzar(timeout_seg: int = 20, titulo_caso: str = "") -> str:
 
     root.protocol("WM_DELETE_WINDOW", on_cerrar)
     root.after(1000, tick)
-    root.after(timeout_seg * 1000 + 50, lambda: root.winfo_exists() and root.destroy())
+    root.after(timeout_seg * 1000 + 50,
+              lambda: root.winfo_exists() and root.destroy())
 
     try:
         btn.focus_set()
@@ -553,6 +542,104 @@ def ventana_avanzar(timeout_seg: int = 20, titulo_caso: str = "") -> str:
 
     root.mainloop()
     return motivo["valor"]
+
+
+def _ventana_avanzar_consola(timeout_seg: int, titulo_caso: str) -> str:
+    """
+    Fallback en consola cuando tkinter no está disponible.
+    Imprime el caso, una cuenta regresiva y permite avanzar con ENTER.
+    Funciona en Windows (msvcrt) y Linux/macOS (select).
+    """
+    print("\n" + "─" * 60)
+    print(f"  ⏸   Pausa — {titulo_caso[:80]}")
+    print(f"        Presiona ENTER para avanzar  (auto-avanza en {timeout_seg}s)")
+    print("─" * 60)
+
+    # ── Variante Windows: msvcrt ─────────────────────────────────────────
+    try:
+        import msvcrt  # solo existe en Windows
+        inicio = time.time()
+        ultimo_print = -1
+        while True:
+            restante = timeout_seg - int(time.time() - inicio)
+            if restante <= 0:
+                print("\r  ⏱   Tiempo agotado — avanzando…              ")
+                return "timeout"
+            if restante != ultimo_print:
+                sys.stdout.write(f"\r  ⏱   Auto-avanza en {restante:2d}s  (ENTER para continuar)  ")
+                sys.stdout.flush()
+                ultimo_print = restante
+            if msvcrt.kbhit():
+                ch = msvcrt.getch()
+                if ch in (b"\r", b"\n", b" "):
+                    print("\r  ▶   ENTER recibido — avanzando…              ")
+                    return "avanzar"
+                # Cualquier otra tecla la ignoramos
+            time.sleep(0.1)
+    except ImportError:
+        pass
+
+    # ── Variante Linux/Mac: select sobre stdin ───────────────────────────
+    try:
+        import select
+        inicio = time.time()
+        ultimo_print = -1
+        while True:
+            restante = timeout_seg - int(time.time() - inicio)
+            if restante <= 0:
+                print("\r  ⏱   Tiempo agotado — avanzando…              ")
+                return "timeout"
+            if restante != ultimo_print:
+                sys.stdout.write(f"\r  ⏱   Auto-avanza en {restante:2d}s  (ENTER para continuar)  ")
+                sys.stdout.flush()
+                ultimo_print = restante
+            ready, _, _ = select.select([sys.stdin], [], [], 0.1)
+            if ready:
+                sys.stdin.readline()
+                print("\r  ▶   ENTER recibido — avanzando…              ")
+                return "avanzar"
+    except Exception:
+        pass
+
+    # ── Último recurso: time.sleep puro ──────────────────────────────────
+    print(f"  (Sin detección de teclado disponible — espera {timeout_seg}s)")
+    time.sleep(timeout_seg)
+    return "timeout"
+
+
+# Flag para no avisar una y otra vez sobre la falta de tkinter
+_TKINTER_AVISADO = {"flag": False}
+
+
+def ventana_avanzar(timeout_seg: int = 20, titulo_caso: str = "") -> str:
+    """
+    Pausa con botón "Avanzar". Intenta usar Tkinter (ventana gráfica) y,
+    si no está disponible, cae a un fallback en consola con cuenta regresiva.
+
+    Retorna:
+        "avanzar"  → el usuario confirmó (clic o ENTER)
+        "timeout"  → expiró el tiempo
+        "cerrada"  → cerró la ventana con la X (solo Tkinter)
+    """
+    if timeout_seg <= 0:
+        timeout_seg = 20
+
+    try:
+        return _ventana_avanzar_tkinter(timeout_seg, titulo_caso)
+    except ImportError:
+        if not _TKINTER_AVISADO["flag"]:
+            print(
+                "\n  ⚠️   Tkinter no está disponible en esta instalación de Python.\n"
+                "        Usando ventana de consola como alternativa.\n"
+                "        (Para tener la ventana gráfica: reinstalar Python\n"
+                "         marcando la opción 'tcl/tk and IDLE')."
+            )
+            _TKINTER_AVISADO["flag"] = True
+        return _ventana_avanzar_consola(timeout_seg, titulo_caso)
+    except Exception as exc:
+        # Tkinter está pero falló por otra razón (display no disponible, etc.)
+        print(f"  ⚠️   Tkinter falló ({exc}). Usando fallback de consola.")
+        return _ventana_avanzar_consola(timeout_seg, titulo_caso)
 
 
 # ===========================================================================
