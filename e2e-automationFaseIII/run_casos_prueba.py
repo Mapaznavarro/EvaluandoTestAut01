@@ -694,14 +694,39 @@ def normalizar_tipo(valor) -> str:
     return s  # valor inválido — lo retorna tal cual para reportar el error
 
 
-def leer_datos_fila(ws, fila: int, columnas: dict[str, int]) -> list[str]:
+def leer_celda(ws, ws_valores, fila: int, col: int):
+    """
+    Lee el valor de una celda. Si la celda contiene una fórmula (=...),
+    devuelve el valor calculado leído desde ws_valores (workbook abierto
+    con data_only=True). Si la fórmula no tiene caché de valor (porque
+    el .xlsx fue creado por openpyxl o nunca se abrió en Excel), retorna
+    None y se imprime un warning.
+    """
+    valor = ws.cell(row=fila, column=col).value
+    # Si es una fórmula, leemos el valor calculado del workbook "valores"
+    if isinstance(valor, str) and valor.startswith("="):
+        if ws_valores is None:
+            print(f"  ⚠️   Celda {ws.cell(row=fila, column=col).coordinate} "
+                  f"contiene fórmula y no hay workbook de valores.")
+            return None
+        valor_calc = ws_valores.cell(row=fila, column=col).value
+        if valor_calc is None:
+            print(f"  ⚠️   Celda {ws.cell(row=fila, column=col).coordinate} "
+                  f"tiene fórmula pero Excel aún no la calculó. "
+                  f"Abre el Excel, guárdalo en Excel (no LibreOffice) y reintenta.")
+            return None
+        return valor_calc
+    return valor
+
+
+def leer_datos_fila(ws, fila: int, columnas: dict[str, int], ws_valores=None) -> list[str]:
     datos = []
     for n in range(1, 21):
         header = f"{COL_DATO_PREFIX}{n}"
         col = columnas.get(header)
         if col is None:
             continue
-        valor = ws.cell(row=fila, column=col).value
+        valor = leer_celda(ws, ws_valores, fila, col)
         if valor is None or str(valor).strip() == "":
             continue
         datos.append(str(valor).strip())
@@ -891,7 +916,7 @@ def procesar_caso(page: Page, ruta: list[str], datos: list[str],
     safe = re.sub(r"[^a-zA-Z0-9_.-]+", "_", ruta_str)[:MAX_FILENAME_LENGTH]
     screenshot(page, f"caso__{safe}")
 
-    # 6. ¿Hay notificación de error?
+    # 6. ¿Hay notificación de error inicial?
     notif = handle_notification_modal(page, ruta_str)
     if notif:
         try:
@@ -903,7 +928,6 @@ def procesar_caso(page: Page, ruta: list[str], datos: list[str],
     # 7. Dispatch al módulo según el tipo de pantalla
     handler = DISPATCH_POR_TIPO.get(tipo)
     if handler is None:
-        # Tipo inválido (normalizar_tipo lo dejó como string desconocido)
         try:
             cerrar_pantalla_layout(page)
         except Exception:
@@ -916,9 +940,12 @@ def procesar_caso(page: Page, ruta: list[str], datos: list[str],
         ok, resultado = handler(page, ruta, datos)
     except Exception as exc:
         ok, resultado = False, f"EXCEPCION en módulo {tipo}: {exc}"
-        screenshot(page, f"EXC_{tipo}_{safe}")
+        try:
+            screenshot(page, f"EXC_{tipo}_{safe}")
+        except Exception:
+            pass
 
-    # 8. Cerrar pantalla (independientemente del resultado del módulo)
+    # 8. Cerrar pantalla
     cerrar_pantalla_layout(page)
     return ok, resultado
 
@@ -946,8 +973,20 @@ def run() -> None:
         sys.exit(1)
 
     print(f"▶ Abriendo Excel: {config.EXCEL_CASOS.name}")
+    # Workbook normal — conserva fórmulas, sirve para escribir resultados
     wb = load_workbook(config.EXCEL_CASOS)
     ws = wb.active
+    # Workbook "valores" — data_only=True devuelve el resultado calculado de las fórmulas
+    # (siempre que Excel haya guardado el caché de valores en el archivo)
+    try:
+        wb_valores = load_workbook(config.EXCEL_CASOS, data_only=True)
+        ws_valores = wb_valores[ws.title]
+        print(f"  ✅  Modo dual: lectura con data_only=True (fórmulas → valores calculados)")
+    except Exception as exc:
+        print(f"  ⚠️   No se pudo abrir el Excel en modo data_only: {exc}")
+        wb_valores = None
+        ws_valores = None
+
     columnas = localizar_columnas(ws)
     col_camino = columnas[COL_CAMINO_HEADER]
     col_resultado = columnas[COL_RESULTADO_HEADER]
@@ -976,7 +1015,7 @@ def run() -> None:
             print()
 
             for fila in range(2, ws.max_row + 1):
-                camino = ws.cell(row=fila, column=col_camino).value
+                camino = leer_celda(ws, ws_valores, fila, col_camino)
                 if camino is None or str(camino).strip() == "":
                     print(f"[Fila {fila}] (vacía) — se omite")
                     continue
@@ -984,9 +1023,9 @@ def run() -> None:
                 ruta = parse_camino(str(camino))
                 ruta_str = " > ".join(ruta)
 
-                # Leer Tipo Pantalla (si existe la columna)
+                # Leer Tipo Pantalla (si existe la columna). Soporta fórmulas.
                 if col_tipo is not None:
-                    tipo_raw = ws.cell(row=fila, column=col_tipo).value
+                    tipo_raw = leer_celda(ws, ws_valores, fila, col_tipo)
                     tipo = normalizar_tipo(tipo_raw)
                 else:
                     tipo = TIPO_DEFAULT
@@ -995,7 +1034,7 @@ def run() -> None:
                 print(f"[Fila {fila}] [{tipo}] {ruta_str}")
                 print(f"{'─'*60}")
 
-                datos = leer_datos_fila(ws, fila, columnas)
+                datos = leer_datos_fila(ws, fila, columnas, ws_valores=ws_valores)
 
                 try:
                     ok, resultado = procesar_caso(page, ruta, datos, tipo=tipo)
@@ -1005,7 +1044,6 @@ def run() -> None:
                         screenshot(page, f"EXC_fila{fila}")
                     except Exception:
                         pass
-                    # Recuperación agresiva: cerrar todo lo que quede
                     try:
                         preparar_estado_limpio(page)
                     except Exception:
@@ -1025,7 +1063,7 @@ def run() -> None:
 
                 (exitosos if ok else fallidos).append(ruta_str)
 
-                # Ventana "Avanzar"
+                # Ventana "Avanzar" entre casos
                 if config.ACTIVA_VENTANA:
                     motivo = ventana_avanzar(
                         timeout_seg=config.VENTANA_TIMEOUT_SEG,
@@ -1052,6 +1090,8 @@ def run() -> None:
             except Exception as exc:
                 print(f"\n⚠️   No se pudo guardar el Excel al cerrar: {exc}")
             wb.close()
+            if wb_valores is not None:
+                wb_valores.close()
 
             context.close()
             browser.close()
