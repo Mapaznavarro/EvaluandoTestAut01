@@ -635,6 +635,7 @@ def ventana_avanzar(timeout_seg: int = 20, titulo_caso: str = "") -> str:
 
 COL_CAMINO_HEADER = "Camino a la Pantalla"
 COL_TIPO_HEADER = "Tipo Pantalla"
+COL_ACCION_HEADER = "Acción"
 COL_RESULTADO_HEADER = "Resultado"
 COL_DATO_PREFIX = "Dato"
 
@@ -644,6 +645,16 @@ TIPO_CRUD = "CRUD"
 TIPO_TRANSACCIONES = "Transacciones"
 TIPOS_VALIDOS = {TIPO_CONSULTA, TIPO_CRUD, TIPO_TRANSACCIONES}
 TIPO_DEFAULT = TIPO_CONSULTA  # Si la columna queda vacía → se asume Consulta
+
+# Acciones soportadas
+ACCION_CREATE = "Create"
+ACCION_READ = "Read"
+ACCION_UPDATE = "Update"
+ACCION_DELETE = "Delete"
+ACCIONES_VALIDAS = {ACCION_CREATE, ACCION_READ, ACCION_UPDATE, ACCION_DELETE}
+
+# Tipos que REQUIEREN acción (en Consulta es opcional/ignorado)
+TIPOS_REQUIEREN_ACCION = {TIPO_CRUD, TIPO_TRANSACCIONES}
 
 FILL_OK = PatternFill(start_color="C6EFCE", end_color="C6EFCE", fill_type="solid")
 FILL_ERROR = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")
@@ -666,10 +677,35 @@ def localizar_columnas(ws) -> dict[str, int]:
             f"El Excel no contiene la(s) columna(s): {faltan}. "
             f"Headers detectados: {list(cols.keys())}"
         )
-    # COL_TIPO_HEADER es opcional — si no está, se asume TIPO_DEFAULT para todas las filas
+    # COL_TIPO_HEADER y COL_ACCION_HEADER son opcionales
     if COL_TIPO_HEADER not in cols:
         print(f"  ⚠️   Columna '{COL_TIPO_HEADER}' no encontrada — se asumirá '{TIPO_DEFAULT}' para todos los casos.")
+    if COL_ACCION_HEADER not in cols:
+        print(f"  ⚠️   Columna '{COL_ACCION_HEADER}' no encontrada — los casos CRUD/Transacciones requerirán acción.")
     return cols
+
+
+def normalizar_accion(valor) -> Optional[str]:
+    """
+    Acepta variantes (mayúsculas, espacios, abreviaturas en español/inglés)
+    y retorna una de ACCIONES_VALIDAS, None si está vacía, o el string
+    original si es inválido (para que el dispatch lo marque como ERROR_CONFIG).
+    """
+    if valor is None:
+        return None
+    s = str(valor).strip()
+    if s == "":
+        return None
+    s_lower = s.lower()
+    if s_lower in ("create", "crear", "nuevo", "agregar", "add", "alta", "c", "n"):
+        return ACCION_CREATE
+    if s_lower in ("read", "leer", "consultar", "buscar", "ver", "query", "r", "q"):
+        return ACCION_READ
+    if s_lower in ("update", "actualizar", "modificar", "editar", "edit", "u", "m", "e"):
+        return ACCION_UPDATE
+    if s_lower in ("delete", "eliminar", "borrar", "baja", "del", "d", "b"):
+        return ACCION_DELETE
+    return s  # inválido — retorna tal cual
 
 
 def normalizar_tipo(valor) -> str:
@@ -907,19 +943,19 @@ def preparar_estado_limpio(page: Page) -> None:
 # ---------------------------------------------------------------------------
 
 
-def procesar_consulta(page: Page, ruta: list[str], datos: list[str]) -> tuple[bool, str]:
+def procesar_consulta(page: Page, ruta: list[str], datos: list[str],
+                      accion: Optional[str] = None) -> tuple[bool, str]:
     """
-    Pantalla de Consulta (solo lectura).
+    Pantalla de Consulta (solo lectura). La acción se ignora si viene definida.
 
     Pasos que se implementarán:
       1. Verificar que la pantalla cargó (ya lo hizo procesar_caso).
       2. Si hay datos en Dato1..Dato20 → aplicar filtros [Frame].Field.Valor.
       3. Disparar 'Consultar' / 'Buscar' si existe el botón.
       4. Capturar resultados y registrar en log.
-      5. Cerrar la pantalla (lo hace procesar_caso al volver).
-
-    Por ahora: solo confirma que la pantalla está visible.
     """
+    if accion:
+        print(f"  ℹ️   [CONSULTA] acción '{accion}' ignorada — Consulta es solo lectura.")
     print(f"  📖  [CONSULTA] pantalla cargada — {len(datos)} filtro(s) en Excel.")
     for d in datos:
         print(f"        filtro pendiente: {d}")
@@ -927,48 +963,62 @@ def procesar_consulta(page: Page, ruta: list[str], datos: list[str]) -> tuple[bo
     return True, "OK (Consulta)"
 
 
-def procesar_crud(page: Page, ruta: list[str], datos: list[str]) -> tuple[bool, str]:
+def procesar_crud(page: Page, ruta: list[str], datos: list[str],
+                  accion: Optional[str] = None) -> tuple[bool, str]:
     """
-    Pantalla de Mantenedor CRUD.
-
-    Pasos que se implementarán:
-      1. Clic en botón '+' (o 'Nuevo') para abrir el formulario.
-      2. Para cada Dato1..Dato20 → parsear [Frame].Field.Valor y llenar.
-      3. Clic en 'Grabar' / 'Guardar'.
-      4. Si aparece notificación de error → registrar mensaje y cancelar.
-      5. Si OK → registrar EXITO en el log.
-
-    Por ahora: solo lista los datos que recibiría.
+    Pantalla de Mantenedor CRUD. La acción determina el flujo:
+      - Create: clic en '+', llenar campos, grabar
+      - Read:   localizar registro existente con los datos como filtros
+      - Update: localizar, editar campos, grabar
+      - Delete: localizar, clic en eliminar/papelera, confirmar
     """
-    print(f"  🗂   [CRUD] pantalla cargada — {len(datos)} dato(s) a ingresar.")
-    print(f"        TODO: clic en '+', llenar campos y grabar.")
+    if accion is None:
+        return False, "ERROR_CONFIG: Acción requerida para CRUD (Create/Read/Update/Delete)"
+    if accion not in ACCIONES_VALIDAS:
+        return False, f"ERROR_CONFIG: Acción '{accion}' no válida para CRUD"
+
+    print(f"  🗂   [CRUD/{accion}] pantalla cargada — {len(datos)} dato(s).")
+    if accion == ACCION_CREATE:
+        print(f"        TODO: clic en '+', llenar campos y grabar.")
+    elif accion == ACCION_READ:
+        print(f"        TODO: localizar registro usando los datos como filtro.")
+    elif accion == ACCION_UPDATE:
+        print(f"        TODO: localizar registro, editar campos, grabar.")
+    elif accion == ACCION_DELETE:
+        print(f"        TODO: localizar registro, clic en eliminar, confirmar.")
     for d in datos:
         print(f"        dato pendiente: {d}")
-    # TODO: implementar el ciclo crear + llenar + grabar
-    return True, "OK (CRUD - stub)"
+    # TODO: implementar cada flujo
+    return True, f"OK (CRUD/{accion} - stub)"
 
 
-def procesar_transaccion(page: Page, ruta: list[str], datos: list[str]) -> tuple[bool, str]:
+def procesar_transaccion(page: Page, ruta: list[str], datos: list[str],
+                         accion: Optional[str] = None) -> tuple[bool, str]:
     """
-    Pantalla de Transacciones (operaciones).
-
-    Pasos que se implementarán:
-      1. Si la pantalla requiere clic inicial en '+' → hacerlo.
-      2. Para cada Dato1..Dato20 → parsear [Frame].Field.Valor.
-         El Frame opcional permite distinguir el mismo nombre de campo
-         en frames distintos de la misma pantalla.
-      3. Clic en 'Grabar' / 'Procesar' / 'Aceptar' según corresponda.
-      4. Si rechazan los datos → registrar mensaje + cancelar (cerrar pantalla).
-      5. Si OK → registrar EXITO.
-
-    Por ahora: solo lista los datos que recibiría.
+    Pantalla de Transacciones (operaciones). La acción determina el flujo:
+      - Create: clic '+', llenar frames, grabar/procesar
+      - Read:   localizar transacción existente
+      - Update: localizar y modificar
+      - Delete: localizar y anular/eliminar
     """
-    print(f"  💼  [TRANSACCION] pantalla cargada — {len(datos)} dato(s) a ingresar.")
-    print(f"        TODO: clic inicial '+', llenar frames, grabar y validar.")
+    if accion is None:
+        return False, "ERROR_CONFIG: Acción requerida para Transacciones (Create/Read/Update/Delete)"
+    if accion not in ACCIONES_VALIDAS:
+        return False, f"ERROR_CONFIG: Acción '{accion}' no válida para Transacciones"
+
+    print(f"  💼  [TRANSACCION/{accion}] pantalla cargada — {len(datos)} dato(s).")
+    if accion == ACCION_CREATE:
+        print(f"        TODO: clic '+', llenar frames, grabar/procesar.")
+    elif accion == ACCION_READ:
+        print(f"        TODO: localizar transacción existente.")
+    elif accion == ACCION_UPDATE:
+        print(f"        TODO: localizar transacción, modificar campos, grabar.")
+    elif accion == ACCION_DELETE:
+        print(f"        TODO: localizar transacción, anular/eliminar.")
     for d in datos:
         print(f"        dato pendiente: {d}")
-    # TODO: implementar el flujo de ingreso de transacción
-    return True, "OK (Transacción - stub)"
+    # TODO: implementar cada flujo
+    return True, f"OK (Transacción/{accion} - stub)"
 
 
 # Tabla de dispatch: tipo → función
@@ -980,7 +1030,8 @@ DISPATCH_POR_TIPO = {
 
 
 def procesar_caso(page: Page, ruta: list[str], datos: list[str],
-                  tipo: str = TIPO_DEFAULT) -> tuple[bool, str]:
+                  tipo: str = TIPO_DEFAULT,
+                  accion: Optional[str] = None) -> tuple[bool, str]:
     """
     Procesa un caso individual. Retorna (ok, texto_resultado).
 
@@ -1048,9 +1099,10 @@ def procesar_caso(page: Page, ruta: list[str], datos: list[str],
         return False, (f"ERROR_CONFIG: Tipo Pantalla '{tipo}' no válido. "
                        f"Usar: Consulta / CRUD / Transacciones")
 
-    print(f"  ▶  Dispatch → módulo '{tipo}'")
+    accion_log = f"/{accion}" if accion else ""
+    print(f"  ▶  Dispatch → módulo '{tipo}{accion_log}'")
     try:
-        ok, resultado = handler(page, ruta, datos)
+        ok, resultado = handler(page, ruta, datos, accion=accion)
     except Exception as exc:
         ok, resultado = False, f"EXCEPCION en módulo {tipo}: {exc}"
         try:
@@ -1103,7 +1155,8 @@ def run() -> None:
     columnas = localizar_columnas(ws)
     col_camino = columnas[COL_CAMINO_HEADER]
     col_resultado = columnas[COL_RESULTADO_HEADER]
-    col_tipo = columnas.get(COL_TIPO_HEADER)  # opcional
+    col_tipo = columnas.get(COL_TIPO_HEADER)      # opcional
+    col_accion = columnas.get(COL_ACCION_HEADER)  # opcional
     total_filas = ws.max_row - 1
     print(f"  ✅  Hoja: '{ws.title}' — {total_filas} caso(s) detectado(s).\n")
 
@@ -1142,15 +1195,23 @@ def run() -> None:
                 else:
                     tipo = TIPO_DEFAULT
 
+                # Leer Acción (opcional). Solo se valida para tipos que la requieren.
+                accion = None
+                if col_accion is not None:
+                    accion_raw = leer_celda(ws, ws_valores, fila, col_accion, wb=wb)
+                    accion = normalizar_accion(accion_raw)
+
+                etiqueta_accion = f"/{accion}" if accion else ""
                 print(f"\n{'─'*60}")
-                print(f"[Fila {fila}] [{tipo}] {ruta_str}")
+                print(f"[Fila {fila}] [{tipo}{etiqueta_accion}] {ruta_str}")
                 print(f"{'─'*60}")
 
                 datos = leer_datos_fila(ws, fila, columnas,
                                         ws_valores=ws_valores, wb=wb)
 
                 try:
-                    ok, resultado = procesar_caso(page, ruta, datos, tipo=tipo)
+                    ok, resultado = procesar_caso(page, ruta, datos,
+                                                  tipo=tipo, accion=accion)
                 except Exception as exc:
                     ok, resultado = False, f"EXCEPCION: {exc}"
                     try:
@@ -1172,6 +1233,83 @@ def run() -> None:
                         f"  ⚠️   No se pudo guardar el Excel "
                         f"(¿lo tienes abierto en Excel?). Continuando."
                     )
+
+                (exitosos if ok else fallidos).append(ruta_str)
+
+                if config.ACTIVA_VENTANA:
+                    motivo = ventana_avanzar(
+                        timeout_seg=config.VENTANA_TIMEOUT_SEG,
+                        titulo_caso=ruta_str,
+                    )
+                    print(f"  ▶   Continuando ({motivo}).")
+
+            print(f"\n{'='*60}")
+            print(f"  ✅  Casos exitosos : {len(exitosos)}")
+            print(f"  ❌  Casos fallidos : {len(fallidos)}")
+            print(f"{'='*60}")
+
+        except Exception as exc:
+            print(f"\n❌  Error fatal: {exc}", file=sys.stderr)
+            try:
+                screenshot(page, "FATAL_ERROR")
+            except Exception:
+                pass
+            raise
+        finally:
+            try:
+                wb.save(config.EXCEL_CASOS)
+                print(f"\n💾  Excel guardado: {config.EXCEL_CASOS}")
+            except Exception as exc:
+                print(f"\n⚠️   No se pudo guardar el Excel al cerrar: {exc}")
+            wb.close()
+            if wb_valores is not None:
+                wb_valores.close()
+
+            context.close()
+            browser.close()
+
+
+if __name__ == "__main__":
+    run()
+   tipo_raw = leer_celda(ws, ws_valores, fila, col_tipo, wb=wb)
+                    tipo = normalizar_tipo(tipo_raw)
+                else:
+                    tipo = TIPO_DEFAULT
+
+                accion = None
+                if col_accion is not None:
+                    accion_raw = leer_celda(ws, ws_valores, fila, col_accion, wb=wb)
+                    accion = normalizar_accion(accion_raw)
+
+                etiqueta_accion = f"/{accion}" if accion else ""
+                print(f"\n{'─'*60}")
+                print(f"[Fila {fila}] [{tipo}{etiqueta_accion}] {ruta_str}")
+                print(f"{'─'*60}")
+
+                datos = leer_datos_fila(ws, fila, columnas,
+                                        ws_valores=ws_valores, wb=wb)
+
+                try:
+                    ok, resultado = procesar_caso(page, ruta, datos,
+                                                  tipo=tipo, accion=accion)
+                except Exception as exc:
+                    ok, resultado = False, f"EXCEPCION: {exc}"
+                    try:
+                        screenshot(page, f"EXC_fila{fila}")
+                    except Exception:
+                        pass
+                    try:
+                        preparar_estado_limpio(page)
+                    except Exception:
+                        pass
+
+                print(f"  → {resultado}")
+                escribir_resultado(ws, fila, col_resultado, resultado, ok)
+
+                try:
+                    wb.save(config.EXCEL_CASOS)
+                except PermissionError:
+                    print(f"  ⚠️   No se pudo guardar el Excel (¿lo tienes abierto?).")
 
                 (exitosos if ok else fallidos).append(ruta_str)
 
