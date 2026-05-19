@@ -789,25 +789,45 @@ def parse_dato(s: str) -> tuple:
 def click_by_text(page: Page, text: str, alternativas: Optional[list] = None,
                   timeout: int = 3000) -> bool:
     """
-    Intenta hacer clic en un elemento clickeable cuyo texto contenga `text`.
+    Hace clic en un elemento clickeable cuyo texto contenga `text`.
     Si falla, prueba con `alternativas` (lista de strings).
-    Soporta button, a, div[role=button], input[type=button] y elementos con texto.
+
+    Soporta:
+      - <button>, <a>, <input type='button|submit'>
+      - Framework Thunder (Angular): <div class="option"> con <span class="label">
+      - Componentes Angular Material (app-ui-button, app-button)
+      - Elementos con role='button'
     """
     candidatos = [text] + (alternativas or [])
+    # Variantes del texto (con y sin "+", para "+ Añadir" vs "Añadir")
+    todos = []
     for t in candidatos:
-        # Escapar comillas simples en el texto (raro pero posible)
+        todos.append(t)
+        # Si empieza con "+ ", agregar también la versión sin el "+"
+        if t.startswith("+ "):
+            todos.append(t[2:].strip())
+
+    for t in todos:
         t_escaped = t.replace("'", "\\'")
         selectores = [
+            # === Framework Thunder (Angular custom) ===
+            # Botón div.option con span.label conteniendo el texto exacto
+            f"div.option:has(span.label:text-is('{t_escaped}'))",
+            f"div.option:has(span.label:has-text('{t_escaped}'))",
+            f"div.option:has-text('{t_escaped}')",
+            # === Botones HTML estándar ===
             f"button:has-text('{t_escaped}')",
             f"a:has-text('{t_escaped}')",
-            f"div[role='button']:has-text('{t_escaped}')",
-            f"[role='button']:has-text('{t_escaped}')",
             f"input[type='button'][value='{t_escaped}']",
             f"input[type='submit'][value='{t_escaped}']",
-            # Componentes Angular con texto interno
+            # === Roles ARIA ===
+            f"[role='button']:has-text('{t_escaped}')",
+            # === Componentes Angular Material / custom ===
             f"app-ui-button:has-text('{t_escaped}')",
             f"app-button:has-text('{t_escaped}')",
-            # Genérico — cualquier elemento clickeable con ese texto exacto
+            # === Spans/divs con label exacto (último recurso) ===
+            f"span.label:text-is('{t_escaped}')",
+            # === Texto exacto en cualquier elemento ===
             f":text-is('{t_escaped}')",
         ]
         for sel in selectores:
@@ -828,41 +848,50 @@ def fill_field_by_label(page: Page, label_text: str, valor: str,
     Encuentra un input/select/textarea asociado a un label/placeholder/formcontrol
     cuyo nombre coincida con `label_text` y lo llena con `valor`.
 
-    Prueba muchas estrategias (Angular Forms, Material, app-ui-*, label adyacente).
+    Prueba muchas estrategias en orden de prioridad. La primera familia es
+    para Thunder framework (Angular custom usado por la app).
     Devuelve True si pudo llenar el campo.
     """
     label_escaped = label_text.replace("'", "\\'")
     selectores = [
-        # Reactive Forms (Angular)
+        # === FRAMEWORK THUNDER (Angular custom — prioridad alta) ===
+        # Estructura: app-form-text > div.label > label "X"  +  div.input-group > input
+        f"app-form-text:has(label:has-text('{label_escaped}')) input",
+        f"app-form-text:has(label:has-text('{label_escaped}')) textarea",
+        f"app-form-text:has(label:has-text('{label_escaped}')) select",
+        f"app-form-field:has(label:has-text('{label_escaped}')) input",
+        f"app-form-field:has(label:has-text('{label_escaped}')) textarea",
+        f"app-form-field:has(label:has-text('{label_escaped}')) select",
+        # === Reactive Forms (Angular estándar) ===
         f"input[formcontrolname='{label_escaped}']",
         f"textarea[formcontrolname='{label_escaped}']",
         f"select[formcontrolname='{label_escaped}']",
-        # Atributos name/id
+        # === Atributos name/id ===
         f"input[name='{label_escaped}']",
         f"input[id='{label_escaped}']",
         f"textarea[name='{label_escaped}']",
-        # Angular Material — mat-form-field
+        # === Angular Material — mat-form-field ===
         f"mat-form-field:has(mat-label:has-text('{label_escaped}')) input",
         f"mat-form-field:has(mat-label:has-text('{label_escaped}')) textarea",
         f"mat-form-field:has(label:has-text('{label_escaped}')) input",
-        # Componentes Angular custom
+        # === Componentes Angular UI genéricos ===
         f"app-ui-input:has-text('{label_escaped}') input",
         f"app-ui-textbox:has-text('{label_escaped}') input",
         f"app-ui-textarea:has-text('{label_escaped}') textarea",
         f"app-ui-select:has-text('{label_escaped}') select",
         f"app-ui-select:has-text('{label_escaped}') input",
-        # Label adyacente
+        # === Label adyacente ===
         f"label:has-text('{label_escaped}') + input",
         f"label:has-text('{label_escaped}') + textarea",
         f"label:has-text('{label_escaped}') + select",
         f"label:has-text('{label_escaped}') ~ input",
-        # Contenedor con label hijo
+        # === Contenedor con label hijo ===
         f"div:has(> label:has-text('{label_escaped}')) input",
         f"div:has(> label:has-text('{label_escaped}')) textarea",
-        # Placeholder
+        # === Placeholder ===
         f"input[placeholder*='{label_escaped}' i]",
         f"textarea[placeholder*='{label_escaped}' i]",
-        # aria-label
+        # === aria-label ===
         f"input[aria-label*='{label_escaped}' i]",
         f"textarea[aria-label*='{label_escaped}' i]",
     ]
@@ -886,9 +915,14 @@ def fill_field_by_label(page: Page, label_text: str, valor: str,
                 except Exception:
                     pass
                 loc.fill(valor)
-                # Disparar evento blur para que Angular procese el valor
+                # Disparar input + change + blur para que Angular y Thunder
+                # ejecuten sus validadores y reactiven el form como "dirty"
                 try:
-                    loc.evaluate("el => el.dispatchEvent(new Event('blur'))")
+                    loc.evaluate("""el => {
+                        el.dispatchEvent(new Event('input', {bubbles: true}));
+                        el.dispatchEvent(new Event('change', {bubbles: true}));
+                        el.dispatchEvent(new Event('blur', {bubbles: true}));
+                    }""")
                 except Exception:
                     pass
             print(f"        fill OK: '{label_text}' = '{valor}' usando {sel}")
@@ -960,13 +994,37 @@ def procesar_crud_create(page: Page, ruta: list, datos: list) -> tuple:
     screenshot(page, f"form_lleno__{safe}")
     dump_dom(page, f"form_lleno__{safe}")
 
-    # 3. Clic en "Crear"
-    print("  💾  Clic en 'Crear'…")
-    if not click_by_text(page, "Crear",
-                         alternativas=["Grabar", "Guardar", "Aceptar", "Confirmar"]):
-        screenshot(page, f"ERR_no_crear__{safe}")
-        dump_dom(page, f"ERR_no_crear__{safe}")
-        return False, "FALLO: no se encontró el botón 'Crear'"
+    # 3. Clic en el botón de guardar del formulario.
+    #    En Thunder este botón es <button type='submit' name='btnSubmit'>,
+    #    DISTINTO al <div class="option"> "+ Añadir" de la lista. Usamos
+    #    selectores específicos para no confundirlos.
+    print("  💾  Clic en botón guardar del formulario…")
+    form_submit_selectors = [
+        "app-form-button button[type='submit']",
+        "button[name='btnSubmit']",
+        "button[type='submit']:has(div.label:has-text('Añadir'))",
+        "button[type='submit']:has(div.label:has-text('Crear'))",
+        "button[type='submit']:has(div.label:has-text('Guardar'))",
+        "button[type='submit']:has-text('Añadir')",
+        "button[type='submit']:has-text('Crear')",
+        "button[type='submit']",
+        "app-form-button button",
+    ]
+    submit_ok = False
+    for sel in form_submit_selectors:
+        try:
+            loc = page.locator(sel).first
+            loc.wait_for(state="visible", timeout=2000)
+            loc.click()
+            print(f"        clic OK: guardar usando {sel}")
+            submit_ok = True
+            break
+        except Exception:
+            continue
+    if not submit_ok:
+        screenshot(page, f"ERR_no_submit__{safe}")
+        dump_dom(page, f"ERR_no_submit__{safe}")
+        return False, "FALLO: no se encontró el botón de guardar del formulario"
     page.wait_for_timeout(600)
 
     # 4. Modal de confirmación → "Aceptar"
@@ -1230,6 +1288,8 @@ def run() -> None:
                 try:
                     ok, resultado = procesar_caso(page, ruta, datos,
                                                   tipo=tipo, accion=accion)
+                except Exception as exc:
+                    ok, resultado = False, f"EXCEPCION: {exc}"
                 except Exception as exc:
                     ok, resultado = False, f"EXCEPCION: {exc}"
                     try:
