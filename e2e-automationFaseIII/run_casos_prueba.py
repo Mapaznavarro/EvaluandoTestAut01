@@ -319,12 +319,20 @@ def navegar_ruta_completa(page: Page, ruta: list) -> bool:
 
 
 def is_notification_modal_visible(page: Page):
+    """
+    Detecta la ventana modal de notificación.
+    Busca un div.title cuyo texto sea ' Notificaciones ' o 'Notificación'
+    (singular o plural, con o sin espacios).
+    """
     try:
         index = page.evaluate("""
             () => {
                 const divs = document.querySelectorAll('div.title');
                 for (let i = 0; i < divs.length; i++) {
-                    if (divs[i].innerText === ' Notificaciones ') return i;
+                    const txt = divs[i].innerText.trim();
+                    if (txt === 'Notificaciones' || txt === 'Notificación') {
+                        return i;
+                    }
                 }
                 return -1;
             }
@@ -744,6 +752,153 @@ def escribir_resultado(ws, fila: int, col_resultado: int, texto: str, ok: bool) 
 
 
 # ===========================================================================
+# HELPERS DE LLENADO DE FORMULARIOS
+# ===========================================================================
+
+
+def parse_dato(s: str) -> tuple:
+    """
+    Parsea un dato del Excel. Soporta dos formatos:
+      [Frame].Field.Valor   → con frame entre corchetes (frame opcional)
+      Field.Valor           → sin frame, primer punto separa Field y Valor
+
+    Ejemplos:
+      'Código.X'                       → (None, 'Código', 'X')
+      'Idioma.es-CL'                   → (None, 'Idioma', 'es-CL')
+      'Descripción.CREA QA AUT May 26' → (None, 'Descripción', 'CREA QA AUT May 26')
+      '[Datos].RUT.11.111.111-1'       → ('Datos', 'RUT', '11.111.111-1')
+
+    Retorna (frame, field, valor). Si está malformado retorna (None, None, s).
+    """
+    if not s:
+        return (None, None, "")
+    s = s.strip()
+    # Caso con frame entre corchetes
+    if s.startswith("["):
+        m = re.match(r"^\[([^\]]+)\]\.([^.]+)\.(.+)$", s)
+        if m:
+            return (m.group(1), m.group(2), m.group(3))
+        return (None, None, s)
+    # Caso sin frame: split en el PRIMER punto
+    idx = s.find(".")
+    if idx == -1:
+        return (None, s, "")
+    return (None, s[:idx], s[idx + 1:])
+
+
+def click_by_text(page: Page, text: str, alternativas: Optional[list] = None,
+                  timeout: int = 3000) -> bool:
+    """
+    Intenta hacer clic en un elemento clickeable cuyo texto contenga `text`.
+    Si falla, prueba con `alternativas` (lista de strings).
+    Soporta button, a, div[role=button], input[type=button] y elementos con texto.
+    """
+    candidatos = [text] + (alternativas or [])
+    for t in candidatos:
+        # Escapar comillas simples en el texto (raro pero posible)
+        t_escaped = t.replace("'", "\\'")
+        selectores = [
+            f"button:has-text('{t_escaped}')",
+            f"a:has-text('{t_escaped}')",
+            f"div[role='button']:has-text('{t_escaped}')",
+            f"[role='button']:has-text('{t_escaped}')",
+            f"input[type='button'][value='{t_escaped}']",
+            f"input[type='submit'][value='{t_escaped}']",
+            # Componentes Angular con texto interno
+            f"app-ui-button:has-text('{t_escaped}')",
+            f"app-button:has-text('{t_escaped}')",
+            # Genérico — cualquier elemento clickeable con ese texto exacto
+            f":text-is('{t_escaped}')",
+        ]
+        for sel in selectores:
+            try:
+                loc = page.locator(sel).first
+                loc.wait_for(state="visible", timeout=timeout)
+                loc.click()
+                print(f"        clic OK: '{t}' usando {sel}")
+                return True
+            except Exception:
+                continue
+    return False
+
+
+def fill_field_by_label(page: Page, label_text: str, valor: str,
+                        timeout: int = 2000) -> bool:
+    """
+    Encuentra un input/select/textarea asociado a un label/placeholder/formcontrol
+    cuyo nombre coincida con `label_text` y lo llena con `valor`.
+
+    Prueba muchas estrategias (Angular Forms, Material, app-ui-*, label adyacente).
+    Devuelve True si pudo llenar el campo.
+    """
+    label_escaped = label_text.replace("'", "\\'")
+    selectores = [
+        # Reactive Forms (Angular)
+        f"input[formcontrolname='{label_escaped}']",
+        f"textarea[formcontrolname='{label_escaped}']",
+        f"select[formcontrolname='{label_escaped}']",
+        # Atributos name/id
+        f"input[name='{label_escaped}']",
+        f"input[id='{label_escaped}']",
+        f"textarea[name='{label_escaped}']",
+        # Angular Material — mat-form-field
+        f"mat-form-field:has(mat-label:has-text('{label_escaped}')) input",
+        f"mat-form-field:has(mat-label:has-text('{label_escaped}')) textarea",
+        f"mat-form-field:has(label:has-text('{label_escaped}')) input",
+        # Componentes Angular custom
+        f"app-ui-input:has-text('{label_escaped}') input",
+        f"app-ui-textbox:has-text('{label_escaped}') input",
+        f"app-ui-textarea:has-text('{label_escaped}') textarea",
+        f"app-ui-select:has-text('{label_escaped}') select",
+        f"app-ui-select:has-text('{label_escaped}') input",
+        # Label adyacente
+        f"label:has-text('{label_escaped}') + input",
+        f"label:has-text('{label_escaped}') + textarea",
+        f"label:has-text('{label_escaped}') + select",
+        f"label:has-text('{label_escaped}') ~ input",
+        # Contenedor con label hijo
+        f"div:has(> label:has-text('{label_escaped}')) input",
+        f"div:has(> label:has-text('{label_escaped}')) textarea",
+        # Placeholder
+        f"input[placeholder*='{label_escaped}' i]",
+        f"textarea[placeholder*='{label_escaped}' i]",
+        # aria-label
+        f"input[aria-label*='{label_escaped}' i]",
+        f"textarea[aria-label*='{label_escaped}' i]",
+    ]
+
+    for sel in selectores:
+        try:
+            loc = page.locator(sel).first
+            loc.wait_for(state="visible", timeout=timeout)
+            # Detectar si es select nativo o input
+            tag = loc.evaluate("el => el.tagName.toLowerCase()")
+            if tag == "select":
+                # Para <select>, seleccionar por label u option value
+                try:
+                    loc.select_option(label=valor)
+                except Exception:
+                    loc.select_option(value=valor)
+            else:
+                # Limpiar y rellenar
+                try:
+                    loc.fill("")
+                except Exception:
+                    pass
+                loc.fill(valor)
+                # Disparar evento blur para que Angular procese el valor
+                try:
+                    loc.evaluate("el => el.dispatchEvent(new Event('blur'))")
+                except Exception:
+                    pass
+            print(f"        fill OK: '{label_text}' = '{valor}' usando {sel}")
+            return True
+        except Exception:
+            continue
+    return False
+
+
+# ===========================================================================
 # MÓDULOS POR TIPO DE PANTALLA
 # ===========================================================================
 
@@ -759,18 +914,93 @@ def procesar_consulta(page: Page, ruta: list, datos: list,
     return True, "OK (Consulta)"
 
 
+def procesar_crud_create(page: Page, ruta: list, datos: list) -> tuple:
+    """
+    CRUD/Create — flujo:
+      1. Clic en botón '+ Añadir' (o variantes).
+      2. Para cada dato → parsear y llenar el campo.
+      3. Clic en 'Crear' (o variantes).
+      4. Modal de confirmación → clic en 'Aceptar'.
+      5. Verificar si aparece notificación de error:
+            - Sí → ERROR
+            - No → asumir éxito (el toast de éxito se desvanece solo)
+    """
+    ruta_str = " > ".join(ruta)
+    safe = re.sub(r"[^a-zA-Z0-9_.-]+", "_", ruta_str)[:MAX_FILENAME_LENGTH]
+
+    # 1. Clic en "+ Añadir"
+    print("  🆕  Clic en '+ Añadir'…")
+    if not click_by_text(page, "+ Añadir",
+                         alternativas=["Añadir", "Nuevo", "Agregar", "+"]):
+        screenshot(page, f"ERR_no_anadir__{safe}")
+        dump_dom(page, f"ERR_no_anadir__{safe}")
+        return False, "FALLO: no se encontró el botón '+ Añadir'"
+    page.wait_for_timeout(800)
+    screenshot(page, f"form_abierto__{safe}")
+    dump_dom(page, f"form_abierto__{safe}")
+
+    # 2. Llenar los campos
+    no_llenados = []
+    for dato in datos:
+        frame, field, valor = parse_dato(dato)
+        if field is None:
+            print(f"  ⚠️   Dato malformado: {dato!r}")
+            no_llenados.append(dato)
+            continue
+        marca_frame = f"[{frame}] " if frame else ""
+        print(f"  ✏️   Llenando {marca_frame}'{field}' = '{valor}'")
+        if not fill_field_by_label(page, field, valor):
+            print(f"  ❌  No se pudo llenar el campo '{field}'")
+            screenshot(page, f"ERR_campo__{field}__{safe}")
+            no_llenados.append(dato)
+    if no_llenados:
+        dump_dom(page, f"form_no_llenado__{safe}")
+        return False, f"FALLO: no se llenaron campos: {no_llenados}"
+
+    screenshot(page, f"form_lleno__{safe}")
+    dump_dom(page, f"form_lleno__{safe}")
+
+    # 3. Clic en "Crear"
+    print("  💾  Clic en 'Crear'…")
+    if not click_by_text(page, "Crear",
+                         alternativas=["Grabar", "Guardar", "Aceptar", "Confirmar"]):
+        screenshot(page, f"ERR_no_crear__{safe}")
+        dump_dom(page, f"ERR_no_crear__{safe}")
+        return False, "FALLO: no se encontró el botón 'Crear'"
+    page.wait_for_timeout(600)
+
+    # 4. Modal de confirmación → "Aceptar"
+    print("  ✅  Clic en 'Aceptar' (modal de confirmación)…")
+    if not click_by_text(page, "Aceptar",
+                         alternativas=["OK", "Sí", "Si", "Confirmar"]):
+        # Algunas pantallas no muestran modal de confirmación
+        print("  ℹ️   No apareció modal de confirmación — se continúa.")
+
+    # 5. Esperar a que aparezca (o no) la notificación de error
+    page.wait_for_timeout(1500)
+    notif = handle_notification_modal(page, ruta_str)
+    if notif:
+        return False, f"ERROR: {notif}"
+
+    print("  🎉  Sin notificación de error — operación asumida como exitosa.")
+    return True, "OK (CRUD/Create)"
+
+
 def procesar_crud(page: Page, ruta: list, datos: list,
                   accion: Optional[str] = None) -> tuple:
-    """Pantalla de Mantenedor CRUD. Requiere acción."""
+    """Pantalla de Mantenedor CRUD. Despacha según la acción."""
     if accion is None:
         return False, "ERROR_CONFIG: Acción requerida para CRUD (Create/Read/Update/Delete)"
     if accion not in ACCIONES_VALIDAS:
         return False, f"ERROR_CONFIG: Acción '{accion}' no válida para CRUD"
 
     print(f"  🗂   [CRUD/{accion}] pantalla cargada — {len(datos)} dato(s).")
+
     if accion == ACCION_CREATE:
-        print(f"        TODO: clic en '+', llenar campos y grabar.")
-    elif accion == ACCION_READ:
+        return procesar_crud_create(page, ruta, datos)
+
+    # Las otras acciones siguen como stub por ahora
+    if accion == ACCION_READ:
         print(f"        TODO: localizar registro usando los datos como filtro.")
     elif accion == ACCION_UPDATE:
         print(f"        TODO: localizar registro, editar campos, grabar.")
@@ -874,6 +1104,7 @@ def procesar_caso(page: Page, ruta: list, datos: list,
 
     safe = re.sub(r"[^a-zA-Z0-9_.-]+", "_", ruta_str)[:MAX_FILENAME_LENGTH]
     screenshot(page, f"caso__{safe}")
+    dump_dom(page, f"pantalla_inicial__{safe}")
 
     notif = handle_notification_modal(page, ruta_str)
     if notif:
