@@ -1044,6 +1044,380 @@ def procesar_crud_create(page: Page, ruta: list, datos: list) -> tuple:
     return True, "OK (CRUD/Create)"
 
 
+def _fill_ag_floating_filter_by_col_id(page: Page, col_id: str, valor: str,
+                                        timeout: int = 4000) -> bool:
+    """
+    Llena el filtro flotante de AG-Grid para la columna cuyo col-id coincida.
+
+    La estructura del DOM es:
+      .ag-header-row-column-filter
+        .ag-floating-filter[aria-colindex=N]   ← columna col-id=<col_id>
+          .ag-floating-filter-full-body
+            app-default-text-floating-filter (o number)
+              input.fr-inp
+
+    Para encontrar el input correcto usamos evaluate() para hacer la búsqueda
+    en JS (más robusta con AG-Grid virtual-DOM).
+    """
+    try:
+        input_loc = page.evaluate_handle(
+            """(colId) => {
+                // Buscar el th del header con ese col-id
+                const header = document.querySelector(
+                    `.ag-header-cell[col-id="${colId}"]`
+                );
+                if (!header) return null;
+
+                // La columna de filtros flotantes tiene el mismo aria-colindex
+                const colIdx = header.getAttribute('aria-colindex');
+                if (!colIdx) return null;
+
+                // Encontrar la celda de filtro con ese aria-colindex en la fila de filtros
+                const filterCell = document.querySelector(
+                    `.ag-header-row-column-filter .ag-floating-filter[aria-colindex="${colIdx}"]`
+                );
+                if (!filterCell) return null;
+
+                return filterCell.querySelector('input');
+            }""",
+            col_id
+        )
+        if not input_loc:
+            return False
+
+        inp = page.locator("css=*").filter(has=input_loc)
+        # Más simple: usar evaluate para obtener el índice y luego nth
+        idx = page.evaluate(
+            """(colId) => {
+                const header = document.querySelector(`.ag-header-cell[col-id="${colId}"]`);
+                if (!header) return -1;
+                const colIdx = header.getAttribute('aria-colindex');
+                if (!colIdx) return -1;
+                const filterCell = document.querySelector(
+                    `.ag-header-row-column-filter .ag-floating-filter[aria-colindex="${colIdx}"]`
+                );
+                if (!filterCell) return -1;
+                const inp = filterCell.querySelector('input');
+                if (!inp) return -1;
+                // Obtener índice entre todos los inputs del documento
+                const allInputs = Array.from(document.querySelectorAll('input'));
+                return allInputs.indexOf(inp);
+            }""",
+            col_id
+        )
+        if idx < 0:
+            return False
+
+        loc = page.locator("input").nth(idx)
+        loc.wait_for(state="visible", timeout=timeout)
+        loc.click()
+        loc.fill("")
+        loc.fill(valor)
+        loc.press("Enter")
+        print(f"        filter OK: col_id='{col_id}' valor='{valor}'")
+        return True
+    except Exception as exc:
+        print(f"        filter ERR: col_id='{col_id}' — {exc}")
+        return False
+
+
+def _fill_ag_floating_filter_by_header_text(page: Page, header_text: str,
+                                             valor: str, timeout: int = 4000) -> bool:
+    """
+    Llena el filtro flotante de AG-Grid buscando la columna por su texto de cabecera.
+    Estrategia: encuentra el índice de columna (aria-colindex) del header cuyo
+    texto contenga header_text, luego busca el input en la fila de filtros flotantes.
+    """
+    try:
+        idx = page.evaluate(
+            """(headerText) => {
+                // Buscar entre los ag-header-cell-text el que contenga el texto
+                const headers = Array.from(
+                    document.querySelectorAll('.ag-header-row-column .ag-header-cell')
+                );
+                let targetColIdx = null;
+                for (const h of headers) {
+                    const txt = h.querySelector('.ag-header-cell-text');
+                    if (txt && txt.innerText.trim() === headerText) {
+                        targetColIdx = h.getAttribute('aria-colindex');
+                        break;
+                    }
+                }
+                if (!targetColIdx) {
+                    // Intento con contains
+                    for (const h of headers) {
+                        const txt = h.querySelector('.ag-header-cell-text');
+                        if (txt && txt.innerText.trim().toLowerCase()
+                                .includes(headerText.toLowerCase())) {
+                            targetColIdx = h.getAttribute('aria-colindex');
+                            break;
+                        }
+                    }
+                }
+                if (!targetColIdx) return -1;
+
+                const filterCell = document.querySelector(
+                    `.ag-header-row-column-filter .ag-floating-filter[aria-colindex="${targetColIdx}"]`
+                );
+                if (!filterCell) return -1;
+                const inp = filterCell.querySelector('input');
+                if (!inp) return -1;
+                const allInputs = Array.from(document.querySelectorAll('input'));
+                return allInputs.indexOf(inp);
+            }""",
+            header_text
+        )
+        if idx < 0:
+            return False
+
+        loc = page.locator("input").nth(idx)
+        loc.wait_for(state="visible", timeout=timeout)
+        loc.click()
+        loc.fill("")
+        loc.fill(valor)
+        loc.press("Enter")
+        print(f"        filter OK: header='{header_text}' valor='{valor}'")
+        return True
+    except Exception as exc:
+        print(f"        filter ERR: header='{header_text}' — {exc}")
+        return False
+
+
+def _ag_grid_get_row_count(page: Page) -> int:
+    """
+    Devuelve el número de filas visibles en la grilla AG-Grid activa.
+    Usa la paginación si está disponible; si no, cuenta los ag-row del DOM.
+    """
+    try:
+        # Intentar leer de la paginación: "Mostrando de X a Y de TOTAL"
+        total_text = page.evaluate("""
+            () => {
+                // Buscar el label de total en la paginación
+                const labels = Array.from(
+                    document.querySelectorAll('app-pagination .row-viewer .label')
+                );
+                // El total es el último número en la secuencia
+                const texts = labels.map(l => l.innerText.trim()).filter(t => /^\\d+$/.test(t));
+                return texts.length > 0 ? parseInt(texts[texts.length - 1]) : -1;
+            }
+        """)
+        if total_text is not None and total_text >= 0:
+            return total_text
+    except Exception:
+        pass
+
+    # Fallback: contar ag-row visibles
+    try:
+        count = page.evaluate("""
+            () => document.querySelectorAll(
+                '.ag-center-cols-container .ag-row:not(.ag-hidden)'
+            ).length
+        """)
+        return count or 0
+    except Exception:
+        return 0
+
+
+def _ag_grid_get_visible_col_ids(page: Page) -> list:
+    """Devuelve la lista de col-id de columnas visibles en la grilla."""
+    try:
+        return page.evaluate("""
+            () => Array.from(
+                document.querySelectorAll(
+                    '.ag-header-row-column .ag-header-cell[col-id]'
+                )
+            ).map(h => h.getAttribute('col-id')).filter(Boolean)
+        """)
+    except Exception:
+        return []
+
+
+def _ag_grid_read_rows(page: Page, max_rows: int = 100) -> list:
+    """
+    Lee los datos de las filas visibles de la grilla AG-Grid activa usando
+    la API interna de AG-Grid (window.agGridApi si está expuesta) o
+    leyendo el texto de las celdas del DOM virtualizado.
+
+    Retorna lista de dicts {col_id: valor} para cada fila.
+    """
+    try:
+        rows = page.evaluate("""
+            () => {
+                // Intentar acceder a la API de AG-Grid
+                // AG-Grid expone el api en el elemento ag-grid-angular
+                const gridEl = document.querySelector('ag-grid-angular');
+                if (!gridEl) return null;
+
+                // En AG-Grid v29+, la API está en gridEl.__agGridAPIRef
+                // En versiones anteriores puede estar en gridEl._agGrid
+                let api = null;
+                if (gridEl.__agGridAPIRef && gridEl.__agGridAPIRef.current) {
+                    api = gridEl.__agGridAPIRef.current;
+                } else if (gridEl._agGrid) {
+                    api = gridEl._agGrid.api;
+                }
+
+                if (!api) {
+                    // Fallback: buscar en el contexto global
+                    // Algunos setups exponen agGrid como variable global
+                    return null;
+                }
+
+                const rows = [];
+                api.forEachNodeAfterFilterAndSort(node => {
+                    if (node.data) rows.push(node.data);
+                });
+                return rows.length > 0 ? rows : null;
+            }
+        """)
+        if rows:
+            return rows
+    except Exception:
+        pass
+
+    # Fallback: leer los innerText de las celdas del DOM
+    try:
+        rows = page.evaluate("""
+            (maxRows) => {
+                const container = document.querySelector('.ag-center-cols-container');
+                if (!container) return [];
+
+                const result = [];
+                const rowEls = Array.from(
+                    container.querySelectorAll('[role="row"]')
+                ).slice(0, maxRows);
+
+                for (const rowEl of rowEls) {
+                    const rowData = {};
+                    const cells = rowEl.querySelectorAll('[role="gridcell"][col-id]');
+                    for (const cell of cells) {
+                        const colId = cell.getAttribute('col-id');
+                        rowData[colId] = cell.innerText.trim();
+                    }
+                    if (Object.keys(rowData).length > 0) {
+                        result.push(rowData);
+                    }
+                }
+                return result;
+            }
+        """, max_rows)
+        return rows or []
+    except Exception:
+        return []
+
+
+def procesar_crud_read(page: Page, ruta: list, datos: list) -> tuple:
+    """
+    CRUD/Read — flujo para pantallas con grilla AG-Grid (framework Thunder/Angular):
+
+    La pantalla es una tabla AG-Grid con filtros flotantes por columna.
+    El usuario filtra escribiendo en la celda de filtro de la columna y pulsando Enter.
+
+    Flujo:
+      1. Para cada dato del Excel → parsear campo y valor.
+      2. Identificar el filtro flotante de la columna (por col-id o texto de cabecera).
+      3. Llenar el filtro con el valor y presionar Enter.
+      4. Esperar a que la grilla se actualice.
+      5. Contar filas resultantes:
+           - 0 filas → NO ENCONTRADO
+           - ≥1 fila  → ENCONTRADO (informar cuántas filas y primer valor)
+      6. Retornar resultado y escribir en Excel.
+
+    Formato de datos en Excel:
+      - Sin frame: "Código.X"   → filtra columna "Código" con valor "X"
+      - Con frame:  "[Grid].Código.X" → ídem (frame se ignora para Read)
+    """
+    ruta_str = " > ".join(ruta)
+    safe = re.sub(r"[^a-zA-Z0-9_.-]+", "_", ruta_str)[:MAX_FILENAME_LENGTH]
+
+    if not datos:
+        return False, "ERROR_CONFIG: CRUD/Read requiere al menos un dato (campo de búsqueda)"
+
+    # Esperar a que la grilla esté lista
+    try:
+        page.locator(".ag-root-wrapper").first.wait_for(state="visible", timeout=5000)
+        page.wait_for_timeout(500)
+    except PlaywrightTimeoutError:
+        return False, "FALLO: No se encontró la grilla AG-Grid en la pantalla"
+
+    # Leer columnas disponibles para logging
+    col_ids = _ag_grid_get_visible_col_ids(page)
+    print(f"  📊  Columnas grilla: {col_ids}")
+
+    screenshot(page, f"crud_read_inicio__{safe}")
+
+    filtros_aplicados = []
+    filtros_fallidos = []
+
+    for dato in datos:
+        _frame, field, valor = parse_dato(dato)
+        if field is None:
+            print(f"  ⚠️   Dato malformado: {dato!r}")
+            filtros_fallidos.append(dato)
+            continue
+
+        print(f"  🔍  Aplicando filtro: '{field}' = '{valor}'")
+
+        # Estrategia 1: buscar por col-id exacto (ej: "codigo", "descripcion")
+        col_id_candidato = field.lower().replace(" ", "_")
+        ok = False
+
+        # Primero intentar por col-id exacto
+        if col_id_candidato in (c.lower() for c in col_ids):
+            col_id_real = next(c for c in col_ids if c.lower() == col_id_candidato)
+            ok = _fill_ag_floating_filter_by_col_id(page, col_id_real, valor)
+
+        # Si no, intentar por texto de cabecera (ej: "Código", "Descripción")
+        if not ok:
+            ok = _fill_ag_floating_filter_by_header_text(page, field, valor)
+
+        # Si tampoco, intentar col-id sin acentos ni mayúsculas
+        if not ok:
+            for c in col_ids:
+                if field.lower() in c.lower() or c.lower() in field.lower():
+                    ok = _fill_ag_floating_filter_by_col_id(page, c, valor)
+                    if ok:
+                        break
+
+        if ok:
+            filtros_aplicados.append(f"{field}={valor}")
+        else:
+            print(f"  ❌  No se pudo aplicar filtro para campo '{field}'")
+            filtros_fallidos.append(dato)
+
+    if not filtros_aplicados:
+        dump_dom(page, f"crud_read_sin_filtros__{safe}")
+        return False, f"FALLO: no se pudo aplicar ningún filtro. Datos: {datos}"
+
+    # Esperar a que la grilla actualice los resultados
+    page.wait_for_timeout(1200)
+    screenshot(page, f"crud_read_filtrado__{safe}")
+
+    # Contar filas resultantes
+    total_filas = _ag_grid_get_row_count(page)
+    print(f"  📈  Filas resultantes: {total_filas}")
+
+    # Intentar leer primera fila para incluir en el resultado
+    primera_fila_str = ""
+    filas = _ag_grid_read_rows(page, max_rows=3)
+    if filas:
+        primera = filas[0]
+        primera_fila_str = " | ".join(
+            f"{k}={v}" for k, v in primera.items() if v
+        )
+
+    filtros_str = ", ".join(filtros_aplicados)
+
+    if total_filas == 0:
+        resultado = f"NO ENCONTRADO ({filtros_str})"
+        dump_dom(page, f"crud_read_no_encontrado__{safe}")
+        return False, resultado
+    else:
+        detalle = f" → {primera_fila_str}" if primera_fila_str else ""
+        resultado = f"ENCONTRADO: {total_filas} fila(s) ({filtros_str}){detalle}"
+        return True, resultado
+
+
 def procesar_crud(page: Page, ruta: list, datos: list,
                   accion: Optional[str] = None) -> tuple:
     """Pantalla de Mantenedor CRUD. Despacha según la acción."""
@@ -1057,10 +1431,11 @@ def procesar_crud(page: Page, ruta: list, datos: list,
     if accion == ACCION_CREATE:
         return procesar_crud_create(page, ruta, datos)
 
-    # Las otras acciones siguen como stub por ahora
     if accion == ACCION_READ:
-        print(f"        TODO: localizar registro usando los datos como filtro.")
-    elif accion == ACCION_UPDATE:
+        return procesar_crud_read(page, ruta, datos)
+
+    # Update y Delete siguen como stub
+    if accion == ACCION_UPDATE:
         print(f"        TODO: localizar registro, editar campos, grabar.")
     elif accion == ACCION_DELETE:
         print(f"        TODO: localizar registro, clic en eliminar, confirmar.")
