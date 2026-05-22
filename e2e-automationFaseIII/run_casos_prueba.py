@@ -320,67 +320,125 @@ def navegar_ruta_completa(page: Page, ruta: list) -> bool:
 
 def is_notification_modal_visible(page: Page):
     """
-    Detecta la ventana modal de notificación.
-    Busca un div.title cuyo texto sea ' Notificaciones ' o 'Notificación'
-    (singular o plural, con o sin espacios).
+    Detecta el modal de notificación de la app Thunder/Angular.
+
+    Estructura DOM confirmada (Pantalla_Notificacion_Unimodal.html):
+        app-modal
+          div.modal-background
+            div.modal
+              div.header
+                div.title          ← texto " Notificaciones "
+              app-notification-modal
+                app-notification-modal-item
+                  div.notification-modal-item
+                    div.header > div.header-title  ← "Errores"
+                    div.body > div.content > div.text  ← mensaje
+
+    Retorna el locator de app-modal si es visible, None si no.
+    Se identifica porque su div.header > div.title contiene "Notificacion".
     """
     try:
-        index = page.evaluate("""
+        found = page.evaluate("""
             () => {
-                const divs = document.querySelectorAll('div.title');
-                for (let i = 0; i < divs.length; i++) {
-                    const txt = divs[i].innerText.trim();
-                    if (txt === 'Notificaciones' || txt === 'Notificación') {
-                        return i;
+                // Buscar app-modal cuyo div.header > div.title contenga "Notificac"
+                const modals = document.querySelectorAll('app-modal');
+                for (const m of modals) {
+                    const titleEl = m.querySelector('div.modal div.header div.title');
+                    if (titleEl) {
+                        const txt = titleEl.innerText.trim();
+                        if (txt.includes('Notificac')) return true;
                     }
                 }
-                return -1;
+                return false;
             }
         """)
-        if index >= 0:
-            return page.locator("div.title").nth(index)
+        if found:
+            # Devolver el locator del app-modal que contiene el título de notificación
+            return page.locator(
+                "app-modal:has(div.modal div.header div.title)"
+            ).first
     except Exception:
         pass
     return None
 
 
 def handle_notification_modal(page: Page, ruta_str: str) -> Optional[str]:
+    """
+    Detecta, extrae, registra y cierra el modal de notificación.
+
+    Estructura DOM confirmada:
+        app-modal > div.modal-background > div.modal
+          > div.header > div.title          : "Notificaciones"
+          > div.options > div.option.close  : botón X para cerrar el modal
+        app-notification-modal-item > div.notification-modal-item
+          > div.header > div.header-title   : categoría ("Errores")
+          > div.body > div.content > div.text : mensaje detalle
+    """
     modal_loc = is_notification_modal_visible(page)
     if modal_loc is None:
         return None
 
+    print("  🔔  Modal de Notificaciones detectado.")
     safe = re.sub(r"[^a-zA-Z0-9_.-]+", "_", ruta_str)[:MAX_FILENAME_LENGTH]
     screenshot(page, f"NOTIF__{safe}")
     dump_dom(page, f"NOTIF_DOM__{safe}")
 
+    # ── Extraer categoría ("Errores") desde div.header-title ──────────────
     tipo = ""
-    for sel in NOTIFICATION_TYPE_SELECTORS:
-        try:
-            t = modal_loc.locator(sel).first.inner_text().strip()
-            if t:
-                tipo = t
-                break
-        except Exception:
-            continue
+    try:
+        # header-title contiene un div.state (ícono) + texto directo
+        # Usamos innerText del elemento completo y limpiamos el texto del ícono
+        tipo_raw = page.evaluate("""
+            () => {
+                const item = document.querySelector(
+                    'app-notification-modal-item div.notification-modal-item div.header div.header-title'
+                );
+                if (!item) return '';
+                // Clonar para remover el div.state (ícono) y leer solo el texto
+                const clone = item.cloneNode(true);
+                const state = clone.querySelector('div.state');
+                if (state) state.remove();
+                return clone.innerText.trim();
+            }
+        """)
+        if tipo_raw:
+            tipo = tipo_raw
+    except Exception:
+        pass
 
+    # ── Extraer mensaje detalle desde div.text ───────────────────────────
     mensaje = ""
-    for sel in NOTIFICATION_MESSAGE_SELECTORS:
-        try:
-            m = modal_loc.locator(sel).first.inner_text().strip()
-            if m:
-                mensaje = m
-                break
-        except Exception:
-            continue
+    try:
+        mensaje_raw = page.evaluate("""
+            () => {
+                const el = document.querySelector(
+                    'app-notification-modal-item div.notification-modal-item '
+                    + 'div.body div.content div.text'
+                );
+                return el ? el.innerText.trim() : '';
+            }
+        """)
+        if mensaje_raw:
+            mensaje = mensaje_raw
+    except Exception:
+        pass
 
+    # ── Fallback: leer texto completo del item ────────────────────────────
     if not tipo and not mensaje:
         try:
-            mensaje = modal_loc.inner_text().strip()
+            mensaje = page.evaluate("""
+                () => {
+                    const el = document.querySelector('app-notification-modal-item');
+                    return el ? el.innerText.trim() : '(texto no disponible)';
+                }
+            """) or "(texto no disponible)"
         except Exception:
             mensaje = "(texto no disponible)"
 
     texto_notif = f"{tipo}: {mensaje}" if tipo else mensaje
+    print(f"  🔔  Notificación → tipo='{tipo}' | mensaje='{mensaje}'")
 
+    # ── Registrar en CSV ──────────────────────────────────────────────────
     log_path = config.SCREENSHOTS_DIR / "notificaciones_log.csv"
     ts_iso = datetime.datetime.now(timezone.utc).isoformat()
     escribir_cabecera = not log_path.exists()
@@ -393,21 +451,57 @@ def handle_notification_modal(page: Page, ruta_str: str) -> Optional[str]:
     except Exception as exc:
         print(f"  ⚠️   No se pudo escribir el log: {exc}")
 
-    for sel in NOTIFICATION_CLOSE_SELECTORS:
+    # ── Cerrar el modal con div.option.close (la X del header del app-modal)
+    cerrado = False
+    try:
+        # Selector exacto confirmado por DOM:
+        # app-modal > div.modal-background > div.modal > div.header > div.options > div.option.close
+        close_btn = page.locator("app-modal div.modal div.header div.option.close").first
+        close_btn.wait_for(state="visible", timeout=3000)
+        close_btn.click()
+        page.wait_for_timeout(500)
+        # Verificar que se cerró
         try:
-            btn = page.locator(sel).first
-            btn.wait_for(state="visible", timeout=2000)
-            btn.click()
-            page.wait_for_timeout(400)
-            print("  ✅  Notificación cerrada.")
-            break
+            page.locator("app-modal div.modal-background").first.wait_for(
+                state="hidden", timeout=2000
+            )
+            print("  ✅  Modal de Notificaciones cerrado con div.option.close.")
+            cerrado = True
         except Exception:
-            continue
+            # Puede haber cerrado aunque el wait_for falle — intentar Escape
+            pass
+    except Exception as e:
+        print(f"  ⚠️   Fallo cierre con div.option.close: {e}")
+
+    if not cerrado:
+        # Fallback: Escape
+        try:
+            page.keyboard.press("Escape")
+            page.wait_for_timeout(500)
+            page.locator("app-modal div.modal-background").first.wait_for(
+                state="hidden", timeout=1500
+            )
+            print("  ✅  Modal de Notificaciones cerrado con Escape.")
+            cerrado = True
+        except Exception:
+            pass
+
+    if not cerrado:
+        print(f"  ⚠️   No se pudo cerrar el modal de Notificaciones.")
+        screenshot(page, f"NOTIF_NO_CERRADA__{safe}")
 
     return texto_notif
 
 
 def _cerrar_app_modal_si_existe(page: Page) -> bool:
+    """
+    Detecta y cierra un <app-modal> genérico (confirmación, formulario, etc.).
+    NO cierra el modal de Notificaciones — ese lo maneja handle_notification_modal().
+
+    El modal genérico tiene:
+        app-modal > div.modal-background > div.modal > div.header > div.title
+    donde el título NO contiene "Notificac".
+    """
     try:
         page.locator("app-modal div.modal-background").first.wait_for(
             state="visible", timeout=2000
@@ -415,7 +509,21 @@ def _cerrar_app_modal_si_existe(page: Page) -> bool:
     except Exception:
         return False
 
-    print("  🪟  app-modal detectado.")
+    # Verificar que NO sea el modal de Notificaciones
+    es_notificacion = page.evaluate("""
+        () => {
+            const titleEl = document.querySelector(
+                'app-modal div.modal div.header div.title'
+            );
+            if (!titleEl) return false;
+            return titleEl.innerText.trim().includes('Notificac');
+        }
+    """)
+    if es_notificacion:
+        # No es un modal genérico — dejarlo para handle_notification_modal
+        return False
+
+    print("  🪟  app-modal (genérico) detectado.")
     try:
         page.locator("app-modal div.option.close").first.click(timeout=2000)
         page.wait_for_timeout(400)
@@ -948,21 +1056,62 @@ def procesar_consulta(page: Page, ruta: list, datos: list,
     return True, "OK (Consulta)"
 
 
+def _cerrar_modal_confirmacion(page: Page) -> bool:
+    """
+    Cierra el modal de confirmación genérico de Thunder (app-modal que NO es
+    el de Notificaciones). Busca el botón 'Aceptar' dentro del modal activo.
+
+    Estructura DOM del modal de confirmación Thunder:
+        app-modal > div.modal-background > div.modal
+          > div.content > div.body > div.footer > div.options
+            > div.option   ← cada opción (Aceptar, Cancelar, etc.)
+                > div.label  ← texto del botón
+
+    Retorna True si encontró y clicó el botón, False si no apareció.
+    """
+    # Selectores en orden de prioridad — todos apuntan al botón Aceptar
+    # dentro del modal de confirmación (no del de Notificaciones)
+    selectores_aceptar = [
+        # Opción Thunder: div.option con div.label conteniendo el texto
+        "app-modal div.modal div.footer div.option:has(div.label:has-text('Aceptar'))",
+        "app-modal div.modal div.footer div.option:has-text('Aceptar')",
+        # Variantes de texto
+        "app-modal div.modal div.footer div.option:has(div.label:has-text('Sí'))",
+        "app-modal div.modal div.footer div.option:has(div.label:has-text('Si'))",
+        "app-modal div.modal div.footer div.option:has(div.label:has-text('OK'))",
+        "app-modal div.modal div.footer div.option:has(div.label:has-text('Confirmar'))",
+        # Fallback: cualquier botón/div Aceptar visible en la página
+        "button:has-text('Aceptar')",
+        "button:has-text('Sí')",
+    ]
+    for sel in selectores_aceptar:
+        try:
+            loc = page.locator(sel).first
+            loc.wait_for(state="visible", timeout=3000)
+            loc.click()
+            page.wait_for_timeout(500)
+            print(f"  ✅  Modal de confirmación cerrado con: {sel}")
+            return True
+        except Exception:
+            continue
+    return False
+
+
 def procesar_crud_create(page: Page, ruta: list, datos: list) -> tuple:
     """
     CRUD/Create — flujo:
-      1. Clic en botón '+ Añadir' (o variantes).
-      2. Para cada dato → parsear y llenar el campo.
-      3. Clic en 'Crear' (o variantes).
-      4. Modal de confirmación → clic en 'Aceptar'.
-      5. Verificar si aparece notificación de error:
-            - Sí → ERROR
-            - No → asumir éxito (el toast de éxito se desvanece solo)
+      1. Clic en botón '+ Añadir'.
+      2. Para cada dato del Excel → parsear y llenar el campo.
+      3. Clic en botón submit del formulario (guardar).
+      4. Modal de confirmación → SIEMPRE aparece → clic en 'Aceptar'.
+      5. Verificar si aparece modal de Notificación de error (opcional):
+            - Sí → cerrar el modal, registrar en log, retornar ERROR con el mensaje
+            - No → éxito confirmado
     """
     ruta_str = " > ".join(ruta)
     safe = re.sub(r"[^a-zA-Z0-9_.-]+", "_", ruta_str)[:MAX_FILENAME_LENGTH]
 
-    # 1. Clic en "+ Añadir"
+    # ── 1. Clic en "+ Añadir" ─────────────────────────────────────────────
     print("  🆕  Clic en '+ Añadir'…")
     if not click_by_text(page, "+ Añadir",
                          alternativas=["Añadir", "Nuevo", "Agregar", "+"]):
@@ -973,7 +1122,7 @@ def procesar_crud_create(page: Page, ruta: list, datos: list) -> tuple:
     screenshot(page, f"form_abierto__{safe}")
     dump_dom(page, f"form_abierto__{safe}")
 
-    # 2. Llenar los campos
+    # ── 2. Llenar los campos ──────────────────────────────────────────────
     no_llenados = []
     for dato in datos:
         frame, field, valor = parse_dato(dato)
@@ -994,10 +1143,9 @@ def procesar_crud_create(page: Page, ruta: list, datos: list) -> tuple:
     screenshot(page, f"form_lleno__{safe}")
     dump_dom(page, f"form_lleno__{safe}")
 
-    # 3. Clic en el botón de guardar del formulario.
-    #    En Thunder este botón es <button type='submit' name='btnSubmit'>,
-    #    DISTINTO al <div class="option"> "+ Añadir" de la lista. Usamos
-    #    selectores específicos para no confundirlos.
+    # ── 3. Clic en botón submit del formulario ────────────────────────────
+    # En Thunder: <button type='submit' name='btnSubmit'>
+    # DISTINTO al div.option "+ Añadir" de la lista principal.
     print("  💾  Clic en botón guardar del formulario…")
     form_submit_selectors = [
         "app-form-button button[type='submit']",
@@ -1027,20 +1175,27 @@ def procesar_crud_create(page: Page, ruta: list, datos: list) -> tuple:
         return False, "FALLO: no se encontró el botón de guardar del formulario"
     page.wait_for_timeout(600)
 
-    # 4. Modal de confirmación → "Aceptar"
-    print("  ✅  Clic en 'Aceptar' (modal de confirmación)…")
-    if not click_by_text(page, "Aceptar",
-                         alternativas=["OK", "Sí", "Si", "Confirmar"]):
-        # Algunas pantallas no muestran modal de confirmación
-        print("  ℹ️   No apareció modal de confirmación — se continúa.")
+    # ── 4. Modal de confirmación — SIEMPRE aparece → clic en 'Aceptar' ───
+    print("  🔲  Esperando modal de confirmación…")
+    if _cerrar_modal_confirmacion(page):
+        print("  ✅  Confirmación aceptada.")
+    else:
+        # No debería pasar según el comportamiento confirmado, pero si ocurre
+        # se registra como advertencia y se continúa para detectar el resultado
+        print("  ⚠️   Modal de confirmación no encontrado — continuando igualmente.")
+        screenshot(page, f"WARN_sin_confirmacion__{safe}")
 
-    # 5. Esperar a que aparezca (o no) la notificación de error
+    # ── 5. Verificar si aparece modal de Notificación de error (opcional) ─
+    # La app muestra este modal SOLO si hubo un error al procesar la operación.
+    # Esperar un momento para que Angular procese la respuesta del backend.
     page.wait_for_timeout(1500)
     notif = handle_notification_modal(page, ruta_str)
     if notif:
-        return False, f"ERROR: {notif}"
+        # Error de la aplicación — informar en Excel y continuar con el siguiente caso
+        print(f"  ❌  Error reportado por la aplicación: {notif}")
+        return False, f"ERROR app: {notif}"
 
-    print("  🎉  Sin notificación de error — operación asumida como exitosa.")
+    print("  🎉  Sin notificación de error — creación exitosa.")
     return True, "OK (CRUD/Create)"
 
 
