@@ -14,8 +14,9 @@ El programa:
 5. Genera archivos de respuesta individuales
 6. Graba el Excel de resultados
 """
-import os
 import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import logging
 from datetime import datetime
 
@@ -25,6 +26,7 @@ from excel_handler import (
     leer_fila, escribir_resultado, escribir_respuesta_con_desborde,
     sanitizar_nombre_archivo
 )
+
 from service_caller import llamar_rpc2, llamar_storm, llamar_gpl, RespuestaServicio
 from response_parser import parsear_rpc2, parsear_json_gpl, parsear_json_storm
 from comparator import columnas_incluidas, comparar_tablas
