@@ -1,0 +1,23 @@
+PS B:\Users\gather\python\qa_service_tester> dir
+
+
+    Directorio: B:\Users\gather\python\qa_service_tester
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       26/05/2026     21:43           3282 comparator.py
+-a----       26/05/2026     21:43            525 config.ini
+-a----       26/05/2026     21:44           1174 config.py
+-a----       26/05/2026     21:45           5429 excel_handler.py
+-a----       26/05/2026     21:44        1378257 ListaMetodosServicioQA.xlsm
+-a----       26/05/2026     21:45          14440 main.py
+-a----       26/05/2026     21:45           7472 response_parser.py
+-a----       26/05/2026     21:46           7430 service_caller.py
+
+
+PS B:\Users\gather\python\qa_service_tester> python .\main.py
+Traceback (most recent call last):
+  File "B:\Users\gather\python\qa_service_tester\main.py", line 22, in <module>
+    from config import cargar_config
+ModuleNotFoundError: No module named 'config'
