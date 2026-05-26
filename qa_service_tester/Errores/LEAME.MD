@@ -21,3 +21,6 @@ Traceback (most recent call last):
   File "B:\Users\gather\python\qa_service_tester\main.py", line 22, in <module>
     from config import cargar_config
 ModuleNotFoundError: No module named 'config'
+
+--- Respuesta, revosar que arroja esto.
+python -c "import sys; print(sys.path)"
