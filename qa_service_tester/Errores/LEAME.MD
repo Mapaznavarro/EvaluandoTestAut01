@@ -36,4 +36,5 @@ Traceback (most recent call last):
   File "B:\Users\gather\python\qa_service_tester\service_caller.py", line 3, in <module>
     import requests
 ModuleNotFoundError: No module named 'requests'
+--- Respuesta python -m pip install requests
 
