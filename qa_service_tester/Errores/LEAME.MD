@@ -24,3 +24,6 @@ ModuleNotFoundError: No module named 'config'
 
 --- Respuesta, revosar que arroja esto.
 python -c "import sys; print(sys.path)"
+
+--- Se ejecuta en servidor retornando esto
+['B:\\Users\\gather\\python\\python313.zip', 'B:\\Users\\gather\\python', 'B:\\Users\\gather\\AppData\\Roaming\\Python\\Python313\\site-packages', 'B:\\Users\\gather\\python\\Lib\\site-packages']
