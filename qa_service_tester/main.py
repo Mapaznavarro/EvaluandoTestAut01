@@ -38,9 +38,10 @@ log = logging.getLogger(__name__)
 
 
 def guardar_archivo_respuesta(ruta_resultados: str, nombre_metodo: str,
-                               escenario: str, contenido: str, extension: str = ""):
+                               escenario: str, contenido: str, extension: str = "",
+                               sufijo_servicio: str = ""):
     """Guarda la respuesta de un servicio en un archivo individual."""
-    nombre = sanitizar_nombre_archivo(f"{nombre_metodo}_{escenario}")
+    nombre = sanitizar_nombre_archivo(f"{nombre_metodo}_{escenario}{sufijo_servicio}")
     if extension:
         nombre = f"{nombre}.{extension}"
     ruta = os.path.join(ruta_resultados, nombre)
@@ -60,6 +61,8 @@ def procesar_fila(ws, num_fila: int, datos_fila: dict, cfg: dict, ruta_resultado
     body_rpc2 = datos_fila["LlamadaRPC2"] or ""
     fmt_llamada = datos_fila["FmtLlamada"]
     fmt_respuesta = datos_fila["FmtRespuesta"]
+    verbo_http = datos_fila["VerboHTTP"]
+    query_params_storm = str(datos_fila["QueryParamsStorm"]).strip().upper() == "SI"
 
     log.info(f"  Fila {num_fila}: RPC2={nombre_rpc2}, STORM={nombre_storm}, "
              f"GPL={nombre_gpl} [{comentario}]")
@@ -110,7 +113,9 @@ def procesar_fila(ws, num_fila: int, datos_fila: dict, cfg: dict, ruta_resultado
             content_type=fmt_llamada,
             accept=fmt_respuesta,
             usuario=cfg["USUARIO_STORM"],
-            password=cfg["PASSWORD_STORM"]
+            password=cfg["PASSWORD_STORM"],
+            verbo_http=verbo_http,
+            query_parameters=query_params_storm
         )
         if resp_storm.disponible and not resp_storm.error:
             datos_storm = parsear_json_storm(resp_storm.cuerpo_respuesta)
@@ -130,7 +135,8 @@ def procesar_fila(ws, num_fila: int, datos_fila: dict, cfg: dict, ruta_resultado
     if nombre_storm and resp_storm.cuerpo_respuesta:
         ext = "json" if "json" in fmt_respuesta.lower() else "xml"
         guardar_archivo_respuesta(ruta_resultados, nombre_storm, comentario,
-                                   resp_storm.cuerpo_respuesta, ext)
+                                   resp_storm.cuerpo_respuesta, ext,
+                                   sufijo_servicio="_STORM")
 
     # ── Paso 4.3: Llamar GPL (REST) ──
     if nombre_gpl and body_gpl_storm:
@@ -163,7 +169,8 @@ def procesar_fila(ws, num_fila: int, datos_fila: dict, cfg: dict, ruta_resultado
     if nombre_gpl and resp_gpl.cuerpo_respuesta:
         ext = "json" if "json" in fmt_respuesta.lower() else "xml"
         guardar_archivo_respuesta(ruta_resultados, nombre_gpl.replace("/", "_"),
-                                   comentario, resp_gpl.cuerpo_respuesta, ext)
+                                   comentario, resp_gpl.cuerpo_respuesta, ext,
+                                   sufijo_servicio="_GPL")
 
     # ── Paso 4.4: Comparar columnas GPL vs RPC2 ──
     if (datos_gpl and datos_rpc2 and datos_gpl.tiene_datos and datos_rpc2.tiene_datos):
@@ -182,8 +189,9 @@ def procesar_fila(ws, num_fila: int, datos_fila: dict, cfg: dict, ruta_resultado
 
     # ── Paso 4.5: Comparar contenido GPL vs RPC2 ──
     from openpyxl.utils import column_index_from_string
+    from excel_handler import COL_MAP
     gpl_incluye_rpc2 = ws.cell(row=num_fila,
-                                column=column_index_from_string("AH")).value
+                                column=column_index_from_string(COL_MAP["GPLIncluyeColRPC2"])).value
     if gpl_incluye_rpc2 == "SI" and datos_gpl and datos_rpc2:
         nombre_base_rpc = sanitizar_nombre_archivo(f"{nombre_rpc2}_{comentario}")
         nombre_base_gpl = sanitizar_nombre_archivo(

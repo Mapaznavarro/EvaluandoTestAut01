@@ -20,7 +20,7 @@ def generar_csv(tabla: DatosTabla, ruta_archivo: str) -> str:
     """Genera un archivo CSV a partir de DatosTabla. Retorna la ruta del archivo creado."""
     os.makedirs(os.path.dirname(ruta_archivo) or ".", exist_ok=True)
     with open(ruta_archivo, "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
+        writer = csv.writer(f, delimiter="|")
         writer.writerow(tabla.columnas)
         for fila in tabla.filas:
             writer.writerow(fila)

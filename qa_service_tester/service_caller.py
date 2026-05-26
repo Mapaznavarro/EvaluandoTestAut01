@@ -1,4 +1,5 @@
 """Módulo para invocar servicios web SOAP (RPC2) y REST (STORM, GPL)."""
+import json
 import requests
 from requests.auth import HTTPBasicAuth
 from dataclasses import dataclass, field
@@ -116,10 +117,66 @@ def llamar_rest(url: str, body: str, timeout: int,
 def llamar_storm(url_base: str, nombre_metodo: str, body: str, timeout: int,
                  content_type: str = "application/json",
                  accept: str = "application/json",
-                 usuario: str = "", password: str = "") -> RespuestaServicio:
-    """Llama al servicio STORM (REST)."""
+                 usuario: str = "", password: str = "",
+                 verbo_http: str = "POST",
+                 query_parameters: bool = False) -> RespuestaServicio:
+    """Llama al servicio STORM (REST) con el verbo HTTP y modo de parámetros indicados.
+
+    Args:
+        verbo_http: Método HTTP a usar (GET, POST, PUT, DELETE, etc.)
+        query_parameters: Si True, convierte el body JSON a query params en la URL
+                          y envía sin body. Si False, envía el body tal cual.
+    """
     url = f"{url_base.rstrip('/')}/{nombre_metodo}"
-    return llamar_rest(url, body, timeout, content_type, accept, usuario, password)
+    resultado = RespuestaServicio()
+    metodo = verbo_http.strip().upper() or "POST"
+
+    headers = {"Accept": accept}
+    auth = HTTPBasicAuth(usuario, password) if usuario else None
+
+    params_url = None
+    body_enviar = None
+
+    if query_parameters:
+        if not body or not body.strip():
+            resultado.disponible = False
+            resultado.error = "Sin JSON para convertir a query parameters (STORM)"
+            return resultado
+        try:
+            params_url = json.loads(body)
+        except json.JSONDecodeError as e:
+            resultado.disponible = False
+            resultado.error = f"JSON inválido para query parameters: {e}"
+            return resultado
+    else:
+        if body and body.strip():
+            headers["Content-Type"] = content_type
+            body_enviar = body.encode("utf-8")
+
+    try:
+        resp = requests.request(
+            method=metodo,
+            url=url,
+            params=params_url,
+            data=body_enviar,
+            headers=headers,
+            timeout=timeout,
+            auth=auth
+        )
+        resultado.codigo_respuesta = resp.status_code
+        resultado.cuerpo_respuesta = resp.text
+        resultado.headers = dict(resp.headers)
+        _verificar_balanceador(resultado)
+    except requests.exceptions.Timeout:
+        resultado.error = f"Timeout ({timeout}s) al llamar STORM ({metodo})"
+        resultado.disponible = True
+    except requests.exceptions.ConnectionError:
+        resultado.error = "Servicio STORM no disponible (error de conexión)"
+        resultado.disponible = False
+    except Exception as e:
+        resultado.error = f"Error inesperado STORM: {type(e).__name__}: {e}"
+        resultado.disponible = False
+    return resultado
 
 
 def llamar_gpl(url_base: str, nombre_metodo: str, body: str, timeout: int,
