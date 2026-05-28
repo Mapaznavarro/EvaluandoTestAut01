@@ -185,3 +185,16 @@ Para inspeccionar el HTML real del sitio, abre las DevTools del navegador
 | Timeout en algún paso                       | Aumenta `TIMEOUT_MS` en `.env` (p.ej. `30000`)    |
 | El navegador se abre pero cierra inmediatamente | Ejecuta en modo debug con `HEADLESS=False`      |
 | Error de instalación de Playwright          | Ejecuta `playwright install chromium` de nuevo     |
+
+## Estado actual
+Navega una lista de menues que se le entrega de manera literal.
+Cada menu es recorrido recursivamente hasta llegar a mostrar una pantalla.
+Registra el path para llegar a cada pantalla encontrada
+Genera archivo con los menues recorridos.
+Grupos de usuarios que tienen las 361 opciones sin el menu FrontOn Admin: bci001, bci005, bci006, bci007, bci008, bci009, bci010
+Grupos de usuarios que tienen las 361 opciones sin el menu Golf ni FrontOn Admin: bci004
+Grupos de usuarios que tienen las 361 opciones: bci002, bci003.
+
+
+
+
