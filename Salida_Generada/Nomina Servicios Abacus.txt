@@ -1,0 +1,53 @@
+POST
+/abq/fronton/saldoCartera
+Retorna el saldo de la cartera
+
+
+POST
+/abq/fronton/patrimonioCartera
+Retorna el patrimonio Online de la cartera.
+
+
+POST
+/abq/fronton/liquidezCartera
+Retorna el flujo de caja de la cartera.
+
+
+POST
+/abq/fronton/altaOrdenRentaVariable
+Servicio de alta de orden FrontOn de Renta Variable
+
+
+POST
+/abq/fronton/altaOrdenRentaFija
+Servicio de alta de orden FrontOn de Renta Fija
+
+
+POST
+/abq/fronton/altaOrdenIIF
+Servicio de alta de orden FrontOn de IIF
+
+
+POST
+/abq/fronton/altaOrdenGlobalRentaVariable
+Servicio de alta de orden global de FrontOn de Renta Variable
+
+
+POST
+/abq/fronton/altaOrdenGlobalCuotas
+Servicio de alta de orden global de FrontOn de Cuotas
+
+
+POST
+/abq/fronton/altaOrdenCuotas
+Servicio de alta de orden FrontOn de Cuotas
+
+
+POST
+/abq/fronton/altaInstrumentos
+Alta de Instrumentos
+
+
+POST
+/abq/fronton/altaInstrumentoIF
+Servicio FrontOn de alta de instrumento de Intermediación Financiera
