@@ -1,0 +1,53 @@
+PS B:\Users\gather\python\qa_service_tester> python .\main.py
+2026-05-28 22:45:06,607 [INFO] ======================================================================
+2026-05-28 22:45:06,608 [INFO] QA Service Tester - Comparador de servicios RPC2, STORM y GPL
+2026-05-28 22:45:06,608 [INFO] ======================================================================
+2026-05-28 22:45:06,610 [INFO] Configuración cargada:
+2026-05-28 22:45:06,611 [INFO]   RPC2:  http://999.999.999.999:8081/RPC2/RPC (timeout=40s)
+2026-05-28 22:45:06,614 [INFO]   STORM: http://172.21.170.81:8080/storm/bcibank/v1/ (timeout=40s)
+2026-05-28 22:45:06,614 [INFO]   GPL:   http://161.131.140.214:80/gather-rest-api/api/v1.0/ (timeout=40s)
+2026-05-28 22:45:06,615 [INFO]
+Paso 1: Abriendo Excel de entrada: ListaMetodosServicioQA.xlsm
+B:\Users\gather\python\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Data Validation extension is not supported and will be removed
+  warn(msg)
+2026-05-28 22:45:07,478 [INFO]   Hoja activa: 'Casos Todos', Filas: 576, Columnas: 39
+2026-05-28 22:45:07,479 [INFO]
+Paso 2: Creando Excel de salida: ResultadosPythonServicios\ListaMetodosServicioQAEjecutados20260528.xlsx
+2026-05-28 22:45:11,707 [INFO]
+Paso 3-4: Procesando 575 filas de datos...
+2026-05-28 22:45:11,720 [INFO]   Fila 572: RPC2=#N/A, STORM=obtenerTramosHorarios, GPL= [Camino Feliz ]
+2026-05-28 22:45:11,721 [INFO]     RPC2 omitido (sin datos)
+2026-05-28 22:45:11,721 [INFO]     Llamando STORM: obtenerTramosHorarios...
+2026-05-28 22:45:12,869 [INFO]     STORM código=200, cols=3, filas=1, error=False
+2026-05-28 22:45:12,872 [INFO]     GPL omitido (sin datos)
+2026-05-28 22:45:12,873 [INFO]   Fila 573: RPC2=#N/A, STORM=obtenerTramosHorarios, GPL= [Fondo en vez de serie]
+2026-05-28 22:45:12,873 [INFO]     RPC2 omitido (sin datos)
+2026-05-28 22:45:12,873 [INFO]     Llamando STORM: obtenerTramosHorarios...
+2026-05-28 22:45:12,890 [INFO]     STORM código=500, cols=0, filas=0, error=True
+2026-05-28 22:45:12,892 [INFO]     GPL omitido (sin datos)
+2026-05-28 22:45:12,893 [INFO]   Fila 574: RPC2=#N/A, STORM=obtenerTramosHorarios, GPL= [Canal Alfanumerico]
+2026-05-28 22:45:12,893 [INFO]     RPC2 omitido (sin datos)
+2026-05-28 22:45:12,894 [INFO]     Llamando STORM: obtenerTramosHorarios...
+2026-05-28 22:45:12,917 [INFO]     STORM código=200, cols=3, filas=1, error=False
+2026-05-28 22:45:12,920 [INFO]     GPL omitido (sin datos)
+2026-05-28 22:45:12,921 [INFO]   Fila 575: RPC2=#N/A, STORM=obtenerTramosHorarios, GPL= [Tipo de operación incorrecto]
+2026-05-28 22:45:12,921 [INFO]     RPC2 omitido (sin datos)
+2026-05-28 22:45:12,922 [INFO]     Llamando STORM: obtenerTramosHorarios...
+2026-05-28 22:45:12,932 [INFO]     STORM código=500, cols=0, filas=0, error=True
+2026-05-28 22:45:12,935 [INFO]     GPL omitido (sin datos)
+2026-05-28 22:45:12,935 [INFO]   Fila 576: RPC2=#N/A, STORM=obtenerTramosHorarios, GPL= [Procedencia incorrecta]
+2026-05-28 22:45:12,937 [INFO]     RPC2 omitido (sin datos)
+2026-05-28 22:45:12,938 [INFO]     Llamando STORM: obtenerTramosHorarios...
+2026-05-28 22:45:12,959 [INFO]     STORM código=500, cols=0, filas=0, error=True
+2026-05-28 22:45:12,962 [INFO]     GPL omitido (sin datos)
+2026-05-28 22:45:12,963 [INFO]
+Paso 4.8: Guardando Excel final...
+2026-05-28 22:45:13,212 [INFO]
+======================================================================
+2026-05-28 22:45:13,213 [INFO] RESUMEN:
+2026-05-28 22:45:13,215 [INFO]   Filas ejecutadas: 5
+2026-05-28 22:45:13,215 [INFO]   Filas omitidas:   570
+2026-05-28 22:45:13,216 [INFO]   Excel de salida:  ResultadosPythonServicios\ListaMetodosServicioQAEjecutados20260528.xlsx
+2026-05-28 22:45:13,216 [INFO]   Archivos en:      ResultadosPythonServicios
+2026-05-28 22:45:13,217 [INFO] ======================================================================
+PS B:\Users\gather\python\qa_service_tester>
