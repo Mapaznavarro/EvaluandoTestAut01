@@ -166,7 +166,7 @@ def parsear_json_storm(json_text: str) -> DatosTabla:
         return resultado
 
     if isinstance(data, dict):
-        if data.get("title", "").lower() == "errores" or "errores" in data:
+        if (data.get("title") or "").lower() == "errores" or "errores" in data:
             resultado.es_error = True
             errores = data.get("errores", [])
             if errores and isinstance(errores, list):
