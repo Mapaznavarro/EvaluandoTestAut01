@@ -55,3 +55,36 @@ Response headers
  x-content-type-options: nosniff 
  x-frame-options: DENY 
  x-xss-protection: 0 
+
+
+// Datos para el abq/Fornton/altaInstrumentos
+{
+  "instrumento": {
+    "instrumentos": {
+      "codigo": 0,
+      "codigo_padre": 0,
+      "descripcion": "{{descripcionInstrumento}}",
+      "codigo_ext": "{{descripcionInstrumento}}",
+      "alias": "{{descripcionInstrumento}}",
+      "clase_valor": 68,
+      "divisa": 39,
+      "divisa_liquidacion": 39,
+      "texto": "prueba QA",
+      "div_denominacion": 0,
+      "divisa_riesgo": 0,
+      "ind_propio": "N",
+      "ind_revisado": "S",
+      "ind_inactivo": "N"
+    },
+    "valores_comun": {
+      "codigo": 0,
+      "fecha_emision": "24/05/2025",
+      "nominal": 1,
+      "sector": 10,
+      "emisora": 62218,
+      "codigo_isin": "{{descripcionInstrumento}}",
+      "cotizacion_tp": "P",
+      "fecha_var_tp": "24/05/2025"
+    }
+  }
+}
