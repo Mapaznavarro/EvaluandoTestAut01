@@ -21,20 +21,25 @@ COL_MAP = {
     "FmtRespuesta": "W",
     "QueryParamsStorm": "X",
     "VerboHTTP": "Y",
-    "CodRespRPC2": "Z",
-    "RespRPC2": "AA",
-    "CodRespGPL": "AB",
-    "RespGPL": "AC",
-    "CodRespStorm": "AD",
-    "RespStorm": "AE",
-    "HoraEjecucion": "AF",
-    "ContRespRPC2": "AG",
-    "ContRespGPL": "AH",
-    "ContRespSTORM": "AI",
-    "GPLIncluyeColRPC2": "AJ",
-    "GPLIgualRPC2": "AK",
-    "GPLIncluyeColSTORM": "AL",
-    "GPLIgualSTORM": "AM",
+    # Columna "Niveles": indica que el body es JSON de varios niveles y se arma en
+    # Python. Vacío o 1 = comportamiento actual (usa LlamadaGPLyStorm tal cual).
+    "Niveles": "Z",
+    # A partir de aquí, las columnas de resultados corrieron una posición a la
+    # derecha (Z..AM -> AA..AN) al insertarse la columna "Niveles".
+    "CodRespRPC2": "AA",
+    "RespRPC2": "AB",
+    "CodRespGPL": "AC",
+    "RespGPL": "AD",
+    "CodRespStorm": "AE",
+    "RespStorm": "AF",
+    "HoraEjecucion": "AG",
+    "ContRespRPC2": "AH",
+    "ContRespGPL": "AI",
+    "ContRespSTORM": "AJ",
+    "GPLIncluyeColRPC2": "AK",
+    "GPLIgualRPC2": "AL",
+    "GPLIncluyeColSTORM": "AM",
+    "GPLIgualSTORM": "AN",
 }
 
 
@@ -102,6 +107,7 @@ def leer_fila(ws, num_fila: int) -> dict:
         "FmtRespuesta": val(COL_MAP["FmtRespuesta"]) or "application/json",
         "QueryParamsStorm": val(COL_MAP["QueryParamsStorm"]) or "",
         "VerboHTTP": val(COL_MAP["VerboHTTP"]) or "POST",
+        "Niveles": val(COL_MAP["Niveles"]) or "",
     }
 
 

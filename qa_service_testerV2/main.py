@@ -30,6 +30,7 @@ from excel_handler import (
 from service_caller import llamar_rpc2, llamar_storm, llamar_gpl, RespuestaServicio
 from response_parser import parsear_rpc2, parsear_json_gpl, parsear_json_storm
 from comparator import columnas_incluidas, comparar_tablas
+from body_builder import construir_body_para_caso, es_nivelada, HOJA_CATALOGO, HOJA_VALORES
 
 logging.basicConfig(
     level=logging.INFO,
@@ -53,7 +54,8 @@ def guardar_archivo_respuesta(ruta_resultados: str, nombre_metodo: str,
     return ruta
 
 
-def procesar_fila(ws, num_fila: int, datos_fila: dict, cfg: dict, ruta_resultados: str):
+def procesar_fila(ws, num_fila: int, datos_fila: dict, cfg: dict, ruta_resultados: str,
+                  ws_catalogo=None, ws_valores=None):
     """Procesa una fila del Excel: llama a los 3 servicios, registra y compara."""
     nombre_rpc2 = datos_fila["NombreRPC2"] or ""
     nombre_storm = datos_fila["NombreStorm"] or ""
@@ -65,6 +67,23 @@ def procesar_fila(ws, num_fila: int, datos_fila: dict, cfg: dict, ruta_resultado
     fmt_respuesta = datos_fila["FmtRespuesta"]
     verbo_http = datos_fila["VerboHTTP"]
     query_params_storm = str(datos_fila["QueryParamsStorm"]).strip().upper() == "SI"
+
+    # ── Body JSON de varios niveles (solo si la columna "Niveles" lo indica) ──
+    # Aditivo: las filas planas siguen usando "LlamadaGPL y Storm" como hoy.
+    # Para una fila de "Casos Todos" con Niveles='S', la estructura sale de
+    # BaseParametros (por Id Metodo) y los valores de "Casos Mas Parametros"
+    # (emparejando Id Metodo + Comentario, desde la columna J). El body armado
+    # se DEJA REGISTRADO en el Excel de resultados.
+    if es_nivelada(datos_fila.get("Niveles")) and ws_catalogo is not None and ws_valores is not None:
+        try:
+            body_gpl_storm = construir_body_para_caso(
+                ws_catalogo, ws_valores, datos_fila["IdMetodo"], comentario)
+            escribir_resultado(ws, num_fila, "LlamadaGPLyStorm", body_gpl_storm)
+            log.info(f"    Body de varios niveles armado y registrado ({len(body_gpl_storm)} chars)")
+        except Exception as e:
+            log.error(f"    Error armando body de varios niveles en fila {num_fila}: {e}")
+            escribir_resultado(ws, num_fila, "LlamadaGPLyStorm", f"ERROR body niveles: {e}")
+            body_gpl_storm = ""
 
     log.info(f"  Fila {num_fila}: RPC2={nombre_rpc2}, STORM={nombre_storm}, "
              f"GPL={nombre_gpl} [{comentario}]")
@@ -265,6 +284,17 @@ def main(ruta_config: str = None):
     log.info(f"  Hoja activa: '{ws_entrada.title}', "
              f"Filas: {ws_entrada.max_row}, Columnas: {ws_entrada.max_column}")
 
+    # Hojas auxiliares para métodos con body de varios niveles. Viven en el libro
+    # de entrada, que conserva todas las hojas:
+    #   - BaseParametros      : estructura (ruta + tipo)
+    #   - Casos Mas Parametros: valores por Id Metodo + Comentario
+    ws_catalogo = wb_entrada[HOJA_CATALOGO] if HOJA_CATALOGO in wb_entrada.sheetnames else None
+    ws_valores = wb_entrada[HOJA_VALORES] if HOJA_VALORES in wb_entrada.sheetnames else None
+    if ws_catalogo is None or ws_valores is None:
+        faltan = [n for n, w in ((HOJA_CATALOGO, ws_catalogo), (HOJA_VALORES, ws_valores)) if w is None]
+        log.warning(f"  No se encontró la(s) hoja(s) {faltan}; "
+                    f"las filas Niveles='S' no podrán armarse.")
+
     # Paso 2: Crear Excel de salida
     ruta_salida = nombre_archivo_salida(ruta_resultados)
     log.info(f"\nPaso 2: Creando Excel de salida: {ruta_salida}")
@@ -290,7 +320,8 @@ def main(ruta_config: str = None):
             continue
 
         filas_ejecutadas += 1
-        procesar_fila(ws_salida, num_fila, datos, cfg, ruta_resultados)
+        procesar_fila(ws_salida, num_fila, datos, cfg, ruta_resultados,
+                      ws_catalogo, ws_valores)
 
         # Guardar periódicamente (cada 20 filas)
         if filas_ejecutadas % 20 == 0:
