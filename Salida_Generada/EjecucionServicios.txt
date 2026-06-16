@@ -1,3 +1,10 @@
+[
+    {
+        "codigoInstrumento": 47603,
+        "fechaSistema": "16/06/2026 20:02:13"
+    }
+]
+
 PS B:\Users\gather\python\qa_service_tester> python .\main.py
 2026-05-28 22:45:06,607 [INFO] ======================================================================
 2026-05-28 22:45:06,608 [INFO] QA Service Tester - Comparador de servicios RPC2, STORM y GPL
