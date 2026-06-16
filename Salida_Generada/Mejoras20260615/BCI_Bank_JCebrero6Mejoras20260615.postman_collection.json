@@ -1,0 +1,481 @@
+{
+  "info": {
+    "_postman_id": "bci-bank-storm-selected-v1",
+    "name": "BCI Bank - Métodos Seleccionados",
+    "description": "Colección con 6 métodos seleccionados de los servicios STORM de BCI Bank.\n\nOrganizada en carpetas por servicio STORM de origen.\nUsa variables de colección para las URLs base y los parámetros requeridos.\n\n⚠️ ANTES DE EJECUTAR (Collection Runner):\nIr a la pestaña 'Variables' de esta colección y completar todos los valores marcados como [REQUERIDO].",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "url_fro_con",
+      "value": "http://172.21.170.81:8083/storm",
+      "type": "string",
+      "description": "URL base — storm-bci-fro-con | FrontOn Consultas (puerto 8083)"
+    },
+    {
+      "key": "url_par_con",
+      "value": "http://172.21.170.81:8079/storm",
+      "type": "string",
+      "description": "URL base — storm-bci-par-con | PAR Consultas (puerto 8079)"
+    },
+    {
+      "key": "url_par_amb_otr",
+      "value": "http://172.21.170.81:8078/storm",
+      "type": "string",
+      "description": "URL base — storm-bci-par-amb-otr | PAR AMB Otros (puerto 8078)"
+    },
+    {
+      "key": "url_fro_amb",
+      "value": "http://172.21.170.81:8082/storm",
+      "type": "string",
+      "description": "URL base — storm-bci-fro-amb | FrontOn AMB (puerto 8082)"
+    },
+    {
+      "key": "pt_tipoSeleccion",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] previsionTesoreriaFrontOn — Tipo selección: A (Agrupación) | T (Tipo Cartera) | C (Lista carteras)"
+    },
+    {
+      "key": "sr_codigoFondo",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] simularRentabilidad — Código del fondo (string)"
+    },
+    {
+      "key": "sr_fecha",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] simularRentabilidad — Fecha de inicio formato yyyyMMdd (ej: 20240101)"
+    },
+    {
+      "key": "sr_monto",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] simularRentabilidad — Monto inicial (number double, ej: 1000000.00)"
+    },
+    {
+      "key": "sr_moneda",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] simularRentabilidad — Código de moneda (integer int32)"
+    },
+    {
+      "key": "rcgf_rutCliente",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] registrarCGFFondoMutuo — RUT del cliente (string)"
+    },
+    {
+      "key": "rcgf_canal",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] registrarCGFFondoMutuo — Código del Canal (string)"
+    },
+    {
+      "key": "rcgf_codigoEjecutivo",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] registrarCGFFondoMutuo — Código del ejecutivo que realiza el cambio (string)"
+    },
+    {
+      "key": "rcgf_estadoCGF",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] registrarCGFFondoMutuo — Estado del CGF: 0 (Rechazado) | 1 (Aceptado)"
+    },
+    {
+      "key": "vf_fechaActual",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] vitrinaFondos — Fecha actual formato yyyyMMdd (ej: 20240101)"
+    },
+    {
+      "key": "vf_horizonte",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] vitrinaFondos — Horizonte: 0 (Todos) | 1 (Menos de 1 año) | 2 (Entre 1 y 2 años) | 3 (Más de 2 años)"
+    },
+    {
+      "key": "alp_cartera",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] entradaAlpFrontOn — Cartera (integer int32)"
+    },
+    {
+      "key": "alp_instrumento",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] entradaAlpFrontOn — Instrumento (integer int32)"
+    },
+    {
+      "key": "alp_operacion",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] entradaAlpFrontOn — Operación: C (Compra) | V (Venta)"
+    },
+    {
+      "key": "alp_indFecha",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] entradaAlpFrontOn — Indicador de Fecha: PH | PM | CN"
+    },
+    {
+      "key": "alp_nominal",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] entradaAlpFrontOn — Nominal (number double)"
+    },
+    {
+      "key": "fatca_rutParticipe",
+      "value": "",
+      "type": "string",
+      "description": "[REQUERIDO] consultarParticipeFATCA — RUT del partícipe (integer int32)"
+    }
+  ],
+  "item": [
+    {
+      "name": "storm-bci-fro-con (puerto 8083)",
+      "description": "Servicios FrontOn Consultas\nOrigen: BCI Bank- API fro-con.json\nURL base: {{url_fro_con}}",
+      "item": [
+        {
+          "name": "GET /bcibank/v1/previsionTesoreriaFrontOn",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url_fro_con}}/bcibank/v1/previsionTesoreriaFrontOn?tipoSeleccion={{pt_tipoSeleccion}}",
+              "host": [
+                "{{url_fro_con}}"
+              ],
+              "path": [
+                "bcibank",
+                "v1",
+                "previsionTesoreriaFrontOn"
+              ],
+              "query": [
+                {
+                  "key": "tipoSeleccion",
+                  "value": "{{pt_tipoSeleccion}}",
+                  "description": "[REQUERIDO] Tipo selección: A=Agrupación | T=Tipo Cartera | C=Lista carteras"
+                },
+                {
+                  "key": "agrupacion",
+                  "value": "",
+                  "description": "[OPCIONAL] Agrupación (int32) — usar cuando tipoSeleccion=A",
+                  "disabled": true
+                },
+                {
+                  "key": "tipoCarteras",
+                  "value": "",
+                  "description": "[OPCIONAL] Tipo de carteras (string) — usar cuando tipoSeleccion=T",
+                  "disabled": true
+                },
+                {
+                  "key": "carteras",
+                  "value": "",
+                  "description": "[OPCIONAL] Lista de carteras (string) — usar cuando tipoSeleccion=C",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Consulta Previsión Tesorería FrontOn.\n\nServicio: storm-bci-fro-con | Archivo: BCI Bank- API fro-con.json\nMétodo HTTP: GET\n\nRespuesta 200: array de PrevisionTesoreriaReturn\n  { cartera (int32), divisa (int32), acumuladoPH (double), acumuladoPM (double), acumuladoCN (double) }\n\nNota: Los parámetros agrupacion, tipoCarteras y carteras son opcionales y dependen del valor de tipoSeleccion. Activar el que corresponda según el caso de prueba."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "storm-bci-par-con (puerto 8079)",
+      "description": "Servicios PAR Consultas\nOrigen: BCI Bank- API par-con.json\nURL base: {{url_par_con}}",
+      "item": [
+        {
+          "name": "POST /bcibank/v1/simularRentabilidad",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url_par_con}}/bcibank/v1/simularRentabilidad?codigoFondo={{sr_codigoFondo}}&fecha={{sr_fecha}}&monto={{sr_monto}}&moneda={{sr_moneda}}",
+              "host": [
+                "{{url_par_con}}"
+              ],
+              "path": [
+                "bcibank",
+                "v1",
+                "simularRentabilidad"
+              ],
+              "query": [
+                {
+                  "key": "codigoFondo",
+                  "value": "{{sr_codigoFondo}}",
+                  "description": "[REQUERIDO] Código del fondo (string)"
+                },
+                {
+                  "key": "canal",
+                  "value": "",
+                  "description": "[OPCIONAL] Canal (string)",
+                  "disabled": true
+                },
+                {
+                  "key": "fecha",
+                  "value": "{{sr_fecha}}",
+                  "description": "[REQUERIDO] Fecha de inicio formato yyyyMMdd"
+                },
+                {
+                  "key": "monto",
+                  "value": "{{sr_monto}}",
+                  "description": "[REQUERIDO] Monto inicial (number double)"
+                },
+                {
+                  "key": "moneda",
+                  "value": "{{sr_moneda}}",
+                  "description": "[REQUERIDO] Código de moneda (integer int32)"
+                }
+              ]
+            },
+            "description": "Simula la rentabilidad de un fondo desde una fecha con un monto inicial.\n\nServicio: storm-bci-par-con | Archivo: BCI Bank- API par-con.json\nMétodo HTTP: POST (todos los parámetros van en query string, sin body)\n\nRespuesta 200: SimularRentabilidadReturn\n  { total (double) }"
+          },
+          "response": []
+        },
+        {
+          "name": "GET /bcibank/v1/vitrinaFondos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url_par_con}}/bcibank/v1/vitrinaFondos?fechaActual={{vf_fechaActual}}&horizonte={{vf_horizonte}}",
+              "host": [
+                "{{url_par_con}}"
+              ],
+              "path": [
+                "bcibank",
+                "v1",
+                "vitrinaFondos"
+              ],
+              "query": [
+                {
+                  "key": "codigoFondo",
+                  "value": "",
+                  "description": "[OPCIONAL] Código del Fondo (int32)",
+                  "disabled": true
+                },
+                {
+                  "key": "canal",
+                  "value": "",
+                  "description": "[OPCIONAL] Canal (string)",
+                  "disabled": true
+                },
+                {
+                  "key": "fechaActual",
+                  "value": "{{vf_fechaActual}}",
+                  "description": "[REQUERIDO] Fecha Actual formato yyyyMMdd"
+                },
+                {
+                  "key": "horizonte",
+                  "value": "{{vf_horizonte}}",
+                  "description": "[REQUERIDO] Horizonte: 0=Todos | 1=Menos de 1 año | 2=Entre 1 y 2 años | 3=Más de 2 años"
+                },
+                {
+                  "key": "riesgo",
+                  "value": "",
+                  "description": "[OPCIONAL] Riesgo: B=Muy Conservador | C=Conservador | M=Balanceado | A=Agresivo | D=Muy Agresivo",
+                  "disabled": true
+                },
+                {
+                  "key": "banca",
+                  "value": "",
+                  "description": "[OPCIONAL] Banca (string)",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Retorna los datos de vitrina de Fondos filtrados según parámetros.\n\nServicio: storm-bci-par-con | Archivo: BCI Bank- API par-con.json\nMétodo HTTP: GET\n\nRespuesta 200: array de VitrinaFondosReturn (ver spec para listado completo de campos)\n  Incluye: codigoFondo, nombreFondo, valorCuotaActual, rentabilidades 30/90/365 días y YTD, horizonte, riesgo, montoMinimoInversion, etc."
+          },
+          "response": []
+        },
+        {
+          "name": "GET /bcibank/v1/consultarParticipeFATCA",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url_par_con}}/bcibank/v1/consultarParticipeFATCA?rutParticipe={{fatca_rutParticipe}}",
+              "host": [
+                "{{url_par_con}}"
+              ],
+              "path": [
+                "bcibank",
+                "v1",
+                "consultarParticipeFATCA"
+              ],
+              "query": [
+                {
+                  "key": "rutParticipe",
+                  "value": "{{fatca_rutParticipe}}",
+                  "description": "[REQUERIDO] RUT del partícipe (integer int32)"
+                }
+              ]
+            },
+            "description": "Recupera datos FATCA del partícipe a partir del RUT.\n\nServicio: storm-bci-par-con | Archivo: BCI Bank- API par-con.json\nMétodo HTTP: GET\n\nRespuesta 200: ConsultarParticipeFACTAReturn\n  { xml (string) }\n\nNota: Este endpoint puede retornar HTTP 400 (error de negocio) además de 500. Tener en cuenta para el informe del Collection Runner."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "storm-bci-par-amb-otr (puerto 8078)",
+      "description": "Servicios PAR AMB Otros\nOrigen: BCI Bank- API par-amb-otr.json\nURL base: {{url_par_amb_otr}}",
+      "item": [
+        {
+          "name": "POST /bcibank/v1/registrarCGFFondoMutuo",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url_par_amb_otr}}/bcibank/v1/registrarCGFFondoMutuo?rutCliente={{rcgf_rutCliente}}&canal={{rcgf_canal}}&codigoEjecutivo={{rcgf_codigoEjecutivo}}&estadoCGF={{rcgf_estadoCGF}}",
+              "host": [
+                "{{url_par_amb_otr}}"
+              ],
+              "path": [
+                "bcibank",
+                "v1",
+                "registrarCGFFondoMutuo"
+              ],
+              "query": [
+                {
+                  "key": "rutCliente",
+                  "value": "{{rcgf_rutCliente}}",
+                  "description": "[REQUERIDO] RUT del cliente (string)"
+                },
+                {
+                  "key": "canal",
+                  "value": "{{rcgf_canal}}",
+                  "description": "[REQUERIDO] Código del Canal (string)"
+                },
+                {
+                  "key": "codigoEjecutivo",
+                  "value": "{{rcgf_codigoEjecutivo}}",
+                  "description": "[REQUERIDO] Código del ejecutivo que realiza el cambio de estado (string)"
+                },
+                {
+                  "key": "estadoCGF",
+                  "value": "{{rcgf_estadoCGF}}",
+                  "description": "[REQUERIDO] Nuevo estado del CGF: 0=Rechazado | 1=Aceptado"
+                }
+              ]
+            },
+            "description": "Registra la firma del CGF (Contrato General de Fondos) de Fondo Mutuo.\n\nServicio: storm-bci-par-amb-otr | Archivo: BCI Bank- API par-amb-otr.json\nMétodo HTTP: POST (todos los parámetros van en query string, sin body)\n\nRespuesta 200: {} (respuesta vacía sin esquema definido en el spec)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "storm-bci-fro-amb (puerto 8082)",
+      "description": "Servicios FrontOn AMB\nOrigen: BCI Bank- API fro-amb.json\nURL base: {{url_fro_amb}}",
+      "item": [
+        {
+          "name": "POST /bcibank/v1/entradaAlpFrontOn",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{url_fro_amb}}/bcibank/v1/entradaAlpFrontOn?cartera={{alp_cartera}}&instrumento={{alp_instrumento}}&operacion={{alp_operacion}}&indFecha={{alp_indFecha}}&nominal={{alp_nominal}}",
+              "host": [
+                "{{url_fro_amb}}"
+              ],
+              "path": [
+                "bcibank",
+                "v1",
+                "entradaAlpFrontOn"
+              ],
+              "query": [
+                {
+                  "key": "proceso",
+                  "value": "",
+                  "description": "[OPCIONAL] Proceso: GO=Generar Orden | GOE=+Ejecución | GOED=+Desglose | GOEDB=+volcado BackOffice",
+                  "disabled": true
+                },
+                {
+                  "key": "cartera",
+                  "value": "{{alp_cartera}}",
+                  "description": "[REQUERIDO] Cartera (integer int32)"
+                },
+                {
+                  "key": "instrumento",
+                  "value": "{{alp_instrumento}}",
+                  "description": "[REQUERIDO] Instrumento (integer int32)"
+                },
+                {
+                  "key": "operacion",
+                  "value": "{{alp_operacion}}",
+                  "description": "[REQUERIDO] Operación: C=Compra | V=Venta"
+                },
+                {
+                  "key": "indFecha",
+                  "value": "{{alp_indFecha}}",
+                  "description": "[REQUERIDO] Indicador de Fecha: PH | PM | CN"
+                },
+                {
+                  "key": "nominal",
+                  "value": "{{alp_nominal}}",
+                  "description": "[REQUERIDO] Nominal (number double)"
+                },
+                {
+                  "key": "precio",
+                  "value": "",
+                  "description": "[OPCIONAL] Precio (number double)",
+                  "disabled": true
+                },
+                {
+                  "key": "tasa",
+                  "value": "",
+                  "description": "[OPCIONAL] Tasa (number double)",
+                  "disabled": true
+                },
+                {
+                  "key": "efectivoDiv",
+                  "value": "",
+                  "description": "[OPCIONAL] Monto efectivo divisa (number double)",
+                  "disabled": true
+                },
+                {
+                  "key": "enlaceContraparte",
+                  "value": "",
+                  "description": "[OPCIONAL] Enlace Contraparte (string)",
+                  "disabled": true
+                },
+                {
+                  "key": "enlaceBroker",
+                  "value": "",
+                  "description": "[OPCIONAL] Enlace Broker (string)",
+                  "disabled": true
+                },
+                {
+                  "key": "enlaceDepositario",
+                  "value": "",
+                  "description": "[OPCIONAL] Enlace Depositario (string)",
+                  "disabled": true
+                },
+                {
+                  "key": "enlaceLiquidadora",
+                  "value": "",
+                  "description": "[OPCIONAL] Enlace Liquidadora (string)",
+                  "disabled": true
+                },
+                {
+                  "key": "portManager",
+                  "value": "",
+                  "description": "[OPCIONAL] Port Manager (integer int32)",
+                  "disabled": true
+                }
+              ]
+            },
+            "description": "Entrada Orden ALP (Activos de Largo Plazo).\n\nServicio: storm-bci-fro-amb | Archivo: BCI Bank- API fro-amb.json\nMétodo HTTP: POST (todos los parámetros van en query string, sin body)\n\nRespuesta 200: array de EntradaOrdenesReturn\n  { codigoOrden (int32), codigoEjecucion (int32), codigoDesglose (int32), codigoOpc (int32) }\n\nNota: El parámetro 'proceso' controla hasta qué etapa se ejecuta la orden. Si se omite, activar y setear el valor deseado para el caso feliz."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
