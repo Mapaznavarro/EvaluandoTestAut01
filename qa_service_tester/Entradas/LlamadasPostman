@@ -1,0 +1,96 @@
+abq/fronton/altaOrdenRentaVariable
+{"usuario":1, "operacion":"C", "instrumento":171, "cartera":706, "titulos":110000.05, "indPrecio":"A", "cotizacion":235.09, "fechaLimiteHasta":"25/11/2026", "broker":50}
+{"usuario":1, "operacion":"V", "instrumento":171, "cartera":706, "titulos":110000.05, "indPrecio":"A", "cotizacion":236.09, "fechaLimiteHasta":"25/11/2026", "broker":50}
+{"usuario":1, "operacion":"V", "instrumento":171, "cartera":706, "titulos":110000.05, "indPrecio":"A", "cotizacion":235.09, "fechaLimiteHasta":"25/11/2026", "broker":50}
+{"usuario":1, "operacion":"X", "instrumento":171, "cartera":706, "titulos":110000.05, "indPrecio":"A", "cotizacion":235.09, "fechaLimiteHasta":"25/11/2026", "broker":50}
+{"usuario":1, "operacion":"C", "instrumento":5, "cartera":706, "titulos":110000.05, "indPrecio":"A", "cotizacion":235.09, "fechaLimiteHasta":"25/11/2026", "broker":50}
+{"usuario":1, "operacion":"C", "instrumento":39535, "cartera":706, "titulos":110000.05, "indPrecio":"A", "cotizacion":235.09, "fechaLimiteHasta":"25/11/2026", "broker":50}
+{"usuario":1, "operacion":"C", "instrumento":171, "cartera":123456789, "titulos":110000.05, "indPrecio":"A", "cotizacion":235.09, "fechaLimiteHasta":"25/11/2026", "broker":50}
+{"usuario":1, "operacion":"C", "instrumento":171, "cartera":999, "titulos":110000.05, "indPrecio":"A", "cotizacion":235.09, "fechaLimiteHasta":"25/11/2026", "broker":50}
+{"usuario":1, "operacion":"C", "instrumento":171, "cartera":706, "titulos":10000010000000000000000005.00, "indPrecio":"A", "cotizacion":235.09, "fechaLimiteHasta":"25/11/2026", "broker":50}
+{"usuario":1, "operacion":"C", "instrumento":171, "cartera":706, "titulos":-123000.00, "indPrecio":"A", "cotizacion":235.09, "fechaLimiteHasta":"25/11/2026", "broker":50}
+{"usuario":1, "operacion":"C", "instrumento":171, "cartera":706, "titulos":110000.05, "indPrecio":"R", "cotizacion":235.09, "fechaLimiteHasta":"25/11/2026", "broker":50}
+{"usuario":1, "operacion":"C", "instrumento":171, "cartera":706, "titulos":110000.05, "indPrecio":"A", "cotizacion":-200.00, "fechaLimiteHasta":"25/11/2026", "broker":50}
+{"usuario":1, "operacion":"C", "instrumento":171, "cartera":706, "titulos":110000.05, "indPrecio":"A", "cotizacion":235.09, "fechaLimiteHasta":"50/11/2026", "broker":50}
+{"usuario":1, "operacion":"C", "instrumento":171, "cartera":706, "titulos":110000.05, "indPrecio":"A", "cotizacion":235.09, "fechaLimiteHasta":"12-11-2026", "broker":50}
+{"usuario":1, "operacion":"C", "instrumento":171, "cartera":706, "titulos":110000.05, "indPrecio":"A", "cotizacion":235.09, "fechaLimiteHasta":"12-11-2026", "broker":80}
+abq/fronton/altaOrdenRentaFija
+{"usuario":1, "operacion":"C", "indPrimarioSecundario":"P", "instrumento":171, "cartera":706, "nominalDiv":110000.05, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+
+{"usuario":1, "operacion":"V", "indPrimarioSecundario":"P", "instrumento":171, "cartera":706, "nominalDiv":110000.05, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"usuario":1, "operacion":"V", "indPrimarioSecundario":"P", "instrumento":171, "cartera":706, "nominalDiv":110000.05, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"usuario":1, "operacion":"X", "indPrimarioSecundario":"P", "instrumento":171, "cartera":706, "nominalDiv":110000.05, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"usuario":1, "operacion":"C", "indPrimarioSecundario":"P", "instrumento":5, "cartera":706, "nominalDiv":110000.05, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"usuario":1, "operacion":"C", "indPrimarioSecundario":"P", "instrumento":44541, "cartera":706, "nominalDiv":110000.05, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"usuario":1, "operacion":"C", "indPrimarioSecundario":"P", "instrumento":171, "cartera":12345678, "nominalDiv":110000.05, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"usuario":1, "operacion":"C", "indPrimarioSecundario":"P", "instrumento":171, "cartera":999, "nominalDiv":110000.05, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"usuario":1, "operacion":"C", "indPrimarioSecundario":"P", "instrumento":171, "cartera":706, "nominalDiv":10000010000000000000000005.00, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"usuario":1, "operacion":"C", "indPrimarioSecundario":"P", "instrumento":171, "cartera":706, "nominalDiv":-110000.05, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"usuario":1, "operacion":"C", "indPrimarioSecundario":"P", "instrumento":171, "cartera":706, "nominalDiv":110000.05, "indPrecio":"R", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"usuario":1, "operacion":"C", "indPrimarioSecundario":"P", "instrumento":171, "cartera":706, "nominalDiv":110000.05, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":-223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"usuario":1, "operacion":"C", "indPrimarioSecundario":"P", "instrumento":171, "cartera":706, "nominalDiv":110000.05, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"50/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"usuario":1, "operacion":"C", "indPrimarioSecundario":"P", "instrumento":171, "cartera":706, "nominalDiv":110000.05, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26-11-2026"}
+{"usuario":1, "operacion":"C", "indPrimarioSecundario":"J", "instrumento":171, "cartera":706, "nominalDiv":110000.05, "indPrecio":"A", "tasaOpe":1.18, "cotizacion":223.40, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+
+abq/fronton/altaOrdenIIF
+{"baseCalculo":3, "cartera":706, "indPrimarioSecundario":"P", "instrumento":39535, "nominalDiv":110000.05, "operacion":"C", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"25/11/2026"}
+{"baseCalculo":3, "cartera":706, "indPrimarioSecundario":"P", "instrumento":39535, "nominalDiv":110000.05, "operacion":"V", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"25/11/2026"}
+{"baseCalculo":3, "cartera":706, "indPrimarioSecundario":"P", "instrumento":39535, "nominalDiv":110000.05, "operacion":"V", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"25/11/2026"}
+{"baseCalculo":3, "cartera":706, "indPrimarioSecundario":"P", "instrumento":39535, "nominalDiv":110000.05, "operacion":"X", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"25/11/2026"}
+{"baseCalculo":3, "cartera":706, "indPrimarioSecundario":"P", "instrumento":5, "nominalDiv":110000.05, "operacion":"C", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"25/11/2026"}
+{"baseCalculo":3, "cartera":706, "indPrimarioSecundario":"P", "instrumento":48264, "nominalDiv":110000.05, "operacion":"C", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"25/11/2026"}
+{"baseCalculo":3, "cartera":12345678, "indPrimarioSecundario":"P", "instrumento":39535, "nominalDiv":110000.05, "operacion":"C", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"25/11/2026"}
+{"baseCalculo":3, "cartera":999, "indPrimarioSecundario":"P", "instrumento":39535, "nominalDiv":110000.05, "operacion":"C", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"25/11/2026"}
+{"baseCalculo":3, "cartera":706, "indPrimarioSecundario":"P", "instrumento":39535, "nominalDiv":10000010000000000000000005.00, "operacion":"C", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"25/11/2026"}
+{"baseCalculo":3, "cartera":706, "indPrimarioSecundario":"P", "instrumento":39535, "nominalDiv":-110000.05, "operacion":"C", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"25/11/2026"}
+{"baseCalculo":3, "cartera":706, "indPrimarioSecundario":"P", "instrumento":39535, "nominalDiv":110000.05, "operacion":"C", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"50/11/2026"}
+{"baseCalculo":3, "cartera":706, "indPrimarioSecundario":"P", "instrumento":39535, "nominalDiv":110000.05, "operacion":"C", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"25-11-2026"}
+{"baseCalculo":3, "cartera":706, "indPrimarioSecundario":"J", "instrumento":39535, "nominalDiv":110000.05, "operacion":"C", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"25/11/2026"}
+{"baseCalculo":400, "cartera":706, "indPrimarioSecundario":"P", "instrumento":39535, "nominalDiv":110000.05, "operacion":"C", "tasaOpe":1.18, "usuario":1, "fechaLiquidacion":"25/11/2026"}
+
+abq/fronton/altaOrdenGlobalRentaVariable
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "V", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "V", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "K", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 5, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 0, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 39535, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 99706, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 999, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 100000100000000000000000.05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : -10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "K", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : -223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "75/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "02-11-2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000,05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000.05 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000.05 }, {"cartera": 701, "importe": 10000000 }, {"cartera": 710, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 701, "importe": 200000.05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 3400000.01666667 }, {"cartera": 701, "importe": 6800000.03333333 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2023", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 200000.05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 80, "prerepartos" :  [{"cartera": 706, "importe": 200000.05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 100000.05 }, {"cartera": 701, "importe": 10000000 }]}
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000,05, "usuario" : 1, "cotizacion" : 223,55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 700000.05 }, {"cartera": 701, "importe": 10000000 }]}
+
+abq/fronton/altaOrdenCuotas
+{"cartera":706, "efctivoDiv":10200000.05, "instrumento":42808, "operacion":"C", "usuario":1, "cotizacion":235.67, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"cartera":706, "efctivoDiv":10200000.05, "instrumento":42808, "operacion":"V", "usuario":1, "cotizacion":235.67, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"cartera":706, "efctivoDiv":10200000.05, "instrumento":42808, "operacion":"V", "usuario":1, "cotizacion":235.67, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"cartera":706, "efctivoDiv":10200000.05, "instrumento":42808, "operacion":"X", "usuario":1, "cotizacion":235.67, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"cartera":706, "efctivoDiv":10200000.05, "instrumento":5, "operacion":"C", "usuario":1, "cotizacion":235.67, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"cartera":706, "efctivoDiv":10200000.05, "instrumento":0, "operacion":"C", "usuario":1, "cotizacion":235.67, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"cartera":706, "efctivoDiv":10200000.05, "instrumento":37377, "operacion":"C", "usuario":1, "cotizacion":235.67, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"cartera":999706, "efctivoDiv":10200000.05, "instrumento":42808, "operacion":"C", "usuario":1, "cotizacion":235.67, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"cartera":999, "efctivoDiv":10200000.05, "instrumento":42808, "operacion":"C", "usuario":1, "cotizacion":235.67, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"cartera":706, "efctivoDiv":10000010000000000000000005.00, "instrumento":42808, "operacion":"C", "usuario":1, "cotizacion":235.67, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"cartera":706, "efctivoDiv":-10200000.05, "instrumento":42808, "operacion":"C", "usuario":1, "cotizacion":235.67, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"cartera":706, "efctivoDiv":10200000.05, "instrumento":42808, "operacion":"C", "usuario":1, "cotizacion":-235.67, "fechaLimiteHasta":"25/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"cartera":706, "efctivoDiv":10200000.05, "instrumento":42808, "operacion":"C", "usuario":1, "cotizacion":235.67, "fechaLimiteHasta":"78/11/2026", "fechaLiquidacion":"26/11/2026"}
+{"cartera":706, "efctivoDiv":10200000.05, "instrumento":42808, "operacion":"C", "usuario":1, "cotizacion":235.67, "fechaLimiteHasta":"25-11-2026", "fechaLiquidacion":"26/11/2026"}
+
+abq/fronton/altaInstrumentoIF
+{"alias":"XXXXXX999999", "mercadoCotizacion":999, "usuario":1}
+{"alias":"XXXXXX999999", "mercadoCotizacion":999, "usuario":1}
+{"alias":"XXXXXX999999", "mercadoCotizacion":999, "usuario":1}
+{"alias":"XXXXXX999999", "mercadoCotizacion":999, "usuario":1}
+
