@@ -1,0 +1,1829 @@
+{
+  "info": {
+    "_postman_id": "27ec2d5a-b5d4-430c-ab1a-394e03d7a627",
+    "name": "OpenAPI definition",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "40101611"
+  },
+  "item": [
+    {
+      "name": "abq",
+      "item": [
+        {
+          "name": "fronton",
+          "item": [
+            {
+              "name": "saldoCartera",
+              "item": [
+                {
+                  "name": "Retorna el saldo de la cartera",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"cartera\": 7733,\n  \"usuario\": 3862\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/abq/fronton/saldoCartera",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "abq",
+                        "fronton",
+                        "saldoCartera"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Lista de datos de la cartera seleccionada por parametros.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cartera\": 7733,\n  \"usuario\": 3862\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/saldoCartera",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "saldoCartera"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"cartera\": 7284,\n    \"nombreCartera\": \"string\",\n    \"fechaConsulta\": \"1991-05-31T11:28:10.271Z\",\n    \"usuario\": \"string\",\n    \"instrumentos\": [\n      {\n        \"instrumento\": 5739,\n        \"nombreInstrumento\": \"string\",\n        \"titulos_INI\": 3702.042321878003,\n        \"nominal_INI\": 6938.795018228449,\n        \"nominal_INI_DIV\": 9049.311666802309,\n        \"coste_INI\": 4815.413983051578,\n        \"coste_INI_DIV\": 9886.28119337294,\n        \"cupon_COMPRA_INI\": 7416.519080515798,\n        \"cupon_COMPRA_INI_DIV\": 3631.3323698948598,\n        \"cupon_PER_INI\": 8493.850967269178,\n        \"cupon_PER_INI_DIV\": 9598.658276814307,\n        \"efectivo_VTO_INI\": 2055.982707996409,\n        \"efectivo_VTO_INI_DIV\": 109.61411569929025,\n        \"valia_INI\": 9982.244233236164,\n        \"valia_INI_DIV\": 5318.374633104184,\n        \"titulos_DIS\": 4340.21579622987,\n        \"nominal_DIS\": 4415.442834860368,\n        \"nominal_DIS_DIV\": 4030.1937937961975,\n        \"coste_DIS\": 3732.990312788322,\n        \"coste_DIS_DIV\": 3839.9435550199846,\n        \"cupon_COMPRA_DIS\": 15.306717216274635,\n        \"cupon_COMPRA_DIS_DIV\": 2485.3351019412153,\n        \"cupon_PER_DIS\": 9009.649368582892,\n        \"cupon_PER_DIS_DIV\": 1621.351702396534,\n        \"efectivo_VTO_DIS\": 5145.563011579077,\n        \"efectivo_VTO_DIS_DIV\": 9876.09705173233,\n        \"coste_DIA_DIS\": 6826.784171510678,\n        \"coste_DIA_DIS_DIV\": 7056.059663510081,\n        \"resultado_DIA\": 966.8560528651171,\n        \"resultado_DIA_DIV\": 7270.28847436896,\n        \"efectivo\": 782.7869100436491,\n        \"efectivo_DIV\": 6794.180684467859,\n        \"cotizacion\": 111.36527256362383,\n        \"cotizacion_SOBRE_PAR\": 8219.282370512796,\n        \"cam_DIVISA\": 6289.769546851354,\n        \"delta\": 8257.599570139193,\n        \"efe_COMPROMETIDO\": 6327.352359488654,\n        \"efe_COMPROMETIDO_DIV\": 5469.78148892923,\n        \"efe_SUBYACENTE\": 9981.04392243212,\n        \"efe_SUBYACENTE_DIV\": 2348.3419502848533,\n        \"tir_MERCADO\": 9446.315441726487,\n        \"tir_COSTE\": 209.68161488545744,\n        \"duracion\": 6309.7844797253665,\n        \"sensibilidad\": 1838.889910239785,\n        \"vida_MEDIA\": 4831.842569961206,\n        \"convexidad\": 8323.724581821834,\n        \"duracion_MESES\": 6435.570099670526,\n        \"duracion_DIAS\": 2164.813149080287,\n        \"subyacente\": 3268,\n        \"sensibilidad_SUBYACENTE\": 967.0259757432831\n      },\n      {\n        \"instrumento\": 7783,\n        \"nombreInstrumento\": \"string\",\n        \"titulos_INI\": 4673.773532205694,\n        \"nominal_INI\": 3712.551530227897,\n        \"nominal_INI_DIV\": 2152.6701549464856,\n        \"coste_INI\": 425.2220520214367,\n        \"coste_INI_DIV\": 2415.1661312186225,\n        \"cupon_COMPRA_INI\": 7088.56982872335,\n        \"cupon_COMPRA_INI_DIV\": 9760.60950651169,\n        \"cupon_PER_INI\": 1529.181633770731,\n        \"cupon_PER_INI_DIV\": 8997.589281739358,\n        \"efectivo_VTO_INI\": 3152.7488986345297,\n        \"efectivo_VTO_INI_DIV\": 2310.8473882807657,\n        \"valia_INI\": 2904.2063279630324,\n        \"valia_INI_DIV\": 5527.546993029382,\n        \"titulos_DIS\": 2577.009292197234,\n        \"nominal_DIS\": 3531.8994982633644,\n        \"nominal_DIS_DIV\": 328.69648299525653,\n        \"coste_DIS\": 6517.968290097587,\n        \"coste_DIS_DIV\": 1753.1807877664685,\n        \"cupon_COMPRA_DIS\": 3000.8199609425023,\n        \"cupon_COMPRA_DIS_DIV\": 7837.555357661868,\n        \"cupon_PER_DIS\": 1930.2563285389529,\n        \"cupon_PER_DIS_DIV\": 2836.3102193873124,\n        \"efectivo_VTO_DIS\": 4395.186165204217,\n        \"efectivo_VTO_DIS_DIV\": 6993.868395290859,\n        \"coste_DIA_DIS\": 9242.386221189487,\n        \"coste_DIA_DIS_DIV\": 4989.32693259857,\n        \"resultado_DIA\": 7669.475528244118,\n        \"resultado_DIA_DIV\": 3231.0624426644495,\n        \"efectivo\": 7407.524331653987,\n        \"efectivo_DIV\": 428.15682350113127,\n        \"cotizacion\": 9650.19298306832,\n        \"cotizacion_SOBRE_PAR\": 3186.380587089119,\n        \"cam_DIVISA\": 8367.160744068527,\n        \"delta\": 8732.565664786729,\n        \"efe_COMPROMETIDO\": 3295.3056964365433,\n        \"efe_COMPROMETIDO_DIV\": 3410.133668347761,\n        \"efe_SUBYACENTE\": 1912.7258807615744,\n        \"efe_SUBYACENTE_DIV\": 7548.387379205559,\n        \"tir_MERCADO\": 1244.559625842947,\n        \"tir_COSTE\": 7694.8088573808745,\n        \"duracion\": 6796.083363316645,\n        \"sensibilidad\": 7555.851049050759,\n        \"vida_MEDIA\": 5957.913861064839,\n        \"convexidad\": 8613.81415386413,\n        \"duracion_MESES\": 2975.470864117351,\n        \"duracion_DIAS\": 5871.261798190956,\n        \"subyacente\": 5668,\n        \"sensibilidad_SUBYACENTE\": 1399.1419914164971\n      }\n    ]\n  },\n  {\n    \"cartera\": 2677,\n    \"nombreCartera\": \"string\",\n    \"fechaConsulta\": \"2015-09-14T09:33:25.641Z\",\n    \"usuario\": \"string\",\n    \"instrumentos\": [\n      {\n        \"instrumento\": 7890,\n        \"nombreInstrumento\": \"string\",\n        \"titulos_INI\": 2298.770532803938,\n        \"nominal_INI\": 9298.2639108049,\n        \"nominal_INI_DIV\": 1313.5135221650908,\n        \"coste_INI\": 5262.36454604468,\n        \"coste_INI_DIV\": 8553.390360443209,\n        \"cupon_COMPRA_INI\": 7642.800222111945,\n        \"cupon_COMPRA_INI_DIV\": 8918.430288201871,\n        \"cupon_PER_INI\": 1230.9078270948294,\n        \"cupon_PER_INI_DIV\": 357.131782285931,\n        \"efectivo_VTO_INI\": 3396.3377997754396,\n        \"efectivo_VTO_INI_DIV\": 8926.165843855093,\n        \"valia_INI\": 5065.84314777417,\n        \"valia_INI_DIV\": 1086.4761521196176,\n        \"titulos_DIS\": 505.49608822836103,\n        \"nominal_DIS\": 2554.471650790542,\n        \"nominal_DIS_DIV\": 7058.790075216204,\n        \"coste_DIS\": 75.51582891858644,\n        \"coste_DIS_DIV\": 5950.310534198086,\n        \"cupon_COMPRA_DIS\": 8616.274557660809,\n        \"cupon_COMPRA_DIS_DIV\": 9857.451149698552,\n        \"cupon_PER_DIS\": 4833.345546055841,\n        \"cupon_PER_DIS_DIV\": 747.3152251951332,\n        \"efectivo_VTO_DIS\": 7148.237606692361,\n        \"efectivo_VTO_DIS_DIV\": 2097.9198723508553,\n        \"coste_DIA_DIS\": 7078.047478424028,\n        \"coste_DIA_DIS_DIV\": 4630.704653449174,\n        \"resultado_DIA\": 1665.1579604385458,\n        \"resultado_DIA_DIV\": 6131.271056675525,\n        \"efectivo\": 9083.612364104718,\n        \"efectivo_DIV\": 8587.977771241893,\n        \"cotizacion\": 2267.657308344184,\n        \"cotizacion_SOBRE_PAR\": 9193.439187977785,\n        \"cam_DIVISA\": 949.6109128534691,\n        \"delta\": 6913.786394739789,\n        \"efe_COMPROMETIDO\": 6381.888064949994,\n        \"efe_COMPROMETIDO_DIV\": 8740.266336367704,\n        \"efe_SUBYACENTE\": 4257.054784306045,\n        \"efe_SUBYACENTE_DIV\": 2532.020544214393,\n        \"tir_MERCADO\": 1451.7894166963563,\n        \"tir_COSTE\": 1096.3889721243181,\n        \"duracion\": 562.4524252711183,\n        \"sensibilidad\": 1160.2149160260167,\n        \"vida_MEDIA\": 9772.643000752401,\n        \"convexidad\": 9899.145670123797,\n        \"duracion_MESES\": 2911.3087707497143,\n        \"duracion_DIAS\": 8945.987376741181,\n        \"subyacente\": 6579,\n        \"sensibilidad_SUBYACENTE\": 8808.769426921166\n      },\n      {\n        \"instrumento\": 591,\n        \"nombreInstrumento\": \"string\",\n        \"titulos_INI\": 9469.74301774183,\n        \"nominal_INI\": 4520.551211327508,\n        \"nominal_INI_DIV\": 153.7551895575806,\n        \"coste_INI\": 5474.348776819083,\n        \"coste_INI_DIV\": 3492.545673945615,\n        \"cupon_COMPRA_INI\": 8355.202946986004,\n        \"cupon_COMPRA_INI_DIV\": 7580.496155783198,\n        \"cupon_PER_INI\": 4312.116107005615,\n        \"cupon_PER_INI_DIV\": 198.8530752654749,\n        \"efectivo_VTO_INI\": 9964.284869824078,\n        \"efectivo_VTO_INI_DIV\": 361.15130383994386,\n        \"valia_INI\": 8065.436174113327,\n        \"valia_INI_DIV\": 7772.795308217315,\n        \"titulos_DIS\": 2695.5664365836183,\n        \"nominal_DIS\": 833.9794112197874,\n        \"nominal_DIS_DIV\": 2158.3868800473647,\n        \"coste_DIS\": 5163.077977711328,\n        \"coste_DIS_DIV\": 4911.36996413353,\n        \"cupon_COMPRA_DIS\": 1986.2691912819153,\n        \"cupon_COMPRA_DIS_DIV\": 7481.528653767972,\n        \"cupon_PER_DIS\": 2108.597649529087,\n        \"cupon_PER_DIS_DIV\": 5405.726053902269,\n        \"efectivo_VTO_DIS\": 9119.368156243283,\n        \"efectivo_VTO_DIS_DIV\": 7091.75937461338,\n        \"coste_DIA_DIS\": 2459.6099749177515,\n        \"coste_DIA_DIS_DIV\": 2537.088985794924,\n        \"resultado_DIA\": 8533.554520638365,\n        \"resultado_DIA_DIV\": 1721.562794055418,\n        \"efectivo\": 1559.034190846227,\n        \"efectivo_DIV\": 2608.492991202094,\n        \"cotizacion\": 1464.8266719133774,\n        \"cotizacion_SOBRE_PAR\": 3863.8448514609913,\n        \"cam_DIVISA\": 1463.084499566032,\n        \"delta\": 1903.1503686997842,\n        \"efe_COMPROMETIDO\": 2442.5037138809435,\n        \"efe_COMPROMETIDO_DIV\": 7410.211009667418,\n        \"efe_SUBYACENTE\": 8250.783596276806,\n        \"efe_SUBYACENTE_DIV\": 1002.7346929797121,\n        \"tir_MERCADO\": 8774.683461692688,\n        \"tir_COSTE\": 8548.242853178766,\n        \"duracion\": 1722.379282551516,\n        \"sensibilidad\": 4837.745550211421,\n        \"vida_MEDIA\": 2372.673123133935,\n        \"convexidad\": 2369.263300269422,\n        \"duracion_MESES\": 1238.5801948168917,\n        \"duracion_DIAS\": 3595.5420441507413,\n        \"subyacente\": 2299,\n        \"sensibilidad_SUBYACENTE\": 1605.0166058431591\n      }\n    ]\n  }\n]"
+                    },
+                    {
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cartera\": 7733,\n  \"usuario\": 3862\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/saldoCartera",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "saldoCartera"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"title\": \"string\",\n  \"descripcion\": \"string\",\n  \"errores\": [\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "patrimonioCartera",
+              "item": [
+                {
+                  "name": "Retorna el patrimonio Online de la cartera.",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"cartera\": 7733,\n  \"usuario\": 3862\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/abq/fronton/patrimonioCartera",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "abq",
+                        "fronton",
+                        "patrimonioCartera"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Patrimonio Online de la cartera seleccionada por parametros.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cartera\": 7733,\n  \"usuario\": 3862\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/patrimonioCartera",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "patrimonioCartera"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"cartera\": 3628,\n    \"nombreCartera\": \"string\",\n    \"fechaConsulta\": \"2021-05-29T00:55:35.664Z\",\n    \"usuario\": \"string\",\n    \"patrimonio\": 1380.3647551946474\n  },\n  {\n    \"cartera\": 6276,\n    \"nombreCartera\": \"string\",\n    \"fechaConsulta\": \"1973-08-21T16:39:22.853Z\",\n    \"usuario\": \"string\",\n    \"patrimonio\": 7138.665876775725\n  }\n]"
+                    },
+                    {
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cartera\": 7733,\n  \"usuario\": 3862\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/patrimonioCartera",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "patrimonioCartera"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"title\": \"string\",\n  \"descripcion\": \"string\",\n  \"errores\": [\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "liquidezCartera",
+              "item": [
+                {
+                  "name": "Retorna el flujo de caja de la cartera.",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"cartera\": 7733,\n  \"usuario\": 3862\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/abq/fronton/liquidezCartera",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "abq",
+                        "fronton",
+                        "liquidezCartera"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Flujo de caja de la cartera seleccionada por parametros.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cartera\": 7733,\n  \"usuario\": 3862\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/liquidezCartera",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "liquidezCartera"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"cartera\": 3765,\n    \"nombreCartera\": \"string\",\n    \"fechaConsulta\": \"2017-08-12T18:45:50.634Z\",\n    \"usuario\": \"string\",\n    \"PH\": [\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 9270.221948384617,\n        \"vencimientos\": 5601.626309635164,\n        \"rescates\": 1289.4227705464712,\n        \"aportes\": 9051.077242951886,\n        \"compras\": 933.9034403991798,\n        \"ventas\": 8801.227310163777,\n        \"saldoFinal\": 8854.977865222047\n      },\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 3035.4984935583707,\n        \"vencimientos\": 4749.604928550914,\n        \"rescates\": 2639.752494871952,\n        \"aportes\": 114.4542387955938,\n        \"compras\": 2706.934665028826,\n        \"ventas\": 8318.00558692978,\n        \"saldoFinal\": 3989.023127703046\n      }\n    ],\n    \"PM\": [\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 9859.99959429661,\n        \"vencimientos\": 9484.84872572921,\n        \"rescates\": 1487.1598061939385,\n        \"aportes\": 4303.0455787998335,\n        \"compras\": 9953.001634802866,\n        \"ventas\": 6794.944834114101,\n        \"saldoFinal\": 8526.19954474679\n      },\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 9606.706972450798,\n        \"vencimientos\": 214.06333012540912,\n        \"rescates\": 8099.568420048733,\n        \"aportes\": 4668.8281846132695,\n        \"compras\": 8364.78031397397,\n        \"ventas\": 1907.2931679704586,\n        \"saldoFinal\": 2485.7771559538724\n      }\n    ],\n    \"CN\": [\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 9578.36956140082,\n        \"vencimientos\": 3063.842711949767,\n        \"rescates\": 7565.429824684727,\n        \"aportes\": 2844.961113153819,\n        \"compras\": 4359.599519381798,\n        \"ventas\": 1816.8460685062594,\n        \"saldoFinal\": 959.2833699235448\n      },\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 1995.1750944935843,\n        \"vencimientos\": 5767.331204703978,\n        \"rescates\": 4191.330405884608,\n        \"aportes\": 6972.856001045205,\n        \"compras\": 5902.806768552416,\n        \"ventas\": 545.5685052019077,\n        \"saldoFinal\": 8487.846973526206\n      }\n    ],\n    \"T+3\": [\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 2714.795832562642,\n        \"vencimientos\": 277.35377162615646,\n        \"rescates\": 8812.44621509373,\n        \"aportes\": 3026.8086533722017,\n        \"compras\": 1870.008503294507,\n        \"ventas\": 9006.883237318061,\n        \"saldoFinal\": 1937.6621789638903\n      },\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 3816.5157454323207,\n        \"vencimientos\": 8649.24307762816,\n        \"rescates\": 8048.341743638445,\n        \"aportes\": 1902.280971074497,\n        \"compras\": 5882.375908916966,\n        \"ventas\": 9900.801682550748,\n        \"saldoFinal\": 3843.923214956766\n      }\n    ],\n    \"T+4\": [\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 4818.072589484428,\n        \"vencimientos\": 2583.3188195523517,\n        \"rescates\": 3068.4377458704803,\n        \"aportes\": 2941.4305600594216,\n        \"compras\": 3660.6454655296016,\n        \"ventas\": 9312.505666063598,\n        \"saldoFinal\": 7434.0310492220115\n      },\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 218.11438962836993,\n        \"vencimientos\": 99.42609763613719,\n        \"rescates\": 4179.120883905767,\n        \"aportes\": 151.8932097235459,\n        \"compras\": 6409.325661926393,\n        \"ventas\": 8468.50881344661,\n        \"saldoFinal\": 5230.387115029709\n      }\n    ],\n    \"T+5\": [\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 4441.461205868593,\n        \"vencimientos\": 8455.892750439012,\n        \"rescates\": 7905.266813565475,\n        \"aportes\": 4746.25318063596,\n        \"compras\": 5395.817294470439,\n        \"ventas\": 9151.380832093673,\n        \"saldoFinal\": 1565.431139791409\n      },\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 4111.510927038254,\n        \"vencimientos\": 780.1352982537302,\n        \"rescates\": 3464.158526293861,\n        \"aportes\": 3382.162465115799,\n        \"compras\": 9735.326679373342,\n        \"ventas\": 2356.711389018464,\n        \"saldoFinal\": 1043.3337363485996\n      }\n    ]\n  },\n  {\n    \"cartera\": 8448,\n    \"nombreCartera\": \"string\",\n    \"fechaConsulta\": \"2022-01-25T05:31:14.964Z\",\n    \"usuario\": \"string\",\n    \"PH\": [\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 399.696966060743,\n        \"vencimientos\": 8314.245057023994,\n        \"rescates\": 3591.573233086045,\n        \"aportes\": 1924.4973853178205,\n        \"compras\": 1867.3008653383326,\n        \"ventas\": 1392.6578910856158,\n        \"saldoFinal\": 1816.8381965535452\n      },\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 4210.804292776109,\n        \"vencimientos\": 5529.258843760074,\n        \"rescates\": 9316.816497403317,\n        \"aportes\": 7826.228939092115,\n        \"compras\": 6486.840489693571,\n        \"ventas\": 386.29453293180126,\n        \"saldoFinal\": 8349.963339469094\n      }\n    ],\n    \"PM\": [\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 131.5215794441782,\n        \"vencimientos\": 9356.36978623992,\n        \"rescates\": 9743.81663510215,\n        \"aportes\": 7200.872016927211,\n        \"compras\": 9507.715024460302,\n        \"ventas\": 1508.638453556723,\n        \"saldoFinal\": 427.9429473509544\n      },\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 6075.7919475419285,\n        \"vencimientos\": 5929.8408781990465,\n        \"rescates\": 3173.755174922175,\n        \"aportes\": 9957.426872799317,\n        \"compras\": 9453.134589796835,\n        \"ventas\": 2851.620592015933,\n        \"saldoFinal\": 9626.605303579532\n      }\n    ],\n    \"CN\": [\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 9829.80010709105,\n        \"vencimientos\": 6635.349711797278,\n        \"rescates\": 4581.273931898413,\n        \"aportes\": 9199.4110514234,\n        \"compras\": 1750.6418147104719,\n        \"ventas\": 270.38079541157333,\n        \"saldoFinal\": 1566.7228682395585\n      },\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 4686.872480304382,\n        \"vencimientos\": 3857.2732808785727,\n        \"rescates\": 8612.99296115097,\n        \"aportes\": 8801.123305836509,\n        \"compras\": 5167.136724051337,\n        \"ventas\": 1711.1144290855184,\n        \"saldoFinal\": 2702.2201023245552\n      }\n    ],\n    \"T+3\": [\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 3930.2970786361134,\n        \"vencimientos\": 6031.18592901722,\n        \"rescates\": 883.9708136737445,\n        \"aportes\": 78.67287577337345,\n        \"compras\": 4505.411109282949,\n        \"ventas\": 2283.410368097447,\n        \"saldoFinal\": 786.8859550986328\n      },\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 8485.81515239872,\n        \"vencimientos\": 8849.01414728528,\n        \"rescates\": 4531.656488505067,\n        \"aportes\": 363.09315211951576,\n        \"compras\": 7197.272035096052,\n        \"ventas\": 4502.4504179217665,\n        \"saldoFinal\": 6904.328976290423\n      }\n    ],\n    \"T+4\": [\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 9451.325963636496,\n        \"vencimientos\": 3971.680425311599,\n        \"rescates\": 8256.68659768481,\n        \"aportes\": 7095.585218063978,\n        \"compras\": 1989.9121282675615,\n        \"ventas\": 6788.156255179947,\n        \"saldoFinal\": 2909.0090935097733\n      },\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 5795.86111135653,\n        \"vencimientos\": 2669.858806027414,\n        \"rescates\": 5135.9704393937,\n        \"aportes\": 1354.504604232496,\n        \"compras\": 9918.69967540612,\n        \"ventas\": 2697.695673395324,\n        \"saldoFinal\": 419.96022416100675\n      }\n    ],\n    \"T+5\": [\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 7418.882053418421,\n        \"vencimientos\": 4502.207404618228,\n        \"rescates\": 3689.004155891893,\n        \"aportes\": 155.24184681096287,\n        \"compras\": 275.9527754767976,\n        \"ventas\": 685.6264871060769,\n        \"saldoFinal\": 2863.30039118414\n      },\n      {\n        \"custodio\": \"string\",\n        \"divisa\": \"string\",\n        \"saldoInicial\": 2694.418574039088,\n        \"vencimientos\": 7265.647307530332,\n        \"rescates\": 771.5620092304198,\n        \"aportes\": 7726.9478426692585,\n        \"compras\": 7607.5471025131255,\n        \"ventas\": 3054.3003864449815,\n        \"saldoFinal\": 9871.15032280427\n      }\n    ]\n  }\n]"
+                    },
+                    {
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cartera\": 7733,\n  \"usuario\": 3862\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/liquidezCartera",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "liquidezCartera"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"title\": \"string\",\n  \"descripcion\": \"string\",\n  \"errores\": [\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "altaOrdenRentaVariable",
+              "item": [
+                {
+                  "name": "Servicio de alta de orden FrontOn de Renta Variable",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "//{\n//  \"cartera\": 555,\n// \"indPrecio\": \"A\",\n//  \"instrumento\": 999,\n//  \"operacion\": \"C\",\n//\"titulos\": 11,\n//\"usuario\": 123,\n//\"cotizacion\": 22,\n//\"fechaLimiteHasta\": \"dd/MM/yyyy\",\n//\"broker\": 9999\n//}\n{\"usuario\":1, \"operacion\":\"C\", \"instrumento\":171, \"cartera\":706, \"titulos\":110000.05, \"indPrecio\":\"A\", \"cotizacion\":235.09, \"fechaLimiteHasta\":\"25/11/2026\", \"broker\":50}\n",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/abq/fronton/altaOrdenRentaVariable",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "abq",
+                        "fronton",
+                        "altaOrdenRentaVariable"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Alta de orden RV realizada.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cartera\": 555,\n  \"indPrecio\": \"A\",\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"titulos\": 11,\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"broker\": 9999\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenRentaVariable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenRentaVariable"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"codigoOrden\": 8720\n  },\n  {\n    \"codigoOrden\": 272\n  }\n]"
+                    },
+                    {
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cartera\": 555,\n  \"indPrecio\": \"A\",\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"titulos\": 11,\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"broker\": 9999\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenRentaVariable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenRentaVariable"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"title\": \"string\",\n  \"descripcion\": \"string\",\n  \"errores\": [\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "altaOrdenRentaFija",
+              "item": [
+                {
+                  "name": "Servicio de alta de orden FrontOn de Renta Fija",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "\n//{\n  \n//\"cartera\": 555,\n  \n//\"indPrecio\": \"T\",\n  \n//\"indPrimarioSecundario\": \"S\",\n  \n//\"instrumento\": 999,\n  \n//\"nominalDiv\": 11,\n  \n//\"operacion\": \"C\",\n  \n//\"tasaOpe\": 12,\n \n// \"usuario\": 123,\n \n// \"cotizacion\": 22,\n\n//  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n//\n\n//  \"fechaLiquidacion\": \"dd/MM/yyyy\"\n//}\n{\"usuario\":1, \"operacion\":\"C\", \"indPrimarioSecundario\":\"P\", \"instrumento\":171, \"cartera\":706, \"nominalDiv\":110000.05, \"indPrecio\":\"A\", \"tasaOpe\":1.18, \"cotizacion\":223.40, \"fechaLimiteHasta\":\"25/11/2026\", \"fechaLiquidacion\":\"26/11/2026\" , \"broker\":50}\n",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/abq/fronton/altaOrdenRentaFija",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "abq",
+                        "fronton",
+                        "altaOrdenRentaFija"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Alta de orden RF realizada.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cartera\": 555,\n  \"indPrecio\": \"T\",\n  \"indPrimarioSecundario\": \"S\",\n  \"instrumento\": 999,\n  \"nominalDiv\": 11,\n  \"operacion\": \"C\",\n  \"tasaOpe\": 12,\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"fechaLiquidacion\": \"dd/MM/yyyy\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenRentaFija",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenRentaFija"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"codigoOrden\": 8720\n  },\n  {\n    \"codigoOrden\": 272\n  }\n]"
+                    },
+                    {
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cartera\": 555,\n  \"indPrecio\": \"T\",\n  \"indPrimarioSecundario\": \"S\",\n  \"instrumento\": 999,\n  \"nominalDiv\": 11,\n  \"operacion\": \"C\",\n  \"tasaOpe\": 12,\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"fechaLiquidacion\": \"dd/MM/yyyy\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenRentaFija",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenRentaFija"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"title\": \"string\",\n  \"descripcion\": \"string\",\n  \"errores\": [\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "altaOrdenIIF",
+              "item": [
+                {
+                  "name": "Servicio de alta de orden FrontOn de IIF",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "//{\n//  \"baseCalculo\": \"3\",\n//  \"cartera\": 555,\n//  \"indPrimarioSecundario\": \"S\",\n//  \"instrumento\": 999,\n//  \"nominalDiv\": 11,\n//  \"operacion\": \"C\",\n//  \"tasaOpe\": 12,\n//  \"usuario\": 123,\n//////  \"fechaLiquidacion\": \"dd/MM/yyyy\"\n}\n// \n{\"baseCalculo\":3, \"cartera\":706, \"indPrimarioSecundario\":\"P\", \"instrumento\":39535, \"nominalDiv\":110000.05, \"operacion\":\"C\", \"tasaOpe\":1.18, \"usuario\":1, \"fechaLiquidacion\":\"25/11/2026\"}\n",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/abq/fronton/altaOrdenIIF",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "abq",
+                        "fronton",
+                        "altaOrdenIIF"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Alta de orden IIF realizada.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"baseCalculo\": \"3\",\n  \"cartera\": 555,\n  \"indPrimarioSecundario\": \"S\",\n  \"instrumento\": 999,\n  \"nominalDiv\": 11,\n  \"operacion\": \"C\",\n  \"tasaOpe\": 12,\n  \"usuario\": 123,\n  \"fechaLiquidacion\": \"dd/MM/yyyy\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenIIF",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenIIF"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"codigoOrden\": 8720\n  },\n  {\n    \"codigoOrden\": 272\n  }\n]"
+                    },
+                    {
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"baseCalculo\": \"3\",\n  \"cartera\": 555,\n  \"indPrimarioSecundario\": \"S\",\n  \"instrumento\": 999,\n  \"nominalDiv\": 11,\n  \"operacion\": \"C\",\n  \"tasaOpe\": 12,\n  \"usuario\": 123,\n  \"fechaLiquidacion\": \"dd/MM/yyyy\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenIIF",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenIIF"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"title\": \"string\",\n  \"descripcion\": \"string\",\n  \"errores\": [\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "altaOrdenGlobalRentaVariable",
+              "item": [
+                {
+                  "name": "Servicio de alta de orden global de FrontOn de Renta Variable",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "//{\n//  \"indPrecio\": \"A\",\n  //\"instrumento\": 171,\n  //\"operacion\": \"C\",\n // \"titulos\": 10200000.05,\n // \"usuario\": 1,\n // \"cotizacion\": 220.77,\n // \"fechaLimiteHasta\": \"25/11/2026\",\n // \"broker\": 50,\n // \"prerepartos\": [\n  //  {\n  //    \"cartera\": 706,\n  //    \"importe\": 200000.05\n   // },\n  //  {\n      //\"cartera\": 701,\n    //  \"importe\": 10000000.00\n  //  }\n//  ]\n//}\n\n//{ \"indPrecio\" : \"A\", \"instrumento\" : 171, \"operacion\" : \"C\", \"titulos\" : 10200000.05, \"usuario\" : 1, \"cotizacion\" : 223.55, \"fechaLimiteHasta\" : \"25/11/2026\", \"Broker\" : 50, \"prerepartos\" :  [{\"cartera\": 706, \"importe\": 200000.05 }, {\"cartera\": 701, \"importe\": 10000000 }]}\n\n//{ \"indPrecio\" : \"A\", \"instrumento\" : 171, \"operacion\" : \"V\", \"titulos\" : 10200000.05, \"usuario\" : 1, \"cotizacion\" : 223.55, \"fechaLimiteHasta\" : \"25/11/2026\", \"Broker\" : 50, \"prerepartos\" :  [{\"cartera\": 706, \"importe\": 200000.05 }, {\"cartera\": 701, \"importe\": 10000000 }]}\n//{ \"indPrecio\" : \"A\", \"instrumento\" : 171, \"operacion\" : \"K\", \"titulos\" : 10200000.05, \"usuario\" : 1, \"cotizacion\" : 223.55, \"fechaLimiteHasta\" : \"25/11/2026\", \"Broker\" : 50, \"prerepartos\" :  [{\"cartera\": 706, \"importe\": 200000.05 }, {\"cartera\": 701, \"importe\": 10000000 }]}\n//{ \"indPrecio\" : \"A\", \"instrumento\" : 0, \"operacion\" : \"C\", \"titulos\" : 10200000.05, \"usuario\" : 1, \"cotizacion\" : 223.55, \"fechaLimiteHasta\" : \"25/11/2026\", \"Broker\" : 50, \"prerepartos\" :  [{\"cartera\": 706, \"importe\": 200000.05 }, {\"cartera\": 701, \"importe\": 10000000 }]}\n{ \"indPrecio\" : \"A\", \"instrumento\" : 171, \"operacion\" : \"C\", \"titulos\" : 10200000.05, \"usuario\" : 1, \"cotizacion\" : 223.55, \"fechaLimiteHasta\" : \"25/11/2026\", \"Broker\" : 50, \"prerepartos\" :  [{\"cartera\": 706, \"importe\": 3400000.01666667 }, {\"cartera\": 701, \"importe\": 6800000.03333333 }]}\n\n\n",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/abq/fronton/altaOrdenGlobalRentaVariable",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "abq",
+                        "fronton",
+                        "altaOrdenGlobalRentaVariable"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Alta de orden global RV realizada.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"indPrecio\": \"A\",\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"titulos\": 11,\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"broker\": 9999,\n  \"prerepartos\": [\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    },\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenGlobalRentaVariable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenGlobalRentaVariable"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"codigoOrden\": 8720\n  },\n  {\n    \"codigoOrden\": 272\n  }\n]"
+                    },
+                    {
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"indPrecio\": \"A\",\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"titulos\": 11,\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"broker\": 9999,\n  \"prerepartos\": [\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    },\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenGlobalRentaVariable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenGlobalRentaVariable"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"title\": \"string\",\n  \"descripcion\": \"string\",\n  \"errores\": [\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    }\n  ]\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "Servicio de alta de orden global de FrontOn de Renta Variable Copy",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{ \"indPrecio\" : \"A\", \"instrumento\" : 171, \"operacion\" : \"C\", \"titulos\" : 10200000.05, \"usuario\" : 1, \"cotizacion\" : 223.55, \"fechaLimiteHasta\" : \"25/11/2026\", \"Broker\" : 50, \"prerepartos\" :  [{\"cartera\": 706, \"importe\": 200000.05 }, {\"cartera\": 120000, \"importe\": 10000000 }]}\n",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/abq/fronton/altaOrdenGlobalRentaVariable",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "abq",
+                        "fronton",
+                        "altaOrdenGlobalRentaVariable"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Alta de orden global RV realizada.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"indPrecio\": \"A\",\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"titulos\": 11,\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"broker\": 9999,\n  \"prerepartos\": [\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    },\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenGlobalRentaVariable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenGlobalRentaVariable"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"codigoOrden\": 8720\n  },\n  {\n    \"codigoOrden\": 272\n  }\n]"
+                    },
+                    {
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"indPrecio\": \"A\",\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"titulos\": 11,\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"broker\": 9999,\n  \"prerepartos\": [\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    },\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenGlobalRentaVariable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenGlobalRentaVariable"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"title\": \"string\",\n  \"descripcion\": \"string\",\n  \"errores\": [\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "altaOrdenGlobalCuotas",
+              "item": [
+                {
+                  "name": "Servicio de alta de orden global de FrontOn de Cuotas",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"efectivoDiv\": 11,\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"fechaLiquidacion\": \"dd/MM/yyyy\",\n  \"prerepartos\": [\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    },\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/abq/fronton/altaOrdenGlobalCuotas",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "abq",
+                        "fronton",
+                        "altaOrdenGlobalCuotas"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Alta de orden global Cuotas realizada.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"efectivoDiv\": 11,\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"fechaLiquidacion\": \"dd/MM/yyyy\",\n  \"prerepartos\": [\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    },\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenGlobalCuotas",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenGlobalCuotas"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"codigoOrden\": 8720\n  },\n  {\n    \"codigoOrden\": 272\n  }\n]"
+                    },
+                    {
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"efectivoDiv\": 11,\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"fechaLiquidacion\": \"dd/MM/yyyy\",\n  \"prerepartos\": [\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    },\n    {\n      \"cartera\": 999,\n      \"importe\": 99\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenGlobalCuotas",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenGlobalCuotas"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"title\": \"string\",\n  \"descripcion\": \"string\",\n  \"errores\": [\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "altaOrdenCuotas",
+              "item": [
+                {
+                  "name": "Servicio de alta de orden FrontOn de Cuotas",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"cartera\": 555,\n  \"efctivoDiv\": 11,\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"fechaLiquidacion\": \"dd/MM/yyyy\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/abq/fronton/altaOrdenCuotas",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "abq",
+                        "fronton",
+                        "altaOrdenCuotas"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Alta de orden Cuotas realizada.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cartera\": 555,\n  \"efctivoDiv\": 11,\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"fechaLiquidacion\": \"dd/MM/yyyy\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenCuotas",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenCuotas"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"codigoOrden\": 8720\n  },\n  {\n    \"codigoOrden\": 272\n  }\n]"
+                    },
+                    {
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cartera\": 555,\n  \"efctivoDiv\": 11,\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"fechaLiquidacion\": \"dd/MM/yyyy\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaOrdenCuotas",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaOrdenCuotas"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"title\": \"string\",\n  \"descripcion\": \"string\",\n  \"errores\": [\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "altaInstrumentos",
+              "item": [
+                {
+                  "name": "Alta de Instrumentos",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"instrumentos\": {\n    \"clase_valor\": 5,\n    \"codigo_ext\": \"ABC001\",\n    \"codigo_padre\": 100,\n    \"descripcion\": \"Bono corporativo\",\n    \"codigo\": 123,\n    \"alias\": \"Bono2025\",\n    \"divisa\": 978,\n    \"enlace_instrumento\": \"ENLACE1\",\n    \"divisa_liquidacion\": 978,\n    \"texto\": \"string\",\n    \"div_denominacion\": 978,\n    \"enlace_instrumento_ope\": \"string\",\n    \"divisa_riesgo\": 840,\n    \"simbolo\": \"SYM\",\n    \"codigo_rdi\": 22,\n    \"ind_propio\": \"N\",\n    \"ind_revisado\": \"S\",\n    \"ind_inactivo\": \"N\",\n    \"codigo_generico\": 999,\n    \"nemotecnico_serie\": \"SERIE01\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/abq/fronton/altaInstrumentos",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "abq",
+                        "fronton",
+                        "altaInstrumentos"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Código del nuevo instrumento",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"instrumentos\": {\n    \"clase_valor\": 5,\n    \"codigo_ext\": \"ABC001\",\n    \"codigo_padre\": 100,\n    \"descripcion\": \"Bono corporativo\",\n    \"codigo\": 123,\n    \"alias\": \"Bono2025\",\n    \"divisa\": 978,\n    \"enlace_instrumento\": \"ENLACE1\",\n    \"divisa_liquidacion\": 978,\n    \"texto\": \"string\",\n    \"div_denominacion\": 978,\n    \"enlace_instrumento_ope\": \"string\",\n    \"divisa_riesgo\": 840,\n    \"simbolo\": \"SYM\",\n    \"codigo_rdi\": 22,\n    \"ind_propio\": \"N\",\n    \"ind_revisado\": \"S\",\n    \"ind_inactivo\": \"N\",\n    \"codigo_generico\": 999,\n    \"nemotecnico_serie\": \"SERIE01\"\n  },\n  \"valores_comun\": {\n    \"codigo_isin\": \"ES0123456789\",\n    \"cotizacion_tp\": \"T\",\n    \"emisora\": 200,\n    \"fecha_emision\": \"dd/MM/yyyy\",\n    \"fecha_suspension\": \"dd/MM/yyyy\",\n    \"fecha_var_tp\": \"dd/MM/yyyy\",\n    \"nominal\": 1,\n    \"sector\": 10,\n    \"codigo\": 123,\n    \"mercado_cotizacion\": 1,\n    \"codigo_reuter\": \"REUTER01\",\n    \"cotizacion_suspendida\": \"N\",\n    \"ind_curva_tir\": \"N\",\n    \"ind_tipo_be\": \"S\",\n    \"decimales_titulos\": 0,\n    \"decimales_cotizacion\": 2,\n    \"porcentaje_desembolso\": 100,\n    \"minimo_reparto\": 10.5,\n    \"nominal_cero\": \"N\",\n    \"codigo_bloomberg\": \"BBG000000001\",\n    \"ind_exento\": \"N\",\n    \"abreviatura_dgs\": \"DGS\",\n    \"ind_publico_privado\": \"P\",\n    \"fecha_revision\": \"dd/MM/yyyy\",\n    \"mercado_contratacion\": 1,\n    \"ind_extraer_cotizacion\": \"N\",\n    \"ind_coti_valoracion\": \"E\",\n    \"servicio_reuter\": \"SRV_REUTER\",\n    \"servicio_bloomberg\": \"SRV_BLOOMBERG\",\n    \"ind_acc_preferentes\": \"N\",\n    \"ind_referenciable\": \"N\",\n    \"ind_segregable\": \"N\",\n    \"instrumento_segregable\": 1001,\n    \"ind_retiene\": \"N\",\n    \"ent_retenedora\": 55,\n    \"ind_negociable_be\": \"N\",\n    \"clase_instrumento_be\": 2,\n    \"ind_exento_custodia\": \"N\",\n    \"codigo_fininfo\": \"FIN001\",\n    \"ind_apto_cobertura\": \"S\",\n    \"subsector\": 20,\n    \"ind_coti_tp_recibida_r\": \"S\",\n    \"ind_coti_tp_recibida_b\": \"S\",\n    \"ind_coti_tp_recibida_f\": \"S\",\n    \"ind_representativo\": \"S\",\n    \"ind_deltas\": \"S\",\n    \"ind_garantia\": \"N\",\n    \"tanto_comision_gestion\": 1.25,\n    \"tanto_comision_depositaria\": 0.5,\n    \"ent_avalante\": 40,\n    \"ind_avalado\": \"S\",\n    \"codigo_thomson\": \"THOMSON01\",\n    \"ind_coti_tp_recibida_t\": \"S\",\n    \"ind_incluir_modelos\": \"S\",\n    \"codigo_infobolsa\": \"INFO001\",\n    \"ind_coti_regulado\": \"S\",\n    \"ind_valor_cartera_permanente\": \"S\",\n    \"tanto_comision_gestion_retro\": 0.25,\n    \"id_bb_unique\": \"BB_UNIQUE_001\",\n    \"tanto_comision_depo_retro\": 0.15,\n    \"tanto_comision_suscripcion\": 0.35,\n    \"tanto_comision_reembolso\": 0.45,\n    \"fecha_soli_negociacion\": \"dd/MM/yyyy\",\n    \"ind_cesta\": \"S\",\n    \"ind_re_articulo_36\": \"S\",\n    \"pais\": 34,\n    \"zona_geografica\": 2,\n    \"tipo_activo\": \"RF\",\n    \"ind_subapartado_j\": \"S\",\n    \"mifid_producto\": 5,\n    \"sistema_liq\": 1,\n    \"ind_ley_35_2003\": \"S\",\n    \"ind_deposito_apto_70_4\": \"S\",\n    \"ind_articulo_36\": \"S\",\n    \"periodicidad_coti\": \"D\",\n    \"ind_capital_riesgo\": \"N\",\n    \"ind_articulo_71\": \"S\",\n    \"tanto_ter\": 1.5,\n    \"dias_ant_vl\": 2,\n    \"dias_pos_vl\": 3,\n    \"ind_tne\": \"S\",\n    \"ind_estructurado\": \"N\",\n    \"ind_hibrido\": \"N\",\n    \"tipo_emisor\": 1,\n    \"indice_vl\": 3,\n    \"nominal_minimo\": 1000,\n    \"ind_sistema_calculo_contri\": \"S\",\n    \"contribuidor_sistema_calculo\": \"CALC001\",\n    \"ind_emi_vinculada\": \"S\",\n    \"contribuidor_sistema_cal_tho\": \"THO001\",\n    \"contribuidor_sistema_cal_fin\": \"FINCAL001\",\n    \"categoria_be\": 1,\n    \"codigo_fininfo_vn\": \"FINVN001\",\n    \"grupo_folleto\": 4,\n    \"ind_mercado_continuo\": \"S\",\n    \"codigo_cusip\": \"123456789\",\n    \"codigo_sedol\": \"B1Y2Z3\",\n    \"instrumento_implicito\": 222,\n    \"fecha_1_liquidacion\": \"dd/MM/yyyy\",\n    \"mercado_representativo_blo\": 1,\n    \"mercado_representativo_reu\": 2,\n    \"mercado_representativo_six\": 3,\n    \"codigo_posicion_m05\": \"M05POS\",\n    \"ind_liquido\": \"S\",\n    \"caducidad_cotizacion\": 30,\n    \"sector_2\": 12,\n    \"ind_tne_sus\": \"S\",\n    \"ind_tne_ree\": \"S\",\n    \"codigo_upi\": \"UPI001\",\n    \"ind_ficticio\": \"N\",\n    \"ind_coti_tp_recibida_k\": \"S\",\n    \"ind_coti_recibida_r_infla\": \"S\",\n    \"ind_coti_recibida_b_infla\": \"S\",\n    \"ind_coti_recibida_f_infla\": \"S\",\n    \"ind_coti_recibida_t_infla\": \"S\",\n    \"ind_coti_recibida_k_infla\": \"S\",\n    \"calendario\": 1,\n    \"nominal_minimo_ope\": 500,\n    \"ind_coti_infla\": \"S\",\n    \"ind_tipo_riskint\": \"R\",\n    \"ind_subtipo_estructurado\": \"SUB1\",\n    \"divisor_nominal\": 1,\n    \"codigo_cic\": \"CIC001\",\n    \"codigo_aii\": \"AII001\",\n    \"pais_fiscal\": 34,\n    \"ind_terminacion_contra\": \"S\",\n    \"ind_consumo_riesgo\": \"S\",\n    \"linea_riesgo\": 10,\n    \"cfd_multiplicador\": 2.5,\n    \"perdida_maxima\": 1000,\n    \"ind_visible_web\": \"S\",\n    \"codigo_swap_riskamerica\": \"SWAP001\",\n    \"codigo_cfi\": \"CFI001\",\n    \"ind_apalancado\": \"N\",\n    \"emisora_origen\": 99,\n    \"industria\": \"Financiera\",\n    \"codigo_tipo_activo\": 7,\n    \"criterio_esg\": 3,\n    \"id_bb_global\": \"BB_GLOBAL_001\",\n    \"ind_cobertura_dgs\": \"S\"\n  },\n  \"valores_cvi\": [\n    {\n      \"clase_valor\": 5,\n      \"fecha_validez\": \"dd/MM/yyyy\",\n      \"ind_articulo_36\": \"N\",\n      \"ind_avalado\": \"N\",\n      \"ind_clases\": \"S\",\n      \"ind_garantia\": \"N\",\n      \"ind_proceso\": \"E\",\n      \"ind_publico_privado\": \"P\",\n      \"ind_vinculado\": \"N\",\n      \"ind_vpo\": \"N\",\n      \"instrumento\": 100,\n      \"codigo\": 1,\n      \"clave_cartera\": \"CAR001\",\n      \"ind_participaciones\": \"N\",\n      \"ind_morosa\": \"N\",\n      \"ind_registrado_svs\": \"S\",\n      \"ind_autorizado_svs\": \"S\",\n      \"entidad_garante\": 200,\n      \"ind_objeto_acciones\": \"S\",\n      \"ind_articulo_fcr\": \"S\",\n      \"ind_articulo_fcr_py\": \"S\",\n      \"ind_presencia_bursatil\": \"S\",\n      \"ind_tipo_entidad_pt\": \"S\",\n      \"ind_articulo_249_pe\": \"N\",\n      \"ind_articulo_9_fmm\": \"S\",\n      \"ind_acto_delegado_fmm\": \"S\"\n    },\n    {\n      \"clase_valor\": 5,\n      \"fecha_validez\": \"dd/MM/yyyy\",\n      \"ind_articulo_36\": \"N\",\n      \"ind_avalado\": \"N\",\n      \"ind_clases\": \"S\",\n      \"ind_garantia\": \"N\",\n      \"ind_proceso\": \"E\",\n      \"ind_publico_privado\": \"P\",\n      \"ind_vinculado\": \"N\",\n      \"ind_vpo\": \"N\",\n      \"instrumento\": 100,\n      \"codigo\": 1,\n      \"clave_cartera\": \"CAR001\",\n      \"ind_participaciones\": \"N\",\n      \"ind_morosa\": \"N\",\n      \"ind_registrado_svs\": \"S\",\n      \"ind_autorizado_svs\": \"S\",\n      \"entidad_garante\": 200,\n      \"ind_objeto_acciones\": \"S\",\n      \"ind_articulo_fcr\": \"S\",\n      \"ind_articulo_fcr_py\": \"S\",\n      \"ind_presencia_bursatil\": \"S\",\n      \"ind_tipo_entidad_pt\": \"S\",\n      \"ind_articulo_249_pe\": \"N\",\n      \"ind_articulo_9_fmm\": \"S\",\n      \"ind_acto_delegado_fmm\": \"S\"\n    }\n  ],\n  \"periodos\": [\n    {\n      \"instrumento\": 100,\n      \"codigo\": 1,\n      \"tipo_periodo\": \"R\",\n      \"clase_periodo\": \"I\",\n      \"fec_inicio\": \"dd/MM/yyyy\",\n      \"fec_ultimo_pago\": \"dd/MM/yyyy\",\n      \"periodicidad\": \"A\",\n      \"forma_calculo\": \"F\",\n      \"porcentaje\": 0,\n      \"retencion\": 0,\n      \"devol_retencion\": \"S\",\n      \"bonificacion\": 0,\n      \"calculo_div_ret\": \"D\",\n      \"devol_bonificacion\": \"S\",\n      \"codigo_refer\": 10,\n      \"diferencia\": 1.5,\n      \"tarifa\": 2,\n      \"objetivo\": \"OBJ1\",\n      \"porc_tit_amortizar\": 0,\n      \"anos_dev_ret\": 0,\n      \"anos_dev_bon\": 0,\n      \"fec_dev_ret\": \"dd/MM/yyyy\",\n      \"fec_dev_bon\": \"dd/MM/yyyy\",\n      \"ind_asiento\": \"S\",\n      \"fec_validez\": \"dd/MM/yyyy\",\n      \"ind_spread\": \"S\",\n      \"spread\": 1.25,\n      \"festivos\": \"N\",\n      \"ind_fijo_var\": \"N\",\n      \"ind_tipo_amortizacion\": \"N\",\n      \"importe_periodo\": 1000,\n      \"descripcion\": \"Periodo anual\",\n      \"instrumento_aux\": 200,\n      \"tanto_conjunto\": 0,\n      \"tanto_interes\": 0,\n      \"tanto_amortizacion\": 0,\n      \"saldo_insoluto\": 0,\n      \"tasa_periodo\": 0,\n      \"fecha_barrera\": \"dd/MM/yyyy\",\n      \"precio_barrera\": 100,\n      \"ind_vencible\": \"S\"\n    },\n    {\n      \"instrumento\": 100,\n      \"codigo\": 1,\n      \"tipo_periodo\": \"R\",\n      \"clase_periodo\": \"I\",\n      \"fec_inicio\": \"dd/MM/yyyy\",\n      \"fec_ultimo_pago\": \"dd/MM/yyyy\",\n      \"periodicidad\": \"A\",\n      \"forma_calculo\": \"F\",\n      \"porcentaje\": 0,\n      \"retencion\": 0,\n      \"devol_retencion\": \"S\",\n      \"bonificacion\": 0,\n      \"calculo_div_ret\": \"D\",\n      \"devol_bonificacion\": \"S\",\n      \"codigo_refer\": 10,\n      \"diferencia\": 1.5,\n      \"tarifa\": 2,\n      \"objetivo\": \"OBJ1\",\n      \"porc_tit_amortizar\": 0,\n      \"anos_dev_ret\": 0,\n      \"anos_dev_bon\": 0,\n      \"fec_dev_ret\": \"dd/MM/yyyy\",\n      \"fec_dev_bon\": \"dd/MM/yyyy\",\n      \"ind_asiento\": \"S\",\n      \"fec_validez\": \"dd/MM/yyyy\",\n      \"ind_spread\": \"S\",\n      \"spread\": 1.25,\n      \"festivos\": \"N\",\n      \"ind_fijo_var\": \"N\",\n      \"ind_tipo_amortizacion\": \"N\",\n      \"importe_periodo\": 1000,\n      \"descripcion\": \"Periodo anual\",\n      \"instrumento_aux\": 200,\n      \"tanto_conjunto\": 0,\n      \"tanto_interes\": 0,\n      \"tanto_amortizacion\": 0,\n      \"saldo_insoluto\": 0,\n      \"tasa_periodo\": 0,\n      \"fecha_barrera\": \"dd/MM/yyyy\",\n      \"precio_barrera\": 100,\n      \"ind_vencible\": \"S\"\n    }\n  ],\n  \"valores_rf\": {\n    \"base_calculo\": \"1\",\n    \"bonificacion\": 0,\n    \"devolucion_fiscal\": \"N\",\n    \"fecha_devolucion\": \"dd/MM/yyyy\",\n    \"fecha_vto\": \"dd/MM/yyyy\",\n    \"ind_interes_variable\": \"S\",\n    \"titulos_emitidos\": 1000000,\n    \"codigo\": 1,\n    \"serie\": \"A\",\n    \"dias_cupon_faltante\": 0,\n    \"ind_periodificar\": \"T\",\n    \"rating_ibca\": 1,\n    \"rating_moodys\": 1,\n    \"rating_stand_poors\": 1,\n    \"base_cupon\": 1,\n    \"grupo_rating_tir\": 1,\n    \"rating_menor\": 1,\n    \"grupo_pais_tir\": 1,\n    \"pais_emision\": 34,\n    \"ind_convertible_amp\": \"N\",\n    \"ind_bonos_matador\": \"N\",\n    \"ind_refer_indice\": \"S\",\n    \"ind_subordinada\": \"N\",\n    \"grupo_dif_explicito\": 1,\n    \"grupo_dif_repo\": 1,\n    \"outlook_ibca\": \"POS\",\n    \"outlook_moodys\": \"POS\",\n    \"outlook_stand_poors\": \"POS\",\n    \"ind_opcion_amortiza\": \"S\",\n    \"ind_spv\": \"N\",\n    \"ind_interes_fijo_variable\": \"N\",\n    \"ind_facial_fraccion\": \"N\",\n    \"ind_festivos_rf\": \"N\",\n    \"ind_festivos_ajustados\": \"N\",\n    \"ind_titulizacion\": \"S\",\n    \"ind_perpetuo\": \"S\",\n    \"tipo_facial\": 5.5,\n    \"anyos_facial\": 10,\n    \"tae\": 4.2,\n    \"ind_cupon_conjunto\": \"S\",\n    \"decimales_cupon\": 2,\n    \"rating_propio\": 1,\n    \"ind_cupon_bisiesto\": \"S\",\n    \"outlook_propio\": \"POS\",\n    \"rating_ibca_corto\": 1,\n    \"rating_moodys_corto\": 1,\n    \"rating_stand_poors_corto\": 1,\n    \"rating_propio_corto\": 1,\n    \"rating_dbrs_corto\": 1,\n    \"outlook_ibca_corto\": \"POS\",\n    \"outlook_moodys_corto\": \"POS\",\n    \"outlook_stand_poors_corto\": \"POS\",\n    \"outlook_propio_corto\": \"POS\",\n    \"outlook_dbrs_corto\": \"POS\",\n    \"rating_dbrs\": 1,\n    \"outlook_dbrs\": \"POS\",\n    \"fecha_cupon_conjunto\": \"dd/MM/yyyy\",\n    \"tanto_cupon_amortizacion\": 1.5,\n    \"tasa_emision\": 3.2,\n    \"ind_prepago\": \"S\",\n    \"fecha_prepago\": \"dd/MM/yyyy\",\n    \"rating_feller\": 1,\n    \"outlook_feller\": \"POS\",\n    \"rating_feller_corto\": 1,\n    \"outlook_feller_corto\": \"POS\",\n    \"rating_humphreys\": 1,\n    \"outlook_humphreys\": \"POS\",\n    \"rating_humphreys_corto\": 1,\n    \"outlook_humphreys_corto\": \"POS\",\n    \"rating_icr\": 1,\n    \"outlook_icr\": \"POS\",\n    \"rating_icr_corto\": 1,\n    \"outlook_icr_corto\": \"POS\",\n    \"ind_tab_uf_360\": \"S\",\n    \"ind_deuda_senior_no_pref\": \"S\",\n    \"ind_prioridad_cobro\": \"S\",\n    \"ind_pagare\": \"S\",\n    \"fec_ult_act_rating\": \"dd/MM/yyyy\",\n    \"ind_liquida_auto\": \"S\",\n    \"ind_test_sppi\": \"S\",\n    \"ind_periodicidad_tir\": \"A\"\n  },\n  \"valores_rv\": {\n    \"iic\": \"N\",\n    \"nominativas\": \"N\",\n    \"codigo\": 1,\n    \"valor_refer\": 100,\n    \"difer_cot\": 1.25,\n    \"valor_origen\": 200,\n    \"simbolo\": \"SYM\",\n    \"ind_inversion_fondo\": \"S\",\n    \"indica_rv\": \"S\",\n    \"nif\": \"A12345678\",\n    \"numero_registro_cnmv\": \"1234\",\n    \"numero_registro_cnmv_gestora\": \"5678\",\n    \"nif_gestora\": \"B12345678\",\n    \"ccc\": \"12345678901234567890\",\n    \"categoria\": 5,\n    \"ind_liquidez_inm\": \"S\",\n    \"ind_resto_activo_inm\": \"S\",\n    \"ind_derecho_voto\": \"S\",\n    \"ind_armonizado\": \"S\",\n    \"ind_ecualizacion\": \"S\",\n    \"tanto_comision_variable\": 1.5,\n    \"codigo_gestora\": 300,\n    \"ind_marca_agua\": \"S\",\n    \"marca_agua\": 10,\n    \"titulos_emitidos\": 100000,\n    \"clasificacion_web\": \"RV\",\n    \"minimo_suscripcion\": 1000,\n    \"minimo_permanencia\": 500,\n    \"ind_clasificadora_riesgo\": \"S\",\n    \"rating_feller\": 1,\n    \"rating_fitch\": 1,\n    \"rating_humphreys\": 1,\n    \"rating_icr\": 1,\n    \"rating_propio\": 1,\n    \"ind_participacion_fia\": \"S\",\n    \"ind_limite_emisor_30\": \"S\",\n    \"dias_rescate\": 3,\n    \"codigo_fondo\": 400,\n    \"ins_parti_fondo\": 500\n  },\n  \"fr09_instrumentos\": {\n    \"clase_valor\": 5,\n    \"codigo_ext\": \"EXT001\",\n    \"descripcion\": \"Instrumento FR09\",\n    \"divisa\": 978,\n    \"ind_validado_back_sn\": \"S\",\n    \"codigo\": 1,\n    \"codigo_alias\": \"ALIAS01\",\n    \"emisora\": 200,\n    \"servicio_reuter_fr\": \"REUTER_FR\",\n    \"servicio_bloomberg_fr\": \"BLOOMBERG_FR\",\n    \"servicio_fininfo_fr\": \"FININFO_FR\",\n    \"denominacion\": \"Denominación instrumento\",\n    \"pais\": 34,\n    \"descripcion_bloomberg\": \"Desc BB\",\n    \"base_calculo\": 1,\n    \"ind_extraer_coti_intra\": \"S\",\n    \"duracion\": 5.5,\n    \"producto\": 10,\n    \"ind_operativa\": \"S\",\n    \"dias_desde_hasta_v\": 2,\n    \"dias_desde_hasta_c\": 2,\n    \"dias_desde_hasta_v_sig\": 3,\n    \"porcentaje_v_sig\": 10.5,\n    \"hora_limite\": \"dd/MM/yyyy\",\n    \"dias_valor\": 2,\n    \"dias_liquidacion\": 2,\n    \"ind_dias_habiles\": \"S\"\n  },\n  \"futuros\": {\n    \"fec_vto\": \"dd/MM/yyyy\",\n    \"isin\": \"ES0123456789\",\n    \"tipo_contrato\": 2,\n    \"codigo\": 1,\n    \"codigo_posicion\": \"POS001\",\n    \"tipo_subyacente\": \"INDICE\",\n    \"ind_zona_derivados\": 1,\n    \"ind_estructura\": \"N\",\n    \"cod_estructura_1\": \"EST1\",\n    \"cod_estructura_2\": 2,\n    \"cod_estructura_3\": \"EST3\",\n    \"cod_estructura_4\": 4,\n    \"fec_vto_estructura\": \"dd/MM/yyyy\",\n    \"grupo_coti_liquidacion\": 10,\n    \"fecha_vigencia\": \"dd/MM/yyyy\",\n    \"ind_garantia\": \"S\",\n    \"ent_garante\": 200,\n    \"ind_liquidacion\": \"F\",\n    \"fecha_expiracion\": \"dd/MM/yyyy\"\n  },\n  \"opciones\": {\n    \"call_put\": \"C\",\n    \"codigo_posicion\": \"POS001\",\n    \"fec_vto\": \"dd/MM/yyyy\",\n    \"isin\": \"ES0123456789\",\n    \"precio\": 100.5,\n    \"tipo_contrato\": 2,\n    \"tipo_subyacente\": \"ACCION\",\n    \"codigo\": 1,\n    \"ind_compra_venta\": \"C\",\n    \"precio_ume\": 10.5,\n    \"ind_zona_derivados\": 1,\n    \"ind_estructura\": \"N\",\n    \"cod_estructura_1\": \"EST1\",\n    \"cod_estructura_2\": 2,\n    \"cod_estructura_3\": \"EST3\",\n    \"cod_estructura_4\": 4,\n    \"fec_vto_estructura\": \"dd/MM/yyyy\",\n    \"ind_ejercita_auto\": \"S\",\n    \"ins_futuro_ejercita\": 100,\n    \"fecha_vigencia\": \"dd/MM/yyyy\",\n    \"ind_garantia\": \"S\",\n    \"ent_garante\": 200,\n    \"europea_americana\": \"E\",\n    \"ind_vainilla\": \"S\",\n    \"tipo_path_dependent\": \"BARRIER\",\n    \"barrera_superior\": 120,\n    \"barrera_inferior\": 80,\n    \"ind_margenes_limites\": \"S\",\n    \"fecha_expiracion\": \"dd/MM/yyyy\"\n  },\n  \"divisas\": {\n    \"dec_redondeo\": 2,\n    \"nombre_abreviado\": \"EUR\",\n    \"nombre_divisa\": \"Euro\",\n    \"codigo\": 978,\n    \"nombre_cnmv\": \"Euro CNMV\",\n    \"unidades\": 1,\n    \"ind_zona_ume\": 1,\n    \"fecha_ume\": \"dd/MM/yyyy\",\n    \"factor_ume\": 1,\n    \"ind_operativa\": \"S\",\n    \"ind_zona_derivados\": 1,\n    \"ind_consumo_riesgo\": \"S\",\n    \"linea_riesgo\": 10,\n    \"zona_geografica\": 2,\n    \"orden_presentacion\": 1,\n    \"ind_mercado_ocde\": \"S\",\n    \"codigo_be\": \"BE001\",\n    \"codigo_fininfo\": \"FIN001\",\n    \"codigo_svs\": \"SVS001\",\n    \"subcuenta_conta\": \"430000\",\n    \"simbolo_riskamerica\": \"$\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaInstrumentos",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaInstrumentos"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"codigoInstrumento\": 6529,\n    \"fechaSistema\": \"1952-07-24T21:49:07.291Z\"\n  },\n  {\n    \"codigoInstrumento\": 9239,\n    \"fechaSistema\": \"2024-05-04T21:07:20.128Z\"\n  }\n]"
+                    },
+                    {
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"instrumentos\": {\n    \"clase_valor\": 5,\n    \"codigo_ext\": \"ABC001\",\n    \"codigo_padre\": 100,\n    \"descripcion\": \"Bono corporativo\",\n    \"codigo\": 123,\n    \"alias\": \"Bono2025\",\n    \"divisa\": 978,\n    \"enlace_instrumento\": \"ENLACE1\",\n    \"divisa_liquidacion\": 978,\n    \"texto\": \"string\",\n    \"div_denominacion\": 978,\n    \"enlace_instrumento_ope\": \"string\",\n    \"divisa_riesgo\": 840,\n    \"simbolo\": \"SYM\",\n    \"codigo_rdi\": 22,\n    \"ind_propio\": \"N\",\n    \"ind_revisado\": \"S\",\n    \"ind_inactivo\": \"N\",\n    \"codigo_generico\": 999,\n    \"nemotecnico_serie\": \"SERIE01\"\n  },\n  \"valores_comun\": {\n    \"codigo_isin\": \"ES0123456789\",\n    \"cotizacion_tp\": \"T\",\n    \"emisora\": 200,\n    \"fecha_emision\": \"dd/MM/yyyy\",\n    \"fecha_suspension\": \"dd/MM/yyyy\",\n    \"fecha_var_tp\": \"dd/MM/yyyy\",\n    \"nominal\": 1,\n    \"sector\": 10,\n    \"codigo\": 123,\n    \"mercado_cotizacion\": 1,\n    \"codigo_reuter\": \"REUTER01\",\n    \"cotizacion_suspendida\": \"N\",\n    \"ind_curva_tir\": \"N\",\n    \"ind_tipo_be\": \"S\",\n    \"decimales_titulos\": 0,\n    \"decimales_cotizacion\": 2,\n    \"porcentaje_desembolso\": 100,\n    \"minimo_reparto\": 10.5,\n    \"nominal_cero\": \"N\",\n    \"codigo_bloomberg\": \"BBG000000001\",\n    \"ind_exento\": \"N\",\n    \"abreviatura_dgs\": \"DGS\",\n    \"ind_publico_privado\": \"P\",\n    \"fecha_revision\": \"dd/MM/yyyy\",\n    \"mercado_contratacion\": 1,\n    \"ind_extraer_cotizacion\": \"N\",\n    \"ind_coti_valoracion\": \"E\",\n    \"servicio_reuter\": \"SRV_REUTER\",\n    \"servicio_bloomberg\": \"SRV_BLOOMBERG\",\n    \"ind_acc_preferentes\": \"N\",\n    \"ind_referenciable\": \"N\",\n    \"ind_segregable\": \"N\",\n    \"instrumento_segregable\": 1001,\n    \"ind_retiene\": \"N\",\n    \"ent_retenedora\": 55,\n    \"ind_negociable_be\": \"N\",\n    \"clase_instrumento_be\": 2,\n    \"ind_exento_custodia\": \"N\",\n    \"codigo_fininfo\": \"FIN001\",\n    \"ind_apto_cobertura\": \"S\",\n    \"subsector\": 20,\n    \"ind_coti_tp_recibida_r\": \"S\",\n    \"ind_coti_tp_recibida_b\": \"S\",\n    \"ind_coti_tp_recibida_f\": \"S\",\n    \"ind_representativo\": \"S\",\n    \"ind_deltas\": \"S\",\n    \"ind_garantia\": \"N\",\n    \"tanto_comision_gestion\": 1.25,\n    \"tanto_comision_depositaria\": 0.5,\n    \"ent_avalante\": 40,\n    \"ind_avalado\": \"S\",\n    \"codigo_thomson\": \"THOMSON01\",\n    \"ind_coti_tp_recibida_t\": \"S\",\n    \"ind_incluir_modelos\": \"S\",\n    \"codigo_infobolsa\": \"INFO001\",\n    \"ind_coti_regulado\": \"S\",\n    \"ind_valor_cartera_permanente\": \"S\",\n    \"tanto_comision_gestion_retro\": 0.25,\n    \"id_bb_unique\": \"BB_UNIQUE_001\",\n    \"tanto_comision_depo_retro\": 0.15,\n    \"tanto_comision_suscripcion\": 0.35,\n    \"tanto_comision_reembolso\": 0.45,\n    \"fecha_soli_negociacion\": \"dd/MM/yyyy\",\n    \"ind_cesta\": \"S\",\n    \"ind_re_articulo_36\": \"S\",\n    \"pais\": 34,\n    \"zona_geografica\": 2,\n    \"tipo_activo\": \"RF\",\n    \"ind_subapartado_j\": \"S\",\n    \"mifid_producto\": 5,\n    \"sistema_liq\": 1,\n    \"ind_ley_35_2003\": \"S\",\n    \"ind_deposito_apto_70_4\": \"S\",\n    \"ind_articulo_36\": \"S\",\n    \"periodicidad_coti\": \"D\",\n    \"ind_capital_riesgo\": \"N\",\n    \"ind_articulo_71\": \"S\",\n    \"tanto_ter\": 1.5,\n    \"dias_ant_vl\": 2,\n    \"dias_pos_vl\": 3,\n    \"ind_tne\": \"S\",\n    \"ind_estructurado\": \"N\",\n    \"ind_hibrido\": \"N\",\n    \"tipo_emisor\": 1,\n    \"indice_vl\": 3,\n    \"nominal_minimo\": 1000,\n    \"ind_sistema_calculo_contri\": \"S\",\n    \"contribuidor_sistema_calculo\": \"CALC001\",\n    \"ind_emi_vinculada\": \"S\",\n    \"contribuidor_sistema_cal_tho\": \"THO001\",\n    \"contribuidor_sistema_cal_fin\": \"FINCAL001\",\n    \"categoria_be\": 1,\n    \"codigo_fininfo_vn\": \"FINVN001\",\n    \"grupo_folleto\": 4,\n    \"ind_mercado_continuo\": \"S\",\n    \"codigo_cusip\": \"123456789\",\n    \"codigo_sedol\": \"B1Y2Z3\",\n    \"instrumento_implicito\": 222,\n    \"fecha_1_liquidacion\": \"dd/MM/yyyy\",\n    \"mercado_representativo_blo\": 1,\n    \"mercado_representativo_reu\": 2,\n    \"mercado_representativo_six\": 3,\n    \"codigo_posicion_m05\": \"M05POS\",\n    \"ind_liquido\": \"S\",\n    \"caducidad_cotizacion\": 30,\n    \"sector_2\": 12,\n    \"ind_tne_sus\": \"S\",\n    \"ind_tne_ree\": \"S\",\n    \"codigo_upi\": \"UPI001\",\n    \"ind_ficticio\": \"N\",\n    \"ind_coti_tp_recibida_k\": \"S\",\n    \"ind_coti_recibida_r_infla\": \"S\",\n    \"ind_coti_recibida_b_infla\": \"S\",\n    \"ind_coti_recibida_f_infla\": \"S\",\n    \"ind_coti_recibida_t_infla\": \"S\",\n    \"ind_coti_recibida_k_infla\": \"S\",\n    \"calendario\": 1,\n    \"nominal_minimo_ope\": 500,\n    \"ind_coti_infla\": \"S\",\n    \"ind_tipo_riskint\": \"R\",\n    \"ind_subtipo_estructurado\": \"SUB1\",\n    \"divisor_nominal\": 1,\n    \"codigo_cic\": \"CIC001\",\n    \"codigo_aii\": \"AII001\",\n    \"pais_fiscal\": 34,\n    \"ind_terminacion_contra\": \"S\",\n    \"ind_consumo_riesgo\": \"S\",\n    \"linea_riesgo\": 10,\n    \"cfd_multiplicador\": 2.5,\n    \"perdida_maxima\": 1000,\n    \"ind_visible_web\": \"S\",\n    \"codigo_swap_riskamerica\": \"SWAP001\",\n    \"codigo_cfi\": \"CFI001\",\n    \"ind_apalancado\": \"N\",\n    \"emisora_origen\": 99,\n    \"industria\": \"Financiera\",\n    \"codigo_tipo_activo\": 7,\n    \"criterio_esg\": 3,\n    \"id_bb_global\": \"BB_GLOBAL_001\",\n    \"ind_cobertura_dgs\": \"S\"\n  },\n  \"valores_cvi\": [\n    {\n      \"clase_valor\": 5,\n      \"fecha_validez\": \"dd/MM/yyyy\",\n      \"ind_articulo_36\": \"N\",\n      \"ind_avalado\": \"N\",\n      \"ind_clases\": \"S\",\n      \"ind_garantia\": \"N\",\n      \"ind_proceso\": \"E\",\n      \"ind_publico_privado\": \"P\",\n      \"ind_vinculado\": \"N\",\n      \"ind_vpo\": \"N\",\n      \"instrumento\": 100,\n      \"codigo\": 1,\n      \"clave_cartera\": \"CAR001\",\n      \"ind_participaciones\": \"N\",\n      \"ind_morosa\": \"N\",\n      \"ind_registrado_svs\": \"S\",\n      \"ind_autorizado_svs\": \"S\",\n      \"entidad_garante\": 200,\n      \"ind_objeto_acciones\": \"S\",\n      \"ind_articulo_fcr\": \"S\",\n      \"ind_articulo_fcr_py\": \"S\",\n      \"ind_presencia_bursatil\": \"S\",\n      \"ind_tipo_entidad_pt\": \"S\",\n      \"ind_articulo_249_pe\": \"N\",\n      \"ind_articulo_9_fmm\": \"S\",\n      \"ind_acto_delegado_fmm\": \"S\"\n    },\n    {\n      \"clase_valor\": 5,\n      \"fecha_validez\": \"dd/MM/yyyy\",\n      \"ind_articulo_36\": \"N\",\n      \"ind_avalado\": \"N\",\n      \"ind_clases\": \"S\",\n      \"ind_garantia\": \"N\",\n      \"ind_proceso\": \"E\",\n      \"ind_publico_privado\": \"P\",\n      \"ind_vinculado\": \"N\",\n      \"ind_vpo\": \"N\",\n      \"instrumento\": 100,\n      \"codigo\": 1,\n      \"clave_cartera\": \"CAR001\",\n      \"ind_participaciones\": \"N\",\n      \"ind_morosa\": \"N\",\n      \"ind_registrado_svs\": \"S\",\n      \"ind_autorizado_svs\": \"S\",\n      \"entidad_garante\": 200,\n      \"ind_objeto_acciones\": \"S\",\n      \"ind_articulo_fcr\": \"S\",\n      \"ind_articulo_fcr_py\": \"S\",\n      \"ind_presencia_bursatil\": \"S\",\n      \"ind_tipo_entidad_pt\": \"S\",\n      \"ind_articulo_249_pe\": \"N\",\n      \"ind_articulo_9_fmm\": \"S\",\n      \"ind_acto_delegado_fmm\": \"S\"\n    }\n  ],\n  \"periodos\": [\n    {\n      \"instrumento\": 100,\n      \"codigo\": 1,\n      \"tipo_periodo\": \"R\",\n      \"clase_periodo\": \"I\",\n      \"fec_inicio\": \"dd/MM/yyyy\",\n      \"fec_ultimo_pago\": \"dd/MM/yyyy\",\n      \"periodicidad\": \"A\",\n      \"forma_calculo\": \"F\",\n      \"porcentaje\": 0,\n      \"retencion\": 0,\n      \"devol_retencion\": \"S\",\n      \"bonificacion\": 0,\n      \"calculo_div_ret\": \"D\",\n      \"devol_bonificacion\": \"S\",\n      \"codigo_refer\": 10,\n      \"diferencia\": 1.5,\n      \"tarifa\": 2,\n      \"objetivo\": \"OBJ1\",\n      \"porc_tit_amortizar\": 0,\n      \"anos_dev_ret\": 0,\n      \"anos_dev_bon\": 0,\n      \"fec_dev_ret\": \"dd/MM/yyyy\",\n      \"fec_dev_bon\": \"dd/MM/yyyy\",\n      \"ind_asiento\": \"S\",\n      \"fec_validez\": \"dd/MM/yyyy\",\n      \"ind_spread\": \"S\",\n      \"spread\": 1.25,\n      \"festivos\": \"N\",\n      \"ind_fijo_var\": \"N\",\n      \"ind_tipo_amortizacion\": \"N\",\n      \"importe_periodo\": 1000,\n      \"descripcion\": \"Periodo anual\",\n      \"instrumento_aux\": 200,\n      \"tanto_conjunto\": 0,\n      \"tanto_interes\": 0,\n      \"tanto_amortizacion\": 0,\n      \"saldo_insoluto\": 0,\n      \"tasa_periodo\": 0,\n      \"fecha_barrera\": \"dd/MM/yyyy\",\n      \"precio_barrera\": 100,\n      \"ind_vencible\": \"S\"\n    },\n    {\n      \"instrumento\": 100,\n      \"codigo\": 1,\n      \"tipo_periodo\": \"R\",\n      \"clase_periodo\": \"I\",\n      \"fec_inicio\": \"dd/MM/yyyy\",\n      \"fec_ultimo_pago\": \"dd/MM/yyyy\",\n      \"periodicidad\": \"A\",\n      \"forma_calculo\": \"F\",\n      \"porcentaje\": 0,\n      \"retencion\": 0,\n      \"devol_retencion\": \"S\",\n      \"bonificacion\": 0,\n      \"calculo_div_ret\": \"D\",\n      \"devol_bonificacion\": \"S\",\n      \"codigo_refer\": 10,\n      \"diferencia\": 1.5,\n      \"tarifa\": 2,\n      \"objetivo\": \"OBJ1\",\n      \"porc_tit_amortizar\": 0,\n      \"anos_dev_ret\": 0,\n      \"anos_dev_bon\": 0,\n      \"fec_dev_ret\": \"dd/MM/yyyy\",\n      \"fec_dev_bon\": \"dd/MM/yyyy\",\n      \"ind_asiento\": \"S\",\n      \"fec_validez\": \"dd/MM/yyyy\",\n      \"ind_spread\": \"S\",\n      \"spread\": 1.25,\n      \"festivos\": \"N\",\n      \"ind_fijo_var\": \"N\",\n      \"ind_tipo_amortizacion\": \"N\",\n      \"importe_periodo\": 1000,\n      \"descripcion\": \"Periodo anual\",\n      \"instrumento_aux\": 200,\n      \"tanto_conjunto\": 0,\n      \"tanto_interes\": 0,\n      \"tanto_amortizacion\": 0,\n      \"saldo_insoluto\": 0,\n      \"tasa_periodo\": 0,\n      \"fecha_barrera\": \"dd/MM/yyyy\",\n      \"precio_barrera\": 100,\n      \"ind_vencible\": \"S\"\n    }\n  ],\n  \"valores_rf\": {\n    \"base_calculo\": \"1\",\n    \"bonificacion\": 0,\n    \"devolucion_fiscal\": \"N\",\n    \"fecha_devolucion\": \"dd/MM/yyyy\",\n    \"fecha_vto\": \"dd/MM/yyyy\",\n    \"ind_interes_variable\": \"S\",\n    \"titulos_emitidos\": 1000000,\n    \"codigo\": 1,\n    \"serie\": \"A\",\n    \"dias_cupon_faltante\": 0,\n    \"ind_periodificar\": \"T\",\n    \"rating_ibca\": 1,\n    \"rating_moodys\": 1,\n    \"rating_stand_poors\": 1,\n    \"base_cupon\": 1,\n    \"grupo_rating_tir\": 1,\n    \"rating_menor\": 1,\n    \"grupo_pais_tir\": 1,\n    \"pais_emision\": 34,\n    \"ind_convertible_amp\": \"N\",\n    \"ind_bonos_matador\": \"N\",\n    \"ind_refer_indice\": \"S\",\n    \"ind_subordinada\": \"N\",\n    \"grupo_dif_explicito\": 1,\n    \"grupo_dif_repo\": 1,\n    \"outlook_ibca\": \"POS\",\n    \"outlook_moodys\": \"POS\",\n    \"outlook_stand_poors\": \"POS\",\n    \"ind_opcion_amortiza\": \"S\",\n    \"ind_spv\": \"N\",\n    \"ind_interes_fijo_variable\": \"N\",\n    \"ind_facial_fraccion\": \"N\",\n    \"ind_festivos_rf\": \"N\",\n    \"ind_festivos_ajustados\": \"N\",\n    \"ind_titulizacion\": \"S\",\n    \"ind_perpetuo\": \"S\",\n    \"tipo_facial\": 5.5,\n    \"anyos_facial\": 10,\n    \"tae\": 4.2,\n    \"ind_cupon_conjunto\": \"S\",\n    \"decimales_cupon\": 2,\n    \"rating_propio\": 1,\n    \"ind_cupon_bisiesto\": \"S\",\n    \"outlook_propio\": \"POS\",\n    \"rating_ibca_corto\": 1,\n    \"rating_moodys_corto\": 1,\n    \"rating_stand_poors_corto\": 1,\n    \"rating_propio_corto\": 1,\n    \"rating_dbrs_corto\": 1,\n    \"outlook_ibca_corto\": \"POS\",\n    \"outlook_moodys_corto\": \"POS\",\n    \"outlook_stand_poors_corto\": \"POS\",\n    \"outlook_propio_corto\": \"POS\",\n    \"outlook_dbrs_corto\": \"POS\",\n    \"rating_dbrs\": 1,\n    \"outlook_dbrs\": \"POS\",\n    \"fecha_cupon_conjunto\": \"dd/MM/yyyy\",\n    \"tanto_cupon_amortizacion\": 1.5,\n    \"tasa_emision\": 3.2,\n    \"ind_prepago\": \"S\",\n    \"fecha_prepago\": \"dd/MM/yyyy\",\n    \"rating_feller\": 1,\n    \"outlook_feller\": \"POS\",\n    \"rating_feller_corto\": 1,\n    \"outlook_feller_corto\": \"POS\",\n    \"rating_humphreys\": 1,\n    \"outlook_humphreys\": \"POS\",\n    \"rating_humphreys_corto\": 1,\n    \"outlook_humphreys_corto\": \"POS\",\n    \"rating_icr\": 1,\n    \"outlook_icr\": \"POS\",\n    \"rating_icr_corto\": 1,\n    \"outlook_icr_corto\": \"POS\",\n    \"ind_tab_uf_360\": \"S\",\n    \"ind_deuda_senior_no_pref\": \"S\",\n    \"ind_prioridad_cobro\": \"S\",\n    \"ind_pagare\": \"S\",\n    \"fec_ult_act_rating\": \"dd/MM/yyyy\",\n    \"ind_liquida_auto\": \"S\",\n    \"ind_test_sppi\": \"S\",\n    \"ind_periodicidad_tir\": \"A\"\n  },\n  \"valores_rv\": {\n    \"iic\": \"N\",\n    \"nominativas\": \"N\",\n    \"codigo\": 1,\n    \"valor_refer\": 100,\n    \"difer_cot\": 1.25,\n    \"valor_origen\": 200,\n    \"simbolo\": \"SYM\",\n    \"ind_inversion_fondo\": \"S\",\n    \"indica_rv\": \"S\",\n    \"nif\": \"A12345678\",\n    \"numero_registro_cnmv\": \"1234\",\n    \"numero_registro_cnmv_gestora\": \"5678\",\n    \"nif_gestora\": \"B12345678\",\n    \"ccc\": \"12345678901234567890\",\n    \"categoria\": 5,\n    \"ind_liquidez_inm\": \"S\",\n    \"ind_resto_activo_inm\": \"S\",\n    \"ind_derecho_voto\": \"S\",\n    \"ind_armonizado\": \"S\",\n    \"ind_ecualizacion\": \"S\",\n    \"tanto_comision_variable\": 1.5,\n    \"codigo_gestora\": 300,\n    \"ind_marca_agua\": \"S\",\n    \"marca_agua\": 10,\n    \"titulos_emitidos\": 100000,\n    \"clasificacion_web\": \"RV\",\n    \"minimo_suscripcion\": 1000,\n    \"minimo_permanencia\": 500,\n    \"ind_clasificadora_riesgo\": \"S\",\n    \"rating_feller\": 1,\n    \"rating_fitch\": 1,\n    \"rating_humphreys\": 1,\n    \"rating_icr\": 1,\n    \"rating_propio\": 1,\n    \"ind_participacion_fia\": \"S\",\n    \"ind_limite_emisor_30\": \"S\",\n    \"dias_rescate\": 3,\n    \"codigo_fondo\": 400,\n    \"ins_parti_fondo\": 500\n  },\n  \"fr09_instrumentos\": {\n    \"clase_valor\": 5,\n    \"codigo_ext\": \"EXT001\",\n    \"descripcion\": \"Instrumento FR09\",\n    \"divisa\": 978,\n    \"ind_validado_back_sn\": \"S\",\n    \"codigo\": 1,\n    \"codigo_alias\": \"ALIAS01\",\n    \"emisora\": 200,\n    \"servicio_reuter_fr\": \"REUTER_FR\",\n    \"servicio_bloomberg_fr\": \"BLOOMBERG_FR\",\n    \"servicio_fininfo_fr\": \"FININFO_FR\",\n    \"denominacion\": \"Denominación instrumento\",\n    \"pais\": 34,\n    \"descripcion_bloomberg\": \"Desc BB\",\n    \"base_calculo\": 1,\n    \"ind_extraer_coti_intra\": \"S\",\n    \"duracion\": 5.5,\n    \"producto\": 10,\n    \"ind_operativa\": \"S\",\n    \"dias_desde_hasta_v\": 2,\n    \"dias_desde_hasta_c\": 2,\n    \"dias_desde_hasta_v_sig\": 3,\n    \"porcentaje_v_sig\": 10.5,\n    \"hora_limite\": \"dd/MM/yyyy\",\n    \"dias_valor\": 2,\n    \"dias_liquidacion\": 2,\n    \"ind_dias_habiles\": \"S\"\n  },\n  \"futuros\": {\n    \"fec_vto\": \"dd/MM/yyyy\",\n    \"isin\": \"ES0123456789\",\n    \"tipo_contrato\": 2,\n    \"codigo\": 1,\n    \"codigo_posicion\": \"POS001\",\n    \"tipo_subyacente\": \"INDICE\",\n    \"ind_zona_derivados\": 1,\n    \"ind_estructura\": \"N\",\n    \"cod_estructura_1\": \"EST1\",\n    \"cod_estructura_2\": 2,\n    \"cod_estructura_3\": \"EST3\",\n    \"cod_estructura_4\": 4,\n    \"fec_vto_estructura\": \"dd/MM/yyyy\",\n    \"grupo_coti_liquidacion\": 10,\n    \"fecha_vigencia\": \"dd/MM/yyyy\",\n    \"ind_garantia\": \"S\",\n    \"ent_garante\": 200,\n    \"ind_liquidacion\": \"F\",\n    \"fecha_expiracion\": \"dd/MM/yyyy\"\n  },\n  \"opciones\": {\n    \"call_put\": \"C\",\n    \"codigo_posicion\": \"POS001\",\n    \"fec_vto\": \"dd/MM/yyyy\",\n    \"isin\": \"ES0123456789\",\n    \"precio\": 100.5,\n    \"tipo_contrato\": 2,\n    \"tipo_subyacente\": \"ACCION\",\n    \"codigo\": 1,\n    \"ind_compra_venta\": \"C\",\n    \"precio_ume\": 10.5,\n    \"ind_zona_derivados\": 1,\n    \"ind_estructura\": \"N\",\n    \"cod_estructura_1\": \"EST1\",\n    \"cod_estructura_2\": 2,\n    \"cod_estructura_3\": \"EST3\",\n    \"cod_estructura_4\": 4,\n    \"fec_vto_estructura\": \"dd/MM/yyyy\",\n    \"ind_ejercita_auto\": \"S\",\n    \"ins_futuro_ejercita\": 100,\n    \"fecha_vigencia\": \"dd/MM/yyyy\",\n    \"ind_garantia\": \"S\",\n    \"ent_garante\": 200,\n    \"europea_americana\": \"E\",\n    \"ind_vainilla\": \"S\",\n    \"tipo_path_dependent\": \"BARRIER\",\n    \"barrera_superior\": 120,\n    \"barrera_inferior\": 80,\n    \"ind_margenes_limites\": \"S\",\n    \"fecha_expiracion\": \"dd/MM/yyyy\"\n  },\n  \"divisas\": {\n    \"dec_redondeo\": 2,\n    \"nombre_abreviado\": \"EUR\",\n    \"nombre_divisa\": \"Euro\",\n    \"codigo\": 978,\n    \"nombre_cnmv\": \"Euro CNMV\",\n    \"unidades\": 1,\n    \"ind_zona_ume\": 1,\n    \"fecha_ume\": \"dd/MM/yyyy\",\n    \"factor_ume\": 1,\n    \"ind_operativa\": \"S\",\n    \"ind_zona_derivados\": 1,\n    \"ind_consumo_riesgo\": \"S\",\n    \"linea_riesgo\": 10,\n    \"zona_geografica\": 2,\n    \"orden_presentacion\": 1,\n    \"ind_mercado_ocde\": \"S\",\n    \"codigo_be\": \"BE001\",\n    \"codigo_fininfo\": \"FIN001\",\n    \"codigo_svs\": \"SVS001\",\n    \"subcuenta_conta\": \"430000\",\n    \"simbolo_riskamerica\": \"$\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaInstrumentos",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaInstrumentos"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"title\": \"string\",\n  \"descripcion\": \"string\",\n  \"errores\": [\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "altaInstrumentoIF",
+              "item": [
+                {
+                  "name": "Servicio FrontOn de alta de instrumento de Intermediación Financiera",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"alias\": \"XXXXXX999999\",\n  \"mercadoCotizacion\": 999,\n  \"usuario\": 999\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/abq/fronton/altaInstrumentoIF",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "abq",
+                        "fronton",
+                        "altaInstrumentoIF"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Alta de instrumento IF realizada.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"alias\": \"XXXXXX999999\",\n  \"mercadoCotizacion\": 999,\n  \"usuario\": 999\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaInstrumentoIF",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaInstrumentoIF"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"codigoInstrumento\": 6529,\n    \"fechaSistema\": \"1952-07-24T21:49:07.291Z\"\n  },\n  {\n    \"codigoInstrumento\": 9239,\n    \"fechaSistema\": \"2024-05-04T21:07:20.128Z\"\n  }\n]"
+                    },
+                    {
+                      "name": "Internal server error.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"alias\": \"XXXXXX999999\",\n  \"mercadoCotizacion\": 999,\n  \"usuario\": 999\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/abq/fronton/altaInstrumentoIF",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "abq",
+                            "fronton",
+                            "altaInstrumentoIF"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"title\": \"string\",\n  \"descripcion\": \"string\",\n  \"errores\": [\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Servicio de alta de orden FrontOn de Cuotas",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"cartera\":706, \"efctivoDiv\":10200000.05, \"instrumento\":42808, \"operacion\":\"C\", \"usuario\":1, \"cotizacion\":235.67, \"fechaLimiteHasta\":\"25/11/2026\", \"fechaLiquidacion\":\"26/11/2026\"}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/abq/fronton/altaOrdenCuotas",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "abq",
+            "fronton",
+            "altaOrdenCuotas"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Alta de orden Cuotas realizada.",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cartera\": 555,\n  \"efctivoDiv\": 11,\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"fechaLiquidacion\": \"dd/MM/yyyy\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/abq/fronton/altaOrdenCuotas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "abq",
+                "fronton",
+                "altaOrdenCuotas"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "uuid": "311cd017-24b1-43fe-9bc8-fef4ae853cb2"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n  {\n    \"codigoOrden\": 8720\n  },\n  {\n    \"codigoOrden\": 272\n  }\n]"
+        },
+        {
+          "name": "Internal server error.",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cartera\": 555,\n  \"efctivoDiv\": 11,\n  \"instrumento\": 999,\n  \"operacion\": \"C\",\n  \"usuario\": 123,\n  \"cotizacion\": 22,\n  \"fechaLimiteHasta\": \"dd/MM/yyyy\",\n  \"fechaLiquidacion\": \"dd/MM/yyyy\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/abq/fronton/altaOrdenCuotas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "abq",
+                "fronton",
+                "altaOrdenCuotas"
+              ]
+            }
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "uuid": "81375904-e414-4fbf-b6a4-9723a61e2f0a"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"title\": \"string\",\n  \"descripcion\": \"string\",\n  \"errores\": [\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    },\n    {\n      \"errorCode\": \"string\",\n      \"errorType\": \"string\",\n      \"severity\": \"string\",\n      \"errorOrigin\": \"string\",\n      \"uiControl\": \"string\",\n      \"errorDescription\": \"string\",\n      \"entryDate\": \"string\"\n    }\n  ]\n}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://172.21.170.81:8081/storm"
+    }
+  ]
+}
