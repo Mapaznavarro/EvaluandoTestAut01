@@ -1,3 +1,7 @@
+{{baseUrl}}/abq/fronton/altaOrdenGlobalRentaVariable
+http://172.21.170.81:8081/storm/abq/fronton/altaOrdenGlobalRentaVariable
+{ "indPrecio" : "A", "instrumento" : 171, "operacion" : "C", "titulos" : 10200000.05, "usuario" : 1, "cotizacion" : 223.55, "fechaLimiteHasta" : "25/11/2026", "Broker" : 50, "prerepartos" :  [{"cartera": 706, "importe": 3400000.01666667 }, {"cartera": 701, "importe": 6800000.03333333 }]}
+
 abq/fronton/altaOrdenRentaVariable
 {"usuario":1, "operacion":"C", "instrumento":171, "cartera":706, "titulos":110000.05, "indPrecio":"A", "cotizacion":235.09, "fechaLimiteHasta":"25/11/2026", "broker":50}
 {"usuario":1, "operacion":"V", "instrumento":171, "cartera":706, "titulos":110000.05, "indPrecio":"A", "cotizacion":236.09, "fechaLimiteHasta":"25/11/2026", "broker":50}
