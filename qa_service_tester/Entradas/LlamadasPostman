@@ -94,3 +94,19 @@ abq/fronton/altaInstrumentoIF
 {"alias":"XXXXXX999999", "mercadoCotizacion":999, "usuario":1}
 {"alias":"XXXXXX999999", "mercadoCotizacion":999, "usuario":1}
 
+
+
+{
+    "title": "Errores",
+    "descripcion": "Han ocurrido errores",
+    "errores": [
+        {
+            "errorCode": "com.rdsistemas.rdrestbcibankabq.control.GlobalExceptionHandler.handleGenericException.010",
+            "errorType": "ERROR",
+            "severity": "90",
+            "errorOrigin": "com.rdsistemas.rdrestbcibankabq.control.GlobalExceptionHandler.handleGenericException",
+            "errorDescription": "Error inesperado en el servicio 'altaOrdenGlobalRentaVariable'.",
+            "entryDate": "2026-06-20T17:56:09.048Z"
+        }
+    ]
+}
