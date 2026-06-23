@@ -1,3 +1,21 @@
+Swap
+SWCLFCRC011228|
+SWCLFCRC011228|
+SWCLFUSC051127|
+SWCLFUSC051127|
+SWCLFCMC101025|
+SWCLFCMC101025|
+SWCLFCMC101025|
+SWCLFCMC101025|
+SWCLFCMC020524|
+SWCLFCMC020524|
+SWCLFCMC020524|
+SWCLFCMC020524|
+SWCLFCMC270329|
+SWCLFCMC270329|
+
+
+
 actualizar Entidad FATCA
 
 <ENTIDADES_FATCA><codigo>0</codigo><entidad>1915947</entidad><fecha_alta>2025-08-30</fecha_alta><Estatus_Fatca>02</Estatus_Fatca><folioFicha>980245</folioFicha><codigoClasificacion>00</codigoClasificacion><declaracionRemediacion>0</declaracionRemediacion><declaracionFATCA>0</declaracionFATCA><W8>0</W8><W8Propietario>0</W8Propietario><W9>0</W9><W9Propietario>1</W9Propietario><fotocopiaCedula>0</fotocopiaCedula><fotocopiaPasaporte>0</fotocopiaPasaporte><certificadoRDC>0</certificadoRDC><vinculoPEP>0</vinculoPEP><certificadoNacionalidad>0</certificadoNacionalidad><cartaConsentimiento>0</cartaConsentimiento><clienteFinancieroUnipersonal>0</clienteFinancieroUnipersonal><clienteBloqueado>0</clienteBloqueado><IND_DEC_REMEDIACION_IND>S</IND_DEC_REMEDIACION_IND></ENTIDADES_FATCA>
