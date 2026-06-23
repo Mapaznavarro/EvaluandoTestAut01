@@ -17,7 +17,7 @@ Referencia técnica:
 """
 
 import os
-from datetime import date, datetime
+from datetime import date
 
 from openpyxl import Workbook
 from openpyxl.styles import (
@@ -255,36 +255,19 @@ def crear_hoja_flujos(wb: Workbook) -> None:
     ws.row_dimensions[2].height = 36
 
     # ---- Calcular número de cupones a partir de los valores de ejemplo ----
-    # (sólo para saber cuántas filas crear)
-    from dateutil.relativedelta import relativedelta  # noqa: usado solo para ejemplo
-
-    def _fechas_cupon(fecha_emision, fecha_venc, freq):
-        """Genera las fechas de pago de cupones (simplificado con relativedelta)."""
-        meses_por_periodo = 12 // freq
-        fechas = []
-        fecha_actual = fecha_emision + relativedelta(months=meses_por_periodo)
-        while fecha_actual <= fecha_venc:
-            fechas.append(fecha_actual)
-            fecha_actual = fecha_actual + relativedelta(months=meses_por_periodo)
-        return fechas
-
-    try:
-        fechas = _fechas_cupon(FECHA_EMISION_EJ, FECHA_VENC_EJ, FRECUENCIA_EJ)
-    except Exception:
-        # Si dateutil no está disponible, calcular manualmente para el ejemplo
-        fechas = []
-        meses = 12 // FRECUENCIA_EJ
-        from datetime import date as _date
-        yr, mo = FECHA_EMISION_EJ.year, FECHA_EMISION_EJ.month
-        for _ in range(FRECUENCIA_EJ * 10):  # máximo 10 años
-            mo += meses
-            while mo > 12:
-                mo -= 12
-                yr += 1
-            f = _date(yr, mo, FECHA_EMISION_EJ.day)
-            fechas.append(f)
-            if f >= FECHA_VENC_EJ:
-                break
+    # (sólo para saber cuántas filas crear; usa aritmética de meses simple)
+    fechas = []
+    meses = 12 // FRECUENCIA_EJ
+    yr, mo = FECHA_EMISION_EJ.year, FECHA_EMISION_EJ.month
+    for _ in range(FRECUENCIA_EJ * 10):  # máximo 10 años
+        mo += meses
+        while mo > 12:
+            mo -= 12
+            yr += 1
+        f = date(yr, mo, FECHA_EMISION_EJ.day)
+        fechas.append(f)
+        if f >= FECHA_VENC_EJ:
+            break
 
     n_cupones = len(fechas)
 
@@ -605,34 +588,18 @@ def generar_excel(ruta_salida: str = None) -> str:
     wb.remove(wb.active)
 
     # ---- Calcular n_cupones para dimensionar la hoja Resultado ----
-    try:
-        from dateutil.relativedelta import relativedelta as _rd
-        meses = 12 // FRECUENCIA_EJ
-        fechas_temp = []
-        from datetime import date as _date
-        f = FECHA_EMISION_EJ
-        for _ in range(FRECUENCIA_EJ * 20):
-            from dateutil.relativedelta import relativedelta as rdelta
-            f = f + rdelta(months=meses)
-            fechas_temp.append(f)
-            if f >= FECHA_VENC_EJ:
-                break
-        n_cupones = len(fechas_temp)
-    except ImportError:
-        # Cálculo manual sin dateutil
-        n_cupones = 0
-        meses = 12 // FRECUENCIA_EJ
-        yr, mo, dy = FECHA_EMISION_EJ.year, FECHA_EMISION_EJ.month, FECHA_EMISION_EJ.day
-        for _ in range(FRECUENCIA_EJ * 20):
-            mo += meses
-            while mo > 12:
-                mo -= 12
-                yr += 1
-            from datetime import date as _date
-            f = _date(yr, mo, dy)
-            n_cupones += 1
-            if f >= FECHA_VENC_EJ:
-                break
+    n_cupones = 0
+    meses = 12 // FRECUENCIA_EJ
+    yr, mo, dy = FECHA_EMISION_EJ.year, FECHA_EMISION_EJ.month, FECHA_EMISION_EJ.day
+    for _ in range(FRECUENCIA_EJ * 20):
+        mo += meses
+        while mo > 12:
+            mo -= 12
+            yr += 1
+        f = date(yr, mo, dy)
+        n_cupones += 1
+        if f >= FECHA_VENC_EJ:
+            break
 
     # ---- Crear hojas ----
     crear_hoja_parametros(wb)
