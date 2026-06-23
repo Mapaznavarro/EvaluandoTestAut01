@@ -1,0 +1,54 @@
+
+  "title": "Errores",
+  "descripcion": "Han ocurrido errores",
+  "errores": [
+    {
+      "errorCode": "com.rdsistemas.entidadpar.service.EntidadPar.<init>.010",
+      "errorType": "ERROR",
+      "severity": "90",
+      "errorOrigin": "com.rdsistemas.entidadpar.service.EntidadPar.<init>",
+      "errorDescription": "Se ha producido un error al crear los dataos de trabajo",
+      "entryDate": "2026-06-23T15:31:33.475Z"
+    },
+    {
+      "errorCode": "com.rdsistemas.entidadpar.datos.DatosEntidadPar.entidadesAdmCl.450",
+      "errorType": "ERROR",
+      "severity": "90",
+      "errorOrigin": "com.rdsistemas.entidadpar.datos.DatosEntidadPar.entidadesAdmCl",
+      "errorDescription": "Error recuperando datos de entidades_adm correspondiente a la entidad [Ljava.lang.Object;@4483041c",
+      "entryDate": "2026-06-23T15:31:33.487Z"
+    },
+    {
+      "errorCode": "com.rdsistemas.entidadpar.service.EntidadPar.recuperaDatos1.620",
+      "errorType": "ERROR",
+      "severity": "90",
+      "errorOrigin": "com.rdsistemas.entidadpar.service.EntidadPar.recuperaDatos1",
+      "errorDescription": "Error de acceso a entidades_adm para la entidad 1.923.536.",
+      "entryDate": "2026-06-23T15:31:33.488Z"
+    },
+    {
+      "errorCode": "com.rdsistemas.entidadpar.service.EntidadPar.xmlCreateFisicasNode.1750",
+      "errorType": "ERROR",
+      "severity": "90",
+      "errorOrigin": "com.rdsistemas.entidadpar.service.EntidadPar.xmlCreateFisicasNode",
+      "errorDescription": "Error general en la función xmlCreateFisicasNode. Cannot invoke \"com.rdsistemas.dataobject.Datao.getRows()\" because the return value of \"com.rdsistemas.entidadpar.datos.DatosEntidadPar.getI4()\" is null",
+      "entryDate": "2026-06-23T15:31:33.494Z"
+    },
+    {
+      "errorCode": "com.rdsistemas.entidadpar.service.EntidadPar.xmlCreateAdministrativosNode.1790",
+      "errorType": "ERROR",
+      "severity": "90",
+      "errorOrigin": "com.rdsistemas.entidadpar.service.EntidadPar.xmlCreateAdministrativosNode",
+      "errorDescription": "Error general en la función xmlCreateAdministrativosNode. Cannot invoke \"com.rdsistemas.dataobject.Datao.getRows()\" because \"datos6i\" is null",
+      "entryDate": "2026-06-23T15:31:33.495Z"
+    },
+    {
+      "errorCode": "com.rdsistemas.entidadpar.service.EntidadPar.xmlExportarEntidadPar.1730",
+      "errorType": "ERROR",
+      "severity": "90",
+      "errorOrigin": "com.rdsistemas.entidadpar.service.EntidadPar.xmlExportarEntidadPar",
+      "errorDescription": "Error general en la función xmlExportarEntidadPar. Cannot invoke \"com.rdsistemas.dataobject.Datao.getRows()\" because the return value of \"com.rdsistemas.entidadpar.datos.DatosEntidadPar.getR7()\" is null",
+      "entryDate": "2026-06-23T15:31:33.495Z"
+    }
+  ]
+}
